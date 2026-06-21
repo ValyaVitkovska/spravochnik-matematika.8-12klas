@@ -12,136 +12,52 @@
 
   <title>Математически справочник 8.–12. клас</title>
 
-  <!-- PWA manifest -->
   <link rel="manifest" href="./manifest.json">
-
-  <!-- Apple touch icon (ще се генерира) -->
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
 
   <!-- KaTeX -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 
-  <!-- Собствен стил -->
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-  <!-- ============================================================
-       ГОРНА ЛЕНТА (фиксирана)
-       ============================================================ -->
   <header class="app-header">
-
-    <!-- Лого / заглавие -->
     <a class="header-logo" onclick="goHome()" style="cursor:pointer;">
       ∑ <span>Справочник</span>
     </a>
-
     <div class="header-spacer"></div>
-
-    <!-- Бутони в горния десен ъгъл -->
     <div class="header-actions">
-
-      <!-- Назад (скрит на началната страница) -->
-      <button
-        id="back-btn"
-        class="icon-btn"
-        onclick="goBack()"
-        title="Назад"
-        style="display:none;"
-        aria-label="Назад"
-      >←</button>
-
-      <!-- Любими за текущата подтема (скрит извън подтема) -->
-      <button
-        id="fav-btn"
-        class="icon-btn"
-        onclick="toggleFav()"
-        title="Добави в любими"
-        style="display:none;"
-        aria-label="Добави в любими"
-      >☆</button>
-
-      <!-- Всички любими -->
-      <button
-        class="icon-btn"
-        onclick="goFavorites()"
-        title="Любими"
-        aria-label="Любими теми"
-      >⭐</button>
-
-      <!-- Светъл / тъмен режим -->
-      <button
-        id="theme-btn"
-        class="icon-btn"
-        onclick="toggleTheme()"
-        title="Смяна на темата"
-        aria-label="Смяна на темата"
-      >🌙</button>
-
+      <button id="back-btn" class="icon-btn" onclick="goBack()" title="Назад" style="display:none;" aria-label="Назад">←</button>
+      <button id="fav-btn" class="icon-btn" onclick="toggleFav()" title="Добави в любими" style="display:none;" aria-label="Любими">☆</button>
+      <button class="icon-btn" onclick="goFavorites()" title="Любими" aria-label="Всички любими">⭐</button>
+      <button id="theme-btn" class="icon-btn" onclick="toggleTheme()" title="Тема" aria-label="Смяна на темата">🌙</button>
     </div>
   </header>
 
-  <!-- ============================================================
-       ХЛЕБНИ ТРОХИ
-       ============================================================ -->
-  <nav id="breadcrumb" class="breadcrumb" aria-label="Навигационни трохи">
-    <!-- Попълва се от JS -->
-  </nav>
+  <nav id="breadcrumb" class="breadcrumb" aria-label="Навигация"></nav>
 
-  <!-- ============================================================
-       ТЪРСАЧКА (показва се само на началната страница)
-       ============================================================ -->
   <div id="search-area" style="max-width:680px;margin:0 auto;padding:12px 16px 0;">
     <div class="search-wrap">
       <span class="search-icon" aria-hidden="true">🔍</span>
-      <input
-        type="search"
-        id="search-input"
-        class="search-input"
+      <input type="search" id="search-input" class="search-input"
         placeholder="Търси тема, формула, понятие…"
-        autocomplete="off"
-        autocorrect="off"
-        spellcheck="false"
-        aria-label="Търсене в справочника"
-      >
-      <button
-        id="search-clear"
-        class="search-clear"
-        onclick="clearSearch()"
-        aria-label="Изчисти търсенето"
-      >✕</button>
+        autocomplete="off" spellcheck="false" aria-label="Търсене">
+      <button id="search-clear" class="search-clear" onclick="clearSearch()" aria-label="Изчисти">✕</button>
     </div>
-    <!-- Резултати от търсене -->
     <div id="search-results" class="search-results" role="list" aria-live="polite"></div>
   </div>
 
-  <!-- ============================================================
-       ОСНОВНО СЪДЪРЖАНИЕ
-       ============================================================ -->
   <main id="main-content" class="main-content" role="main">
-    <!-- Попълва се динамично от app.js -->
-    <div style="text-align:center;padding:48px 24px;color:var(--text-muted);">
-      Зарежда се…
-    </div>
+    <div style="text-align:center;padding:48px 24px;color:var(--text-muted);">Зарежда се…</div>
   </main>
 
-  <!-- ============================================================
-       ДОЛНА ЛЕНТА (атрибуция)
-       ============================================================ -->
-  <footer style="
-    text-align:center;
-    padding:24px 16px;
-    font-size:11px;
-    color:var(--text-muted);
-    border-top:1px solid var(--border);
-    margin-top:32px;
-  ">
-    Идея и педагогически решения: Валя Витковска &nbsp;|&nbsp;
-    Дигитална реализация: с помощта на изкуствен интелект
+  <footer style="text-align:center;padding:24px 16px;font-size:11px;color:var(--text-muted);border-top:1px solid var(--border);margin-top:32px;">
+    Идея и педагогически решения: Валя Витковска &nbsp;|&nbsp; Дигитална реализация: с помощта на изкуствен интелект
   </footer>
 
-  <!-- Приложението -->
+  <!-- KaTeX първо, после app.js — БЕЗ defer, за да са готови преди app.js -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script src="./app.js"></script>
 
 </body>

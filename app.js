@@ -733,19 +733,26 @@ const state = {
 
 function renderApp() {
   updateBreadcrumb();
+
+  // Търсачката се показва само на началната страница
+  const searchArea = document.getElementById('search-area');
+  if (searchArea) {
+    searchArea.style.display = (state.view === 'home') ? 'block' : 'none';
+  }
+
   const main = document.getElementById('main-content');
+  if (!main) return;
   main.innerHTML = '';
   main.className = 'main-content page-enter';
 
   switch (state.view) {
-    case 'home':      renderHome(main);     break;
-    case 'grade':     renderGrade(main);    break;
-    case 'topic':     renderTopic(main);    break;
-    case 'subtopic':  renderSubtopic(main); break;
+    case 'home':      renderHome(main);      break;
+    case 'grade':     renderGrade(main);     break;
+    case 'topic':     renderTopic(main);     break;
+    case 'subtopic':  renderSubtopic(main);  break;
     case 'favorites': renderFavorites(main); break;
   }
 
-  // KaTeX рендиране след вмъкване на HTML
   setTimeout(renderKaTeX, 50);
 }
 
@@ -1465,15 +1472,22 @@ function registerSW() {
 // 16. ИНИЦИАЛИЗАЦИЯ
 // ============================================================
 
-document.addEventListener('DOMContentLoaded', () => {
+// Скриптът е в края на <body>, DOM е вече готов — извикваме директно
+function init() {
   initTheme();
   buildSearchIndex();
   registerSW();
   renderApp();
 
-  // Търсачка
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
     searchInput.addEventListener('input', e => handleSearch(e.target.value));
   }
-});
+}
+
+// Работи и ако DOM е готов, и ако не е (предпазна мрежа)
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
