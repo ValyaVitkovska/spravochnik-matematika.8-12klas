@@ -742,6 +742,470 @@ const CONTENT = {
   },
 
   // ---- 8. клас: Квадратни уравнения — Формула за корените ----
+  // ========================================================
+  // 8. КЛАС — ТЕМА 2: ВЕКТОРИ
+  // ========================================================
+
+  // --- Понятие за вектор ---
+  g8t2s1: {
+    shortIntro: 'Векторът е насочена отсечка — има начало, край и посока. Векторите описват величини, при които посоката е важна: сила, скорост, преместване.',
+    definitions: [
+      { term: 'Вектор', def: 'Насочена отсечка с начало точка A и край точка B. Означава се с <katex>\\vec{AB}</katex> или с малка буква <katex>\\vec{a}</katex>.' },
+      { term: 'Нулев вектор', def: 'Вектор, при който началото и краят съвпадат. Означава се с <katex>\\vec{0}</katex> и няма определена посока.' }
+    ],
+    formulas: [
+      { label: 'Означение', tex: '\\vec{AB} \\quad \\text{или} \\quad \\vec{a}' }
+    ],
+    algorithm: [
+      'Определи началната точка (начало на вектора).',
+      'Определи крайната точка (връх на вектора).',
+      'Стрелката сочи от началото към края.'
+    ],
+    example: {
+      problem: 'Точка A(1; 2) и точка B(4; 6). Какво представлява <katex>\\vec{AB}</katex>?',
+      solution: 'Векторът <katex>\\vec{AB}</katex> е насочена отсечка с начало A и край B. Координатите му са: <katex>\\vec{AB} = (4-1;\\ 6-2) = (3;\\ 4)</katex>.'
+    },
+    mistakes: [
+      { label: 'Объркване на посоката', text: '<katex>\\vec{AB}</katex> и <katex>\\vec{BA}</katex> са различни вектори — с противоположни посоки.' }
+    ],
+    miniCheck: [
+      {
+        q: 'Кое от изброените НЕ е векторна величина?',
+        options: ['Сила', 'Температура', 'Скорост'],
+        correct: 1,
+        feedback: 'Температурата има само големина, без посока — тя е скаларна величина.'
+      }
+    ],
+    remember: 'Векторът е насочена отсечка: има начало, край и посока. <katex>\\vec{AB} \\neq \\vec{BA}</katex>.'
+  },
+
+  // --- Посока, дължина и големина ---
+  g8t2s2: {
+    shortIntro: 'Всеки вектор се характеризира с посока и дължина (големина). Дължината е разстоянието между началото и края.',
+    definitions: [
+      { term: 'Дължина (големина) на вектор', def: 'Дължината на отсечката от началото до края. Означава се с <katex>|\\vec{a}|</katex> или <katex>|\\vec{AB}|</katex>.' },
+      { term: 'Посока', def: 'Направлението, в което сочи стрелката на вектора.' }
+    ],
+    formulas: [
+      { label: 'Дължина по координати', tex: '|\\vec{a}| = \\sqrt{a_1^2 + a_2^2}' }
+    ],
+    algorithm: [
+      'Намери координатите на вектора <katex>(a_1; a_2)</katex>.',
+      'Повдигни всяка координата на квадрат.',
+      'Събери и извади квадратен корен.'
+    ],
+    example: {
+      problem: 'Намери дължината на вектора <katex>\\vec{a} = (3; 4)</katex>.',
+      solution: '<katex>|\\vec{a}| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5</katex>'
+    },
+    mistakes: [
+      { label: 'Забравяне на квадратния корен', text: 'Дължината е √(a₁² + a₂²), а не a₁² + a₂².' }
+    ],
+    miniCheck: [
+      {
+        q: 'Колко е дължината на вектора (6; 8)?',
+        options: ['10', '14', '48'],
+        correct: 0,
+        feedback: '√(36 + 64) = √100 = 10.'
+      }
+    ],
+    remember: 'Дължина на вектор: <katex>|\\vec{a}| = \\sqrt{a_1^2 + a_2^2}</katex>.'
+  },
+
+  // --- Равни вектори ---
+  g8t2s3: {
+    shortIntro: 'Два вектора са равни, когато имат еднаква дължина И еднаква посока — независимо къде се намират в равнината.',
+    definitions: [
+      { term: 'Равни вектори', def: 'Вектори с еднаква дължина и еднаква посока. Записва се <katex>\\vec{a} = \\vec{b}</katex>.' }
+    ],
+    formulas: [
+      { label: 'Равенство по координати', tex: '\\vec{a} = \\vec{b} \\Leftrightarrow a_1 = b_1 \\text{ и } a_2 = b_2' }
+    ],
+    drawing: { svg: `<svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
+  <defs>
+    <marker id="eq-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
+  </defs>
+  <line x1="30" y1="50" x2="130" y2="50" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#eq-blue)"/>
+  <line x1="160" y1="130" x2="260" y2="130" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#eq-blue)"/>
+  <text x="70" y="40" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
+  <text x="200" y="120" font-size="14" fill="#4f6ef7" font-weight="600">b</text>
+  <text x="60" y="100" font-size="12" fill="#64748b">еднаква посока</text>
+  <text x="170" y="160" font-size="12" fill="#64748b">и дължина</text>
+</svg>`, caption: 'Равни вектори: еднаква посока и дължина, различно положение.' },
+    algorithm: [
+      'Сравни посоките — трябва да съвпадат.',
+      'Сравни дължините — трябва да са равни.',
+      'По координати: сравни съответните координати.'
+    ],
+    example: {
+      problem: 'Векторите <katex>\\vec{a} = (2; 5)</katex> и <katex>\\vec{b} = (2; 5)</katex> равни ли са?',
+      solution: 'Да, защото съответните им координати съвпадат: 2 = 2 и 5 = 5. Следователно <katex>\\vec{a} = \\vec{b}</katex>.'
+    },
+    mistakes: [
+      { label: 'Само дължината', text: 'Равни дължини не стигат — посоките също трябва да съвпадат.' }
+    ],
+    miniCheck: [
+      {
+        q: 'Два вектора с еднаква дължина, но противоположни посоки, равни ли са?',
+        options: ['Да', 'Не'],
+        correct: 1,
+        feedback: 'Не — те са противоположни вектори, а не равни.'
+      }
+    ],
+    remember: 'Равни вектори = еднаква посока И еднаква дължина. Положението няма значение.'
+  },
+
+  // --- Противоположни вектори ---
+  g8t2s4: {
+    shortIntro: 'Противоположните вектори имат еднаква дължина, но противоположни посоки. Сборът им е нулевият вектор.',
+    definitions: [
+      { term: 'Противоположен вектор', def: 'Векторът <katex>-\\vec{a}</katex> има същата дължина като <katex>\\vec{a}</katex>, но противоположна посока.' }
+    ],
+    formulas: [
+      { label: 'Сбор с противоположния', tex: '\\vec{a} + (-\\vec{a}) = \\vec{0}' },
+      { label: 'По координати', tex: '-\\vec{a} = (-a_1; -a_2)' }
+    ],
+    drawing: { svg: `<svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
+  <defs>
+    <marker id="op-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
+    <marker id="op-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e84393"/></marker>
+  </defs>
+  <line x1="40" y1="45" x2="160" y2="45" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#op-blue)"/>
+  <line x1="260" y1="85" x2="140" y2="85" stroke="#e84393" stroke-width="2.5" marker-end="url(#op-pink)"/>
+  <text x="95" y="36" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
+  <text x="195" y="76" font-size="14" fill="#e84393" font-weight="600">−a</text>
+</svg>`, caption: 'Противоположни вектори: еднаква дължина, обратна посока.' },
+    algorithm: [
+      'Запази дължината.',
+      'Обърни посоката на 180°.',
+      'По координати: смени знаците на всички координати.'
+    ],
+    example: {
+      problem: 'Намери противоположния вектор на <katex>\\vec{a} = (-3; 7)</katex>.',
+      solution: '<katex>-\\vec{a} = (3; -7)</katex> — сменяме знаците на координатите.'
+    },
+    mistakes: [
+      { label: 'Само едната координата', text: 'При противоположен вектор сменяме знаците на ВСИЧКИ координати.' }
+    ],
+    miniCheck: [
+      {
+        q: 'Противоположният на (5; -2) е:',
+        options: ['(-5; 2)', '(5; 2)', '(-5; -2)'],
+        correct: 0,
+        feedback: 'Сменяме знаците: (-5; 2).'
+      }
+    ],
+    remember: 'Противоположни вектори: <katex>-\\vec{a} = (-a_1; -a_2)</katex>, при което <katex>\\vec{a} + (-\\vec{a}) = \\vec{0}</katex>.'
+  },
+
+  // --- Колинеарни вектори ---
+  g8t2s5: {
+    shortIntro: 'Колинеарни вектори лежат на една права или на успоредни прави. Те имат еднаква или противоположна посока.',
+    definitions: [
+      { term: 'Колинеарни вектори', def: 'Вектори, които са успоредни (лежат на една или успоредни прави). Единият е кратно на другия.' }
+    ],
+    formulas: [
+      { label: 'Условие за колинеарност', tex: '\\vec{a} \\parallel \\vec{b} \\Leftrightarrow \\vec{b} = k \\cdot \\vec{a}' },
+      { label: 'По координати', tex: '\\dfrac{b_1}{a_1} = \\dfrac{b_2}{a_2} = k' }
+    ],
+    algorithm: [
+      'Провери дали единият вектор е кратно на другия.',
+      'По координати: провери дали отношенията на съответните координати са равни.',
+      'Ако да — векторите са колинеарни.'
+    ],
+    example: {
+      problem: 'Колинеарни ли са <katex>\\vec{a} = (2; 3)</katex> и <katex>\\vec{b} = (4; 6)</katex>?',
+      solution: '<katex>\\dfrac{4}{2} = 2</katex> и <katex>\\dfrac{6}{3} = 2</katex>. Отношенията са равни (k = 2), значи <katex>\\vec{b} = 2\\vec{a}</katex> — векторите СА колинеарни.'
+    },
+    mistakes: [
+      { label: 'Различни отношения', text: 'Ако отношенията на координатите НЕ са равни, векторите не са колинеарни.' }
+    ],
+    miniCheck: [
+      {
+        q: 'Колинеарни ли са (1; 2) и (3; 5)?',
+        options: ['Да', 'Не'],
+        correct: 1,
+        feedback: '3/1 = 3, но 5/2 = 2.5 — отношенията се различават, не са колинеарни.'
+      }
+    ],
+    remember: 'Колинеарни вектори: единият е кратно на другия — <katex>\\vec{b} = k\\vec{a}</katex>.'
+  },
+
+  // --- Събиране — правило на триъгълника ---
+  g8t2s6: {
+    shortIntro: 'Правилото на триъгълника е основният начин за събиране на два вектора: краят на първия съвпада с началото на втория.',
+    definitions: [
+      { term: 'Правило на триъгълника', def: 'Поставяме началото на <katex>\\vec{b}</katex> в края на <katex>\\vec{a}</katex>. Сборът <katex>\\vec{a} + \\vec{b}</katex> е векторът от началото на <katex>\\vec{a}</katex> до края на <katex>\\vec{b}</katex>.' }
+    ],
+    formulas: [
+      { label: 'Правило на триъгълника', tex: '\\vec{AB} + \\vec{BC} = \\vec{AC}' },
+      { label: 'По координати', tex: '\\vec{a} + \\vec{b} = (a_1 + b_1;\\ a_2 + b_2)' }
+    ],
+    drawing: { svg: `<svg viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg" style="max-width:340px;">
+  <defs>
+    <marker id="ah-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
+    <marker id="ah-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e84393"/></marker>
+    <marker id="ah-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
+  </defs>
+  <line x1="40" y1="200" x2="180" y2="120" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#ah-blue)"/>
+  <line x1="180" y1="120" x2="300" y2="170" stroke="#e84393" stroke-width="2.5" marker-end="url(#ah-pink)"/>
+  <line x1="40" y1="200" x2="300" y2="170" stroke="#10b981" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ah-green)"/>
+  <circle cx="40" cy="200" r="3" fill="#1a1f2e"/>
+  <circle cx="180" cy="120" r="3" fill="#1a1f2e"/>
+  <circle cx="300" cy="170" r="3" fill="#1a1f2e"/>
+  <text x="30" y="218" font-size="14" fill="#64748b">A</text>
+  <text x="184" y="114" font-size="14" fill="#64748b">B</text>
+  <text x="304" y="168" font-size="14" fill="#64748b">C</text>
+  <text x="100" y="150" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
+  <text x="245" y="135" font-size="14" fill="#e84393" font-weight="600">b</text>
+  <text x="160" y="200" font-size="14" fill="#10b981" font-weight="600">a + b</text>
+</svg>`, caption: 'Правило на триъгълника: краят на a съвпада с началото на b.' },
+    algorithm: [
+      'Постави началото на <katex>\\vec{b}</katex> в края на <katex>\\vec{a}</katex>.',
+      'Свържи началото на <katex>\\vec{a}</katex> с края на <katex>\\vec{b}</katex>.',
+      'Полученият вектор е сборът.'
+    ],
+    example: {
+      problem: 'Съберете <katex>\\vec{a} = (3; 1)</katex> и <katex>\\vec{b} = (2; 4)</katex>.',
+      solution: '<katex>\\vec{a} + \\vec{b} = (3+2;\\ 1+4) = (5;\\ 5)</katex>'
+    },
+    mistakes: [
+      { label: 'Грешно поставяне', text: 'Началото на втория вектор трябва да съвпада с КРАЯ на първия.' }
+    ],
+    miniCheck: [
+      {
+        q: 'Колко е (1; 2) + (3; -1)?',
+        options: ['(4; 1)', '(2; 3)', '(4; 3)'],
+        correct: 0,
+        feedback: '(1+3; 2+(-1)) = (4; 1).'
+      }
+    ],
+    remember: 'Правило на триъгълника: <katex>\\vec{AB} + \\vec{BC} = \\vec{AC}</katex>. По координати — събираме съответните координати.'
+  },
+
+  // --- Събиране — правило на успоредника ---
+  g8t2s7: {
+    shortIntro: 'Правилото на успоредника събира два вектора с общо начало: сборът е диагоналът на успоредника, изграден върху тях.',
+    definitions: [
+      { term: 'Правило на успоредника', def: 'Поставяме <katex>\\vec{a}</katex> и <katex>\\vec{b}</katex> с общо начало. Сборът е диагоналът на успоредника, изграден върху двата вектора.' }
+    ],
+    formulas: [
+      { label: 'Правило на успоредника', tex: '\\vec{OP} + \\vec{OQ} = \\vec{OR}' }
+    ],
+    drawing: { svg: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
+  <defs>
+    <marker id="ph-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
+    <marker id="ph-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e84393"/></marker>
+    <marker id="ph-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
+  </defs>
+  <line x1="40" y1="200" x2="180" y2="200" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="110" y1="100" x2="250" y2="100" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="180" y1="200" x2="250" y2="100" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="40" y1="200" x2="180" y2="200" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#ph-blue)"/>
+  <line x1="40" y1="200" x2="110" y2="100" stroke="#e84393" stroke-width="2.5" marker-end="url(#ph-pink)"/>
+  <line x1="40" y1="200" x2="250" y2="100" stroke="#10b981" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ph-green)"/>
+  <circle cx="40" cy="200" r="3" fill="#1a1f2e"/>
+  <circle cx="180" cy="200" r="3" fill="#1a1f2e"/>
+  <circle cx="110" cy="100" r="3" fill="#1a1f2e"/>
+  <circle cx="250" cy="100" r="3" fill="#1a1f2e"/>
+  <text x="28" y="216" font-size="14" fill="#64748b">O</text>
+  <text x="184" y="216" font-size="14" fill="#64748b">P</text>
+  <text x="92" y="94" font-size="14" fill="#64748b">Q</text>
+  <text x="254" y="98" font-size="14" fill="#64748b">R</text>
+  <text x="105" y="218" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
+  <text x="60" y="150" font-size="14" fill="#e84393" font-weight="600">b</text>
+  <text x="150" y="145" font-size="14" fill="#10b981" font-weight="600">a + b</text>
+</svg>`, caption: 'Правило на успоредника: сборът е диагоналът от общото начало.' },
+    algorithm: [
+      'Постави двата вектора с общо начало O.',
+      'Построй успоредник с тях като страни.',
+      'Сборът е диагоналът от O до срещуположния връх.'
+    ],
+    example: {
+      problem: 'Защо правилото на успоредника дава същия резултат като това на триъгълника?',
+      solution: 'Защото срещуположните страни на успоредника са равни вектори. Преместването на <katex>\\vec{b}</katex> до края на <katex>\\vec{a}</katex> възстановява триъгълника. И двата метода дават <katex>\\vec{a} + \\vec{b}</katex>.'
+    },
+    mistakes: [
+      { label: 'Различно начало', text: 'При правилото на успоредника двата вектора задължително тръгват от ОБЩА начална точка.' }
+    ],
+    miniCheck: [
+      {
+        q: 'Сборът по правилото на успоредника е:',
+        options: ['Едната страна', 'Диагоналът от общото начало', 'Периметърът'],
+        correct: 1,
+        feedback: 'Сборът е диагоналът, тръгващ от общото начало на двата вектора.'
+      }
+    ],
+    remember: 'Правило на успоредника: двата вектора с общо начало → сборът е диагоналът.'
+  },
+
+  // --- Изваждане на вектори ---
+  g8t2s8: {
+    shortIntro: 'Изваждането на вектори е събиране с противоположния: вместо да изваждаме, прибавяме обратния вектор.',
+    definitions: [
+      { term: 'Разлика на вектори', def: '<katex>\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})</katex>. Геометрично свързва върховете на двата вектора с общо начало.' }
+    ],
+    formulas: [
+      { label: 'Изваждане', tex: '\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})' },
+      { label: 'По координати', tex: '\\vec{a} - \\vec{b} = (a_1 - b_1;\\ a_2 - b_2)' }
+    ],
+    drawing: { svg: `<svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
+  <defs>
+    <marker id="sb-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
+    <marker id="sb-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e84393"/></marker>
+    <marker id="sb-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
+  </defs>
+  <line x1="50" y1="180" x2="220" y2="180" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#sb-blue)"/>
+  <line x1="50" y1="180" x2="120" y2="60" stroke="#e84393" stroke-width="2.5" marker-end="url(#sb-pink)"/>
+  <line x1="120" y1="60" x2="220" y2="180" stroke="#10b981" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#sb-green)"/>
+  <circle cx="50" cy="180" r="3" fill="#1a1f2e"/>
+  <circle cx="220" cy="180" r="3" fill="#1a1f2e"/>
+  <circle cx="120" cy="60" r="3" fill="#1a1f2e"/>
+  <text x="38" y="198" font-size="14" fill="#64748b">O</text>
+  <text x="224" y="196" font-size="14" fill="#64748b">A</text>
+  <text x="104" y="54" font-size="14" fill="#64748b">B</text>
+  <text x="130" y="200" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
+  <text x="70" y="120" font-size="14" fill="#e84393" font-weight="600">b</text>
+  <text x="180" y="110" font-size="14" fill="#10b981" font-weight="600">a − b</text>
+</svg>`, caption: 'Разликата a − b свързва върха на b с върха на a.' },
+    algorithm: [
+      'Намери противоположния вектор <katex>-\\vec{b}</katex>.',
+      'Събери <katex>\\vec{a} + (-\\vec{b})</katex> по правилото на триъгълника.',
+      'По координати: извади съответните координати.'
+    ],
+    example: {
+      problem: 'Намери <katex>\\vec{a} - \\vec{b}</katex>, ако <katex>\\vec{a} = (5; 3)</katex>, <katex>\\vec{b} = (2; 1)</katex>.',
+      solution: '<katex>\\vec{a} - \\vec{b} = (5-2;\\ 3-1) = (3;\\ 2)</katex>'
+    },
+    mistakes: [
+      { label: 'Грешен ред', text: '<katex>\\vec{a} - \\vec{b} \\neq \\vec{b} - \\vec{a}</katex> — резултатите са противоположни вектори.' }
+    ],
+    miniCheck: [
+      {
+        q: 'Колко е (7; 4) − (3; 6)?',
+        options: ['(4; -2)', '(4; 2)', '(10; 10)'],
+        correct: 0,
+        feedback: '(7-3; 4-6) = (4; -2).'
+      }
+    ],
+    remember: 'Изваждане = събиране с противоположния: <katex>\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})</katex>.'
+  },
+
+  // --- Умножение на вектор с число ---
+  g8t2s9: {
+    shortIntro: 'Умножаването на вектор с число променя дължината му (и евентуално посоката), но запазва направлението на правата.',
+    definitions: [
+      { term: 'Умножение с число', def: 'Векторът <katex>k\\vec{a}</katex> е колинеарен на <katex>\\vec{a}</katex>, с дължина <katex>|k| \\cdot |\\vec{a}|</katex>. При <katex>k > 0</katex> посоката се запазва, при <katex>k < 0</katex> се обръща.' }
+    ],
+    formulas: [
+      { label: 'Умножение с число', tex: 'k\\vec{a} = (k a_1;\\ k a_2)' },
+      { label: 'Дължина', tex: '|k\\vec{a}| = |k| \\cdot |\\vec{a}|' }
+    ],
+    drawing: { svg: `<svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
+  <defs>
+    <marker id="sc-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
+    <marker id="sc-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
+  </defs>
+  <line x1="30" y1="45" x2="90" y2="45" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#sc-blue)"/>
+  <line x1="30" y1="110" x2="150" y2="110" stroke="#10b981" stroke-width="2.5" marker-end="url(#sc-green)"/>
+  <text x="55" y="36" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
+  <text x="85" y="101" font-size="14" fill="#10b981" font-weight="600">2a</text>
+  <text x="170" y="80" font-size="12" fill="#64748b">2a е два пъти по-дълъг,</text>
+  <text x="170" y="98" font-size="12" fill="#64748b">същата посока</text>
+</svg>`, caption: 'Умножение с 2: дължината се удвоява, посоката се запазва.' },
+    algorithm: [
+      'Умножи всяка координата на вектора с числото k.',
+      'Ако k > 0 — посоката се запазва.',
+      'Ако k < 0 — посоката се обръща.',
+      'Дължината става |k| пъти по-голяма.'
+    ],
+    example: {
+      problem: 'Намери <katex>3\\vec{a}</katex>, ако <katex>\\vec{a} = (2; -1)</katex>.',
+      solution: '<katex>3\\vec{a} = (3 \\cdot 2;\\ 3 \\cdot (-1)) = (6; -3)</katex>'
+    },
+    mistakes: [
+      { label: 'Само едната координата', text: 'Умножаваме ВСИЧКИ координати с числото k.' }
+    ],
+    miniCheck: [
+      {
+        q: 'Колко е -2 · (3; -4)?',
+        options: ['(-6; 8)', '(6; 8)', '(-6; -8)'],
+        correct: 0,
+        feedback: '(-2·3; -2·(-4)) = (-6; 8).'
+      }
+    ],
+    remember: 'Умножение с число: <katex>k\\vec{a} = (ka_1; ka_2)</katex>. Знакът на k определя посоката.'
+  },
+
+  // --- Свойства на операциите с вектори ---
+  g8t2s10: {
+    shortIntro: 'Операциите с вектори се подчиняват на свойства, подобни на тези с числата — комутативност, асоциативност, дистрибутивност.',
+    definitions: [
+      { term: 'Алгебрични свойства', def: 'Събирането на вектори е комутативно и асоциативно; умножението с число е дистрибутивно.' }
+    ],
+    formulas: [
+      { label: 'Комутативност', tex: '\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}' },
+      { label: 'Асоциативност', tex: '(\\vec{a} + \\vec{b}) + \\vec{c} = \\vec{a} + (\\vec{b} + \\vec{c})' },
+      { label: 'Дистрибутивност', tex: 'k(\\vec{a} + \\vec{b}) = k\\vec{a} + k\\vec{b}' },
+      { label: 'Нулев вектор', tex: '\\vec{a} + \\vec{0} = \\vec{a}' }
+    ],
+    algorithm: [
+      'При сложни изрази използвай свойствата, за да опростиш.',
+      'Групирай подобни вектори.',
+      'Изнеси общи множители (дистрибутивност).'
+    ],
+    example: {
+      problem: 'Опрости: <katex>2(\\vec{a} + \\vec{b}) - \\vec{b}</katex>.',
+      solution: '<katex>2\\vec{a} + 2\\vec{b} - \\vec{b} = 2\\vec{a} + \\vec{b}</katex>'
+    },
+    mistakes: [
+      { label: 'Изваждане не е комутативно', text: 'Събирането е комутативно, но <katex>\\vec{a} - \\vec{b} \\neq \\vec{b} - \\vec{a}</katex>.' }
+    ],
+    miniCheck: [
+      {
+        q: 'На какво е равно 3(a + b) − 3b?',
+        options: ['3a', '3a + 6b', '6b'],
+        correct: 0,
+        feedback: '3a + 3b − 3b = 3a.'
+      }
+    ],
+    remember: 'Събирането е комутативно и асоциативно. Умножението с число е дистрибутивно: <katex>k(\\vec{a}+\\vec{b}) = k\\vec{a} + k\\vec{b}</katex>.'
+  },
+
+  // --- Приложения на вектори в геометрични задачи ---
+  g8t2s11: {
+    shortIntro: 'Векторите опростяват доказателствата в геометрията. С тях лесно се доказват свойства на средни отсечки, успоредници и медицентри.',
+    definitions: [
+      { term: 'Векторен метод', def: 'Изразяваме геометрични отсечки чрез вектори и използваме алгебричните свойства за доказателство.' }
+    ],
+    formulas: [
+      { label: 'Среда на отсечка', tex: '\\vec{OM} = \\dfrac{1}{2}(\\vec{OA} + \\vec{OB})' },
+      { label: 'Медицентър на триъгълник', tex: '\\vec{OG} = \\dfrac{1}{3}(\\vec{OA} + \\vec{OB} + \\vec{OC})' }
+    ],
+    algorithm: [
+      'Избери начална точка (например O).',
+      'Изрази нужните точки чрез вектори от O.',
+      'Приложи свойствата на операциите.',
+      'Достигни до търсеното равенство.'
+    ],
+    example: {
+      problem: 'M е среда на AB. Изрази <katex>\\vec{OM}</katex> чрез <katex>\\vec{OA}</katex> и <katex>\\vec{OB}</katex>.',
+      solution: 'Тъй като M е среда: <katex>\\vec{OM} = \\dfrac{1}{2}(\\vec{OA} + \\vec{OB})</katex>. Това е средноаритметичното на двата вектора.'
+    },
+    mistakes: [
+      { label: 'Грешен коефициент', text: 'За среда на отсечка коефициентът е 1/2, за медицентър — 1/3.' }
+    ],
+    miniCheck: [
+      {
+        q: 'Векторът към медицентъра е средно на колко върха?',
+        options: ['2', '3', '4'],
+        correct: 1,
+        feedback: 'Медицентърът е средно на трите върха: OG = (OA + OB + OC)/3.'
+      }
+    ],
+    remember: 'Векторен метод: среда на отсечка → коефициент 1/2; медицентър → коефициент 1/3.'
+  },
+
   g8t5s4: {
     shortIntro: 'Формулата за корените на квадратното уравнение е централният инструмент за намиране на решенията. Тя работи за всяко пълно квадратно уравнение.',
     definitions: [
@@ -1211,6 +1675,18 @@ function renderSubtopic(main) {
   // Таблица за сравнение P / V / C
   if (content.comparisonTable) {
     html += makeSection('📊', 'Сравнение: пермутации, вариации, комбинации', makeComparisonTable());
+  }
+
+  // Чертеж / графика (SVG)
+  if (content.drawing) {
+    let dhtml = '';
+    const drawings = Array.isArray(content.drawing) ? content.drawing : [content.drawing];
+    drawings.forEach(d => {
+      dhtml += `<div class="drawing-wrap">${d.svg}` +
+               (d.caption ? `<div class="drawing-caption">${d.caption}</div>` : '') +
+               `</div>`;
+    });
+    html += makeSection('📐', 'Чертеж', dhtml);
   }
 
   // Алгоритъм
