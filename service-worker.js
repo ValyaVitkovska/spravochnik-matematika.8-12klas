@@ -1,6 +1,6 @@
 // Математически справочник — Service Worker
 // Версия на кеша — увеличи при промяна на файловете
-const CACHE_NAME = 'math-handbook-v1';
+const CACHE_NAME = 'math-handbook-v3';
 
 // Файлове за кеширане при инсталация
 const PRECACHE_URLS = [
@@ -32,32 +32,43 @@ self.addEventListener('activate', event => {
   );
 });
 
-// --- Fetch — Cache First, после мрежа ---
+// --- Fetch стратегия ---
+// Основните файлове (HTML, CSS, JS): network-first — винаги взима свежа версия,
+// кешът е резервен само при офлайн. Така обновяванията се виждат веднага.
 self.addEventListener('fetch', event => {
-  // Пропускаме не-GET заявки и external URLs
   if (event.request.method !== 'GET') return;
   if (!event.request.url.startsWith(self.location.origin)) return;
 
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
+  const url = event.request.url;
+  const isCore = url.endsWith('.js') || url.endsWith('.css') ||
+                 url.endsWith('.html') || url.endsWith('/') ||
+                 event.request.mode === 'navigate';
 
-      return fetch(event.request).then(response => {
-        // Кешираме само успешни отговори
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
+  if (isCore) {
+    // Network-first
+    event.respondWith(
+      fetch(event.request).then(response => {
+        if (response && response.status === 200 && response.type === 'basic') {
+          const toCache = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, toCache));
         }
-        const toCache = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, toCache);
-        });
         return response;
-      }).catch(() => {
-        // При офлайн — върни index.html като fallback
-        if (event.request.mode === 'navigate') {
-          return caches.match('./index.html');
-        }
-      });
-    })
-  );
+      }).catch(() =>
+        caches.match(event.request).then(c => c || caches.match('./index.html'))
+      )
+    );
+  } else {
+    // Останалите (икони и т.н.): cache-first
+    event.respondWith(
+      caches.match(event.request).then(cached =>
+        cached || fetch(event.request).then(response => {
+          if (response && response.status === 200 && response.type === 'basic') {
+            const toCache = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, toCache));
+          }
+          return response;
+        })
+      )
+    );
+  }
 });
