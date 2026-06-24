@@ -4244,14 +4244,14 @@ const CONTENT = {
       },
       {
         title: 'Положение на параболата спрямо оста Ox (според a и D)',
-        headers: ['a', 'D', 'Отваря се', 'Пресичане с Ox', 'Брой реални корени', 'Връх спрямо Ox'],
+        headers: ['a', 'D', 'Графика', 'Отваря се', 'Пресичане с Ox', 'Брой реални корени'],
         rows: [
-          ['a > 0', 'D > 0', 'нагоре', 'в 2 точки <katex>(x_1;0),\\ (x_2;0)</katex>', '2 различни', 'под Ox'],
-          ['a > 0', 'D = 0', 'нагоре', 'в 1 точка <katex>(x_1;0)</katex> — допира', '1 двоен', 'на Ox'],
-          ['a > 0', 'D < 0', 'нагоре', 'не пресича', 'няма', 'над Ox (цялата над)'],
-          ['a < 0', 'D > 0', 'надолу', 'в 2 точки <katex>(x_1;0),\\ (x_2;0)</katex>', '2 различни', 'над Ox'],
-          ['a < 0', 'D = 0', 'надолу', 'в 1 точка <katex>(x_1;0)</katex> — допира', '1 двоен', 'на Ox'],
-          ['a < 0', 'D < 0', 'надолу', 'не пресича', 'няма', 'под Ox (цялата под)']
+          ['a > 0', 'D > 0', '<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:110px;height:auto;"><line x1="6" y1="40" x2="114" y2="40" stroke="#94a3b8" stroke-width="1"/><line x1="60" y1="6" x2="60" y2="74" stroke="#94a3b8" stroke-width="1"/><text x="110" y="36" font-size="7" fill="#94a3b8">x</text><path d="M 22 12 Q 60 100 98 12" fill="none" stroke="#4f6ef7" stroke-width="2"/><circle cx="33" cy="40" r="2.5" fill="#10b981"/><circle cx="87" cy="40" r="2.5" fill="#10b981"/><circle cx="60" cy="56" r="2.2" fill="#e84393"/></svg>', 'нагоре', 'в 2 точки <katex>(x_1;0),\\ (x_2;0)</katex>; връх под Ox', '2 различни'],
+          ['a > 0', 'D = 0', '<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:110px;height:auto;"><line x1="6" y1="40" x2="114" y2="40" stroke="#94a3b8" stroke-width="1"/><line x1="60" y1="6" x2="60" y2="74" stroke="#94a3b8" stroke-width="1"/><text x="110" y="36" font-size="7" fill="#94a3b8">x</text><path d="M 26 10 Q 60 70 94 10" fill="none" stroke="#4f6ef7" stroke-width="2"/><circle cx="60" cy="40" r="2.5" fill="#10b981"/><circle cx="60" cy="40" r="2.2" fill="#e84393"/></svg>', 'нагоре', 'в 1 точка <katex>(x_1;0)</katex> — допира; връх на Ox', '1 двоен'],
+          ['a > 0', 'D < 0', '<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:110px;height:auto;"><line x1="6" y1="40" x2="114" y2="40" stroke="#94a3b8" stroke-width="1"/><line x1="60" y1="6" x2="60" y2="74" stroke="#94a3b8" stroke-width="1"/><text x="110" y="36" font-size="7" fill="#94a3b8">x</text><path d="M 28 12 Q 60 50 92 12" fill="none" stroke="#4f6ef7" stroke-width="2"/><circle cx="60" cy="30" r="2.2" fill="#e84393"/></svg>', 'нагоре', 'не пресича; цялата над Ox', 'няма'],
+          ['a < 0', 'D > 0', '<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:110px;height:auto;"><line x1="6" y1="40" x2="114" y2="40" stroke="#94a3b8" stroke-width="1"/><line x1="60" y1="6" x2="60" y2="74" stroke="#94a3b8" stroke-width="1"/><text x="110" y="36" font-size="7" fill="#94a3b8">x</text><path d="M 22 68 Q 60 -20 98 68" fill="none" stroke="#e84393" stroke-width="2"/><circle cx="33" cy="40" r="2.5" fill="#10b981"/><circle cx="87" cy="40" r="2.5" fill="#10b981"/><circle cx="60" cy="24" r="2.2" fill="#e84393"/></svg>', 'надолу', 'в 2 точки <katex>(x_1;0),\\ (x_2;0)</katex>; връх над Ox', '2 различни'],
+          ['a < 0', 'D = 0', '<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:110px;height:auto;"><line x1="6" y1="40" x2="114" y2="40" stroke="#94a3b8" stroke-width="1"/><line x1="60" y1="6" x2="60" y2="74" stroke="#94a3b8" stroke-width="1"/><text x="110" y="36" font-size="7" fill="#94a3b8">x</text><path d="M 26 70 Q 60 10 94 70" fill="none" stroke="#e84393" stroke-width="2"/><circle cx="60" cy="40" r="2.5" fill="#10b981"/><circle cx="60" cy="40" r="2.2" fill="#e84393"/></svg>', 'надолу', 'в 1 точка <katex>(x_1;0)</katex> — допира; връх на Ox', '1 двоен'],
+          ['a < 0', 'D < 0', '<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:110px;height:auto;"><line x1="6" y1="40" x2="114" y2="40" stroke="#94a3b8" stroke-width="1"/><line x1="60" y1="6" x2="60" y2="74" stroke="#94a3b8" stroke-width="1"/><text x="110" y="36" font-size="7" fill="#94a3b8">x</text><path d="M 28 68 Q 60 30 92 68" fill="none" stroke="#e84393" stroke-width="2"/><circle cx="60" cy="50" r="2.2" fill="#e84393"/></svg>', 'надолу', 'не пресича; цялата под Ox', 'няма']
         ]
       }
     ],
@@ -4361,34 +4361,7 @@ const CONTENT = {
 
   // --- Схематично построяване на графика на квадратна функция ---
   g9t2s10: {
-    shortIntro: 'Когато вече познаваме всички характеристики на параболата, можем да я начертаем схематично. Тук събираме стъпките в готов алгоритъм — той е приложение на всичко научено в темата „Функции“.',
-    definitions: [
-      { term: 'Цел на построяването', def: 'Да изобразим параболата на функцията <katex>y = ax^2 + bx + c</katex>, като намерим характерните ѝ точки: връх, ос на симетрия и пресечни точки с осите.' }
-    ],
-    formulas: [
-      { label: 'Връх', tex: 'V\\left(-\\dfrac{b}{2a};\\ -\\dfrac{D}{4a}\\right)' },
-      { label: 'Ос на симетрия', tex: 'x = -\\dfrac{b}{2a}' },
-      { label: 'Пресичане с оста Oy', tex: '(0;\\ c)' },
-      { label: 'Пресичане с оста Ox (ако има реални корени)', tex: 'ax^2 + bx + c = 0' }
-    ],
-    drawing: { svg: `<svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <line x1="10" y1="160" x2="294" y2="160" stroke="#94a3b8" stroke-width="1.2"/>
-  <line x1="170" y1="6" x2="170" y2="274" stroke="#94a3b8" stroke-width="1.2"/>
-  <path d="M294 160 l-6 -3 l0 6 z" fill="#94a3b8"/>
-  <path d="M170 6 l-3 6 l6 0 z" fill="#94a3b8"/>
-  <text x="286" y="154" font-size="11" fill="#94a3b8">x</text>
-  <text x="176" y="14" font-size="11" fill="#94a3b8">y</text>
-  <path d="M 126 50 L 132 84 L 138 115 L 144 143 L 150 168 L 156 189 L 162 207 L 168 222 L 174 233 L 180 242 L 186 246 L 192 248 L 198 246 L 204 242 L 210 233 L 216 222 L 222 207 L 228 189 L 234 168 L 240 143 L 246 115 L 252 84 L 258 50" fill="none" stroke="#4f6ef7" stroke-width="2.5"/>
-  <circle cx="192" cy="248" r="4" fill="#e84393"/>
-  <text x="198" y="266" font-size="11" fill="#e84393">връх</text>
-  <line x1="192" y1="20" x2="192" y2="260" stroke="#10b981" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="196" y="30" font-size="10" fill="#10b981">ос на симетрия</text>
-  <circle cx="148" cy="160" r="3.5" fill="#f59e0b"/>
-  <circle cx="236" cy="160" r="3.5" fill="#f59e0b"/>
-  <text x="110" y="155" font-size="10" fill="#f59e0b">с Ox</text>
-  <circle cx="170" cy="208" r="3.5" fill="#8b5cf6"/>
-  <text x="120" y="212" font-size="10" fill="#8b5cf6">(0; c)</text>
-</svg>`, caption: 'Характерни точки на параболата: връх, ос на симетрия, пресичания с осите.' },
+    shortIntro: 'Тук събираме наученото в темата в готов алгоритъм за схематично построяване на графика на квадратна функция.',
     algorithm: [
       'Определи посоката на отваряне: <katex>a > 0</katex> → нагоре; <katex>a < 0</katex> → надолу.',
       'Намери върха: <katex>x_0 = -\\dfrac{b}{2a}</katex>, после <katex>y_0</katex> чрез заместване на <katex>x_0</katex> във функцията.',
@@ -4397,26 +4370,14 @@ const CONTENT = {
       'Намери пресечните точки с оста <katex>Ox</katex>, <b>само ако</b> уравнението <katex>ax^2 + bx + c = 0</katex> има реални корени.',
       'Нанеси върха и намерените точки и начертай схематично параболата, симетрична спрямо оста.'
     ],
-    example: {
-      problem: 'Построй схематично графиката на <katex>y = x^2 - 2x - 3</katex>.',
-      solution: '<b>Посока:</b> <katex>a = 1 > 0</katex> → параболата се отваря нагоре.<br><b>Връх:</b> <katex>x_0 = -\\dfrac{-2}{2 \\cdot 1} = 1</katex>; <katex>y_0 = 1 - 2 - 3 = -4</katex> → връх <katex>(1;\\ -4)</katex>.<br><b>Ос на симетрия:</b> <katex>x = 1</katex>.<br><b>С оста Oy:</b> <katex>(0;\\ -3)</katex>.<br><b>С оста Ox:</b> <katex>x^2 - 2x - 3 = 0</katex> има реални корени <katex>x = -1</katex> и <katex>x = 3</katex> → точки <katex>(-1;\\ 0)</katex> и <katex>(3;\\ 0)</katex>.<br>Чертаем парабола нагоре с връх <katex>(1;\\ -4)</katex>, минаваща през трите точки.'
-    },
-    mistakes: [
-      { label: 'Знак на x₀', text: 'Абсцисата на върха е <katex>-\\dfrac{b}{2a}</katex> — внимавай със знака на <katex>b</katex>.' },
-      { label: 'Пресичане с Ox без проверка', text: 'Параболата пресича оста <katex>Ox</katex> само ако уравнението има реални корени. Ако няма, не нанасяй точки върху <katex>Ox</katex>.' }
-    ],
-    miniCheck: [
+    example: [
       {
-        q: 'Кое е първото нещо, което определяме при построяване на парабола?',
-        options: ['Пресичане с Ox', 'Посоката на отваряне (знака на a)', 'Дискриминантата'],
-        correct: 1,
-        feedback: 'Първо определяме накъде се отваря параболата — от знака на a.'
+        problem: 'Построй схематично графиката на <katex>y = x^2 - 2x - 3</katex>.',
+        solution: '<b>1. Посока:</b> <katex>a = 1 > 0</katex> → нагоре.<br><b>2. Връх:</b> <katex>x_0 = -\\dfrac{-2}{2 \\cdot 1} = 1</katex>; <katex>y_0 = 1 - 2 - 3 = -4</katex> → <katex>V(1;\\ -4)</katex>.<br><b>3. Ос на симетрия:</b> <katex>x = 1</katex>.<br><b>4. С оста Oy:</b> <katex>(0;\\ -3)</katex>.<br><b>5. С оста Ox:</b> <katex>x^2 - 2x - 3 = 0</katex> има корени <katex>x = -1</katex> и <katex>x = 3</katex> → точки <katex>(-1;\\ 0)</katex> и <katex>(3;\\ 0)</katex>.<br><b>6.</b> Чертаем парабола нагоре с връх <katex>(1;\\ -4)</katex> през тези точки.'
       },
       {
-        q: 'Параболата y = x² + 4 пресича ли оста Ox?',
-        options: ['Да, в 2 точки', 'Не пресича', 'Да, в 1 точка'],
-        correct: 1,
-        feedback: 'x² + 4 = 0 няма реални корени → не пресича Ox.'
+        problem: 'Построй схематично графиката на <katex>y = -x^2 + 2x - 5</katex>.',
+        solution: '<b>1. Посока:</b> <katex>a = -1 < 0</katex> → надолу.<br><b>2. Връх:</b> <katex>x_0 = -\\dfrac{2}{2 \\cdot (-1)} = 1</katex>; <katex>y_0 = -1 + 2 - 5 = -4</katex> → <katex>V(1;\\ -4)</katex>.<br><b>3. Ос на симетрия:</b> <katex>x = 1</katex>.<br><b>4. С оста Oy:</b> <katex>(0;\\ -5)</katex>.<br><b>5. С оста Ox:</b> <katex>-x^2 + 2x - 5 = 0</katex>, тоест <katex>x^2 - 2x + 5 = 0</katex>; <katex>D = 4 - 20 = -16 < 0</katex> → <b>няма</b> реални корени, параболата не пресича <katex>Ox</katex>.<br><b>6.</b> Чертаем парабола надолу с връх <katex>(1;\\ -4)</katex>, разположена изцяло под оста <katex>Ox</katex>.'
       }
     ],
     remember: 'Стъпки: посока (a) → връх → ос на симетрия → пресичане с Oy <katex>(0; c)</katex> → пресичане с Ox (само при реални корени) → начертай.'
@@ -8719,16 +8680,17 @@ function renderSubtopic(main) {
     html += makeSection('🔢', 'Алгоритъм', steps);
   }
 
-  // Типова задача
+  // Типова задача (една или няколко)
   if (content.example) {
-    let body = `
+    const examples = Array.isArray(content.example) ? content.example : [content.example];
+    let body = examples.map(ex => `
       <div class="example-wrap">
-        <div class="example-problem">📝 <strong>Задача:</strong> ${content.example.problem}</div>
+        <div class="example-problem">📝 <strong>Задача:</strong> ${ex.problem}</div>
         <button class="toggle-solution-btn" onclick="toggleSolution(this)">👁 Покажи решение</button>
-        <div class="solution-body">${content.example.solution}</div>
+        <div class="solution-body">${ex.solution}</div>
       </div>
-    `;
-    html += makeSection('✏️', 'Типова задача', body);
+    `).join('');
+    html += makeSection('✏️', examples.length > 1 ? 'Примерни задачи' : 'Типова задача', body);
   }
 
   // Чести грешки
