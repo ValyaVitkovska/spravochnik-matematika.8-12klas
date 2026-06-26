@@ -624,6 +624,11 @@ body {
   font-size: 15.5px;
 }
 
+.algorithm-steps li .step-text {
+  flex: 1;
+  min-width: 0;
+}
+
 .algorithm-steps li::before {
   content: counter(step);
   width: 24px; height: 24px;
@@ -821,6 +826,63 @@ body {
   text-align: center;
 }
 
+/* Интерактивни чертежи */
+.interactive-widget {
+  --grid: #e9eef5;
+  --axis: #64748b;
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+[data-theme="dark"] .interactive-widget {
+  --grid: #2a3344;
+  --axis: #8b98ad;
+}
+.interactive-widget .iw-svg {
+  width: 100%;
+  height: auto;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+}
+.interactive-widget .iw-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.interactive-widget .iw-controls-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 14px;
+}
+.interactive-widget .iw-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.interactive-widget .iw-val {
+  color: var(--accent, #4f6ef7);
+  font-weight: 700;
+}
+.interactive-widget input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent, #4f6ef7);
+  cursor: pointer;
+}
+.interactive-widget .iw-readout {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  text-align: center;
+}
+
 /* Таблица */
 .data-table {
   width: 100%;
@@ -847,6 +909,13 @@ body {
 
 .data-table tr:last-child td { border-bottom: none; }
 .data-table tr:nth-child(even) td { background: var(--bg-secondary); }
+
+.data-table td svg {
+  display: block;
+  width: 110px;
+  max-width: 100%;
+  height: auto;
+}
 
 /* ============================================================
    ЛЮБИМИ
