@@ -8999,6 +8999,19 @@ function axesSVG(c, W, H, xmin, xmax, ymin, ymax) {
   return g;
 }
 
+// Координатна система с РАВЕН мащаб по двете оси (за геометрия — окръжностите остават кръгли)
+function makeSquareCoord(W, H, xmin, xmax, ymin, ymax) {
+  const pad = 10;
+  const scale = Math.min((W - 2*pad) / (xmax - xmin), (H - 2*pad) / (ymax - ymin));
+  // центрираме съдържанието
+  const cx = (xmin + xmax) / 2, cy = (ymin + ymax) / 2;
+  const sx = x => W/2 + (x - cx) * scale;
+  const sy = y => H/2 - (y - cy) * scale;
+  const ix = px => cx + (px - W/2) / scale;
+  const iy = py => cy - (py - H/2) / scale;
+  return { sx, sy, ix, iy, scale };
+}
+
 // Форматиране на число (къси десетични)
 function fmt(n) {
   if (!isFinite(n)) return '—';
@@ -9335,7 +9348,7 @@ function initParabolaAWidget(el, p) {
 // 2) ДЕЛЕНЕ НА ОТСЕЧКА В ОТНОШЕНИЕ — движеща се точка C по AB
 function initSegmentRatioWidget(el, p) {
   const W = 300, H = 200, xmin=-1, xmax=11, ymin=-2, ymax=4;
-  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
   const A = {x:0,y:1}, B = {x:10,y:1};
   let t = p.t ?? 0.3; // C = A + t(B-A)
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
@@ -9346,8 +9359,7 @@ function initSegmentRatioWidget(el, p) {
   function draw() {
     t = (C.x - A.x)/(B.x - A.x);
     const ac = C.x - A.x, cb = B.x - C.x;
-    svg.innerHTML = axesSVG(c,W,H,xmin,xmax,ymin,ymax) +
-      seg(c,A.x,A.y,B.x,B.y,'#94a3b8',2) +
+    svg.innerHTML = seg(c,A.x,A.y,B.x,B.y,'#94a3b8',2) +
       seg(c,A.x,A.y,C.x,C.y,'#4f6ef7',4) +
       seg(c,C.x,C.y,B.x,B.y,'#e84393',4) +
       dot(c,A.x,A.y,'#1a1f2e') + dot(c,B.x,B.y,'#1a1f2e') + dot(c,C.x,C.y,'#10b981') +
@@ -9361,7 +9373,7 @@ function initSegmentRatioWidget(el, p) {
 // 3) СРЕДНА ОТСЕЧКА В ТРИЪГЪЛНИК — движещи се върхове
 function initTriangleMidsegWidget(el, p) {
   const W = 300, H = 250, xmin=-1, xmax=11, ymin=-1, ymax=9;
-  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
   const A={x:1,y:1}, B={x:9,y:1}, Cc={x:3,y:7};
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
     <div class="iw-readout"></div>`;
@@ -9369,8 +9381,7 @@ function initTriangleMidsegWidget(el, p) {
   function draw() {
     const M={x:(A.x+Cc.x)/2,y:(A.y+Cc.y)/2}, N={x:(B.x+Cc.x)/2,y:(B.y+Cc.y)/2};
     const mn=Math.hypot(N.x-M.x,N.y-M.y), ab=Math.hypot(B.x-A.x,B.y-A.y);
-    svg.innerHTML = axesSVG(c,W,H,xmin,xmax,ymin,ymax) +
-      seg(c,A.x,A.y,B.x,B.y,'#94a3b8',2)+seg(c,B.x,B.y,Cc.x,Cc.y,'#94a3b8',2)+seg(c,Cc.x,Cc.y,A.x,A.y,'#94a3b8',2)+
+    svg.innerHTML = seg(c,A.x,A.y,B.x,B.y,'#94a3b8',2)+seg(c,B.x,B.y,Cc.x,Cc.y,'#94a3b8',2)+seg(c,Cc.x,Cc.y,A.x,A.y,'#94a3b8',2)+
       seg(c,M.x,M.y,N.x,N.y,'#e84393',3)+
       dot(c,A.x,A.y,'#4f6ef7')+dot(c,B.x,B.y,'#4f6ef7')+dot(c,Cc.x,Cc.y,'#4f6ef7')+
       dot(c,M.x,M.y,'#10b981',4)+dot(c,N.x,N.y,'#10b981',4)+
@@ -9385,7 +9396,7 @@ function initTriangleMidsegWidget(el, p) {
 // 4) МЕДИЦЕНТЪР — движещи се върхове, медианите се пресичат в 2:1
 function initTriangleCentroidWidget(el, p) {
   const W = 300, H = 250, xmin=-1, xmax=11, ymin=-1, ymax=9;
-  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
   const A={x:1,y:1}, B={x:9,y:1}, Cc={x:4,y:7};
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg><div class="iw-readout"></div>`;
   const svg=el.querySelector('svg'), readout=el.querySelector('.iw-readout');
@@ -9395,8 +9406,7 @@ function initTriangleCentroidWidget(el, p) {
     const G={x:(A.x+B.x+Cc.x)/3,y:(A.y+B.y+Cc.y)/3};
     // отношение по медианата от C: CG:GMc
     const CG=Math.hypot(G.x-Cc.x,G.y-Cc.y), GM=Math.hypot(Mc.x-G.x,Mc.y-G.y);
-    svg.innerHTML = axesSVG(c,W,H,xmin,xmax,ymin,ymax) +
-      seg(c,A.x,A.y,B.x,B.y,'#94a3b8',2)+seg(c,B.x,B.y,Cc.x,Cc.y,'#94a3b8',2)+seg(c,Cc.x,Cc.y,A.x,A.y,'#94a3b8',2)+
+    svg.innerHTML = seg(c,A.x,A.y,B.x,B.y,'#94a3b8',2)+seg(c,B.x,B.y,Cc.x,Cc.y,'#94a3b8',2)+seg(c,Cc.x,Cc.y,A.x,A.y,'#94a3b8',2)+
       seg(c,A.x,A.y,Ma.x,Ma.y,'#8b5cf6',1.5)+seg(c,B.x,B.y,Mb.x,Mb.y,'#8b5cf6',1.5)+seg(c,Cc.x,Cc.y,Mc.x,Mc.y,'#8b5cf6',1.5)+
       dot(c,A.x,A.y,'#4f6ef7')+dot(c,B.x,B.y,'#4f6ef7')+dot(c,Cc.x,Cc.y,'#4f6ef7')+
       dot(c,G.x,G.y,'#e84393',5)+
@@ -9411,7 +9421,7 @@ function initTriangleCentroidWidget(el, p) {
 // 5) ПРАВА И ОКРЪЖНОСТ — движеща се права (3 положения)
 function initLineCircleWidget(el, p) {
   const W = 300, H = 260, xmin=-6, xmax=6, ymin=-6, ymax=6;
-  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
   const R = 3.5;
   let d = p.d ?? 2; // разстояние от центъра (хоризонтална права y=d)
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
@@ -9430,8 +9440,7 @@ function initLineCircleWidget(el, p) {
       inter=dot(c,0,d,'#f59e0b',4);
       txt='<b>d = r</b> → правата е <b>допирателна</b> (1 обща точка)';
     } else txt='<b>d &gt; r</b> → правата <b>не пресича</b> окръжността (0 общи точки)';
-    svg.innerHTML = axesSVG(c,W,H,xmin,xmax,ymin,ymax) +
-      `<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${(c.sx(R)-c.sx(0)).toFixed(1)}" fill="none" stroke="#4f6ef7" stroke-width="2.5"/>` +
+    svg.innerHTML = `<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${(c.sx(R)-c.sx(0)).toFixed(1)}" fill="none" stroke="#4f6ef7" stroke-width="2.5"/>` +
       dot(c,0,0,'#4f6ef7',3) +
       seg(c,xmin,d,xmax,d,'#e84393',2.5) +
       seg(c,0,0,0,d,'#10b981',1.5) + inter;
@@ -9445,7 +9454,7 @@ function initLineCircleWidget(el, p) {
 // 6) ВПИСАН ЪГЪЛ — движеща се точка по дъгата (ъгълът остава постоянен)
 function initInscribedAngleWidget(el, p) {
   const W = 300, H = 280, xmin=-6, xmax=6, ymin=-6, ymax=6;
-  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
   const R = 4;
   // фиксирани A, B на окръжността; подвижна P по окръжността
   const angA = Math.PI*0.85, angB = Math.PI*0.15;
@@ -9463,8 +9472,7 @@ function initInscribedAngleWidget(el, p) {
   function draw() {
     const O={x:0,y:0};
     const inscribed=angleAt(P,A,B), central=angleAt(O,A,B);
-    svg.innerHTML = axesSVG(c,W,H,xmin,xmax,ymin,ymax) +
-      `<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${(c.sx(R)-c.sx(0)).toFixed(1)}" fill="none" stroke="#4f6ef7" stroke-width="2"/>` +
+    svg.innerHTML = `<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${(c.sx(R)-c.sx(0)).toFixed(1)}" fill="none" stroke="#4f6ef7" stroke-width="2"/>` +
       seg(c,A.x,A.y,P.x,P.y,'#e84393',2)+seg(c,B.x,B.y,P.x,P.y,'#e84393',2)+
       seg(c,A.x,A.y,O.x,O.y,'#8b5cf6',1.5)+seg(c,B.x,B.y,O.x,O.y,'#8b5cf6',1.5)+
       seg(c,A.x,A.y,B.x,B.y,'#94a3b8',1.5)+
@@ -9479,7 +9487,7 @@ function initInscribedAngleWidget(el, p) {
 // 7) ОПИСАНА ОКРЪЖНОСТ ОКОЛО ТРИЪГЪЛНИК — движещи се върхове
 function initCircumscribedWidget(el, p) {
   const W = 300, H = 280, xmin=-6, xmax=6, ymin=-6, ymax=6;
-  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
   const A={x:-3,y:-2}, B={x:3.5,y:-1.5}, Cc={x:0,y:3.5};
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg><div class="iw-readout"></div>`;
   const svg=el.querySelector('svg'), readout=el.querySelector('.iw-readout');
@@ -9494,7 +9502,7 @@ function initCircumscribedWidget(el, p) {
     const O=circum(A,B,Cc);
     let circ='';
     if(O) circ=`<circle cx="${c.sx(O.x)}" cy="${c.sy(O.y)}" r="${(c.sx(O.x+O.r)-c.sx(O.x)).toFixed(1)}" fill="none" stroke="#4f6ef7" stroke-width="2"/>`+dot(c,O.x,O.y,'#e84393',4)+lbl(c,O.x,O.y,'O','#e84393',7,-4);
-    svg.innerHTML = axesSVG(c,W,H,xmin,xmax,ymin,ymax) + circ +
+    svg.innerHTML = circ +
       seg(c,A.x,A.y,B.x,B.y,'#1a1f2e',2)+seg(c,B.x,B.y,Cc.x,Cc.y,'#1a1f2e',2)+seg(c,Cc.x,Cc.y,A.x,A.y,'#1a1f2e',2)+
       dot(c,A.x,A.y,'#10b981')+dot(c,B.x,B.y,'#10b981')+dot(c,Cc.x,Cc.y,'#10b981')+
       lbl(c,A.x,A.y,'A','#10b981',-14,0)+lbl(c,B.x,B.y,'B','#10b981',7,0)+lbl(c,Cc.x,Cc.y,'C','#10b981',0,-10);
@@ -9507,7 +9515,7 @@ function initCircumscribedWidget(el, p) {
 // 8) ВПИСАНА ОКРЪЖНОСТ В ТРИЪГЪЛНИК — движещи се върхове
 function initInscribedCircleWidget(el, p) {
   const W = 300, H = 280, xmin=-6, xmax=6, ymin=-6, ymax=6;
-  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
   const A={x:-3.5,y:-2.5}, B={x:3.5,y:-2.5}, Cc={x:-0.5,y:3.5};
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg><div class="iw-readout"></div>`;
   const svg=el.querySelector('svg'), readout=el.querySelector('.iw-readout');
@@ -9523,7 +9531,7 @@ function initInscribedCircleWidget(el, p) {
     const I=incircle(A,B,Cc);
     let circ='';
     if(I&&I.r>0.05) circ=`<circle cx="${c.sx(I.x)}" cy="${c.sy(I.y)}" r="${(c.sx(I.x+I.r)-c.sx(I.x)).toFixed(1)}" fill="none" stroke="#4f6ef7" stroke-width="2"/>`+dot(c,I.x,I.y,'#e84393',4)+lbl(c,I.x,I.y,'I','#e84393',7,-4);
-    svg.innerHTML = axesSVG(c,W,H,xmin,xmax,ymin,ymax) + circ +
+    svg.innerHTML = circ +
       seg(c,A.x,A.y,B.x,B.y,'#1a1f2e',2)+seg(c,B.x,B.y,Cc.x,Cc.y,'#1a1f2e',2)+seg(c,Cc.x,Cc.y,A.x,A.y,'#1a1f2e',2)+
       dot(c,A.x,A.y,'#10b981')+dot(c,B.x,B.y,'#10b981')+dot(c,Cc.x,Cc.y,'#10b981')+
       lbl(c,A.x,A.y,'A','#10b981',-14,4)+lbl(c,B.x,B.y,'B','#10b981',7,4)+lbl(c,Cc.x,Cc.y,'C','#10b981',0,-10);
@@ -9535,53 +9543,66 @@ function initInscribedCircleWidget(el, p) {
 
 // 9) ТЕОРЕМА НА ТАЛЕС — движеща се секуща
 function initThalesWidget(el, p) {
-  const W = 300, H = 260, xmin=-1, xmax=11, ymin=-1, ymax=9;
-  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
-  // ъгъл с връх O, две рамена; две успоредни прави го пресичат
-  const O={x:0.5,y:0.5};
-  const dir1={x:1,y:0.15}, dir2={x:0.55,y:1}; // посоки на рамената
-  let s1=4, s2=7.5; // позиции на двете успоредни прави (по рамо 1)
+  const W = 300, H = 270, xmin=-1, xmax=11, ymin=-1, ymax=9;
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
+  const O={x:0.8,y:0.8};
+  const dir1={x:1,y:0.18}, dir2={x:0.5,y:1}; // посоки на двете рамена
+  // дължини на рамената (за ограничаване на влаченето)
+  const L1=9.5, L2=8;
+  function ptOn(dir,t){return {x:O.x+dir.x*t, y:O.y+dir.y*t};}
+  function projLen(P){ // проекция на OP върху dir1 (параметър t по рамо 1)
+    return ((P.x-O.x)*dir1.x+(P.y-O.y)*dir1.y)/(dir1.x*dir1.x+dir1.y*dir1.y);
+  }
+  // двете влачими точки по РАМО 1
+  let A1 = { ...ptOn(dir1,4), constrain:(x,y)=>{ let t=projLen({x,y}); t=Math.max(1.5,Math.min(L1,t)); return ptOn(dir1,t); } };
+  let A2 = { ...ptOn(dir1,7.5), constrain:(x,y)=>{ let t=projLen({x,y}); t=Math.max(1.5,Math.min(L1,t)); return ptOn(dir1,t); } };
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
-    <div class="iw-controls"><label>права 1: <input type="range" min="2" max="5.5" step="0.1" value="${s1}" data-k="s1"></label>
-    <label>права 2: <input type="range" min="6" max="9.5" step="0.1" value="${s2}" data-k="s2"></label></div>
     <div class="iw-readout"></div>`;
   const svg=el.querySelector('svg'), readout=el.querySelector('.iw-readout');
-  function ptOn(dir,t){return {x:O.x+dir.x*t, y:O.y+dir.y*t};}
+  // успоредните секущи имат фиксирана посока v (избрана веднъж)
+  const v={x:dir2.x-dir1.x, y:dir2.y-dir1.y};
+  function interRamo2(P){ // P + r*v = O + q*dir2
+    const det=(-v.x)*dir2.y-(-v.y)*dir2.x;
+    const rx=O.x-P.x, ry=O.y-P.y;
+    const q=(rx*(-v.y)-ry*(-v.x))/det;
+    return {x:O.x+dir2.x*q, y:O.y+dir2.y*q, q};
+  }
   function draw() {
-    // точки A1,A2 по рамо1; B1,B2 по рамо2 (успоредни прави с наклон dir2-dir1? )
-    // успоредни прави: вземаме фиксирана посока на секущите = (dir1+dir2 нормирано)
-    const A1=ptOn(dir1,s1), A2=ptOn(dir1,s2);
-    // секуща през A1 успоредна на вектор v, пресича рамо2
-    const v={x:dir2.x-dir1.x,y:dir2.y-dir1.y};
-    function inter(P){ // P + r*v = O + q*dir2
-      const det=(-v.x)*dir2.y-(-v.y)*dir2.x;
-      const rx=O.x-P.x, ry=O.y-P.y;
-      const q=((rx)*(-v.y)-(ry)*(-v.x))/det;
-      return {x:O.x+dir2.x*q,y:O.y+dir2.y*q,q};
-    }
-    const B1=inter(A1), B2=inter(A2);
-    const OA1=s1, OA2=s2, OB1=B1.q, OB2=B2.q;
-    svg.innerHTML = axesSVG(c,W,H,xmin,xmax,ymin,ymax) +
-      seg(c,O.x,O.y,ptOn(dir1,10).x,ptOn(dir1,10).y,'#94a3b8',2)+
-      seg(c,O.x,O.y,ptOn(dir2,9).x,ptOn(dir2,9).y,'#94a3b8',2)+
+    const t1=projLen(A1), t2=projLen(A2);
+    A1=Object.assign(A1, ptOn(dir1,t1));
+    A2=Object.assign(A2, ptOn(dir1,t2));
+    const B1=interRamo2(A1), B2=interRamo2(A2);
+    const OA1=Math.hypot(A1.x-O.x,A1.y-O.y), OA2=Math.hypot(A2.x-O.x,A2.y-O.y);
+    const OB1=Math.hypot(B1.x-O.x,B1.y-O.y), OB2=Math.hypot(B2.x-O.x,B2.y-O.y);
+    const A1A2=Math.hypot(A2.x-A1.x,A2.y-A1.y), B1B2=Math.hypot(B2.x-B1.x,B2.y-B1.y);
+    svg.innerHTML =
+      seg(c,O.x,O.y,ptOn(dir1,L1+1).x,ptOn(dir1,L1+1).y,'#94a3b8',2)+
+      seg(c,O.x,O.y,ptOn(dir2,L2+1).x,ptOn(dir2,L2+1).y,'#94a3b8',2)+
       seg(c,A1.x,A1.y,B1.x,B1.y,'#4f6ef7',2.5)+
       seg(c,A2.x,A2.y,B2.x,B2.y,'#e84393',2.5)+
-      dot(c,O.x,O.y,'#1a1f2e',4)+dot(c,A1.x,A1.y,'#4f6ef7',4)+dot(c,B1.x,B1.y,'#4f6ef7',4)+
-      dot(c,A2.x,A2.y,'#e84393',4)+dot(c,B2.x,B2.y,'#e84393',4)+
-      lbl(c,O.x,O.y,'O','#1a1f2e',-14,4);
-    readout.innerHTML = `Двете прави са <b>успоредни</b>. Талес: отсечките по едното рамо се отнасят както по другото.<br>OA₁:OA₂ = ${fmt(OA1/OA2)} &nbsp; OB₁:OB₂ = ${fmt(OB1/OB2)} → <b>равни</b>`;
+      dot(c,O.x,O.y,'#1a1f2e',4)+
+      dot(c,B1.x,B1.y,'#4f6ef7',4)+dot(c,B2.x,B2.y,'#e84393',4)+
+      dot(c,A1.x,A1.y,'#4f6ef7',6)+dot(c,A2.x,A2.y,'#e84393',6)+
+      lbl(c,O.x,O.y,'O','#1a1f2e',-14,4)+
+      lbl(c,A1.x,A1.y,'A₁','#4f6ef7',6,-6)+lbl(c,A2.x,A2.y,'A₂','#e84393',6,-6)+
+      lbl(c,B1.x,B1.y,'B₁','#4f6ef7',6,4)+lbl(c,B2.x,B2.y,'B₂','#e84393',6,4);
+    const r1=OA1/OA2, r2=OB1/OB2, r3=A1A2/(A2.x!==undefined? (Math.hypot(B2.x-B1.x,B2.y-B1.y)||1e-9):1);
+    const eq = Math.abs(r1-r2)<0.02;
+    readout.innerHTML =
+      `Влачи точките <b style="color:#4f6ef7">A₁</b> и <b style="color:#e84393">A₂</b> по рамото. Двете отсечки A₁B₁ и A₂B₂ остават <b>успоредни</b>.<br>` +
+      `<table class="iw-ratio"><tr><td><span style="color:#4f6ef7">OA₁</span> : <span style="color:#e84393">OA₂</span></td><td>= ${fmt(OA1)} : ${fmt(OA2)} = <b>${fmt(r1)}</b></td></tr>` +
+      `<tr><td><span style="color:#4f6ef7">OB₁</span> : <span style="color:#e84393">OB₂</span></td><td>= ${fmt(OB1)} : ${fmt(OB2)} = <b>${fmt(r2)}</b></td></tr>` +
+      `<tr><td>A₁A₂ : B₁B₂</td><td>= ${fmt(A1A2)} : ${fmt(B1B2)} = <b>${fmt(A1A2/(B1B2||1e-9))}</b></td></tr></table>` +
+      `<span style="color:${eq?'#10b981':'#e84393'}">${eq?'Отношенията са равни ✓ (теорема на Талес)':'…'}</span>`;
   }
-  el.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',()=>{
-    if(inp.dataset.k==='s1')s1=parseFloat(inp.value);else s2=parseFloat(inp.value);
-    if(s2<=s1+0.5)s2=s1+0.5; draw();
-  }));
+  makeDraggable(el, svg, c, W, H, [A1, A2], draw);
   draw();
 }
 
 // 10) ТЕОРЕМА НА ПИТАГОР — движещи се катети с квадрати
 function initPythagorasWidget(el, p) {
   const W = 300, H = 280, xmin=-4, xmax=7, ymin=-5, ymax=6;
-  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
   let a=3,b=2.5; // катети
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
     <div class="iw-controls iw-controls-2col">
@@ -9592,8 +9613,7 @@ function initPythagorasWidget(el, p) {
   function draw() {
     const C={x:0,y:0}, Bp={x:a,y:0}, Ap={x:0,y:b};
     const cHyp=Math.hypot(a,b);
-    svg.innerHTML = axesSVG(c,W,H,xmin,xmax,ymin,ymax) +
-      `<polygon points="${c.sx(C.x)},${c.sy(C.y)} ${c.sx(Bp.x)},${c.sy(Bp.y)} ${c.sx(Bp.x)},${c.sy(-a)} ${c.sx(C.x)},${c.sy(-a)}" fill="#4f6ef733" stroke="#4f6ef7" stroke-width="1.5"/>` +
+    svg.innerHTML = `<polygon points="${c.sx(C.x)},${c.sy(C.y)} ${c.sx(Bp.x)},${c.sy(Bp.y)} ${c.sx(Bp.x)},${c.sy(-a)} ${c.sx(C.x)},${c.sy(-a)}" fill="#4f6ef733" stroke="#4f6ef7" stroke-width="1.5"/>` +
       `<polygon points="${c.sx(C.x)},${c.sy(C.y)} ${c.sx(C.x)},${c.sy(Ap.y)} ${c.sx(-b)},${c.sy(Ap.y)} ${c.sx(-b)},${c.sy(C.y)}" fill="#e8439333" stroke="#e84393" stroke-width="1.5"/>` +
       seg(c,C.x,C.y,Bp.x,Bp.y,'#4f6ef7',2.5)+seg(c,C.x,C.y,Ap.x,Ap.y,'#e84393',2.5)+seg(c,Bp.x,Bp.y,Ap.x,Ap.y,'#10b981',2.5)+
       `<polyline points="${c.sx(0.4)},${c.sy(0)} ${c.sx(0.4)},${c.sy(0.4)} ${c.sx(0)},${c.sy(0.4)}" fill="none" stroke="#64748b" stroke-width="1"/>` +

@@ -882,6 +882,20 @@ body {
   padding: 8px 10px;
   text-align: center;
 }
+.interactive-widget .iw-ratio {
+  margin: 6px auto;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.interactive-widget .iw-ratio td {
+  padding: 2px 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+.interactive-widget .iw-ratio td:first-child {
+  text-align: right;
+  font-weight: 600;
+}
 
 /* Таблица */
 .data-table {
