@@ -6302,6 +6302,7 @@ const CONTENT = {
     formulas: [
       { label: 'Определяне на равнина', tex: '3 \\text{ неколинеарни точки}' }
     ],
+    drawing: { interactive: 'line-plane-3d', params: { mode: 0 }, caption: 'Права и равнина: с плъзгача избери пресича / успоредна / лежи в равнината. Влачи за въртене.' },
     algorithm: [
       'Равнина се определя еднозначно от три неколинеарни точки.',
       'Или от права и точка извън нея.',
@@ -6330,6 +6331,7 @@ const CONTENT = {
     formulas: [
       { label: 'Три случая', tex: '\\text{пресичащи} \\;|\\; \\text{успоредни} \\;|\\; \\text{кръстосани}' }
     ],
+    drawing: { interactive: 'two-lines-3d', params: { mode: 2 }, caption: 'Две прави в пространството: пресичащи се, успоредни или кръстосани (не лежат в обща равнина).' },
     algorithm: [
       'Провери дали правите лежат в обща равнина.',
       'Ако да и имат обща точка → пресичащи се.',
@@ -6357,6 +6359,7 @@ const CONTENT = {
     formulas: [
       { label: 'Признак', tex: 'a \\perp b, \\; a \\perp c \\Rightarrow a \\perp \\text{равнината на } b, c' }
     ],
+    drawing: { interactive: 'perp-plane-3d', params: {}, caption: 'a ⊥ α: правата е перпендикулярна на всяка права от равнината през петата ѝ. Завърти, за да видиш правия ъгъл.' },
     algorithm: [
       'Достатъчно е правата да е перпендикулярна на ДВЕ пресичащи се прави от равнината.',
       'Тогава е перпендикулярна на цялата равнина.'
@@ -6382,6 +6385,7 @@ const CONTENT = {
     formulas: [
       { label: 'Проекция', tex: '\\text{ъгълът между правата и проекцията ѝ}' }
     ],
+    drawing: { interactive: 'line-plane-angle-3d', params: { ang: 40 }, caption: 'Ъгълът φ е между правата и проекцията ѝ в равнината. Движи плъзгача и виж sin φ и cos φ.' },
     algorithm: [
       'Намери проекцията на правата върху равнината.',
       'Ъгълът между правата и проекцията ѝ е търсеният ъгъл.',
@@ -6410,6 +6414,7 @@ const CONTENT = {
     formulas: [
       { label: 'Два случая', tex: '\\text{успоредни} \\;|\\; \\text{пресичащи се (по права)}' }
     ],
+    drawing: { interactive: 'two-planes-3d', params: { mode: 0 }, caption: 'Две равнини: пресичащи се (обща права) или успоредни (без обща точка).' },
     algorithm: [
       'Ако равнините нямат обща точка → успоредни.',
       'Ако имат обща права → пресичащи се.',
@@ -6438,25 +6443,7 @@ const CONTENT = {
       { label: 'Околна повърхнина', tex: 'S_{\\text{ок}} = P_{\\text{осн}} \\cdot h' },
       { label: 'Пълна повърхнина', tex: 'S = S_{\\text{ок}} + 2B' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" style="max-width:400px;">
-  <polygon points="20,90 70,90 70,40 20,40" fill="#eef1fe" stroke="#4f6ef7" stroke-width="1.5"/>
-  <polygon points="20,40 35,25 85,25 70,40" fill="#dde4fb" stroke="#4f6ef7" stroke-width="1.5"/>
-  <polygon points="70,40 85,25 85,75 70,90" fill="#cdd7f9" stroke="#4f6ef7" stroke-width="1.5"/>
-  <text x="50" y="118" font-size="11" fill="#64748b" text-anchor="middle">призма</text>
-  <polygon points="120,90 175,90 160,75 135,75" fill="#dde4fb" stroke="#e84393" stroke-width="1.5"/>
-  <polygon points="120,90 175,90 150,30" fill="#fdeef5" stroke="#e84393" stroke-width="1.5"/>
-  <line x1="150" y1="30" x2="135" y2="75" stroke="#e84393" stroke-width="1.5"/>
-  <text x="148" y="118" font-size="11" fill="#64748b" text-anchor="middle">пирамида</text>
-  <ellipse cx="240" cy="35" rx="25" ry="8" fill="#dde4fb" stroke="#10b981" stroke-width="1.5"/>
-  <line x1="215" y1="35" x2="215" y2="90" stroke="#10b981" stroke-width="1.5"/>
-  <line x1="265" y1="35" x2="265" y2="90" stroke="#10b981" stroke-width="1.5"/>
-  <path d="M215 90 A 25 8 0 0 0 265 90" fill="none" stroke="#10b981" stroke-width="1.5"/>
-  <path d="M215 90 A 25 8 0 0 1 265 90" fill="#eef1fe" stroke="#10b981" stroke-width="1" stroke-dasharray="3 2"/>
-  <text x="240" y="118" font-size="11" fill="#64748b" text-anchor="middle">цилиндър</text>
-  <ellipse cx="330" cy="90" rx="25" ry="8" fill="#fdeef5" stroke="#f59e0b" stroke-width="1.5"/>
-  <polygon points="305,90 355,90 330,30" fill="#fef3e2" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="330" y="118" font-size="11" fill="#64748b" text-anchor="middle">конус</text>
-</svg>`, caption: 'Основни тела: призма, пирамида, цилиндър, конус.' },
+    drawing: { interactive: 'prism-3d', params: { a: 3, b: 2, h: 2.5 }, caption: 'Правоъгълен паралелепипед: движи a, b, h и следи обема, повърхнината и пространствения диагонал.' },
     algorithm: [
       'Намери лицето на основата B.',
       'Обемът е <katex>V = B \\cdot h</katex>.',
@@ -6484,25 +6471,7 @@ const CONTENT = {
       { label: 'Обем', tex: 'V = \\dfrac{1}{3} B \\cdot h' },
       { label: 'Околна повърхнина (правилна)', tex: 'S_{\\text{ок}} = \\dfrac{1}{2} P_{\\text{осн}} \\cdot a_p' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" style="max-width:400px;">
-  <polygon points="20,90 70,90 70,40 20,40" fill="#eef1fe" stroke="#4f6ef7" stroke-width="1.5"/>
-  <polygon points="20,40 35,25 85,25 70,40" fill="#dde4fb" stroke="#4f6ef7" stroke-width="1.5"/>
-  <polygon points="70,40 85,25 85,75 70,90" fill="#cdd7f9" stroke="#4f6ef7" stroke-width="1.5"/>
-  <text x="50" y="118" font-size="11" fill="#64748b" text-anchor="middle">призма</text>
-  <polygon points="120,90 175,90 160,75 135,75" fill="#dde4fb" stroke="#e84393" stroke-width="1.5"/>
-  <polygon points="120,90 175,90 150,30" fill="#fdeef5" stroke="#e84393" stroke-width="1.5"/>
-  <line x1="150" y1="30" x2="135" y2="75" stroke="#e84393" stroke-width="1.5"/>
-  <text x="148" y="118" font-size="11" fill="#64748b" text-anchor="middle">пирамида</text>
-  <ellipse cx="240" cy="35" rx="25" ry="8" fill="#dde4fb" stroke="#10b981" stroke-width="1.5"/>
-  <line x1="215" y1="35" x2="215" y2="90" stroke="#10b981" stroke-width="1.5"/>
-  <line x1="265" y1="35" x2="265" y2="90" stroke="#10b981" stroke-width="1.5"/>
-  <path d="M215 90 A 25 8 0 0 0 265 90" fill="none" stroke="#10b981" stroke-width="1.5"/>
-  <path d="M215 90 A 25 8 0 0 1 265 90" fill="#eef1fe" stroke="#10b981" stroke-width="1" stroke-dasharray="3 2"/>
-  <text x="240" y="118" font-size="11" fill="#64748b" text-anchor="middle">цилиндър</text>
-  <ellipse cx="330" cy="90" rx="25" ry="8" fill="#fdeef5" stroke="#f59e0b" stroke-width="1.5"/>
-  <polygon points="305,90 355,90 330,30" fill="#fef3e2" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="330" y="118" font-size="11" fill="#64748b" text-anchor="middle">конус</text>
-</svg>`, caption: 'Основни тела: призма, пирамида, цилиндър, конус.' },
+    drawing: { interactive: 'pyramid-3d', params: { a: 3, h: 3 }, caption: 'Правилна четириъгълна пирамида: следи обема и апотемата при промяна на основата и височината.' },
     algorithm: [
       'Намери лицето на основата B и височината h.',
       'Обемът е <katex>V = \\dfrac{1}{3} B h</katex>.',
@@ -6531,25 +6500,7 @@ const CONTENT = {
       { label: 'Околна повърхнина', tex: 'S_{\\text{ок}} = 2\\pi r \\cdot h' },
       { label: 'Пълна повърхнина', tex: 'S = 2\\pi r(r + h)' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" style="max-width:400px;">
-  <polygon points="20,90 70,90 70,40 20,40" fill="#eef1fe" stroke="#4f6ef7" stroke-width="1.5"/>
-  <polygon points="20,40 35,25 85,25 70,40" fill="#dde4fb" stroke="#4f6ef7" stroke-width="1.5"/>
-  <polygon points="70,40 85,25 85,75 70,90" fill="#cdd7f9" stroke="#4f6ef7" stroke-width="1.5"/>
-  <text x="50" y="118" font-size="11" fill="#64748b" text-anchor="middle">призма</text>
-  <polygon points="120,90 175,90 160,75 135,75" fill="#dde4fb" stroke="#e84393" stroke-width="1.5"/>
-  <polygon points="120,90 175,90 150,30" fill="#fdeef5" stroke="#e84393" stroke-width="1.5"/>
-  <line x1="150" y1="30" x2="135" y2="75" stroke="#e84393" stroke-width="1.5"/>
-  <text x="148" y="118" font-size="11" fill="#64748b" text-anchor="middle">пирамида</text>
-  <ellipse cx="240" cy="35" rx="25" ry="8" fill="#dde4fb" stroke="#10b981" stroke-width="1.5"/>
-  <line x1="215" y1="35" x2="215" y2="90" stroke="#10b981" stroke-width="1.5"/>
-  <line x1="265" y1="35" x2="265" y2="90" stroke="#10b981" stroke-width="1.5"/>
-  <path d="M215 90 A 25 8 0 0 0 265 90" fill="none" stroke="#10b981" stroke-width="1.5"/>
-  <path d="M215 90 A 25 8 0 0 1 265 90" fill="#eef1fe" stroke="#10b981" stroke-width="1" stroke-dasharray="3 2"/>
-  <text x="240" y="118" font-size="11" fill="#64748b" text-anchor="middle">цилиндър</text>
-  <ellipse cx="330" cy="90" rx="25" ry="8" fill="#fdeef5" stroke="#f59e0b" stroke-width="1.5"/>
-  <polygon points="305,90 355,90 330,30" fill="#fef3e2" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="330" y="118" font-size="11" fill="#64748b" text-anchor="middle">конус</text>
-</svg>`, caption: 'Основни тела: призма, пирамида, цилиндър, конус.' },
+    drawing: { interactive: 'cylinder-3d', params: { r: 1.6, h: 3 }, caption: 'Цилиндър: радиус r и височина h определят обема и околната повърхнина.' },
     algorithm: [
       'Намери радиуса r и височината h.',
       'Обемът е <katex>V = \\pi r^2 h</katex>.',
@@ -6579,25 +6530,7 @@ const CONTENT = {
       { label: 'Околна повърхнина', tex: 'S_{\\text{ок}} = \\pi r l' },
       { label: 'Образуваща', tex: 'l = \\sqrt{r^2 + h^2}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" style="max-width:400px;">
-  <polygon points="20,90 70,90 70,40 20,40" fill="#eef1fe" stroke="#4f6ef7" stroke-width="1.5"/>
-  <polygon points="20,40 35,25 85,25 70,40" fill="#dde4fb" stroke="#4f6ef7" stroke-width="1.5"/>
-  <polygon points="70,40 85,25 85,75 70,90" fill="#cdd7f9" stroke="#4f6ef7" stroke-width="1.5"/>
-  <text x="50" y="118" font-size="11" fill="#64748b" text-anchor="middle">призма</text>
-  <polygon points="120,90 175,90 160,75 135,75" fill="#dde4fb" stroke="#e84393" stroke-width="1.5"/>
-  <polygon points="120,90 175,90 150,30" fill="#fdeef5" stroke="#e84393" stroke-width="1.5"/>
-  <line x1="150" y1="30" x2="135" y2="75" stroke="#e84393" stroke-width="1.5"/>
-  <text x="148" y="118" font-size="11" fill="#64748b" text-anchor="middle">пирамида</text>
-  <ellipse cx="240" cy="35" rx="25" ry="8" fill="#dde4fb" stroke="#10b981" stroke-width="1.5"/>
-  <line x1="215" y1="35" x2="215" y2="90" stroke="#10b981" stroke-width="1.5"/>
-  <line x1="265" y1="35" x2="265" y2="90" stroke="#10b981" stroke-width="1.5"/>
-  <path d="M215 90 A 25 8 0 0 0 265 90" fill="none" stroke="#10b981" stroke-width="1.5"/>
-  <path d="M215 90 A 25 8 0 0 1 265 90" fill="#eef1fe" stroke="#10b981" stroke-width="1" stroke-dasharray="3 2"/>
-  <text x="240" y="118" font-size="11" fill="#64748b" text-anchor="middle">цилиндър</text>
-  <ellipse cx="330" cy="90" rx="25" ry="8" fill="#fdeef5" stroke="#f59e0b" stroke-width="1.5"/>
-  <polygon points="305,90 355,90 330,30" fill="#fef3e2" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="330" y="118" font-size="11" fill="#64748b" text-anchor="middle">конус</text>
-</svg>`, caption: 'Основни тела: призма, пирамида, цилиндър, конус.' },
+    drawing: { interactive: 'cone-3d', params: { r: 1.6, h: 3 }, caption: 'Конус: образуващата l = √(r²+h²) е жълтата отсечка. Следи обема и повърхнините.' },
     algorithm: [
       'Намери радиуса r и височината h.',
       'Обемът е <katex>V = \\dfrac{1}{3}\\pi r^2 h</katex>.',
@@ -6626,6 +6559,7 @@ const CONTENT = {
       { label: 'Повърхнина на сфера', tex: 'S = 4\\pi r^2' },
       { label: 'Обем на кълбо', tex: 'V = \\dfrac{4}{3}\\pi r^3' }
     ],
+    drawing: { interactive: 'sphere-3d', params: { r: 2 }, caption: 'Сфера и кълбо: единственият параметър е радиусът r. Завърти, за да видиш екватора и меридиана.' },
     algorithm: [
       'Намери радиуса r.',
       'Повърхнина: <katex>S = 4\\pi r^2</katex>.',
@@ -7139,6 +7073,7 @@ const CONTENT = {
       { label: 'Връзка градуси–радиани', tex: '180° = \\pi \\text{ rad}' },
       { label: 'Градуси в радиани', tex: '\\alpha_{rad} = \\alpha° \\cdot \\dfrac{\\pi}{180°}' }
     ],
+    drawing: { interactive: 'unit-circle', params: { deg: 60 }, caption: 'Обобщеният ъгъл се мери от началната посока; може да е положителен, отрицателен и над 360°. 180° = π радиана.' },
     algorithm: [
       'За превръщане в радиани умножи градусите по π/180°.',
       'За превръщане в градуси умножи радианите по 180°/π.',
@@ -7202,6 +7137,7 @@ const CONTENT = {
       { label: 'Период sin, cos', tex: '2\\pi' },
       { label: 'Период tg, cotg', tex: '\\pi' }
     ],
+    drawing: { interactive: 'trig-graph', params: { sin: true, cos: true, tg: false }, caption: 'Чети симетрията: cos е четна (симетрична спрямо оста y), sin е нечетна (спрямо началото). Периодът на sin и cos е 2π.' },
     algorithm: [
       'cos е четна (симетрия спрямо Oy); sin, tg, cotg са нечетни.',
       'За периодичност: sin и cos се повтарят на 2π; tg и cotg — на π.',
@@ -7229,22 +7165,7 @@ const CONTENT = {
       { label: 'Област на стойностите', tex: '-1 \\leq \\sin x \\leq 1' },
       { label: 'Период', tex: 'T = 2\\pi' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" style="max-width:280px;">
-  <line x1="10" y1="80" x2="265" y2="80" stroke="#94a3b8" stroke-width="1.2"/>
-  <line x1="30" y1="15" x2="30" y2="135" stroke="#94a3b8" stroke-width="1.2"/>
-  <text x="258" y="74" font-size="10" fill="#94a3b8">x</text>
-  <text x="36" y="22" font-size="10" fill="#94a3b8">y</text>
-  <line x1="135" y1="76" x2="135" y2="84" stroke="#94a3b8" stroke-width="1"/>
-  <text x="128" y="96" font-size="9" fill="#94a3b8">π</text>
-  <line x1="240" y1="76" x2="240" y2="84" stroke="#94a3b8" stroke-width="1"/>
-  <text x="232" y="96" font-size="9" fill="#94a3b8">2π</text>
-  <text x="22" y="44" font-size="9" fill="#94a3b8">1</text>
-  <text x="20" y="124" font-size="9" fill="#94a3b8">-1</text>
-  <path d="M 30 80 L 49.7 57.8 L 69.4 43 L 82.5 40 L 102.2 46.7 L 121.9 64.7 L 135 80 L 154.7 102.2 L 174.4 117 L 187.5 120 L 207.2 113.3 L 226.9 95.3 L 240 80" fill="none" stroke="#4f6ef7" stroke-width="2"/>
-  <path d="M 30 40 L 49.7 46.7 L 69.4 64.7 L 82.5 80 L 102.2 102.2 L 121.9 117 L 135 120 L 154.7 113.3 L 174.4 95.3 L 187.5 80 L 207.2 57.8 L 226.9 43 L 240 40" fill="none" stroke="#e84393" stroke-width="2"/>
-  <text x="60" y="34" font-size="10" fill="#4f6ef7" font-weight="600">sin x</text>
-  <text x="200" y="50" font-size="10" fill="#e84393" font-weight="600">cos x</text>
-</svg>`, caption: 'Графики на sin x (синя) и cos x (розова) за един период.' },
+    drawing: { interactive: 'trig-graph', params: { sin: true, cos: true }, caption: 'Включи/изключи всяка функция и движи зеления курсор, за да отчиташ точни стойности. Прекъсванията на tg и cotg са асимптотите.' },
     algorithm: [
       'sin и cos имат вълнообразна форма с период 2π.',
       'cos е изместена синусоида (с π/2 наляво).',
@@ -9052,6 +8973,17 @@ function initInteractiveWidgets() {
     else if (type === 'thales') initThalesWidget(el, params);
     else if (type === 'pythagoras') initPythagorasWidget(el, params);
     else if (type === 'unit-circle') initUnitCircleWidget(el, params);
+    else if (type === 'trig-graph') initTrigGraphWidget(el, params);
+    else if (type === 'prism-3d') initPrism3DWidget(el, params);
+    else if (type === 'pyramid-3d') initPyramid3DWidget(el, params);
+    else if (type === 'cylinder-3d') initCylinder3DWidget(el, params);
+    else if (type === 'cone-3d') initCone3DWidget(el, params);
+    else if (type === 'sphere-3d') initSphere3DWidget(el, params);
+    else if (type === 'line-plane-3d') initLinePlane3DWidget(el, params);
+    else if (type === 'perp-plane-3d') initPerpPlane3DWidget(el, params);
+    else if (type === 'line-plane-angle-3d') initLinePlaneAngle3DWidget(el, params);
+    else if (type === 'two-lines-3d') initTwoLines3DWidget(el, params);
+    else if (type === 'two-planes-3d') initTwoPlanes3DWidget(el, params);
   });
 }
 
@@ -9102,33 +9034,123 @@ function seg(c, x1, y1, x2, y2, color, w) {
 }
 
 // ============================================================
-// 0) ЕДИНИЧНА ОКРЪЖНОСТ: sin, cos, tg на обобщен ъгъл
+// ГРАФИКИ НА ТРИГ. ФУНКЦИИ — интерактивни, с подвижен курсор
 // ============================================================
-function initUnitCircleWidget(el, p) {
-  const W = 320, H = 320, xmin = -1.6, xmax = 1.6, ymin = -1.6, ymax = 1.6;
-  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
-  let deg = p.deg ?? 45;                 // текущ ъгъл в градуси
-  const snap = p.snap ?? 0;              // стъпка за плъзгача (0 = плавно, 15 = по 15°)
-  const COS = '#4f6ef7', SIN = '#e84393', RAD = '#10b981', ANG = '#f59e0b';
+function initTrigGraphWidget(el, p) {
+  const W = 340, H = 260;
+  const xmin = -2 * Math.PI, xmax = 2 * Math.PI, ymin = -3.2, ymax = 3.2;
+  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const COL = { sin: '#e84393', cos: '#4f6ef7', tg: '#8b5cf6', cotg: '#0ea5e9' };
+  const show = { sin: p.sin ?? true, cos: p.cos ?? true, tg: p.tg ?? false, cotg: p.cotg ?? false };
+  let cursor = p.x0 ?? Math.PI / 6; // позиция на курсора (в радиани)
 
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
-    <div class="iw-controls"><label>α = <span class="iw-val" data-v="ang"></span>
-      <input type="range" min="0" max="360" step="${snap || 1}" value="${deg}" data-k="ang"></label></div>
+    <div class="iw-controls">
+      <div class="iw-controls-2col" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+        ${['sin','cos','tg','cotg'].map(f=>
+          `<label style="flex-direction:row;align-items:center;gap:5px;color:${COL[f]};">
+             <input type="checkbox" data-f="${f}" ${show[f]?'checked':''} style="width:auto;accent-color:${COL[f]};">${f}</label>`).join('')}
+      </div>
+      <label>курсор x = <span class="iw-val" data-v="x"></span>
+        <input type="range" data-k="x" min="${(xmin).toFixed(3)}" max="${(xmax).toFixed(3)}" step="0.05" value="${cursor}"></label>
+    </div>
     <div class="iw-readout"></div>`;
   const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
 
-  // точка P върху окръжността — може да се влачи
+  // π-етикети по оста x
+  function xTicks() {
+    let g = '';
+    for (let k = -4; k <= 4; k++) {
+      if (k === 0) continue;
+      const x = k * Math.PI / 2;
+      if (x < xmin || x > xmax) continue;
+      const lab = (k % 2 === 0) ? (k/2 === 1 ? 'π' : k/2 === -1 ? '−π' : (k/2)+'π')
+                                : (k === 1 ? 'π/2' : k === -1 ? '−π/2' : (k%2? (k+'π/2'):'' ));
+      g += `<text x="${c.sx(x)}" y="${c.sy(0)+13}" font-size="9.5" fill="var(--axis,#64748b)" text-anchor="middle">${lab}</text>`;
+    }
+    return g;
+  }
+
+  function plot(fn, color, asymptote) {
+    // връща path(s); при асимптоти прекъсва линията
+    let d = '', started = false, prevY = null;
+    const N = 600;
+    for (let i = 0; i <= N; i++) {
+      const x = xmin + (xmax - xmin) * i / N;
+      let y = fn(x);
+      if (!isFinite(y) || Math.abs(y) > ymax * 3) { started = false; prevY = null; continue; }
+      // прекъсване при рязък скок (асимптота)
+      if (asymptote && prevY !== null && Math.abs(y - prevY) > 4) { started = false; }
+      const yy = Math.max(ymin - 1, Math.min(ymax + 1, y));
+      d += (started ? 'L' : 'M') + ` ${c.sx(x).toFixed(1)} ${c.sy(yy).toFixed(1)} `;
+      started = true; prevY = y;
+    }
+    return `<path d="${d}" fill="none" stroke="${color}" stroke-width="2"/>`;
+  }
+
+  function draw() {
+    let s = axesSVG(c, W, H, xmin, xmax, ymin, ymax) + xTicks();
+    // асимптоти на tg/cotg
+    if (show.tg) for (let k=-3;k<=3;k+=2){ const x=k*Math.PI/2; if(x>=xmin&&x<=xmax) s+=`<line x1="${c.sx(x)}" y1="${c.sy(ymax)}" x2="${c.sx(x)}" y2="${c.sy(ymin)}" stroke="${COL.tg}" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.5"/>`; }
+    if (show.cotg) for (let k=-2;k<=2;k++){ const x=k*Math.PI; if(x>=xmin&&x<=xmax) s+=`<line x1="${c.sx(x)}" y1="${c.sy(ymax)}" x2="${c.sx(x)}" y2="${c.sy(ymin)}" stroke="${COL.cotg}" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.5"/>`; }
+    if (show.sin) s += plot(Math.sin, COL.sin, false);
+    if (show.cos) s += plot(Math.cos, COL.cos, false);
+    if (show.tg) s += plot(x => Math.tan(x), COL.tg, true);
+    if (show.cotg) s += plot(x => 1 / Math.tan(x), COL.cotg, true);
+
+    // курсор
+    s += `<line x1="${c.sx(cursor)}" y1="${c.sy(ymax)}" x2="${c.sx(cursor)}" y2="${c.sy(ymin)}" stroke="#10b981" stroke-width="1.3" stroke-dasharray="4 3"/>`;
+    ['sin','cos','tg','cotg'].forEach(f => {
+      if (!show[f]) return;
+      let y = f==='sin'?Math.sin(cursor):f==='cos'?Math.cos(cursor):f==='tg'?Math.tan(cursor):1/Math.tan(cursor);
+      if (isFinite(y) && Math.abs(y) <= ymax) s += `<circle cx="${c.sx(cursor)}" cy="${c.sy(y)}" r="4" fill="${COL[f]}" stroke="#fff" stroke-width="1.2"/>`;
+    });
+    svg.innerHTML = s;
+
+    const vals = ['sin','cos','tg','cotg'].filter(f=>show[f]).map(f=>{
+      let y = f==='sin'?Math.sin(cursor):f==='cos'?Math.cos(cursor):f==='tg'?Math.tan(cursor):1/Math.tan(cursor);
+      return `<b style="color:${COL[f]}">${f} = ${isFinite(y)&&Math.abs(y)<1e6?fmt(y):'недеф.'}</b>`;
+    }).join(' &nbsp; ');
+    readout.innerHTML = `x = ${fmt(cursor)} rad (${fmt(cursor*180/Math.PI)}°)<br>${vals||'Избери поне една функция.'}`;
+    el.querySelector('[data-v="x"]').textContent = fmt(cursor);
+  }
+
+  el.querySelector('input[data-k="x"]').addEventListener('input', e => { cursor = parseFloat(e.target.value); draw(); });
+  el.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener('change', e => { show[e.target.dataset.f] = e.target.checked; draw(); }));
+  draw();
+}
+
+// ============================================================
+// 0) ЕДИНИЧНА ОКРЪЖНОСТ: sin, cos, tg на обобщен ъгъл
+// ============================================================
+function initUnitCircleWidget(el, p) {
+  // По-широк изглед, за да се поберат осите на тангенса (x=1) и котангенса (y=1)
+  const W = 340, H = 340, xmin = -1.9, xmax = 2.1, ymin = -1.9, ymax = 2.1;
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
+  let deg = p.deg ?? 45;                 // текущ ъгъл в градуси (може и отрицателен)
+  const snap = p.snap ?? 0;
+  let showTan = p.showTan ?? true;       // показвай осите на tg/cotg
+  const COS = '#4f6ef7', SIN = '#e84393', RAD = '#10b981', ANG = '#f59e0b',
+        TAN = '#8b5cf6', COT = '#0ea5e9';
+
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><label>α = <span class="iw-val" data-v="ang"></span>
+      <input type="range" min="-360" max="360" step="${snap || 1}" value="${deg}" data-k="ang"></label>
+      <label style="flex-direction:row;align-items:center;gap:8px;font-size:12.5px;">
+        <input type="checkbox" data-k="tan" ${showTan ? 'checked' : ''} style="width:auto;"> покажи ос на tg (виолетова) и cotg (синя)
+      </label></div>
+    <div class="iw-readout"></div>`;
+  const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
+
   const P = {
     x: Math.cos(deg * Math.PI / 180),
     y: Math.sin(deg * Math.PI / 180),
-    constrain: (x, y) => {            // дръж точката върху единичната окръжност
-      const r = Math.hypot(x, y) || 1;
-      return { x: x / r, y: y / r };
-    }
+    constrain: (x, y) => { const r = Math.hypot(x, y) || 1; return { x: x / r, y: y / r }; }
   };
 
   function quadrant(d) {
     d = ((d % 360) + 360) % 360;
+    if (d === 0 || d === 90 || d === 180 || d === 270) return 'на оста (граничен ъгъл)';
     if (d < 90) return 'I квадрант (sin +, cos +, tg +)';
     if (d < 180) return 'II квадрант (sin +, cos −, tg −)';
     if (d < 270) return 'III квадрант (sin −, cos −, tg +)';
@@ -9139,50 +9161,82 @@ function initUnitCircleWidget(el, p) {
     const a = deg * Math.PI / 180;
     const cosv = Math.cos(a), sinv = Math.sin(a);
     P.x = cosv; P.y = sinv;
-    const ox = c.sx(0), oy = c.sy(0), R = c.scale; // радиус в пиксели
+    const ox = c.sx(0), oy = c.sy(0), R = c.scale;
 
     let s = axesSVG(c, W, H, xmin, xmax, ymin, ymax);
     // окръжността
     s += `<circle cx="${ox}" cy="${oy}" r="${R}" fill="none" stroke="var(--axis,#64748b)" stroke-width="1.4"/>`;
-    // дъга на ъгъла от 0 до α
-    const N = Math.max(2, Math.round(Math.abs(deg) / 4));
-    let arc = `M ${c.sx(0.34)} ${c.sy(0)}`;
-    for (let i = 1; i <= N; i++) {
-      const t = a * i / N;
-      arc += ` L ${c.sx(0.34 * Math.cos(t))} ${c.sy(0.34 * Math.sin(t))}`;
+
+    // --- оси на тангенса (вертикала x = 1) и котангенса (хоризонтала y = 1) ---
+    if (showTan) {
+      s += `<line x1="${c.sx(1)}" y1="${c.sy(ymin)}" x2="${c.sx(1)}" y2="${c.sy(ymax)}" stroke="${TAN}" stroke-width="1.4" stroke-dasharray="5 3"/>`;
+      s += `<line x1="${c.sx(xmin)}" y1="${c.sy(1)}" x2="${c.sx(xmax)}" y2="${c.sy(1)}" stroke="${COT}" stroke-width="1.4" stroke-dasharray="5 3"/>`;
+      s += `<text x="${c.sx(1)+5}" y="${c.sy(ymax)+12}" font-size="10.5" font-weight="700" fill="${TAN}">ос tg</text>`;
+      s += `<text x="${c.sx(xmax)-30}" y="${c.sy(1)-5}" font-size="10.5" font-weight="700" fill="${COT}">ос cotg</text>`;
     }
+
+    // дъга на ъгъла от 0 до α (по посока на знака)
+    const N = Math.max(2, Math.round(Math.abs(deg) / 4));
+    let arc = `M ${c.sx(0.32)} ${c.sy(0)}`;
+    for (let i = 1; i <= N; i++) { const t = a * i / N; arc += ` L ${c.sx(0.32 * Math.cos(t))} ${c.sy(0.32 * Math.sin(t))}`; }
     s += `<path d="${arc}" fill="none" stroke="${ANG}" stroke-width="2"/>`;
+
+    // продължение на радиуса до осите tg/cotg
+    const tgFinite = Math.abs(cosv) > 1e-6;
+    const cotFinite = Math.abs(sinv) > 1e-6;
+    if (showTan) {
+      // пресечна точка с x=1 → y = tg α  (по линията през O и P)
+      if (tgFinite) {
+        const yT = sinv / cosv; // tg
+        if (Math.abs(yT) <= (ymax - 0.05)) {
+          s += `<line x1="${ox}" y1="${oy}" x2="${c.sx(1)}" y2="${c.sy(yT)}" stroke="${TAN}" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"/>`;
+          s += `<circle cx="${c.sx(1)}" cy="${c.sy(yT)}" r="4" fill="${TAN}"/>`;
+          s += `<text x="${c.sx(1)+7}" y="${c.sy(yT)+4}" font-size="11" font-weight="700" fill="${TAN}">tg=${fmt(yT)}</text>`;
+        }
+      }
+      // пресечна точка с y=1 → x = cotg α
+      if (cotFinite) {
+        const xC = cosv / sinv; // cotg
+        if (Math.abs(xC) <= (xmax - 0.05)) {
+          s += `<circle cx="${c.sx(xC)}" cy="${c.sy(1)}" r="4" fill="${COT}"/>`;
+          s += `<text x="${c.sx(xC)}" y="${c.sy(1)-7}" font-size="11" font-weight="700" fill="${COT}" text-anchor="middle">cotg=${fmt(xC)}</text>`;
+        }
+      }
+    }
+
     // радиус към P
     s += seg(c, 0, 0, cosv, sinv, RAD, 2.5);
-    // проекции: cos (хоризонтал) и sin (вертикал)
-    s += seg(c, 0, 0, cosv, 0, COS, 3);                 // cos по оста x
-    s += seg(c, cosv, 0, cosv, sinv, SIN, 3);           // sin вертикално
-    s += `<line x1="${c.sx(cosv)}" y1="${c.sy(0)}" x2="${c.sx(cosv)}" y2="${c.sy(sinv)}" stroke="${SIN}" stroke-width="3" stroke-dasharray="1 0"/>`;
+    // проекции cos и sin
+    s += seg(c, 0, 0, cosv, 0, COS, 3);
+    s += seg(c, cosv, 0, cosv, sinv, SIN, 3);
     // точка P
     s += dot(c, cosv, sinv, RAD, 6);
     s += lbl(c, cosv, sinv, 'P', RAD, cosv >= 0 ? 9 : -16, sinv >= 0 ? -9 : 16);
-    // надписи cos/sin
     s += `<text x="${c.sx(cosv / 2)}" y="${c.sy(0) + (sinv >= 0 ? 15 : -7)}" font-size="11" font-weight="700" fill="${COS}" text-anchor="middle">cos</text>`;
     s += `<text x="${c.sx(cosv) + (cosv >= 0 ? 8 : -8)}" y="${c.sy(sinv / 2)}" font-size="11" font-weight="700" fill="${SIN}" text-anchor="${cosv >= 0 ? 'start' : 'end'}">sin</text>`;
     svg.innerHTML = s;
 
-    const tg = Math.abs(cosv) < 1e-9 ? '—' : fmt(sinv / cosv);
+    const tg = tgFinite ? fmt(sinv / cosv) : '±∞ (недеф.)';
+    const cot = cotFinite ? fmt(cosv / sinv) : '±∞ (недеф.)';
+    const norm = ((deg % 360) + 360) % 360;
+    const coterm = deg === norm ? '' : ` (= ${norm}°)`;
     readout.innerHTML =
       `<b style="color:${SIN}">sin α = ${fmt(sinv)}</b> &nbsp; ` +
-      `<b style="color:${COS}">cos α = ${fmt(cosv)}</b> &nbsp; ` +
-      `<b>tg α = ${tg}</b><br>${quadrant(deg)}`;
+      `<b style="color:${COS}">cos α = ${fmt(cosv)}</b><br>` +
+      `<b style="color:${TAN}">tg α = ${tg}</b> &nbsp; ` +
+      `<b style="color:${COT}">cotg α = ${cot}</b><br>` +
+      `${quadrant(deg)}${coterm}`;
     el.querySelector('[data-v="ang"]').textContent = Math.round(deg) + '°';
-    const inp = el.querySelector('input');
-    if (Math.round(+inp.value) !== Math.round(((deg % 360) + 360) % 360)) {
-      inp.value = ((deg % 360) + 360) % 360;
-    }
+    const inp = el.querySelector('input[type=range]');
+    if (Math.round(+inp.value) !== Math.round(deg)) inp.value = deg;
   }
 
-  el.querySelector('input').addEventListener('input', e => { deg = parseFloat(e.target.value); draw(); });
-  // влачене на точката → обновяване на ъгъла
+  el.querySelector('input[type=range]').addEventListener('input', e => { deg = parseFloat(e.target.value); draw(); });
+  el.querySelector('input[type=checkbox]').addEventListener('change', e => { showTan = e.target.checked; draw(); });
   makeDraggable(el, svg, c, W, H, [P], () => {
     let d = Math.atan2(P.y, P.x) * 180 / Math.PI;
-    deg = ((d % 360) + 360) % 360;
+    // запази знака/диапазона близо до текущия ъгъл, но позволи отрицателни
+    deg = Math.round(d);
     draw();
   });
   draw();
@@ -9716,7 +9770,7 @@ function initPythagorasWidget(el, p) {
       seg(c,C.x,C.y,Bp.x,Bp.y,'#4f6ef7',2.5)+seg(c,C.x,C.y,Ap.x,Ap.y,'#e84393',2.5)+seg(c,Bp.x,Bp.y,Ap.x,Ap.y,'#10b981',2.5)+
       `<polyline points="${c.sx(0.4)},${c.sy(0)} ${c.sx(0.4)},${c.sy(0.4)} ${c.sx(0)},${c.sy(0.4)}" fill="none" stroke="#64748b" stroke-width="1"/>` +
       dot(c,C.x,C.y,'#1a1f2e',3)+dot(c,Bp.x,Bp.y,'#1a1f2e',3)+dot(c,Ap.x,Ap.y,'#1a1f2e',3)+
-      lbl(c,a/2,0,'a','#4f6ef7',-4,16)+lbl(c,0,b/2,'b','#e84393',-16,4)+lbl(c,a/2,b/2,'c','#10b981',8,-4);
+      lbl(c,a/2,0,'a = '+fmt(a),'#4f6ef7',-10,16)+lbl(c,0,b/2,'b = '+fmt(b),'#e84393',-28,4)+lbl(c,a/2,b/2,'c = '+fmt(cHyp),'#10b981',8,-4);
     readout.innerHTML = `Движи плъзгачите за катетите.<br>a² + b² = ${fmt(a*a)} + ${fmt(b*b)} = <b>${fmt(a*a+b*b)}</b><br>c² = ${fmt(cHyp)}² = <b>${fmt(cHyp*cHyp)}</b> &nbsp;→&nbsp; a² + b² = c²`;
   }
   el.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',()=>{
@@ -9725,6 +9779,633 @@ function initPythagorasWidget(el, p) {
   draw();
 }
 
+// ============================================================
+// ============   3D СТЕРЕОМЕТРИЯ (Three.js)   =================
+// ============================================================
+// Общ конструктор на 3D сцена: орбитална камера (влачене за въртене),
+// светлина, под-мрежа, и помощни функции за ръбове, върхове и етикети.
+// ------------------------------------------------------------
+
+const THREE_COLORS = {
+  edge:   0x4f6ef7,   // основни ръбове (синьо)
+  edge2:  0x94a3b8,   // скрити/спомагателни (сиво)
+  accent: 0xe84393,   // акцент (розово)
+  green:  0x10b981,   // втори акцент
+  amber:  0xf59e0b,   // ъгли/дъги
+  face:   0x4f6ef7,   // стени (с прозрачност)
+  plane:  0x60a5fa
+};
+
+// Създава сцена + рендер + орбитална камера. Връща контролен обект.
+function make3DScene(el, opts) {
+  opts = opts || {};
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const W = opts.width || 320, H = opts.height || 300;
+
+  const scene = new THREE.Scene();
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(W, H, false);
+  renderer.domElement.style.width = '100%';
+  renderer.domElement.style.height = 'auto';
+  renderer.domElement.style.background = dark ? '#1a2030' : '#f4f6fb';
+  renderer.domElement.style.borderRadius = '8px';
+  renderer.domElement.style.touchAction = 'none';
+  renderer.domElement.style.cursor = 'grab';
+
+  const camera = new THREE.PerspectiveCamera(40, W / H, 0.1, 100);
+  const R = opts.dist || 9;
+  let theta = opts.theta ?? 0.7;   // азимут
+  let phi = opts.phi ?? 1.05;      // полярен (от +Y)
+  const target = new THREE.Vector3(0, opts.targetY ?? 0, 0);
+
+  function place() {
+    phi = Math.max(0.25, Math.min(Math.PI - 0.15, phi));
+    camera.position.set(
+      target.x + R * Math.sin(phi) * Math.cos(theta),
+      target.y + R * Math.cos(phi),
+      target.z + R * Math.sin(phi) * Math.sin(theta)
+    );
+    camera.lookAt(target);
+  }
+  place();
+
+  // светлина
+  scene.add(new THREE.AmbientLight(0xffffff, dark ? 0.75 : 0.85));
+  const dir = new THREE.DirectionalLight(0xffffff, 0.6);
+  dir.position.set(5, 10, 7);
+  scene.add(dir);
+
+  // под-мрежа (по избор)
+  if (opts.grid !== false) {
+    const grid = new THREE.GridHelper(opts.gridSize || 8, opts.gridDiv || 8,
+      dark ? 0x3a4456 : 0xcbd5e1, dark ? 0x2a3344 : 0xe2e8f0);
+    grid.position.y = opts.floorY ?? 0;
+    grid.material.opacity = 0.5; grid.material.transparent = true;
+    scene.add(grid);
+  }
+
+  // влачене за орбита
+  const dom = renderer.domElement;
+  let dragging = false, px = 0, py = 0;
+  dom.addEventListener('pointerdown', e => { dragging = true; px = e.clientX; py = e.clientY; dom.setPointerCapture(e.pointerId); dom.style.cursor = 'grabbing'; });
+  dom.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    theta -= (e.clientX - px) * 0.01;
+    phi   -= (e.clientY - py) * 0.01;
+    px = e.clientX; py = e.clientY;
+    place(); render();
+  });
+  const stop = () => { dragging = false; dom.style.cursor = 'grab'; };
+  dom.addEventListener('pointerup', stop);
+  dom.addEventListener('pointercancel', stop);
+
+  // HTML слой за етикети (винаги към камерата)
+  const wrap = document.createElement('div');
+  wrap.style.position = 'relative';
+  wrap.appendChild(dom);
+  const labelLayer = document.createElement('div');
+  labelLayer.style.cssText = 'position:absolute;inset:0;pointer-events:none;';
+  wrap.appendChild(labelLayer);
+
+  const labels = []; // {pos:Vector3, el}
+  function addLabel(pos, text, color) {
+    const d = document.createElement('div');
+    d.textContent = text;
+    d.style.cssText = `position:absolute;font-size:12px;font-weight:700;color:${color||(dark?'#cbd5e1':'#334155')};` +
+      `transform:translate(-50%,-50%);white-space:nowrap;text-shadow:0 1px 2px ${dark?'#1a2030':'#fff'},0 0 2px ${dark?'#1a2030':'#fff'};`;
+    labelLayer.appendChild(d);
+    const o = { pos: pos.clone ? pos.clone() : new THREE.Vector3(pos.x, pos.y, pos.z), el: d };
+    labels.push(o);
+    return o;
+  }
+  function clearLabels() { labels.forEach(l => l.el.remove()); labels.length = 0; }
+
+  function projectLabels() {
+    const v = new THREE.Vector3();
+    labels.forEach(l => {
+      v.copy(l.pos).project(camera);
+      const x = (v.x * 0.5 + 0.5) * W;
+      const y = (-v.y * 0.5 + 0.5) * H;
+      l.el.style.left = x + 'px';
+      l.el.style.top = y + 'px';
+      l.el.style.display = (v.z < 1) ? 'block' : 'none';
+    });
+  }
+
+  function render() { renderer.render(scene, camera); projectLabels(); }
+
+  return {
+    scene, camera, renderer, render, addLabel, clearLabels,
+    get theta(){return theta;}, get phi(){return phi;},
+    setView(t, p){ theta = t; phi = p; place(); render(); },
+    dom: wrap, target, place
+  };
+}
+
+// --- помощни 3D градивни елементи ---
+function v3(x, y, z) { return new THREE.Vector3(x, y, z); }
+
+function edgeLines(points, color, width) {
+  // points: масив от [a,b] двойки Vector3
+  const mat = new THREE.LineBasicMaterial({ color: color, linewidth: width || 2 });
+  const geo = new THREE.BufferGeometry();
+  const arr = [];
+  points.forEach(([a, b]) => { arr.push(a.x, a.y, a.z, b.x, b.y, b.z); });
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(arr, 3));
+  return new THREE.LineSegments(geo, mat);
+}
+
+function solidFaces(geometry, color, opacity) {
+  const mat = new THREE.MeshLambertMaterial({
+    color: color, transparent: true, opacity: opacity ?? 0.18,
+    side: THREE.DoubleSide, depthWrite: false
+  });
+  return new THREE.Mesh(geometry, mat);
+}
+
+function vertexDot(pos, color, size) {
+  const g = new THREE.SphereGeometry(size || 0.07, 12, 12);
+  const m = new THREE.MeshBasicMaterial({ color: color });
+  const s = new THREE.Mesh(g, m);
+  s.position.copy(pos);
+  return s;
+}
+
+// Контроли (плъзгачи) под 3D платното — еднакъв стил с 2D
+function controls3D(defs) {
+  // defs: [{k,label,min,max,step,val}]
+  return `<div class="iw-controls iw-controls-2col">` + defs.map(d =>
+    `<label>${d.label} = <span class="iw-val" data-v="${d.k}">${d.val}</span>` +
+    `<input type="range" data-k="${d.k}" min="${d.min}" max="${d.max}" step="${d.step}" value="${d.val}"></label>`
+  ).join('') + `</div>`;
+}
+
+// ============================================================
+// ПРИЗМА (правоъгълен паралелепипед) — размери a,b,h + диагонал
+// ============================================================
+function initPrism3DWidget(el, p) {
+  if (typeof THREE === 'undefined') { el.innerHTML = '<div class="iw-readout">3D библиотеката не е заредена.</div>'; return; }
+  let a = p.a ?? 3, b = p.b ?? 2, h = p.h ?? 2.5;
+  const S = make3DScene(el, { phi: 1.1, theta: 0.7, dist: 11 });
+  el.innerHTML = '';
+  el.appendChild(S.dom);
+  el.insertAdjacentHTML('beforeend',
+    controls3D([
+      { k: 'a', label: 'a', min: 1, max: 5, step: 0.5, val: a },
+      { k: 'b', label: 'b', min: 1, max: 5, step: 0.5, val: b },
+      { k: 'h', label: 'h', min: 1, max: 5, step: 0.5, val: h }
+    ]) + `<div class="iw-readout"></div>`);
+  const readout = el.querySelector('.iw-readout');
+  let group = null;
+
+  function build() {
+    if (group) S.scene.remove(group);
+    S.clearLabels();
+    group = new THREE.Group();
+    const hx = a / 2, hz = b / 2;
+    // върхове: долна основа y=0, горна y=h
+    const V = {
+      A: v3(-hx, 0, hz), B: v3(hx, 0, hz), C: v3(hx, 0, -hz), D: v3(-hx, 0, -hz),
+      A1: v3(-hx, h, hz), B1: v3(hx, h, hz), C1: v3(hx, h, -hz), D1: v3(-hx, h, -hz)
+    };
+    const box = new THREE.BoxGeometry(a, h, b);
+    box.translate(0, h / 2, 0);
+    group.add(solidFaces(box, THREE_COLORS.face, 0.16));
+    // ръбове
+    const E = [
+      [V.A, V.B], [V.B, V.C], [V.C, V.D], [V.D, V.A],
+      [V.A1, V.B1], [V.B1, V.C1], [V.C1, V.D1], [V.D1, V.A1],
+      [V.A, V.A1], [V.B, V.B1], [V.C, V.C1], [V.D, V.D1]
+    ];
+    group.add(edgeLines(E, THREE_COLORS.edge, 2));
+    // пространствен диагонал A→C1
+    group.add(edgeLines([[V.A, V.C1]], THREE_COLORS.accent, 2));
+    group.add(vertexDot(V.A, THREE_COLORS.accent, 0.08));
+    group.add(vertexDot(V.C1, THREE_COLORS.accent, 0.08));
+    S.scene.add(group);
+    // етикети с размери
+    S.addLabel(v3(0, 0, hz + 0.05).add(v3(0, -0.05, 0)), 'a = ' + fmt(a), '#4f6ef7');
+    S.addLabel(v3(hx + 0.05, 0, 0), 'b = ' + fmt(b), '#4f6ef7');
+    S.addLabel(v3(-hx - 0.1, h / 2, hz), 'h = ' + fmt(h), '#4f6ef7');
+    const d = Math.sqrt(a * a + b * b + h * h);
+    S.addLabel(v3(0, h / 2, 0), 'd = ' + fmt(d), '#e84393');
+    S.render();
+    const Vol = a * b * h, Sf = 2 * (a * b + b * h + a * h);
+    readout.innerHTML = `V = a·b·h = <b>${fmt(Vol)}</b> &nbsp;|&nbsp; S = <b>${fmt(Sf)}</b><br>` +
+      `пространствен диагонал d = √(a²+b²+h²) = <b style="color:#e84393">${fmt(d)}</b>`;
+  }
+  el.querySelectorAll('input').forEach(inp => inp.addEventListener('input', e => {
+    const k = e.target.dataset.k, val = parseFloat(e.target.value);
+    if (k === 'a') a = val; else if (k === 'b') b = val; else h = val;
+    el.querySelector(`[data-v="${k}"]`).textContent = fmt(val);
+    build();
+  }));
+  build();
+}
+
+// ============================================================
+// ПИРАМИДА (правилна четириъгълна) — основа a, височина h
+// ============================================================
+function initPyramid3DWidget(el, p) {
+  if (typeof THREE === 'undefined') { el.innerHTML = '<div class="iw-readout">3D библиотеката не е заредена.</div>'; return; }
+  let a = p.a ?? 3, h = p.h ?? 3;
+  const S = make3DScene(el, { phi: 1.05, theta: 0.7, dist: 12 });
+  el.innerHTML = ''; el.appendChild(S.dom);
+  el.insertAdjacentHTML('beforeend',
+    controls3D([
+      { k: 'a', label: 'a', min: 1, max: 5, step: 0.5, val: a },
+      { k: 'h', label: 'h', min: 1, max: 5, step: 0.5, val: h }
+    ]) + `<div class="iw-readout"></div>`);
+  const readout = el.querySelector('.iw-readout');
+  let group = null;
+  function build() {
+    if (group) S.scene.remove(group);
+    S.clearLabels();
+    group = new THREE.Group();
+    const hx = a / 2;
+    const A = v3(-hx, 0, hx), B = v3(hx, 0, hx), C = v3(hx, 0, -hx), D = v3(-hx, 0, -hx);
+    const T = v3(0, h, 0);
+    // стени
+    const fgeo = new THREE.BufferGeometry();
+    const tris = [];
+    [[A, B], [B, C], [C, D], [D, A]].forEach(([p1, p2]) => { tris.push(p1, p2, T); });
+    const fa = []; tris.forEach(p => fa.push(p.x, p.y, p.z));
+    fgeo.setAttribute('position', new THREE.Float32BufferAttribute(fa, 3));
+    fgeo.computeVertexNormals();
+    group.add(solidFaces(fgeo, THREE_COLORS.face, 0.16));
+    // основа
+    const bgeo = new THREE.BufferGeometry();
+    bgeo.setAttribute('position', new THREE.Float32BufferAttribute(
+      [A.x, A.y, A.z, B.x, B.y, B.z, C.x, C.y, C.z, A.x, A.y, A.z, C.x, C.y, C.z, D.x, D.y, D.z], 3));
+    bgeo.computeVertexNormals();
+    group.add(solidFaces(bgeo, THREE_COLORS.face, 0.12));
+    // ръбове
+    group.add(edgeLines([[A, B], [B, C], [C, D], [D, A], [A, T], [B, T], [C, T], [D, T]], THREE_COLORS.edge, 2));
+    // височина (от център на основата към върха)
+    const O = v3(0, 0, 0);
+    group.add(edgeLines([[O, T]], THREE_COLORS.accent, 2));
+    // апотема на пирамидата (към среда на ребро на основата)
+    const M = v3(0, 0, hx); // среда на AB
+    group.add(edgeLines([[O, M], [M, T]], THREE_COLORS.green, 1.5));
+    group.add(vertexDot(T, THREE_COLORS.accent, 0.08));
+    S.scene.add(group);
+    S.addLabel(v3(0, 0, hx + 0.1), 'a = ' + fmt(a), '#4f6ef7');
+    S.addLabel(v3(0.12, h / 2, 0), 'h = ' + fmt(h), '#e84393');
+    const ap = Math.sqrt(h * h + (a / 2) * (a / 2));
+    S.addLabel(v3(0.05, h / 2.3, hx / 1.7), 'aₚ', '#10b981');
+    S.render();
+    const B_ = a * a, Vol = B_ * h / 3;
+    const Sok = 0.5 * (4 * a) * ap, Sf = B_ + Sok;
+    readout.innerHTML = `V = ⅓·a²·h = <b>${fmt(Vol)}</b><br>` +
+      `апотема aₚ = √(h²+(a/2)²) = <b style="color:#10b981">${fmt(ap)}</b> &nbsp;|&nbsp; S = <b>${fmt(Sf)}</b>`;
+  }
+  el.querySelectorAll('input').forEach(inp => inp.addEventListener('input', e => {
+    const k = e.target.dataset.k, val = parseFloat(e.target.value);
+    if (k === 'a') a = val; else h = val;
+    el.querySelector(`[data-v="${k}"]`).textContent = fmt(val);
+    build();
+  }));
+  build();
+}
+
+// ============================================================
+// ЦИЛИНДЪР — радиус r, височина h
+// ============================================================
+function initCylinder3DWidget(el, p) {
+  if (typeof THREE === 'undefined') { el.innerHTML = '<div class="iw-readout">3D библиотеката не е заредена.</div>'; return; }
+  let r = p.r ?? 1.6, h = p.h ?? 3;
+  const S = make3DScene(el, { phi: 1.1, theta: 0.7, dist: 12 });
+  el.innerHTML = ''; el.appendChild(S.dom);
+  el.insertAdjacentHTML('beforeend',
+    controls3D([
+      { k: 'r', label: 'r', min: 0.5, max: 3, step: 0.25, val: r },
+      { k: 'h', label: 'h', min: 1, max: 5, step: 0.5, val: h }
+    ]) + `<div class="iw-readout"></div>`);
+  const readout = el.querySelector('.iw-readout');
+  let group = null;
+  function build() {
+    if (group) S.scene.remove(group);
+    S.clearLabels();
+    group = new THREE.Group();
+    const geo = new THREE.CylinderGeometry(r, r, h, 40, 1, false);
+    geo.translate(0, h / 2, 0);
+    group.add(solidFaces(geo, THREE_COLORS.face, 0.18));
+    // контурни кръгове
+    const ringPts = (yy) => { const a = []; const n = 48; for (let i = 0; i <= n; i++){ const t = i / n * Math.PI * 2; a.push(v3(r * Math.cos(t), yy, r * Math.sin(t))); } const segs=[]; for(let i=0;i<a.length-1;i++) segs.push([a[i],a[i+1]]); return segs; };
+    group.add(edgeLines(ringPts(0).concat(ringPts(h)), THREE_COLORS.edge, 1.5));
+    // образуващи (2 видими)
+    group.add(edgeLines([[v3(r,0,0),v3(r,h,0)],[v3(-r,0,0),v3(-r,h,0)]], THREE_COLORS.edge, 1.5));
+    // радиус и височина
+    group.add(edgeLines([[v3(0,0,0),v3(r,0,0)]], THREE_COLORS.accent, 2));
+    group.add(edgeLines([[v3(0,0,0),v3(0,h,0)]], THREE_COLORS.green, 2));
+    S.scene.add(group);
+    S.addLabel(v3(r/2, 0, 0.05), 'r = ' + fmt(r), '#e84393');
+    S.addLabel(v3(0.1, h/2, 0), 'h = ' + fmt(h), '#10b981');
+    S.render();
+    const Vol = Math.PI*r*r*h, Sok = 2*Math.PI*r*h, Sf = 2*Math.PI*r*(r+h);
+    readout.innerHTML = `V = π·r²·h = <b>${fmt(Vol)}</b><br>` +
+      `S_ок = 2πrh = <b>${fmt(Sok)}</b> &nbsp;|&nbsp; S = 2πr(r+h) = <b>${fmt(Sf)}</b>`;
+  }
+  el.querySelectorAll('input').forEach(inp => inp.addEventListener('input', e => {
+    const k = e.target.dataset.k, val = parseFloat(e.target.value);
+    if (k === 'r') r = val; else h = val;
+    el.querySelector(`[data-v="${k}"]`).textContent = fmt(val);
+    build();
+  }));
+  build();
+}
+
+// ============================================================
+// КОНУС — радиус r, височина h, образуваща l
+// ============================================================
+function initCone3DWidget(el, p) {
+  if (typeof THREE === 'undefined') { el.innerHTML = '<div class="iw-readout">3D библиотеката не е заредена.</div>'; return; }
+  let r = p.r ?? 1.6, h = p.h ?? 3;
+  const S = make3DScene(el, { phi: 1.05, theta: 0.7, dist: 12 });
+  el.innerHTML = ''; el.appendChild(S.dom);
+  el.insertAdjacentHTML('beforeend',
+    controls3D([
+      { k: 'r', label: 'r', min: 0.5, max: 3, step: 0.25, val: r },
+      { k: 'h', label: 'h', min: 1, max: 5, step: 0.5, val: h }
+    ]) + `<div class="iw-readout"></div>`);
+  const readout = el.querySelector('.iw-readout');
+  let group = null;
+  function build() {
+    if (group) S.scene.remove(group);
+    S.clearLabels();
+    group = new THREE.Group();
+    const geo = new THREE.ConeGeometry(r, h, 40, 1, false);
+    geo.translate(0, h / 2, 0);
+    group.add(solidFaces(geo, THREE_COLORS.face, 0.18));
+    const ringPts = (yy) => { const a=[]; const n=48; for(let i=0;i<=n;i++){const t=i/n*Math.PI*2; a.push(v3(r*Math.cos(t),yy,r*Math.sin(t)));} const segs=[]; for(let i=0;i<a.length-1;i++) segs.push([a[i],a[i+1]]); return segs; };
+    group.add(edgeLines(ringPts(0), THREE_COLORS.edge, 1.5));
+    const T = v3(0, h, 0);
+    group.add(edgeLines([[v3(r,0,0),T],[v3(-r,0,0),T]], THREE_COLORS.edge, 1.5)); // образуващи
+    group.add(edgeLines([[v3(0,0,0),v3(r,0,0)]], THREE_COLORS.accent, 2));         // r
+    group.add(edgeLines([[v3(0,0,0),T]], THREE_COLORS.green, 2));                  // h
+    group.add(edgeLines([[v3(r,0,0),T]], THREE_COLORS.amber, 2));                  // l (акцент)
+    S.scene.add(group);
+    S.addLabel(v3(r/2, 0, 0.05), 'r = ' + fmt(r), '#e84393');
+    S.addLabel(v3(0.1, h/2, 0), 'h = ' + fmt(h), '#10b981');
+    S.addLabel(v3(r/2+0.1, h/2, 0), 'l', '#f59e0b');
+    S.render();
+    const l = Math.sqrt(r*r+h*h), Vol = Math.PI*r*r*h/3, Sok = Math.PI*r*l, Sf = Math.PI*r*(r+l);
+    readout.innerHTML = `V = ⅓·π·r²·h = <b>${fmt(Vol)}</b> &nbsp;|&nbsp; l = √(r²+h²) = <b style="color:#f59e0b">${fmt(l)}</b><br>` +
+      `S_ок = πrl = <b>${fmt(Sok)}</b> &nbsp;|&nbsp; S = πr(r+l) = <b>${fmt(Sf)}</b>`;
+  }
+  el.querySelectorAll('input').forEach(inp => inp.addEventListener('input', e => {
+    const k = e.target.dataset.k, val = parseFloat(e.target.value);
+    if (k === 'r') r = val; else h = val;
+    el.querySelector(`[data-v="${k}"]`).textContent = fmt(val);
+    build();
+  }));
+  build();
+}
+
+// ============================================================
+// СФЕРА И КЪЛБО — радиус r
+// ============================================================
+function initSphere3DWidget(el, p) {
+  if (typeof THREE === 'undefined') { el.innerHTML = '<div class="iw-readout">3D библиотеката не е заредена.</div>'; return; }
+  let r = p.r ?? 2;
+  const S = make3DScene(el, { phi: 1.1, theta: 0.7, dist: 11, grid: false });
+  el.innerHTML = ''; el.appendChild(S.dom);
+  el.insertAdjacentHTML('beforeend',
+    controls3D([{ k: 'r', label: 'r', min: 0.5, max: 3, step: 0.25, val: r }]) +
+    `<div class="iw-readout"></div>`);
+  const readout = el.querySelector('.iw-readout');
+  let group = null;
+  function build() {
+    if (group) S.scene.remove(group);
+    S.clearLabels();
+    group = new THREE.Group();
+    const geo = new THREE.SphereGeometry(r, 32, 24);
+    group.add(solidFaces(geo, THREE_COLORS.face, 0.16));
+    // меридиан и екватор за усещане за 3D
+    const ring = (axis) => { const a=[]; const n=64; for(let i=0;i<=n;i++){const t=i/n*Math.PI*2; if(axis==='eq')a.push(v3(r*Math.cos(t),0,r*Math.sin(t))); else a.push(v3(r*Math.cos(t),r*Math.sin(t),0));} const segs=[]; for(let i=0;i<a.length-1;i++) segs.push([a[i],a[i+1]]); return segs; };
+    group.add(edgeLines(ring('eq').concat(ring('mer')), THREE_COLORS.edge2, 1));
+    group.add(edgeLines([[v3(0,0,0),v3(r,0,0)]], THREE_COLORS.accent, 2));
+    S.scene.add(group);
+    S.addLabel(v3(r/2, 0.05, 0), 'r = ' + fmt(r), '#e84393');
+    S.render();
+    const Vol = 4/3*Math.PI*r*r*r, Sf = 4*Math.PI*r*r;
+    readout.innerHTML = `V = (4/3)·π·r³ = <b>${fmt(Vol)}</b><br>S = 4·π·r² = <b>${fmt(Sf)}</b>`;
+  }
+  el.querySelectorAll('input').forEach(inp => inp.addEventListener('input', e => {
+    r = parseFloat(e.target.value);
+    el.querySelector('[data-v="r"]').textContent = fmt(r);
+    build();
+  }));
+  build();
+}
+
+// ============================================================
+// ПРАВА И РАВНИНА в пространството (взаимно положение)
+// ============================================================
+function initLinePlane3DWidget(el, p) {
+  if (typeof THREE === 'undefined') { el.innerHTML = '<div class="iw-readout">3D библиотеката не е заредена.</div>'; return; }
+  // състояния: 0 пресича, 1 успоредна, 2 лежи в равнината
+  let mode = p.mode ?? 0;
+  const S = make3DScene(el, { phi: 1.1, theta: 0.8, dist: 13, grid: false });
+  el.innerHTML = ''; el.appendChild(S.dom);
+  el.insertAdjacentHTML('beforeend',
+    `<div class="iw-controls"><label>положение
+      <input type="range" min="0" max="2" step="1" value="${mode}" data-k="mode"></label></div>
+     <div class="iw-readout"></div>`);
+  const readout = el.querySelector('.iw-readout');
+  let group = null;
+  function build() {
+    if (group) S.scene.remove(group);
+    S.clearLabels();
+    group = new THREE.Group();
+    // равнина α (квадрат в xz)
+    const pg = new THREE.PlaneGeometry(7, 7);
+    const pm = new THREE.Mesh(pg, new THREE.MeshLambertMaterial({ color: THREE_COLORS.plane, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false }));
+    pm.rotation.x = -Math.PI / 2;
+    group.add(pm);
+    // контур на равнината
+    group.add(edgeLines([[v3(-3.5,0,-3.5),v3(3.5,0,-3.5)],[v3(3.5,0,-3.5),v3(3.5,0,3.5)],[v3(3.5,0,3.5),v3(-3.5,0,3.5)],[v3(-3.5,0,3.5),v3(-3.5,0,-3.5)]], THREE_COLORS.plane, 1.5));
+    let A, B, desc;
+    if (mode === 0) { A = v3(-2, 3, -1); B = v3(2, -3, 1); desc = 'Правата <b>пресича</b> равнината в една точка.'; }
+    else if (mode === 1) { A = v3(-3, 2, 1); B = v3(3, 2, 1); desc = 'Правата е <b>успоредна</b> на равнината (няма обща точка).'; }
+    else { A = v3(-3, 0, -1.5); B = v3(3, 0, 1.5); desc = 'Правата <b>лежи</b> в равнината (всичките ѝ точки са в α).'; }
+    group.add(edgeLines([[A, B]], THREE_COLORS.accent, 2.5));
+    group.add(vertexDot(A, THREE_COLORS.accent, 0.07));
+    group.add(vertexDot(B, THREE_COLORS.accent, 0.07));
+    if (mode === 0) { group.add(vertexDot(v3(0,0,0), THREE_COLORS.green, 0.1)); S.addLabel(v3(0,0.1,0), 'обща точка', '#10b981'); }
+    S.scene.add(group);
+    S.addLabel(v3(3.3, 0, 3.3), 'α', '#60a5fa');
+    S.addLabel(B, 'a', '#e84393');
+    S.render();
+    readout.innerHTML = desc + '<br><span style="font-size:11px;color:var(--text-muted)">Влачи, за да завъртиш сцената.</span>';
+  }
+  el.querySelector('input').addEventListener('input', e => { mode = parseInt(e.target.value); build(); });
+  build();
+}
+
+// ============================================================
+// ПЕРПЕНДИКУЛЯРНОСТ права ⊥ равнина
+// ============================================================
+function initPerpPlane3DWidget(el, p) {
+  if (typeof THREE === 'undefined') { el.innerHTML = '<div class="iw-readout">3D библиотеката не е заредена.</div>'; return; }
+  const S = make3DScene(el, { phi: 1.05, theta: 0.8, dist: 13, grid: false });
+  el.innerHTML = ''; el.appendChild(S.dom);
+  el.insertAdjacentHTML('beforeend', `<div class="iw-readout"></div>`);
+  const readout = el.querySelector('.iw-readout');
+  const group = new THREE.Group();
+  const pg = new THREE.PlaneGeometry(7, 7);
+  const pm = new THREE.Mesh(pg, new THREE.MeshLambertMaterial({ color: THREE_COLORS.plane, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false }));
+  pm.rotation.x = -Math.PI / 2; group.add(pm);
+  group.add(edgeLines([[v3(-3.5,0,-3.5),v3(3.5,0,-3.5)],[v3(3.5,0,-3.5),v3(3.5,0,3.5)],[v3(3.5,0,3.5),v3(-3.5,0,3.5)],[v3(-3.5,0,3.5),v3(-3.5,0,-3.5)]], THREE_COLORS.plane, 1.5));
+  const O = v3(0,0,0), T = v3(0,3.5,0);
+  group.add(edgeLines([[O,T]], THREE_COLORS.accent, 2.5)); // перпендикуляра
+  // две прави в равнината през O — перпендикулярът е ⊥ на всяка
+  group.add(edgeLines([[v3(-2.5,0,-1.5),v3(2.5,0,1.5)],[v3(-2.5,0,1.5),v3(2.5,0,-1.5)]], THREE_COLORS.edge, 1.5));
+  // знак за прав ъгъл
+  group.add(edgeLines([[v3(0,0.4,0),v3(0.4,0.4,0)],[v3(0.4,0.4,0),v3(0.4,0,0)]], THREE_COLORS.amber, 1.5));
+  group.add(vertexDot(O, THREE_COLORS.green, 0.09));
+  S.scene.add(group);
+  S.addLabel(v3(0.15,3.5,0),'a','#e84393');
+  S.addLabel(v3(3.3,0,3.3),'α','#60a5fa');
+  S.addLabel(v3(0,-0.05,0),'O','#10b981');
+  S.render();
+  readout.innerHTML = 'Права <b>a ⊥ α</b>, ако е перпендикулярна на <b>две пресичащи се</b> прави от равнината. Влачи, за да завъртиш.';
+}
+
+// ============================================================
+// ЪГЪЛ между права и равнина
+// ============================================================
+function initLinePlaneAngle3DWidget(el, p) {
+  if (typeof THREE === 'undefined') { el.innerHTML = '<div class="iw-readout">3D библиотеката не е заредена.</div>'; return; }
+  let ang = p.ang ?? 40; // градуси
+  const S = make3DScene(el, { phi: 1.05, theta: 0.85, dist: 13, grid: false });
+  el.innerHTML = ''; el.appendChild(S.dom);
+  el.insertAdjacentHTML('beforeend',
+    `<div class="iw-controls"><label>φ = <span class="iw-val" data-v="ang">${ang}°</span>
+      <input type="range" min="10" max="80" step="5" value="${ang}" data-k="ang"></label></div>
+     <div class="iw-readout"></div>`);
+  const readout = el.querySelector('.iw-readout');
+  let group = null;
+  function build() {
+    if (group) S.scene.remove(group);
+    S.clearLabels();
+    group = new THREE.Group();
+    const pg = new THREE.PlaneGeometry(7, 7);
+    const pm = new THREE.Mesh(pg, new THREE.MeshLambertMaterial({ color: THREE_COLORS.plane, transparent: true, opacity: 0.2, side: THREE.DoubleSide, depthWrite: false }));
+    pm.rotation.x = -Math.PI / 2; group.add(pm);
+    group.add(edgeLines([[v3(-3.5,0,-3.5),v3(3.5,0,-3.5)],[v3(3.5,0,-3.5),v3(3.5,0,3.5)],[v3(3.5,0,3.5),v3(-3.5,0,3.5)],[v3(-3.5,0,3.5),v3(-3.5,0,-3.5)]], THREE_COLORS.plane, 1.2));
+    const a = ang * Math.PI / 180, L = 4;
+    const O = v3(-2, 0, 0);
+    const P = v3(O.x + L * Math.cos(a), L * Math.sin(a), 0); // върхът на наклонената права
+    const F = v3(P.x, 0, 0); // петата (проекция)
+    group.add(edgeLines([[O, P]], THREE_COLORS.accent, 2.5));   // наклонената права
+    group.add(edgeLines([[O, F]], THREE_COLORS.edge, 2));       // проекция в равнината
+    group.add(edgeLines([[P, F]], THREE_COLORS.green, 1.5));    // перпендикуляр (височина)
+    // дъга на ъгъла
+    const N = 16; const segs = []; let prev = null;
+    for (let i = 0; i <= N; i++) { const t = a * i / N; const pt = v3(O.x + 1.1 * Math.cos(t), 1.1 * Math.sin(t), 0); if (prev) segs.push([prev, pt]); prev = pt; }
+    group.add(edgeLines(segs, THREE_COLORS.amber, 2));
+    // прав ъгъл при петата
+    group.add(edgeLines([[v3(F.x-0.35,0,0),v3(F.x-0.35,0.35,0)],[v3(F.x-0.35,0.35,0),v3(F.x,0.35,0)]], THREE_COLORS.amber, 1.2));
+    group.add(vertexDot(O, THREE_COLORS.green, 0.08));
+    group.add(vertexDot(P, THREE_COLORS.accent, 0.08));
+    S.scene.add(group);
+    S.addLabel(v3(O.x + 1.35*Math.cos(a/2), 1.35*Math.sin(a/2), 0), 'φ', '#f59e0b');
+    S.addLabel(P, 'a', '#e84393');
+    S.addLabel(v3((O.x+F.x)/2, -0.05, 0.05), 'проекция', '#4f6ef7');
+    S.addLabel(v3(3.3,0,3.3),'α','#60a5fa');
+    S.render();
+    readout.innerHTML = `Ъгълът между правата и равнината е ъгълът между правата и <b>проекцията</b> ѝ.<br>` +
+      `φ = <b style="color:#f59e0b">${ang}°</b> &nbsp;|&nbsp; sin φ = <b>${fmt(Math.sin(a))}</b>, cos φ = <b>${fmt(Math.cos(a))}</b>`;
+  }
+  el.querySelector('input').addEventListener('input', e => {
+    ang = parseInt(e.target.value);
+    el.querySelector('[data-v="ang"]').textContent = ang + '°';
+    build();
+  });
+  build();
+}
+
+// ============================================================
+// ВЗАИМНО ПОЛОЖЕНИЕ НА ДВЕ ПРАВИ в пространството
+// ============================================================
+function initTwoLines3DWidget(el, p) {
+  if (typeof THREE === 'undefined') { el.innerHTML = '<div class="iw-readout">3D библиотеката не е заредена.</div>'; return; }
+  let mode = p.mode ?? 0; // 0 пресичащи, 1 успоредни, 2 кръстосани
+  const S = make3DScene(el, { phi: 1.05, theta: 0.8, dist: 13 });
+  el.innerHTML = ''; el.appendChild(S.dom);
+  el.insertAdjacentHTML('beforeend',
+    `<div class="iw-controls"><label>положение
+      <input type="range" min="0" max="2" step="1" value="${mode}" data-k="mode"></label></div>
+     <div class="iw-readout"></div>`);
+  const readout = el.querySelector('.iw-readout');
+  let group = null;
+  function build() {
+    if (group) S.scene.remove(group);
+    S.clearLabels();
+    group = new THREE.Group();
+    let A1,B1,A2,B2,desc;
+    if (mode === 0) { A1=v3(-3,0,-2);B1=v3(3,0,2); A2=v3(-3,0,2);B2=v3(3,0,-2); desc='<b>Пресичащи се</b> — лежат в една равнина и имат обща точка.'; }
+    else if (mode === 1) { A1=v3(-3,0,-1.5);B1=v3(3,0,-1.5); A2=v3(-3,0,1.5);B2=v3(3,0,1.5); desc='<b>Успоредни</b> — в една равнина, без обща точка.'; }
+    else { A1=v3(-3,0,-2);B1=v3(3,0,2); A2=v3(-3,2.5,2);B2=v3(3,2.5,-2); desc='<b>Кръстосани</b> — НЕ лежат в обща равнина (само в пространството).'; }
+    group.add(edgeLines([[A1,B1]], THREE_COLORS.edge, 2.5));
+    group.add(edgeLines([[A2,B2]], THREE_COLORS.accent, 2.5));
+    if (mode === 0) { group.add(vertexDot(v3(0,0,0), THREE_COLORS.green, 0.1)); S.addLabel(v3(0,0.15,0),'обща точка','#10b981'); }
+    S.scene.add(group);
+    S.addLabel(B1,'a','#4f6ef7'); S.addLabel(B2,'b','#e84393');
+    S.render();
+    readout.innerHTML = desc;
+  }
+  el.querySelector('input').addEventListener('input', e => { mode = parseInt(e.target.value); build(); });
+  build();
+}
+
+// ============================================================
+// ВЗАИМНО ПОЛОЖЕНИЕ НА ДВЕ РАВНИНИ
+// ============================================================
+function initTwoPlanes3DWidget(el, p) {
+  if (typeof THREE === 'undefined') { el.innerHTML = '<div class="iw-readout">3D библиотеката не е заредена.</div>'; return; }
+  let mode = p.mode ?? 0; // 0 пресичащи, 1 успоредни
+  const S = make3DScene(el, { phi: 1.0, theta: 0.8, dist: 14, grid: false });
+  el.innerHTML = ''; el.appendChild(S.dom);
+  el.insertAdjacentHTML('beforeend',
+    `<div class="iw-controls"><label>положение
+      <input type="range" min="0" max="1" step="1" value="${mode}" data-k="mode"></label></div>
+     <div class="iw-readout"></div>`);
+  const readout = el.querySelector('.iw-readout');
+  let group = null;
+  function plane(color, rotX, rotZ, y) {
+    const g = new THREE.Group();
+    const pg = new THREE.PlaneGeometry(6, 6);
+    const pm = new THREE.Mesh(pg, new THREE.MeshLambertMaterial({ color, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false }));
+    pm.rotation.x = -Math.PI/2 + rotX; pm.rotation.z = rotZ; pm.position.y = y;
+    g.add(pm);
+    return g;
+  }
+  function build() {
+    if (group) S.scene.remove(group);
+    S.clearLabels();
+    group = new THREE.Group();
+    if (mode === 0) {
+      group.add(plane(THREE_COLORS.plane, 0, 0, 0));
+      group.add(plane(0xf472b6, Math.PI/3, 0, 0));
+      group.add(edgeLines([[v3(-3,0,0),v3(3,0,0)]], THREE_COLORS.green, 2.5)); // пресечница
+      S.addLabel(v3(3,0,0),'пресечница','#10b981');
+      readout.innerHTML = 'Две <b>пресичащи се</b> равнини имат обща <b>права</b> (пресечница).';
+    } else {
+      group.add(plane(THREE_COLORS.plane, 0, 0, -1.3));
+      group.add(plane(0xf472b6, 0, 0, 1.3));
+      readout.innerHTML = 'Две <b>успоредни</b> равнини нямат обща точка.';
+    }
+    S.scene.add(group);
+    S.addLabel(v3(3.3,mode? -1.3:0,3.3),'α','#60a5fa');
+    S.addLabel(v3(-3.3,1.3,3.3),'β','#f472b6');
+    S.render();
+  }
+  el.querySelector('input').addEventListener('input', e => { mode = parseInt(e.target.value); build(); });
+  build();
+}
 
 function renderKaTeX() {
   if (typeof katex === 'undefined') return;
