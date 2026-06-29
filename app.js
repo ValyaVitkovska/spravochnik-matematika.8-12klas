@@ -757,19 +757,7 @@ const CONTENT = {
     formulas: [
       { label: 'Означение', tex: '\\vec{AB} \\quad \\text{или} \\quad \\vec{a}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <defs><marker id="ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker></defs>
-  <line x1="50" y1="120" x2="250" y2="55" stroke="#4f6ef7" stroke-width="3" marker-end="url(#ve)"/>
-  <circle cx="50" cy="120" r="4" fill="#1a1f2e"/>
-  <circle cx="250" cy="55" r="4" fill="#e84393"/>
-  <text x="36" y="138" font-size="14" fill="#1a1f2e" font-weight="600">A</text>
-  <text x="256" y="52" font-size="14" fill="#e84393" font-weight="600">B</text>
-  <text x="14" y="120" font-size="11" fill="#64748b">начало</text>
-  <text x="256" y="36" font-size="11" fill="#64748b">край</text>
-  <text x="118" y="78" font-size="14" fill="#4f6ef7" font-weight="700">a</text>
-  <text x="146" y="110" font-size="11" fill="#10b981">дължина |a|</text>
-  <text x="172" y="60" font-size="11" fill="#4f6ef7">посока</text>
-</svg>`, caption: 'Основни елементи на вектора: начало A, край B, посока и дължина |a|.' },
+    drawing: { interactive: 'vector-ops', params: { mode: 'add-tri' }, caption: 'Векторът има посока и дължина. Влачи краищата му.' },
     algorithm: [
       'Определи началната точка (откъдето тръгва векторът).',
       'Определи крайната точка (където сочи).',
@@ -982,25 +970,7 @@ const CONTENT = {
     formulas: [
       { label: 'Правило на триъгълника', tex: '\\vec{AB} + \\vec{BC} = \\vec{AC}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg" style="max-width:340px;">
-  <defs>
-    <marker id="ah-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
-    <marker id="ah-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e84393"/></marker>
-    <marker id="ah-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
-  </defs>
-  <line x1="40" y1="200" x2="180" y2="120" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#ah-blue)"/>
-  <line x1="180" y1="120" x2="300" y2="170" stroke="#e84393" stroke-width="2.5" marker-end="url(#ah-pink)"/>
-  <line x1="40" y1="200" x2="300" y2="170" stroke="#10b981" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ah-green)"/>
-  <circle cx="40" cy="200" r="3" fill="#1a1f2e"/>
-  <circle cx="180" cy="120" r="3" fill="#1a1f2e"/>
-  <circle cx="300" cy="170" r="3" fill="#1a1f2e"/>
-  <text x="30" y="218" font-size="14" fill="#64748b">A</text>
-  <text x="184" y="114" font-size="14" fill="#64748b">B</text>
-  <text x="304" y="168" font-size="14" fill="#64748b">C</text>
-  <text x="100" y="150" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
-  <text x="245" y="135" font-size="14" fill="#e84393" font-weight="600">b</text>
-  <text x="160" y="200" font-size="14" fill="#10b981" font-weight="600">a + b</text>
-</svg>`, caption: 'Правило на триъгълника: краят на a съвпада с началото на b.' },
+    drawing: { interactive: 'vector-ops', params: { mode: 'add-tri' }, caption: 'Правило на триъгълника: подреждаш втория вектор след първия. Влачи a и b.' },
     algorithm: [
       'Постави началото на <katex>\\vec{b}</katex> в края на <katex>\\vec{a}</katex>.',
       'Свържи началото на <katex>\\vec{a}</katex> с края на <katex>\\vec{b}</katex>.',
@@ -1033,30 +1003,7 @@ const CONTENT = {
     formulas: [
       { label: 'Правило на успоредника', tex: '\\vec{OP} + \\vec{OQ} = \\vec{OR}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <defs>
-    <marker id="ph-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
-    <marker id="ph-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e84393"/></marker>
-    <marker id="ph-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
-  </defs>
-  <line x1="40" y1="200" x2="180" y2="200" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 3"/>
-  <line x1="110" y1="100" x2="250" y2="100" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 3"/>
-  <line x1="180" y1="200" x2="250" y2="100" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 3"/>
-  <line x1="40" y1="200" x2="180" y2="200" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#ph-blue)"/>
-  <line x1="40" y1="200" x2="110" y2="100" stroke="#e84393" stroke-width="2.5" marker-end="url(#ph-pink)"/>
-  <line x1="40" y1="200" x2="250" y2="100" stroke="#10b981" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ph-green)"/>
-  <circle cx="40" cy="200" r="3" fill="#1a1f2e"/>
-  <circle cx="180" cy="200" r="3" fill="#1a1f2e"/>
-  <circle cx="110" cy="100" r="3" fill="#1a1f2e"/>
-  <circle cx="250" cy="100" r="3" fill="#1a1f2e"/>
-  <text x="28" y="216" font-size="14" fill="#64748b">O</text>
-  <text x="184" y="216" font-size="14" fill="#64748b">P</text>
-  <text x="92" y="94" font-size="14" fill="#64748b">Q</text>
-  <text x="254" y="98" font-size="14" fill="#64748b">R</text>
-  <text x="105" y="218" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
-  <text x="60" y="150" font-size="14" fill="#e84393" font-weight="600">b</text>
-  <text x="150" y="145" font-size="14" fill="#10b981" font-weight="600">a + b</text>
-</svg>`, caption: 'Правило на успоредника: сборът е диагоналът от общото начало.' },
+    drawing: { interactive: 'vector-ops', params: { mode: 'add-par' }, caption: 'Правило на успоредника: двата вектора от обща точка, сборът е диагоналът.' },
     algorithm: [
       'Постави двата вектора с общо начало O.',
       'Построй успоредник с тях като страни.',
@@ -1090,25 +1037,7 @@ const CONTENT = {
       { label: 'Изваждане', tex: '\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})' },
       { label: 'Чрез точки', tex: '\\vec{OA} - \\vec{OB} = \\vec{BA}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <defs>
-    <marker id="sb-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
-    <marker id="sb-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e84393"/></marker>
-    <marker id="sb-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
-  </defs>
-  <line x1="50" y1="180" x2="220" y2="180" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#sb-blue)"/>
-  <line x1="50" y1="180" x2="120" y2="60" stroke="#e84393" stroke-width="2.5" marker-end="url(#sb-pink)"/>
-  <line x1="120" y1="60" x2="220" y2="180" stroke="#10b981" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#sb-green)"/>
-  <circle cx="50" cy="180" r="3" fill="#1a1f2e"/>
-  <circle cx="220" cy="180" r="3" fill="#1a1f2e"/>
-  <circle cx="120" cy="60" r="3" fill="#1a1f2e"/>
-  <text x="38" y="198" font-size="14" fill="#64748b">O</text>
-  <text x="224" y="196" font-size="14" fill="#64748b">A</text>
-  <text x="104" y="54" font-size="14" fill="#64748b">B</text>
-  <text x="130" y="200" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
-  <text x="70" y="120" font-size="14" fill="#e84393" font-weight="600">b</text>
-  <text x="180" y="110" font-size="14" fill="#10b981" font-weight="600">a − b</text>
-</svg>`, caption: 'Разликата a − b свързва върха на b с върха на a.' },
+    drawing: { interactive: 'vector-ops', params: { mode: 'sub' }, caption: 'Разликата a−b сочи от края на b към края на a.' },
     algorithm: [
       'Намери противоположния вектор <katex>-\\vec{b}</katex>.',
       'Събери <katex>\\vec{a} + (-\\vec{b})</katex> по правилото на триъгълника.',
@@ -1142,18 +1071,7 @@ const CONTENT = {
       { label: 'Дължина', tex: '|k\\vec{a}| = |k| \\cdot |\\vec{a}|' },
       { label: 'Посока', tex: 'k > 0 \\Rightarrow \\text{еднопосочен}; \\quad k < 0 \\Rightarrow \\text{противопосочен}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <defs>
-    <marker id="sc-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
-    <marker id="sc-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
-  </defs>
-  <line x1="30" y1="45" x2="90" y2="45" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#sc-blue)"/>
-  <line x1="30" y1="110" x2="150" y2="110" stroke="#10b981" stroke-width="2.5" marker-end="url(#sc-green)"/>
-  <text x="55" y="36" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
-  <text x="85" y="101" font-size="14" fill="#10b981" font-weight="600">2a</text>
-  <text x="170" y="80" font-size="12" fill="#64748b">2a е два пъти по-дълъг,</text>
-  <text x="170" y="98" font-size="12" fill="#64748b">същата посока</text>
-</svg>`, caption: 'Умножение с 2: дължината се удвоява, посоката се запазва.' },
+    drawing: { interactive: 'vector-ops', params: { mode: 'scalar', k: 1.5 }, caption: 'Умножение с число: |k| мащабира дължината, отрицателно k обръща посоката.' },
     algorithm: [
       'Умножи дължината на вектора с <katex>|k|</katex>.',
       'Ако <katex>k > 0</katex> — посоката се запазва (еднопосочен).',
@@ -1443,25 +1361,7 @@ const CONTENT = {
       { label: 'Лице на трапец', tex: 'S = \\dfrac{a + b}{2} \\cdot h' },
       { label: 'Сбор на ъглите при бедро', tex: '\\alpha + \\delta = 180°' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" style="max-width:360px;">
-  <polygon points="40,220 320,220 250,80 110,80" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="75" y1="150" x2="285" y2="150" stroke="#e84393" stroke-width="2.5" stroke-dasharray="6 3"/>
-  <circle cx="40" cy="220" r="3" fill="#1a1f2e"/>
-  <circle cx="320" cy="220" r="3" fill="#1a1f2e"/>
-  <circle cx="250" cy="80" r="3" fill="#1a1f2e"/>
-  <circle cx="110" cy="80" r="3" fill="#1a1f2e"/>
-  <circle cx="75" cy="150" r="3.5" fill="#e84393"/>
-  <circle cx="285" cy="150" r="3.5" fill="#e84393"/>
-  <text x="28" y="236" font-size="14" fill="#64748b">A</text>
-  <text x="322" y="236" font-size="14" fill="#64748b">B</text>
-  <text x="252" y="74" font-size="14" fill="#64748b">C</text>
-  <text x="96" y="74" font-size="14" fill="#64748b">D</text>
-  <text x="55" y="148" font-size="13" fill="#e84393" font-weight="600">M</text>
-  <text x="290" y="148" font-size="13" fill="#e84393" font-weight="600">N</text>
-  <text x="160" y="214" font-size="12" fill="#4f6ef7">a (основа)</text>
-  <text x="155" y="96" font-size="12" fill="#4f6ef7">b (основа)</text>
-  <text x="150" y="168" font-size="11" fill="#e84393">m = (a+b)/2</text>
-</svg>`, caption: 'Трапец ABCD с основи a, b и средна отсечка m.' },
+    drawing: { interactive: 'trapezoid', params: {}, caption: 'Трапец с основи a и b. Розовата отсечка е средната отсечка.' },
     algorithm: [
       'Идентифицирай двете успоредни страни (основи).',
       'Намери височината h (разстоянието между основите).',
@@ -1495,23 +1395,7 @@ const CONTENT = {
       { label: 'Равни ъгли при основа', tex: '\\angle A = \\angle B, \\quad \\angle C = \\angle D' },
       { label: 'Равни диагонали', tex: 'AC = BD' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <polygon points="40,200 280,200 220,70 100,70" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="100" y1="70" x2="40" y2="200" stroke="#10b981" stroke-width="2"/>
-  <line x1="220" y1="70" x2="280" y2="200" stroke="#10b981" stroke-width="2"/>
-  <circle cx="40" cy="200" r="3" fill="#1a1f2e"/>
-  <circle cx="280" cy="200" r="3" fill="#1a1f2e"/>
-  <circle cx="220" cy="70" r="3" fill="#1a1f2e"/>
-  <circle cx="100" cy="70" r="3" fill="#1a1f2e"/>
-  <text x="28" y="216" font-size="14" fill="#64748b">A</text>
-  <text x="282" y="216" font-size="14" fill="#64748b">B</text>
-  <text x="222" y="64" font-size="14" fill="#64748b">C</text>
-  <text x="86" y="64" font-size="14" fill="#64748b">D</text>
-  <text x="55" y="140" font-size="12" fill="#10b981">бедро</text>
-  <text x="235" y="140" font-size="12" fill="#10b981">бедро</text>
-  <text x="115" y="195" font-size="11" fill="#64748b">α</text>
-  <text x="195" y="195" font-size="11" fill="#64748b">α</text>
-</svg>`, caption: 'Равнобедрен трапец: равни бедра и равни ъгли при основа.' },
+    drawing: { interactive: 'trapezoid', params: { iso:true }, caption: 'Равнобедрен трапец: бедрата са равни, диагоналите също.' },
     algorithm: [
       'Провери дали бедрата са равни.',
       'Използвай равенството на ъглите при основа.',
@@ -1545,25 +1429,7 @@ const CONTENT = {
       { label: 'Дължина на средната отсечка', tex: 'm = \\dfrac{a + b}{2}' },
       { label: 'Успоредност', tex: 'm \\parallel a \\parallel b' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" style="max-width:360px;">
-  <polygon points="40,220 320,220 250,80 110,80" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="75" y1="150" x2="285" y2="150" stroke="#e84393" stroke-width="2.5" stroke-dasharray="6 3"/>
-  <circle cx="40" cy="220" r="3" fill="#1a1f2e"/>
-  <circle cx="320" cy="220" r="3" fill="#1a1f2e"/>
-  <circle cx="250" cy="80" r="3" fill="#1a1f2e"/>
-  <circle cx="110" cy="80" r="3" fill="#1a1f2e"/>
-  <circle cx="75" cy="150" r="3.5" fill="#e84393"/>
-  <circle cx="285" cy="150" r="3.5" fill="#e84393"/>
-  <text x="28" y="236" font-size="14" fill="#64748b">A</text>
-  <text x="322" y="236" font-size="14" fill="#64748b">B</text>
-  <text x="252" y="74" font-size="14" fill="#64748b">C</text>
-  <text x="96" y="74" font-size="14" fill="#64748b">D</text>
-  <text x="55" y="148" font-size="13" fill="#e84393" font-weight="600">M</text>
-  <text x="290" y="148" font-size="13" fill="#e84393" font-weight="600">N</text>
-  <text x="160" y="214" font-size="12" fill="#4f6ef7">a (основа)</text>
-  <text x="155" y="96" font-size="12" fill="#4f6ef7">b (основа)</text>
-  <text x="150" y="168" font-size="11" fill="#e84393">m = (a+b)/2</text>
-</svg>`, caption: 'Средната отсечка m = (a+b)/2 свързва средите на бедрата.' },
+    drawing: { interactive: 'trapezoid', params: {}, caption: 'Средната отсечка m = (a+b)/2 — движи основите и провери.' },
     algorithm: [
       'Намери дължините на двете основи.',
       'Събери ги и раздели на 2.',
@@ -2117,18 +1983,7 @@ const CONTENT = {
       { label: 'Перпендикулярност', tex: 'OT \\perp t' },
       { label: 'Равни допирателни отсечки', tex: 'MA = MB' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 340 270" xmlns="http://www.w3.org/2000/svg" style="max-width:340px;">
-  <circle cx="135" cy="135" r="88" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="135" y1="135" x2="223" y2="135" stroke="#e84393" stroke-width="2"/>
-  <line x1="223" y1="50" x2="223" y2="220" stroke="#10b981" stroke-width="2.5"/>
-  <rect x="207" y="121" width="14" height="14" fill="none" stroke="#64748b" stroke-width="1.2"/>
-  <circle cx="135" cy="135" r="3" fill="#1a1f2e"/>
-  <circle cx="223" cy="135" r="3.5" fill="#10b981"/>
-  <text x="125" y="153" font-size="13" fill="#64748b">O</text>
-  <text x="229" y="133" font-size="13" fill="#64748b">T</text>
-  <text x="165" y="127" font-size="12" fill="#e84393" font-weight="600">r</text>
-  <text x="232" y="245" font-size="11" fill="#10b981" font-weight="600">допирателна</text>
-</svg>`, caption: 'Допирателната t е перпендикулярна на радиуса OT в допирната точка T.' },
+    drawing: { interactive: 'tangent-circle', params: {}, caption: 'От външна точка има две допирателни с равни дължини. Радиусът към допирната точка е перпендикулярен.' },
     algorithm: [
       'Намери допирната точка T.',
       'Радиусът OT е перпендикулярен на допирателната.',
@@ -2162,20 +2017,7 @@ const CONTENT = {
       { label: 'Централен ъгъл = дъга', tex: '\\angle AOB = \\overset{\\frown}{AB}' },
       { label: 'Цяла окръжност', tex: '360°' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 320 250" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <circle cx="160" cy="130" r="95" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <path d="M 78 82 A 95 95 0 0 1 242 82" fill="none" stroke="#f59e0b" stroke-width="3.5"/>
-  <line x1="160" y1="130" x2="78" y2="82" stroke="#e84393" stroke-width="2"/>
-  <line x1="160" y1="130" x2="242" y2="82" stroke="#e84393" stroke-width="2"/>
-  <circle cx="160" cy="130" r="3" fill="#1a1f2e"/>
-  <circle cx="78" cy="82" r="3" fill="#1a1f2e"/>
-  <circle cx="242" cy="82" r="3" fill="#1a1f2e"/>
-  <text x="150" y="148" font-size="12" fill="#64748b">O</text>
-  <text x="62" y="78" font-size="13" fill="#64748b">A</text>
-  <text x="246" y="78" font-size="13" fill="#64748b">B</text>
-  <text x="135" y="112" font-size="12" fill="#e84393" font-weight="600">централен ∠</text>
-  <text x="150" y="58" font-size="11" fill="#f59e0b" font-weight="600">дъга AB</text>
-</svg>`, caption: 'Централен ъгъл AOB опира на дъгата AB.' },
+    drawing: { interactive: 'circle-angle', params: { mode: 'central' }, caption: 'Централният ъгъл е равен на дъгата, върху която лежи.' },
     algorithm: [
       'Намери ъгъла с връх в центъра.',
       'Той е равен на градусната мярка на съответната дъга.',
@@ -2246,23 +2088,7 @@ const CONTENT = {
       { label: 'Равни ъгли върху обща дъга', tex: '\\angle ACB = \\angle ADB' },
       { label: 'Ъгъл върху диаметър', tex: '\\angle ACB = 90°' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 320 250" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <circle cx="160" cy="145" r="105" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <path d="M 69 198 A 105 105 0 0 0 251 198" fill="none" stroke="#f59e0b" stroke-width="3.5"/>
-  <line x1="178" y1="42" x2="69" y2="198" stroke="#e84393" stroke-width="1.8"/>
-  <line x1="178" y1="42" x2="251" y2="198" stroke="#e84393" stroke-width="1.8"/>
-  <line x1="93" y1="65" x2="69" y2="198" stroke="#10b981" stroke-width="1.8"/>
-  <line x1="93" y1="65" x2="251" y2="198" stroke="#10b981" stroke-width="1.8"/>
-  <circle cx="69" cy="198" r="3" fill="#1a1f2e"/>
-  <circle cx="251" cy="198" r="3" fill="#1a1f2e"/>
-  <circle cx="178" cy="42" r="3" fill="#1a1f2e"/>
-  <circle cx="93" cy="65" r="3" fill="#1a1f2e"/>
-  <text x="54" y="212" font-size="13" fill="#64748b">A</text>
-  <text x="256" y="212" font-size="13" fill="#64748b">B</text>
-  <text x="182" y="38" font-size="13" fill="#e84393" font-weight="600">C</text>
-  <text x="76" y="60" font-size="13" fill="#10b981" font-weight="600">D</text>
-  <text x="160" y="235" font-size="10" fill="#64748b" text-anchor="middle">∠ACB = ∠ADB (върху дъга AB)</text>
-</svg>`, caption: 'Периферни ъгли ACB и ADB върху обща дъга AB са равни.' },
+    drawing: { interactive: 'circle-angle', params: { mode: 'inscribed' }, caption: 'Периферният ъгъл е половината от централния върху същата дъга. Влачи P — стойността не се мени.' },
     algorithm: [
       'Провери на коя дъга опира ъгълът.',
       'Ако опира на диаметър → ъгълът е 90°.',
@@ -2288,22 +2114,6 @@ const CONTENT = {
 
   // --- Ъгъл с връх вътре в окръжността ---
   g8t6s8: {
-    drawing: { svg: `<svg viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <circle cx="160" cy="145" r="105" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="69" y1="92" x2="263" y2="163" stroke="#e84393" stroke-width="2"/>
-  <line x1="212" y1="54" x2="124" y2="244" stroke="#10b981" stroke-width="2"/>
-  <circle cx="176" cy="132" r="3.5" fill="#1a1f2e"/>
-  <circle cx="69" cy="92" r="3" fill="#1a1f2e"/>
-  <circle cx="263" cy="163" r="3" fill="#1a1f2e"/>
-  <circle cx="212" cy="54" r="3" fill="#1a1f2e"/>
-  <circle cx="124" cy="244" r="3" fill="#1a1f2e"/>
-  <text x="54" y="88" font-size="12" fill="#64748b">A</text>
-  <text x="268" y="166" font-size="12" fill="#64748b">B</text>
-  <text x="216" y="50" font-size="12" fill="#64748b">C</text>
-  <text x="112" y="258" font-size="12" fill="#64748b">D</text>
-  <text x="182" y="128" font-size="12" fill="#e84393" font-weight="600">P</text>
-  <text x="160" y="288" font-size="11" fill="#64748b" text-anchor="middle">връх вътре: φ = (дъга AC + дъга BD)/2</text>
-</svg>`, caption: 'Две хорди се пресичат вътре в окръжността в точка P.' },
     shortIntro: 'Когато върхът на ъгъла е вътре в окръжността (пресечна точка на две хорди), мярката му е средноаритметично на двете дъги, които „захваща".',
     definitions: [
       { term: 'Ъгъл с връх вътре', def: 'Образува се при пресичане на две хорди. Равен е на полусумата на двете срещулежащи дъги.' }
@@ -2311,6 +2121,7 @@ const CONTENT = {
     formulas: [
       { label: 'Ъгъл вътре в окръжността', tex: '\\varphi = \\dfrac{\\overset{\\frown}{AB} + \\overset{\\frown}{CD}}{2}' }
     ],
+    drawing: { interactive: 'circle-angle', params: { mode: 'inside' }, caption: 'Ъгъл с връх вътре в окръжността = полусбор на двете прехванати дъги.' },
     algorithm: [
       'Намери двете срещулежащи дъги.',
       'Събери ги.',
@@ -2336,22 +2147,6 @@ const CONTENT = {
 
   // --- Ъгъл с връх вън от окръжността ---
   g8t6s9: {
-    drawing: { svg: `<svg viewBox="0 0 300 290" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <circle cx="170" cy="145" r="100" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="20" y1="145" x2="243" y2="77" stroke="#e84393" stroke-width="2"/>
-  <line x1="20" y1="145" x2="234" y2="222" stroke="#10b981" stroke-width="2"/>
-  <circle cx="20" cy="145" r="3.5" fill="#1a1f2e"/>
-  <circle cx="71" cy="129" r="3" fill="#1a1f2e"/>
-  <circle cx="243" cy="77" r="3" fill="#1a1f2e"/>
-  <circle cx="72" cy="164" r="3" fill="#1a1f2e"/>
-  <circle cx="234" cy="222" r="3" fill="#1a1f2e"/>
-  <text x="6" y="149" font-size="13" fill="#e84393" font-weight="600">E</text>
-  <text x="58" y="122" font-size="11" fill="#64748b">A</text>
-  <text x="248" y="74" font-size="11" fill="#64748b">B</text>
-  <text x="58" y="178" font-size="11" fill="#64748b">C</text>
-  <text x="238" y="226" font-size="11" fill="#64748b">D</text>
-  <text x="150" y="282" font-size="11" fill="#64748b" text-anchor="middle">връх вън: φ = (дъга AB − дъга CD)/2</text>
-</svg>`, caption: 'Две секущи от външна точка E.' },
     shortIntro: 'Когато върхът е вън от окръжността (две секущи, две допирателни и т.н.), ъгълът е равен на полуразликата на двете захванати дъги.',
     definitions: [
       { term: 'Ъгъл с връх вън', def: 'Образува се от две секущи/допирателни от външна точка. Равен е на полуразликата на двете дъги.' }
@@ -2359,6 +2154,7 @@ const CONTENT = {
     formulas: [
       { label: 'Ъгъл вън от окръжността', tex: '\\varphi = \\dfrac{\\overset{\\frown}{AB} - \\overset{\\frown}{CD}}{2}' }
     ],
+    drawing: { interactive: 'circle-angle', params: { mode: 'outside' }, caption: 'Ъгъл с връх вън от окръжността = полуразлика на двете дъги.' },
     algorithm: [
       'Намери двете захванати дъги (голяма и малка).',
       'Извади малката от голямата.',
@@ -2384,31 +2180,6 @@ const CONTENT = {
 
   // --- Взаимно положение на две окръжности ---
   g8t6s10: {
-    drawing: { svg: `<svg viewBox="0 0 360 320" xmlns="http://www.w3.org/2000/svg" style="max-width:360px;">
-  <circle cx="45" cy="50" r="28" fill="none" stroke="#4f6ef7" stroke-width="1.6"/>
-  <circle cx="110" cy="50" r="22" fill="none" stroke="#e84393" stroke-width="1.6"/>
-  <text x="80" y="98" font-size="9.5" fill="#64748b" text-anchor="middle">външни: d &gt; r₁+r₂</text>
-  <circle cx="210" cy="50" r="28" fill="none" stroke="#4f6ef7" stroke-width="1.6"/>
-  <circle cx="266" cy="50" r="22" fill="none" stroke="#e84393" stroke-width="1.6"/>
-  <circle cx="238" cy="50" r="2.5" fill="#10b981"/>
-  <text x="245" y="98" font-size="9.5" fill="#64748b" text-anchor="middle">външно допиране: d = r₁+r₂</text>
-  <circle cx="55" cy="160" r="30" fill="none" stroke="#4f6ef7" stroke-width="1.6"/>
-  <circle cx="100" cy="160" r="26" fill="none" stroke="#e84393" stroke-width="1.6"/>
-  <text x="78" y="210" font-size="9.5" fill="#64748b" text-anchor="middle">пресичане (2 точки)</text>
-  <text x="78" y="222" font-size="8.5" fill="#94a3b8" text-anchor="middle">|r₁−r₂| &lt; d &lt; r₁+r₂</text>
-  <circle cx="245" cy="160" r="34" fill="none" stroke="#4f6ef7" stroke-width="1.6"/>
-  <circle cx="258" cy="160" r="20" fill="none" stroke="#e84393" stroke-width="1.6"/>
-  <circle cx="278" cy="160" r="2.5" fill="#10b981"/>
-  <text x="250" y="210" font-size="9.5" fill="#64748b" text-anchor="middle">вътрешно допиране</text>
-  <text x="250" y="222" font-size="8.5" fill="#94a3b8" text-anchor="middle">d = |r₁−r₂|</text>
-  <circle cx="70" cy="270" r="34" fill="none" stroke="#4f6ef7" stroke-width="1.6"/>
-  <circle cx="78" cy="272" r="16" fill="none" stroke="#e84393" stroke-width="1.6"/>
-  <text x="75" y="316" font-size="9.5" fill="#64748b" text-anchor="middle">едната вътре: d &lt; |r₁−r₂|</text>
-  <circle cx="250" cy="270" r="34" fill="none" stroke="#4f6ef7" stroke-width="1.6"/>
-  <circle cx="250" cy="270" r="18" fill="none" stroke="#e84393" stroke-width="1.6"/>
-  <circle cx="250" cy="270" r="2.5" fill="#10b981"/>
-  <text x="250" y="316" font-size="9.5" fill="#64748b" text-anchor="middle">концентрични: d = 0</text>
-</svg>`, caption: 'Шестте случая на взаимно положение на две окръжности.' },
     shortIntro: 'Две окръжности може да заемат шест различни взаимни положения в зависимост от разстоянието d между центровете спрямо сбора и разликата на радиусите.',
     definitions: [
       { term: 'Взаимно положение', def: 'Определя се от разстоянието d между центровете спрямо <katex>r_1 + r_2</katex> и <katex>|r_1 - r_2|</katex>.' }
@@ -2433,6 +2204,7 @@ const CONTENT = {
         ['Концентрични', '<katex>d = 0</katex>', '0']
       ]
     },
+    drawing: { interactive: 'two-circles', params: { d: 4 }, caption: 'Движи разстоянието d между центровете и виж петте взаимни положения.' },
     algorithm: [
       'Намери разстоянието d между центровете.',
       'Пресметни <katex>r_1+r_2</katex> и <katex>|r_1-r_2|</katex>.',
@@ -4094,6 +3866,7 @@ const CONTENT = {
     formulas: [
       { label: 'Връх', tex: 'V\\left(-\\dfrac{b}{2a};\\ -\\dfrac{D}{4a}\\right)' }
     ],
+    drawing: { interactive: 'parabola', params: {}, caption: 'Връх и ос на симетрия на параболата — движи a, b, c.' },
     algorithm: [
       'Пресметни абсцисата x₀ = −b/(2a).',
       'Замести я, за да намериш ординатата y₀.',
@@ -4127,6 +3900,7 @@ const CONTENT = {
       { label: 'Минимум (a > 0)', tex: 'y_{min} = -\\dfrac{D}{4a}' },
       { label: 'Максимум (a < 0)', tex: 'y_{max} = -\\dfrac{D}{4a}' }
     ],
+    drawing: { interactive: 'parabola', params: {}, caption: 'Растене/намаляване и екстремум: знакът на a определя посоката на отваряне.' },
     algorithm: [
       'Намери върха на параболата.',
       'При a > 0: функцията намалява до върха, после расте; екстремумът е минимум.',
@@ -4161,6 +3935,7 @@ const CONTENT = {
       { label: 'С Oy', tex: '(0;\\ c)' },
       { label: 'С Ox', tex: 'ax^2 + bx + c = 0' }
     ],
+    drawing: { interactive: 'parabola', params: {}, caption: 'Пресечни точки с осите: с Oy при x=0, с Ox при D≥0.' },
     algorithm: [
       'За Oy: замести x = 0 → точка (0; c).',
       'За Ox: реши уравнението ax² + bx + c = 0.',
@@ -4187,6 +3962,7 @@ const CONTENT = {
   // --- Схематично построяване на графика на квадратна функция ---
   g9t2s10: {
     shortIntro: 'Тук събираме наученото в темата в готов алгоритъм за схематично построяване на графика на квадратна функция.',
+    drawing: { interactive: 'parabola', params: {}, caption: 'Схематично построяване: връх, ос, пресечни точки, посока на отваряне.' },
     algorithm: [
       'Определи посоката на отваряне: <katex>a > 0</katex> → нагоре; <katex>a < 0</katex> → надолу.',
       'Намери върха: <katex>x_0 = -\\dfrac{b}{2a}</katex>, после <katex>y_0</katex> чрез заместване на <katex>x_0</katex> във функцията.',
@@ -4353,18 +4129,7 @@ const CONTENT = {
     formulas: [
       { label: 'Решение', tex: '\\text{пресечната точка на двете прави}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 280 230" xmlns="http://www.w3.org/2000/svg" style="max-width:280px;">
-  <line x1="10" y1="150" x2="265" y2="150" stroke="#94a3b8" stroke-width="1.2"/>
-  <line x1="110" y1="20" x2="110" y2="215" stroke="#94a3b8" stroke-width="1.2"/>
-  <text x="258" y="144" font-size="11" fill="#94a3b8">x</text>
-  <text x="116" y="28" font-size="11" fill="#94a3b8">y</text>
-  <line x1="40" y1="192" x2="194" y2="38" stroke="#4f6ef7" stroke-width="2.2"/>
-  <line x1="82" y1="38" x2="236" y2="192" stroke="#e84393" stroke-width="2.2"/>
-  <circle cx="138" cy="94" r="4" fill="#10b981"/>
-  <text x="144" y="90" font-size="11" fill="#10b981" font-weight="600">(1; 2)</text>
-  <text x="170" y="50" font-size="11" fill="#4f6ef7">y = x+1</text>
-  <text x="200" y="180" font-size="11" fill="#e84393">y = −x+3</text>
-</svg>`, caption: 'Решението е пресечната точка на двете прави: (1; 2).' },
+    drawing: { interactive: 'linear-system', params: {}, caption: 'Решението на системата е пресечната точка на двете прави.' },
     algorithm: [
       'Начертай първата права (по две точки).',
       'Начертай втората права.',
@@ -4400,33 +4165,7 @@ const CONTENT = {
       { label: 'Няма решение', tex: '\\text{еднакъв наклон, различни прави (успоредни)}' },
       { label: 'Безброй решения', tex: '\\text{съвпадащи прави}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 360 155" xmlns="http://www.w3.org/2000/svg" style="max-width:360px;">
-  <g>
-    <line x1="15" y1="100" x2="105" y2="100" stroke="#cbd5e1" stroke-width="1"/>
-    <line x1="60" y1="40" x2="60" y2="110" stroke="#cbd5e1" stroke-width="1"/>
-    <line x1="25" y1="105" x2="95" y2="45" stroke="#4f6ef7" stroke-width="2"/>
-    <line x1="25" y1="45" x2="95" y2="105" stroke="#e84393" stroke-width="2"/>
-    <circle cx="60" cy="75" r="3.5" fill="#10b981"/>
-    <text x="60" y="132" font-size="10" fill="#64748b" text-anchor="middle">едно решение</text>
-    <text x="60" y="146" font-size="9" fill="#94a3b8" text-anchor="middle">(пресичат се)</text>
-  </g>
-  <g transform="translate(120,0)">
-    <line x1="15" y1="100" x2="105" y2="100" stroke="#cbd5e1" stroke-width="1"/>
-    <line x1="60" y1="40" x2="60" y2="110" stroke="#cbd5e1" stroke-width="1"/>
-    <line x1="20" y1="100" x2="95" y2="45" stroke="#4f6ef7" stroke-width="2"/>
-    <line x1="20" y1="115" x2="95" y2="60" stroke="#e84393" stroke-width="2"/>
-    <text x="60" y="132" font-size="10" fill="#64748b" text-anchor="middle">няма решение</text>
-    <text x="60" y="146" font-size="9" fill="#94a3b8" text-anchor="middle">(успоредни)</text>
-  </g>
-  <g transform="translate(240,0)">
-    <line x1="15" y1="100" x2="105" y2="100" stroke="#cbd5e1" stroke-width="1"/>
-    <line x1="60" y1="40" x2="60" y2="110" stroke="#cbd5e1" stroke-width="1"/>
-    <line x1="20" y1="105" x2="98" y2="48" stroke="#4f6ef7" stroke-width="3.5"/>
-    <line x1="20" y1="105" x2="98" y2="48" stroke="#e84393" stroke-width="1.5" stroke-dasharray="5 4"/>
-    <text x="60" y="132" font-size="10" fill="#64748b" text-anchor="middle">безброй решения</text>
-    <text x="60" y="146" font-size="9" fill="#94a3b8" text-anchor="middle">(съвпадат)</text>
-  </g>
-</svg>`, caption: 'Трите случая: пресичане, успоредност, съвпадане.' },
+    drawing: { interactive: 'linear-system', params: { k1:1, m1:1, k2:1, m2:-2 }, caption: 'Различен брой решения: пресичащи се (1), успоредни (0), съвпадащи (∞). Промени наклоните.' },
     algorithm: [
       'Сравни наклоните на двете прави.',
       'Различни наклони → една пресечна точка (едно решение).',
@@ -4784,17 +4523,7 @@ const CONTENT = {
       { label: 'Равни ъгли', tex: '\\alpha = \\alpha_1, \\; \\beta = \\beta_1, \\; \\gamma = \\gamma_1' },
       { label: 'Пропорционални страни', tex: '\\dfrac{a}{a_1} = \\dfrac{b}{b_1} = \\dfrac{c}{c_1} = k' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 340 230" xmlns="http://www.w3.org/2000/svg" style="max-width:340px;">
-  <polygon points="30,190 190,190 80,70" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <text x="20" y="206" font-size="13" fill="#64748b">A</text>
-  <text x="192" y="206" font-size="13" fill="#64748b">B</text>
-  <text x="72" y="64" font-size="13" fill="#64748b">C</text>
-  <polygon points="220,190 316,190 250,118" fill="#fdeef5" stroke="#e84393" stroke-width="2"/>
-  <text x="208" y="206" font-size="13" fill="#64748b">A₁</text>
-  <text x="318" y="206" font-size="13" fill="#64748b">B₁</text>
-  <text x="244" y="112" font-size="13" fill="#64748b">C₁</text>
-  <text x="170" y="224" font-size="10" fill="#64748b" text-anchor="middle">△ABC ∼ △A₁B₁C₁</text>
-</svg>`, caption: 'Подобни триъгълници: еднаква форма, пропорционални страни.' },
+    drawing: { interactive: 'similar-triangles', params: { k:1.6 }, caption: 'Подобните триъгълници имат равни ъгли и пропорционални страни.' },
     algorithm: [
       'Провери дали ъглите са съответно равни.',
       'Провери дали страните са пропорционални.',
@@ -4871,6 +4600,7 @@ const CONTENT = {
       { label: 'Страни и периметри', tex: '\\dfrac{P}{P_1} = k' },
       { label: 'Лица', tex: '\\dfrac{S}{S_1} = k^2' }
     ],
+    drawing: { interactive: 'similar-triangles', params: { k:1.6 }, caption: 'Отношението на страните е k, на периметрите k, а на лицата k².' },
     algorithm: [
       'Намери коефициента на подобие k (отношение на страни).',
       'Периметрите се отнасят като k.',
@@ -4911,29 +4641,7 @@ const CONTENT = {
       { label: 'Отворен', tex: '(a; b) = \\{x : a < x < b\\}' },
       { label: 'Безкраен', tex: '(a; +\\infty), \\; (-\\infty; b]' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" style="max-width:360px;">
-  <line x1="20" y1="35" x2="250" y2="35" stroke="#cbd5e1" stroke-width="1"/>
-  <line x1="80" y1="35" x2="200" y2="35" stroke="#4f6ef7" stroke-width="4"/>
-  <circle cx="80" cy="35" r="5" fill="#4f6ef7"/>
-  <circle cx="200" cy="35" r="5" fill="#4f6ef7"/>
-  <text x="74" y="22" font-size="12" fill="#64748b">a</text>
-  <text x="196" y="22" font-size="12" fill="#64748b">b</text>
-  <text x="356" y="40" font-size="12" fill="#1a1f2e" text-anchor="end">[a; b] затворен</text>
-  <line x1="20" y1="85" x2="250" y2="85" stroke="#cbd5e1" stroke-width="1"/>
-  <line x1="80" y1="85" x2="200" y2="85" stroke="#e84393" stroke-width="4"/>
-  <circle cx="80" cy="85" r="5" fill="white" stroke="#e84393" stroke-width="2"/>
-  <circle cx="200" cy="85" r="5" fill="white" stroke="#e84393" stroke-width="2"/>
-  <text x="74" y="72" font-size="12" fill="#64748b">a</text>
-  <text x="196" y="72" font-size="12" fill="#64748b">b</text>
-  <text x="356" y="90" font-size="12" fill="#1a1f2e" text-anchor="end">(a; b) отворен</text>
-  <line x1="20" y1="135" x2="250" y2="135" stroke="#cbd5e1" stroke-width="1"/>
-  <line x1="80" y1="135" x2="200" y2="135" stroke="#10b981" stroke-width="4"/>
-  <circle cx="80" cy="135" r="5" fill="#10b981"/>
-  <circle cx="200" cy="135" r="5" fill="white" stroke="#10b981" stroke-width="2"/>
-  <text x="74" y="122" font-size="12" fill="#64748b">a</text>
-  <text x="196" y="122" font-size="12" fill="#64748b">b</text>
-  <text x="356" y="140" font-size="12" fill="#1a1f2e" text-anchor="end">[a; b) полуотворен</text>
-</svg>`, caption: 'Затворен, отворен и полуотворен интервал.' },
+    drawing: { interactive: 'interval-method', params: { roots:[-3,1] }, caption: 'Числовите интервали и знаците по тях.' },
     algorithm: [
       'Виж знака на неравенството: ≤, ≥ → затворен край (плътна точка).',
       '<, > → отворен край (празна точка).',
@@ -4998,6 +4706,7 @@ const CONTENT = {
     formulas: [
       { label: 'Общ вид', tex: 'ax^2 + bx + c \\gtrless 0' }
     ],
+    drawing: { interactive: 'interval-method', params: { roots:[-1,4] }, caption: 'Квадратното неравенство се решава чрез знаците между корените на параболата.' },
     algorithm: [
       'Намери нулите на тричлена (реши уравнението).',
       'Определи накъде се отваря параболата (знак на a).',
@@ -5031,22 +4740,7 @@ const CONTENT = {
     formulas: [
       { label: 'Разложен вид', tex: '(x - x_1)(x - x_2)\\cdots(x - x_n) \\gtrless 0' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg" style="max-width:340px;">
-  <line x1="20" y1="90" x2="320" y2="90" stroke="#1a1f2e" stroke-width="1.5"/>
-  <path d="M320 90 l-8 -4 l0 8 z" fill="#1a1f2e"/>
-  <circle cx="90" cy="90" r="4" fill="white" stroke="#e84393" stroke-width="2"/>
-  <circle cx="180" cy="90" r="4" fill="white" stroke="#e84393" stroke-width="2"/>
-  <circle cx="270" cy="90" r="4" fill="white" stroke="#e84393" stroke-width="2"/>
-  <text x="86" y="108" font-size="12" fill="#64748b">−1</text>
-  <text x="176" y="108" font-size="12" fill="#64748b">2</text>
-  <text x="266" y="108" font-size="12" fill="#64748b">4</text>
-  <path d="M40 120 Q65 120 90 90 Q120 55 180 90 Q210 110 270 90 Q295 75 315 55" fill="none" stroke="#4f6ef7" stroke-width="2"/>
-  <text x="55" y="78" font-size="15" fill="#e84393" font-weight="700">−</text>
-  <text x="130" y="68" font-size="15" fill="#10b981" font-weight="700">+</text>
-  <text x="220" y="80" font-size="15" fill="#e84393" font-weight="700">−</text>
-  <text x="295" y="68" font-size="15" fill="#10b981" font-weight="700">+</text>
-  <text x="170" y="140" font-size="10" fill="#64748b" text-anchor="middle">знаци по интервалите чрез вълновидна крива</text>
-</svg>`, caption: 'Вълновидна крива: знаците се редуват при преминаване през всеки корен.' },
+    drawing: { interactive: 'interval-method', params: { roots:[-2,3] }, caption: 'Методът на интервалите: знакът на произведението се сменя при всеки корен.' },
     algorithm: [
       'Разложи израза на множители и намери нулите.',
       'Нанеси нулите на числовата ос.',
@@ -5155,26 +4849,7 @@ const CONTENT = {
       { label: 'Височинна теорема', tex: 'h_c^2 = a_1 \\cdot b_1' },
       { label: 'Височина чрез катетите', tex: 'h_c = \\dfrac{a \\cdot b}{c}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 330 250" xmlns="http://www.w3.org/2000/svg" style="max-width:330px;">
-  <polygon points="40,210 290,210 200,90" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="200" y1="90" x2="200" y2="210" stroke="#e84393" stroke-width="2"/>
-  <rect x="186" y="196" width="14" height="14" fill="none" stroke="#64748b" stroke-width="1.2"/>
-  <rect x="200" y="76" width="14" height="14" fill="none" stroke="#64748b" stroke-width="1.2" transform="rotate(45 207 90)"/>
-  <circle cx="40" cy="210" r="3" fill="#1a1f2e"/>
-  <circle cx="290" cy="210" r="3" fill="#1a1f2e"/>
-  <circle cx="200" cy="90" r="3" fill="#1a1f2e"/>
-  <circle cx="200" cy="210" r="3" fill="#1a1f2e"/>
-  <text x="30" y="226" font-size="13" fill="#64748b">A</text>
-  <text x="288" y="226" font-size="13" fill="#64748b">B</text>
-  <text x="196" y="84" font-size="13" fill="#64748b">C</text>
-  <text x="196" y="228" font-size="12" fill="#64748b">H</text>
-  <text x="110" y="145" font-size="12" fill="#4f6ef7">b</text>
-  <text x="252" y="145" font-size="12" fill="#4f6ef7">a</text>
-  <text x="210" y="155" font-size="12" fill="#e84393">h_c</text>
-  <text x="115" y="205" font-size="11" fill="#10b981">b₁</text>
-  <text x="242" y="205" font-size="11" fill="#10b981">a₁</text>
-  <text x="165" y="245" font-size="10" fill="#64748b">c = a₁ + b₁ (хипотенуза)</text>
-</svg>`, caption: 'Правоъгълен триъгълник: катети, хипотенуза, височина и проекции.' },
+    drawing: { interactive: 'right-metric', params: {}, caption: 'Височината към хипотенузата дели триъгълника. Движи петата H.' },
     algorithm: [
       'Определи кои са катетите, хипотенузата и проекциите.',
       'Избери подходящата теорема според известните величини.',
@@ -5210,6 +4885,7 @@ const CONTENT = {
       { label: 'Втори катет', tex: 'b^2 = c \\cdot b_1' },
       { label: 'Височинна теорема', tex: 'h_c^2 = a_1 \\cdot b_1' }
     ],
+    drawing: { interactive: 'right-metric', params: {}, caption: 'Височинна теорема h²=p·q и катетова теорема — провери числено.' },
     algorithm: [
       'Височината дели триъгълника на два по-малки, подобни на големия.',
       'Катетова теорема: катет е средно пропорционален на хипотенузата и проекцията си.',
@@ -5278,6 +4954,7 @@ const CONTENT = {
       { label: 'Разстояние', tex: 'AB = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}' },
       { label: 'Среда на отсечка', tex: 'M\\left(\\dfrac{x_1+x_2}{2};\\ \\dfrac{y_1+y_2}{2}\\right)' }
     ],
+    drawing: { interactive: 'distance-coord', params: {}, caption: 'Разстоянието между две точки чрез Питагор: AB=√(Δx²+Δy²).' },
     algorithm: [
       'Намери разликите на съответните координати.',
       'Повдигни ги на квадрат и събери.',
@@ -5507,6 +5184,7 @@ const CONTENT = {
       { label: 'Катет чрез хипотенуза', tex: 'a = c \\cdot \\sin\\alpha' },
       { label: 'Катет чрез друг катет', tex: 'a = b \\cdot \\tg\\alpha' }
     ],
+    drawing: { interactive: 'triangle-solver', params: {}, caption: 'Намери неизвестни елементи на триъгълник чрез влачене на върховете.' },
     algorithm: [
       'Определи кои елементи са дадени и кои се търсят.',
       'Избери функция, която ги свързва.',
@@ -5807,6 +5485,7 @@ const CONTENT = {
       { label: 'Сбор на първите n', tex: 'S_n = \\dfrac{(a_1 + a_n) \\cdot n}{2}' },
       { label: 'Сбор чрез d', tex: 'S_n = \\dfrac{2a_1 + (n-1)d}{2} \\cdot n' }
     ],
+    drawing: { interactive: 'progression', params: { type:'arith' }, caption: 'Сборът на първите n члена: Sₙ=(a₁+aₙ)/2·n.' },
     algorithm: [
       'За общ член: <katex>a_n = a_1 + (n-1)d</katex>.',
       'За сбор с известни първи и последен член: <katex>S_n = \\dfrac{(a_1+a_n)n}{2}</katex>.',
@@ -5835,6 +5514,7 @@ const CONTENT = {
       { label: 'Частно', tex: 'q = \\dfrac{a_{n+1}}{a_n}' },
       { label: 'Свойство', tex: 'a_n^2 = a_{n-1} \\cdot a_{n+1}' }
     ],
+    drawing: { interactive: 'progression', params: { type:'geom', d:1.5 }, caption: 'Геометрична прогресия: всеки член е предходният · частно q.' },
     algorithm: [
       'Провери дали отношението на съседни членове е постоянно → ГП.',
       'Частното е <katex>q = \\dfrac{a_{n+1}}{a_n}</katex>.',
@@ -5862,6 +5542,7 @@ const CONTENT = {
       { label: 'Общ член', tex: 'a_n = a_1 \\cdot q^{n-1}' },
       { label: 'Сбор на първите n (q ≠ 1)', tex: 'S_n = a_1 \\cdot \\dfrac{q^n - 1}{q - 1}' }
     ],
+    drawing: { interactive: 'progression', params: { type:'geom', d:1.5 }, caption: 'Сборът на ГП: Sₙ=a₁(qⁿ−1)/(q−1).' },
     algorithm: [
       'За общ член: <katex>a_n = a_1 \\cdot q^{n-1}</katex>.',
       'За сбор (при q ≠ 1): <katex>S_n = a_1 \\dfrac{q^n - 1}{q - 1}</katex>.',
@@ -5978,6 +5659,7 @@ const CONTENT = {
       { label: 'Медиана (нечетен брой)', tex: '\\text{средният елемент}' },
       { label: 'Медиана (четен брой)', tex: '\\dfrac{\\text{двата средни}}{2}' }
     ],
+    drawing: { interactive: 'stats-bars', params: {}, caption: 'Сравни мода, медиана и средна — тапни стълбовете и виж как се менят.' },
     algorithm: [
       'За мода: намери най-често срещаната стойност.',
       'За медиана: подреди данните по големина.',
@@ -6059,6 +5741,7 @@ const CONTENT = {
     formulas: [
       { label: 'Кръгова диаграма', tex: '\\text{ъгъл} = \\text{относителна честота} \\times 360°' }
     ],
+    drawing: { interactive: 'stats-bars', params: {}, caption: 'Графично представяне на данни със стълбове.' },
     algorithm: [
       'Избери подходящ тип диаграма според данните.',
       'За кръгова: пресметни ъгъла на всеки сектор.',
@@ -6148,21 +5831,7 @@ const CONTENT = {
     formulas: [
       { label: 'Синусова теорема', tex: '\\dfrac{a}{\\sin\\alpha} = \\dfrac{b}{\\sin\\beta} = \\dfrac{c}{\\sin\\gamma} = 2R' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <polygon points="40,180 260,180 110,50" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <circle cx="40" cy="180" r="3" fill="#1a1f2e"/>
-  <circle cx="260" cy="180" r="3" fill="#1a1f2e"/>
-  <circle cx="110" cy="50" r="3" fill="#1a1f2e"/>
-  <text x="28" y="194" font-size="14" fill="#64748b">A</text>
-  <text x="264" y="194" font-size="14" fill="#64748b">B</text>
-  <text x="104" y="44" font-size="14" fill="#64748b">C</text>
-  <text x="195" y="120" font-size="13" fill="#e84393" font-weight="600">a</text>
-  <text x="62" y="120" font-size="13" fill="#e84393" font-weight="600">b</text>
-  <text x="148" y="196" font-size="13" fill="#e84393" font-weight="600">c</text>
-  <text x="56" y="172" font-size="12" fill="#10b981">α</text>
-  <text x="238" y="172" font-size="12" fill="#10b981">β</text>
-  <text x="108" y="72" font-size="12" fill="#10b981">γ</text>
-</svg>`, caption: 'Страните a, b, c са срещу ъглите α, β, γ.' },
+    drawing: { interactive: 'triangle-solver', params: {}, caption: 'Влачи върховете и провери синусовата теорема: отношенията a/sinA, b/sinB, c/sinC са равни.' },
     algorithm: [
       'Подреди известните: страна и срещуположен ъгъл образуват двойка.',
       'Приравни отношенията за двете двойки.',
@@ -6190,21 +5859,7 @@ const CONTENT = {
       { label: 'Косинусова теорема', tex: 'a^2 = b^2 + c^2 - 2bc\\cos\\alpha' },
       { label: 'Намиране на ъгъл', tex: '\\cos\\alpha = \\dfrac{b^2 + c^2 - a^2}{2bc}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <polygon points="40,180 260,180 110,50" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <circle cx="40" cy="180" r="3" fill="#1a1f2e"/>
-  <circle cx="260" cy="180" r="3" fill="#1a1f2e"/>
-  <circle cx="110" cy="50" r="3" fill="#1a1f2e"/>
-  <text x="28" y="194" font-size="14" fill="#64748b">A</text>
-  <text x="264" y="194" font-size="14" fill="#64748b">B</text>
-  <text x="104" y="44" font-size="14" fill="#64748b">C</text>
-  <text x="195" y="120" font-size="13" fill="#e84393" font-weight="600">a</text>
-  <text x="62" y="120" font-size="13" fill="#e84393" font-weight="600">b</text>
-  <text x="148" y="196" font-size="13" fill="#e84393" font-weight="600">c</text>
-  <text x="56" y="172" font-size="12" fill="#10b981">α</text>
-  <text x="238" y="172" font-size="12" fill="#10b981">β</text>
-  <text x="108" y="72" font-size="12" fill="#10b981">γ</text>
-</svg>`, caption: 'Косинусова теорема: a² = b² + c² − 2bc·cos α.' },
+    drawing: { interactive: 'triangle-solver', params: {}, caption: 'Косинусовата теорема свързва трите страни и един ъгъл: a² = b²+c²−2bc·cosA.' },
     algorithm: [
       'При две страни и ъгъл между тях — намери третата страна.',
       'При три страни — намери ъгъл чрез формулата за cos.',
@@ -6270,6 +5925,7 @@ const CONTENT = {
     formulas: [
       { label: 'Сбор на ъглите', tex: '\\alpha + \\beta + \\gamma = 180°' }
     ],
+    drawing: { interactive: 'triangle-solver', params: {}, caption: 'Експериментирай: при два ъгъла и страна → синусова; при три страни или две страни и ъгъл между тях → косинусова.' },
     algorithm: [
       'Виж кои елементи са дадени.',
       'Ъгъл + срещуположна страна → синусова.',
@@ -6648,20 +6304,7 @@ const CONTENT = {
       { label: 'Намаляваща', tex: '0 < a < 1' },
       { label: 'Минава през', tex: '(0;\\ 1)' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 280 230" xmlns="http://www.w3.org/2000/svg" style="max-width:280px;">
-  <line x1="10" y1="150" x2="270" y2="150" stroke="#94a3b8" stroke-width="1.2"/>
-  <line x1="130" y1="20" x2="130" y2="215" stroke="#94a3b8" stroke-width="1.2"/>
-  <text x="262" y="144" font-size="11" fill="#94a3b8">x</text>
-  <text x="136" y="28" font-size="11" fill="#94a3b8">y</text>
-  <line x1="55" y1="225" x2="225" y2="55" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 3"/>
-  <path d="M 65 145.4 L 91 140.8 L 117 131.6 L 130 124 L 143 113.2 L 156 98 L 169 76.5 L 182 46" fill="none" stroke="#4f6ef7" stroke-width="2.2"/>
-  <circle cx="130" cy="124" r="3" fill="#4f6ef7"/>
-  <path d="M 136.5 202 L 149.5 160.8 L 162.5 141.6 L 175.5 129 L 188.5 119.6 L 208 108.8 L 227.5 100.4 L 247 93.6" fill="none" stroke="#e84393" stroke-width="2.2"/>
-  <circle cx="156" cy="150" r="3" fill="#e84393"/>
-  <text x="185" y="48" font-size="11" fill="#4f6ef7">y = aˣ</text>
-  <text x="228" y="96" font-size="11" fill="#e84393">y = logₐx</text>
-  <text x="140" y="222" font-size="9" fill="#94a3b8">взаимно обратни (симетрични спрямо y=x)</text>
-</svg>`, caption: 'Показателна y = aˣ и логаритмична y = logₐx — взаимно обратни.' },
+    drawing: { interactive: 'exp-log', params: { mode: 'exp', base: 2 }, caption: 'Движи основата a. При a>1 функцията расте, при 0<a<1 намалява. Винаги минава през (0;1).' },
     algorithm: [
       'Виж основата a.',
       'a > 1 → функцията расте; 0 < a < 1 → намалява.',
@@ -6690,6 +6333,7 @@ const CONTENT = {
       { label: 'Определение', tex: '\\log_a b = c \\Leftrightarrow a^c = b' },
       { label: 'Основни стойности', tex: '\\log_a 1 = 0, \\quad \\log_a a = 1' }
     ],
+    drawing: { interactive: 'exp-log', params: { mode: 'both', base: 2 }, caption: 'log_a(x) и a^x са взаимно обратни — симетрични спрямо правата y=x.' },
     algorithm: [
       'Питай се: на коя степен да повдигна основата, за да получа числото?',
       'Този показател е логаритъмът.',
@@ -6718,20 +6362,7 @@ const CONTENT = {
       { label: 'Намаляваща', tex: '0 < a < 1' },
       { label: 'Минава през', tex: '(1;\\ 0)' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 280 230" xmlns="http://www.w3.org/2000/svg" style="max-width:280px;">
-  <line x1="10" y1="150" x2="270" y2="150" stroke="#94a3b8" stroke-width="1.2"/>
-  <line x1="130" y1="20" x2="130" y2="215" stroke="#94a3b8" stroke-width="1.2"/>
-  <text x="262" y="144" font-size="11" fill="#94a3b8">x</text>
-  <text x="136" y="28" font-size="11" fill="#94a3b8">y</text>
-  <line x1="55" y1="225" x2="225" y2="55" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 3"/>
-  <path d="M 65 145.4 L 91 140.8 L 117 131.6 L 130 124 L 143 113.2 L 156 98 L 169 76.5 L 182 46" fill="none" stroke="#4f6ef7" stroke-width="2.2"/>
-  <circle cx="130" cy="124" r="3" fill="#4f6ef7"/>
-  <path d="M 136.5 202 L 149.5 160.8 L 162.5 141.6 L 175.5 129 L 188.5 119.6 L 208 108.8 L 227.5 100.4 L 247 93.6" fill="none" stroke="#e84393" stroke-width="2.2"/>
-  <circle cx="156" cy="150" r="3" fill="#e84393"/>
-  <text x="185" y="48" font-size="11" fill="#4f6ef7">y = aˣ</text>
-  <text x="228" y="96" font-size="11" fill="#e84393">y = logₐx</text>
-  <text x="140" y="222" font-size="9" fill="#94a3b8">взаимно обратни (симетрични спрямо y=x)</text>
-</svg>`, caption: 'Логаритмичната функция е обратна на показателната.' },
+    drawing: { interactive: 'exp-log', params: { mode: 'log', base: 2 }, caption: 'Логаритмичната функция минава през (1;0), с асимптота оста y. Тя е обратна на показателната.' },
     algorithm: [
       'ДМ: само положителни x (x > 0).',
       'a > 1 → расте; 0 < a < 1 → намалява.',
@@ -6795,6 +6426,7 @@ const CONTENT = {
       { label: 'Лице на трапец', tex: 'S = \\dfrac{a + b}{2} \\cdot h' },
       { label: 'Диагонали на успоредник', tex: 'd_1^2 + d_2^2 = 2(a^2 + b^2)' }
     ],
+    drawing: { interactive: 'trapezoid', params: {}, caption: 'Лице на трапец S = (a+b)/2·h.' },
     algorithm: [
       'Определи вида на фигурата и известните елементи.',
       'За лице на успоредник: основа по височина (или ab·sin α).',
@@ -6851,6 +6483,7 @@ const CONTENT = {
       { label: 'Централен ъгъл', tex: '\\dfrac{360°}{n}' },
       { label: 'Сбор на ъглите', tex: '(n-2) \\cdot 180°' }
     ],
+    drawing: { interactive: 'regular-polygon', params: { n:6 }, caption: 'Движи n: вътрешният ъгъл, централният ъгъл, вписаната и описаната окръжност се менят.' },
     algorithm: [
       'Сборът на вътрешните ъгли е <katex>(n-2)\\cdot 180°</katex>.',
       'Всеки вътрешен ъгъл: раздели сбора на n.',
@@ -6879,6 +6512,7 @@ const CONTENT = {
       { label: 'Описан радиус', tex: 'R = \\dfrac{a}{2\\sin\\frac{180°}{n}}' },
       { label: 'Апотема', tex: 'r = \\dfrac{a}{2\\tg\\frac{180°}{n}}' }
     ],
+    drawing: { interactive: 'regular-polygon', params: { n:6 }, caption: 'Радиус на описаната (R) и вписаната (r) окръжност на правилен n-ъгълник.' },
     algorithm: [
       'Раздели многоъгълника на n равнобедрени триъгълника от центъра.',
       'Централният ъгъл на всеки е 360°/n.',
@@ -7335,24 +6969,7 @@ const CONTENT = {
     formulas: [
       { label: 'Височина на стълб', tex: '= \\text{честота на класа}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <line x1="30" y1="170" x2="285" y2="170" stroke="#94a3b8" stroke-width="1.2"/>
-  <line x1="30" y1="20" x2="30" y2="170" stroke="#94a3b8" stroke-width="1.2"/>
-  <text x="278" y="186" font-size="10" fill="#94a3b8">x</text>
-  <text x="14" y="28" font-size="10" fill="#94a3b8">f</text>
-  <rect x="40" y="130" width="40" height="40" fill="#dde4fb" stroke="#4f6ef7" stroke-width="1.5"/>
-  <rect x="80" y="90" width="40" height="80" fill="#dde4fb" stroke="#4f6ef7" stroke-width="1.5"/>
-  <rect x="120" y="60" width="40" height="110" fill="#dde4fb" stroke="#4f6ef7" stroke-width="1.5"/>
-  <rect x="160" y="100" width="40" height="70" fill="#dde4fb" stroke="#4f6ef7" stroke-width="1.5"/>
-  <rect x="200" y="140" width="40" height="30" fill="#dde4fb" stroke="#4f6ef7" stroke-width="1.5"/>
-  <polyline points="60,130 100,90 140,60 180,100 220,140" fill="none" stroke="#e84393" stroke-width="2"/>
-  <circle cx="60" cy="130" r="2.5" fill="#e84393"/>
-  <circle cx="100" cy="90" r="2.5" fill="#e84393"/>
-  <circle cx="140" cy="60" r="2.5" fill="#e84393"/>
-  <circle cx="180" cy="100" r="2.5" fill="#e84393"/>
-  <circle cx="220" cy="140" r="2.5" fill="#e84393"/>
-  <text x="155" y="195" font-size="10" fill="#64748b" text-anchor="middle">хистограма (стълбове) и полигон (линия)</text>
-</svg>`, caption: 'Хистограма (стълбове) и полигон на честотите (линия).' },
+    drawing: { interactive: 'stats-bars', params: {}, caption: 'Хистограма: тапни стълб, за да промениш честотата. Зелената линия е средната.' },
     algorithm: [
       'По хоризонталната ос нанеси класовете.',
       'Височината на всеки стълб е честотата.',
@@ -7547,6 +7164,7 @@ const CONTENT = {
     formulas: [
       { label: 'Решения', tex: 'x = (-1)^k \\arcsin a + k\\pi, \\; k \\in \\mathbb{Z}' }
     ],
+    drawing: { interactive: 'trig-equation', params: { fn:'sin' }, caption: 'sin x = a: двете решения в окръжността са симетрични спрямо оста y.' },
     algorithm: [
       'Провери, че −1 ≤ a ≤ 1.',
       'Намери основното решение arcsin a.',
@@ -7573,6 +7191,7 @@ const CONTENT = {
     formulas: [
       { label: 'Решения', tex: 'x = \\pm \\arccos a + 2k\\pi, \\; k \\in \\mathbb{Z}' }
     ],
+    drawing: { interactive: 'trig-equation', params: { fn:'cos' }, caption: 'cos x = a: двете решения са симетрични спрямо оста x.' },
     algorithm: [
       'Провери, че −1 ≤ a ≤ 1.',
       'Намери arccos a.',
@@ -8023,6 +7642,7 @@ const CONTENT = {
       { label: 'Сбор на първите n члена', tex: 'S_n = \\dfrac{a_1 + a_n}{2} \\cdot n = \\dfrac{2a_1 + (n-1)d}{2} \\cdot n' },
       { label: 'Свойство на средния член', tex: 'a_k = \\dfrac{a_{k-1} + a_{k+1}}{2}' }
     ],
+    drawing: { interactive: 'progression', params: { type:'arith' }, caption: 'Аритметична прогресия: всеки член е предходният + разлика d.' },
     algorithm: [
       'Провери дали редицата е АП: изчисли разликата между последователни членове.',
       'Запиши a₁ и d.',
@@ -8974,6 +8594,22 @@ function initInteractiveWidgets() {
     else if (type === 'pythagoras') initPythagorasWidget(el, params);
     else if (type === 'unit-circle') initUnitCircleWidget(el, params);
     else if (type === 'trig-graph') initTrigGraphWidget(el, params);
+    else if (type === 'exp-log') initExpLogWidget(el, params);
+    else if (type === 'triangle-solver') initTriangleSolverWidget(el, params);
+    else if (type === 'vector-ops') initVectorOpsWidget(el, params);
+    else if (type === 'circle-angle') initCircleAngleWidget(el, params);
+    else if (type === 'linear-system') initLinearSystemWidget(el, params);
+    else if (type === 'interval-method') initIntervalWidget(el, params);
+    else if (type === 'similar-triangles') initSimilarWidget(el, params);
+    else if (type === 'trapezoid') initTrapezoidWidget(el, params);
+    else if (type === 'progression') initProgressionWidget(el, params);
+    else if (type === 'stats-bars') initStatsWidget(el, params);
+    else if (type === 'right-metric') initRightMetricWidget(el, params);
+    else if (type === 'two-circles') initTwoCirclesWidget(el, params);
+    else if (type === 'tangent-circle') initTangentWidget(el, params);
+    else if (type === 'trig-equation') initTrigEqWidget(el, params);
+    else if (type === 'regular-polygon') initPolygonWidget(el, params);
+    else if (type === 'distance-coord') initDistanceWidget(el, params);
     else if (type === 'prism-3d') initPrism3DWidget(el, params);
     else if (type === 'pyramid-3d') initPyramid3DWidget(el, params);
     else if (type === 'cylinder-3d') initCylinder3DWidget(el, params);
@@ -9148,6 +8784,9 @@ function initUnitCircleWidget(el, p) {
     constrain: (x, y) => { const r = Math.hypot(x, y) || 1; return { x: x / r, y: y / r }; }
   };
 
+  let prevDeg = deg;        // за определяне посоката на движение
+  let dirSign = 1;          // +1 = обратно на часовниковата (нарастване), −1 = по часовниковата
+
   function quadrant(d) {
     d = ((d % 360) + 360) % 360;
     if (d === 0 || d === 90 || d === 180 || d === 270) return 'на оста (граничен ъгъл)';
@@ -9175,11 +8814,42 @@ function initUnitCircleWidget(el, p) {
       s += `<text x="${c.sx(xmax)-30}" y="${c.sy(1)-5}" font-size="10.5" font-weight="700" fill="${COT}">ос cotg</text>`;
     }
 
-    // дъга на ъгъла от 0 до α (по посока на знака)
-    const N = Math.max(2, Math.round(Math.abs(deg) / 4));
-    let arc = `M ${c.sx(0.32)} ${c.sy(0)}`;
-    for (let i = 1; i <= N; i++) { const t = a * i / N; arc += ` L ${c.sx(0.32 * Math.cos(t))} ${c.sy(0.32 * Math.sin(t))}`; }
-    s += `<path d="${arc}" fill="none" stroke="${ANG}" stroke-width="2"/>`;
+    // --- дъга/спирала на ъгъла с очертани обиколки ---
+    // Радиусът леко расте с всяка обиколка, за да се виждат отделните завъртания.
+    const turns = Math.abs(deg) / 360;
+    const baseR = 0.30, growth = 0.085;        // нарастване на радиуса за обиколка
+    const Npts = Math.max(8, Math.round(Math.abs(deg) / 3));
+    let arc = '';
+    let lastPt = null, beforeLastPt = null;
+    for (let i = 0; i <= Npts; i++) {
+      const frac = i / Npts;
+      const t = a * frac;                         // текущ ъгъл по пътя (със знак)
+      const rr = baseR + growth * (Math.abs(deg) * frac / 360); // спираловиден радиус
+      const px = c.sx(rr * Math.cos(t)), py = c.sy(rr * Math.sin(t));
+      arc += (i === 0 ? 'M' : 'L') + ` ${px.toFixed(1)} ${py.toFixed(1)}`;
+      beforeLastPt = lastPt; lastPt = { x: px, y: py };
+    }
+    s += `<path d="${arc}" fill="none" stroke="${ANG}" stroke-width="2.2"/>`;
+
+    // стрелка за посоката на движение в края на спиралата
+    if (lastPt && beforeLastPt) {
+      const dx = lastPt.x - beforeLastPt.x, dy = lastPt.y - beforeLastPt.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const ux = dx / len, uy = dy / len;            // посока на движение
+      const ah = 9;                                   // дължина на върха на стрелката
+      const a1x = lastPt.x - ah * (ux * 0.85 + uy * 0.5);
+      const a1y = lastPt.y - ah * (uy * 0.85 - ux * 0.5);
+      const a2x = lastPt.x - ah * (ux * 0.85 - uy * 0.5);
+      const a2y = lastPt.y - ah * (uy * 0.85 + ux * 0.5);
+      s += `<polygon points="${lastPt.x.toFixed(1)},${lastPt.y.toFixed(1)} ${a1x.toFixed(1)},${a1y.toFixed(1)} ${a2x.toFixed(1)},${a2y.toFixed(1)}" fill="${ANG}"/>`;
+    }
+    // надпис за брой обиколки (ако има поне една)
+    if (turns >= 1) {
+      s += `<text x="${ox}" y="${oy + 4}" font-size="10.5" font-weight="700" fill="${ANG}" text-anchor="middle">${fmt(turns)} об.</text>`;
+    }
+    // указател за посоката (текст)
+    const dirText = dirSign >= 0 ? '↺ обратно на часовн.' : '↻ по часовниковата';
+    s += `<text x="${c.sx(xmin)+4}" y="${c.sy(ymin)-6}" font-size="10" font-weight="700" fill="${ANG}">${dirText}</text>`;
 
     // продължение на радиуса до осите tg/cotg
     const tgFinite = Math.abs(cosv) > 1e-6;
@@ -9212,8 +8882,8 @@ function initUnitCircleWidget(el, p) {
     // точка P
     s += dot(c, cosv, sinv, RAD, 6);
     s += lbl(c, cosv, sinv, 'P', RAD, cosv >= 0 ? 9 : -16, sinv >= 0 ? -9 : 16);
-    s += `<text x="${c.sx(cosv / 2)}" y="${c.sy(0) + (sinv >= 0 ? 15 : -7)}" font-size="11" font-weight="700" fill="${COS}" text-anchor="middle">cos</text>`;
-    s += `<text x="${c.sx(cosv) + (cosv >= 0 ? 8 : -8)}" y="${c.sy(sinv / 2)}" font-size="11" font-weight="700" fill="${SIN}" text-anchor="${cosv >= 0 ? 'start' : 'end'}">sin</text>`;
+    s += `<text x="${c.sx(cosv / 2)}" y="${c.sy(0) + (sinv >= 0 ? 15 : -7)}" font-size="11" font-weight="700" fill="${COS}" text-anchor="middle">cos=${fmt(cosv)}</text>`;
+    s += `<text x="${c.sx(cosv) + (cosv >= 0 ? 8 : -8)}" y="${c.sy(sinv / 2)}" font-size="11" font-weight="700" fill="${SIN}" text-anchor="${cosv >= 0 ? 'start' : 'end'}">sin=${fmt(sinv)}</text>`;
     svg.innerHTML = s;
 
     const tg = tgFinite ? fmt(sinv / cosv) : '±∞ (недеф.)';
@@ -9231,18 +8901,661 @@ function initUnitCircleWidget(el, p) {
     if (Math.round(+inp.value) !== Math.round(deg)) inp.value = deg;
   }
 
-  el.querySelector('input[type=range]').addEventListener('input', e => { deg = parseFloat(e.target.value); draw(); });
+  el.querySelector('input[type=range]').addEventListener('input', e => {
+    const nv = parseFloat(e.target.value);
+    if (nv !== prevDeg) { dirSign = nv > prevDeg ? 1 : -1; prevDeg = nv; }
+    deg = nv; draw();
+  });
   el.querySelector('input[type=checkbox]').addEventListener('change', e => { showTan = e.target.checked; draw(); });
   makeDraggable(el, svg, c, W, H, [P], () => {
     let d = Math.atan2(P.y, P.x) * 180 / Math.PI;
-    // запази знака/диапазона близо до текущия ъгъл, но позволи отрицателни
-    deg = Math.round(d);
-    draw();
+    const nv = Math.round(d);
+    // определи посоката по най-късата разлика спрямо предишния ъгъл
+    let diff = nv - prevDeg;
+    while (diff > 180) diff -= 360; while (diff < -180) diff += 360;
+    if (Math.abs(diff) > 0.5) { dirSign = diff > 0 ? 1 : -1; }
+    prevDeg = nv; deg = nv; draw();
   });
   draw();
 }
 
 // ============================================================
+// ============================================================
+// ПОКАЗАТЕЛНА И ЛОГАРИТМИЧНА ФУНКЦИЯ: y = a^x и y = log_a(x)
+// ============================================================
+function initExpLogWidget(el, p) {
+  const W = 320, H = 280, xmin = -4, xmax = 4, ymin = -4, ymax = 4;
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
+  let base = p.base ?? 2;
+  let mode = p.mode ?? 'exp'; // 'exp' | 'log' | 'both'
+  const EXP = '#4f6ef7', LOG = '#e84393';
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls">
+      <div class="iw-controls-2col" style="grid-template-columns:1fr 1fr 1fr;">
+        <label style="flex-direction:row;gap:5px;align-items:center;color:${EXP}"><input type="radio" name="m${Math.random().toString(36).slice(2,6)}" data-m="exp" ${mode==='exp'?'checked':''} style="width:auto;">aˣ</label>
+        <label style="flex-direction:row;gap:5px;align-items:center;color:${LOG}"><input type="radio" data-m="log" ${mode==='log'?'checked':''} style="width:auto;">logₐx</label>
+        <label style="flex-direction:row;gap:5px;align-items:center;">обе<input type="radio" data-m="both" ${mode==='both'?'checked':''} style="width:auto;"></label>
+      </div>
+      <label>основа a = <span class="iw-val" data-v="b"></span>
+        <input type="range" min="0.2" max="4" step="0.1" value="${base}" data-k="b"></label>
+    </div>
+    <div class="iw-readout"></div>`;
+  const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
+  function curve(fn, color) {
+    let d = '', started = false;
+    const N = 240;
+    for (let i = 0; i <= N; i++) {
+      const x = xmin + (xmax - xmin) * i / N;
+      const y = fn(x);
+      if (!isFinite(y) || y < ymin - 2 || y > ymax + 2) { started = false; continue; }
+      d += (started ? 'L' : 'M') + ` ${c.sx(x).toFixed(1)} ${c.sy(y).toFixed(1)}`;
+      started = true;
+    }
+    return `<path d="${d}" fill="none" stroke="${color}" stroke-width="2.5"/>`;
+  }
+  function draw() {
+    if (Math.abs(base - 1) < 0.05) base = base < 1 ? 0.95 : 1.05; // a≠1
+    let s = axesSVG(c, W, H, xmin, xmax, ymin, ymax);
+    // ос y=x за да се вижда симетрията при both
+    if (mode === 'both') s += `<line x1="${c.sx(Math.max(xmin,ymin))}" y1="${c.sy(Math.max(xmin,ymin))}" x2="${c.sx(Math.min(xmax,ymax))}" y2="${c.sy(Math.min(xmax,ymax))}" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3"/>`;
+    if (mode === 'exp' || mode === 'both') s += curve(x => Math.pow(base, x), EXP);
+    if (mode === 'log' || mode === 'both') s += curve(x => x > 0 ? Math.log(x) / Math.log(base) : NaN, LOG);
+    // характерни точки
+    if (mode !== 'log') s += dot(c, 0, 1, EXP, 4) + lbl(c, 0, 1, '(0;1)', EXP, 6, -4);
+    if (mode !== 'exp') s += dot(c, 1, 0, LOG, 4) + lbl(c, 1, 0, '(1;0)', LOG, 6, 14);
+    svg.innerHTML = s;
+    const grow = base > 1 ? 'растяща' : 'намаляваща';
+    readout.innerHTML = (mode==='log'?`y = log₍${fmt(base)}₎x`:`y = ${fmt(base)}ˣ`) +
+      ` &nbsp;|&nbsp; <b>${grow}</b> (a ${base>1?'>':'<'} 1)<br>` +
+      (mode==='exp'?'минава през (0;1), асимптота y=0':mode==='log'?'минава през (1;0), асимптота x=0':'двете са взаимно обратни — симетрични спрямо y=x');
+    el.querySelector('[data-v="b"]').textContent = fmt(base);
+  }
+  el.querySelector('input[type=range]').addEventListener('input', e => { base = parseFloat(e.target.value); draw(); });
+  el.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', e => { if(e.target.checked){mode = e.target.dataset.m; draw();} }));
+  draw();
+}
+
+// ============================================================
+// РЕШАВАНЕ НА ТРИЪГЪЛНИК — синусова и косинусова теорема
+// ============================================================
+function initTriangleSolverWidget(el, p) {
+  const W = 320, H = 290, xmin = -1, xmax = 7, ymin = -1, ymax = 6;
+  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const A = { x: 0.5, y: 0.5, color:'#4f6ef7' };
+  const B = { x: 5.5, y: 0.8, color:'#4f6ef7' };
+  const Cc = { x: 2.6, y: 4.5, color:'#4f6ef7' };
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg><div class="iw-readout"></div>`;
+  const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
+  function angle(P, Q, R) { // ъгъл при P
+    const v1x=Q.x-P.x, v1y=Q.y-P.y, v2x=R.x-P.x, v2y=R.y-P.y;
+    let d=(v1x*v2x+v1y*v2y)/(Math.hypot(v1x,v1y)*Math.hypot(v2x,v2y));
+    d=Math.max(-1,Math.min(1,d)); return Math.acos(d)*180/Math.PI;
+  }
+  function draw() {
+    const a = Math.hypot(B.x-Cc.x, B.y-Cc.y); // срещу A
+    const b = Math.hypot(A.x-Cc.x, A.y-Cc.y); // срещу B
+    const cc = Math.hypot(A.x-B.x, A.y-B.y);  // срещу C
+    const angA = angle(A,B,Cc), angB = angle(B,A,Cc), angC = angle(Cc,A,B);
+    let s = axesSVG(c, W, H, xmin, xmax, ymin, ymax);
+    s += `<polygon points="${c.sx(A.x)},${c.sy(A.y)} ${c.sx(B.x)},${c.sy(B.y)} ${c.sx(Cc.x)},${c.sy(Cc.y)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
+    // етикети на страни (по средата на всяка)
+    s += lbl(c,(B.x+Cc.x)/2,(B.y+Cc.y)/2,'a='+fmt(a),'#e84393',4,0);
+    s += lbl(c,(A.x+Cc.x)/2,(A.y+Cc.y)/2,'b='+fmt(b),'#10b981',-30,0);
+    s += lbl(c,(A.x+B.x)/2,(A.y+B.y)/2,'c='+fmt(cc),'#8b5cf6',0,16);
+    // върхове + ъгли
+    s += dot(c,A.x,A.y,A.color,6)+dot(c,B.x,B.y,B.color,6)+dot(c,Cc.x,Cc.y,Cc.color,6);
+    s += lbl(c,A.x,A.y,'A '+Math.round(angA)+'°','#1a1f2e',-10,-8);
+    s += lbl(c,B.x,B.y,'B '+Math.round(angB)+'°','#1a1f2e',8,-8);
+    s += lbl(c,Cc.x,Cc.y,'C '+Math.round(angC)+'°','#1a1f2e',-6,-10);
+    svg.innerHTML = s;
+    // синусова теорема проверка
+    const ratio = a/Math.sin(angA*Math.PI/180);
+    readout.innerHTML = `Влачи върховете A, B, C.<br>` +
+      `Синусова: a/sinA = b/sinB = c/sinC ≈ <b>${fmt(ratio)}</b><br>` +
+      `Косинусова: a² = b²+c²−2bc·cosA = <b>${fmt(b*b+cc*cc-2*b*cc*Math.cos(angA*Math.PI/180))}</b> (= a² = ${fmt(a*a)})`;
+  }
+  makeDraggable(el, svg, c, W, H, [A,B,Cc], draw);
+  draw();
+}
+
+// ============================================================
+// ОПЕРАЦИИ С ВЕКТОРИ — събиране (триъгълник/успоредник), изваждане, умножение
+// ============================================================
+function initVectorOpsWidget(el, p) {
+  const W = 320, H = 280, xmin = -5, xmax = 5, ymin = -4, ymax = 4;
+  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  let mode = p.mode ?? 'add-tri'; // add-tri | add-par | sub | scalar
+  let k = p.k ?? 1.5;
+  const a = { x: 3, y: 1, color:'#4f6ef7' };
+  const b = { x: 1, y: 2.5, color:'#e84393' };
+  const A_BLUE='#4f6ef7', B_PINK='#e84393', RES='#10b981';
+  function arrow(x1,y1,x2,y2,color,w){
+    const ang=Math.atan2(c.sy(y2)-c.sy(y1), c.sx(x2)-c.sx(x1));
+    const ah=10, a1=ang+Math.PI*0.85, a2=ang-Math.PI*0.85;
+    return seg(c,x1,y1,x2,y2,color,w||2.5)+
+      `<polygon points="${c.sx(x2)},${c.sy(y2)} ${(c.sx(x2)+ah*Math.cos(a1)).toFixed(1)},${(c.sy(y2)+ah*Math.sin(a1)).toFixed(1)} ${(c.sx(x2)+ah*Math.cos(a2)).toFixed(1)},${(c.sy(y2)+ah*Math.sin(a2)).toFixed(1)}" fill="${color}"/>`;
+  }
+  const modes = [['add-tri','a+b △'],['add-par','a+b ▱'],['sub','a−b'],['scalar','k·a']];
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><div class="iw-controls-2col" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+      ${modes.map(([m,t])=>`<label style="flex-direction:row;gap:4px;align-items:center;font-size:12px;"><input type="radio" data-m="${m}" ${mode===m?'checked':''} style="width:auto;">${t}</label>`).join('')}
+    </div>
+    <label data-scalar style="display:${mode==='scalar'?'flex':'none'}">k = <span class="iw-val" data-v="k">${k}</span>
+      <input type="range" min="-2" max="2.5" step="0.1" value="${k}" data-k="k"></label></div>
+    <div class="iw-readout"></div>`;
+  const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
+  function draw() {
+    let s = axesSVG(c, W, H, xmin, xmax, ymin, ymax);
+    let info='';
+    if (mode === 'add-tri') {
+      s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(a.x,a.y,a.x+b.x,a.y+b.y,B_PINK) + arrow(0,0,a.x+b.x,a.y+b.y,RES,3);
+      info = `Правило на триъгълника: подреждаш b след a. a+b = (${fmt(a.x+b.x)}; ${fmt(a.y+b.y)})`;
+    } else if (mode === 'add-par') {
+      s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(0,0,b.x,b.y,B_PINK) + arrow(0,0,a.x+b.x,a.y+b.y,RES,3);
+      s += seg(c,a.x,a.y,a.x+b.x,a.y+b.y,B_PINK,1)+seg(c,b.x,b.y,a.x+b.x,a.y+b.y,A_BLUE,1);
+      info = `Правило на успоредника: a и b от обща начална точка. a+b = (${fmt(a.x+b.x)}; ${fmt(a.y+b.y)})`;
+    } else if (mode === 'sub') {
+      s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(0,0,b.x,b.y,B_PINK) + arrow(b.x,b.y,a.x,a.y,RES,3);
+      info = `a−b сочи от края на b към края на a. a−b = (${fmt(a.x-b.x)}; ${fmt(a.y-b.y)})`;
+    } else {
+      s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(0,0,k*a.x,k*a.y,RES,3);
+      info = `k·a ${k<0?'обръща посоката и ':''}мащабира a по |k|=${fmt(Math.abs(k))}. k·a = (${fmt(k*a.x)}; ${fmt(k*a.y)})`;
+    }
+    s += dot(c,a.x,a.y,A_BLUE,5)+lbl(c,a.x,a.y,'a','#4f6ef7',6,-4);
+    if (mode!=='scalar') s += dot(c,b.x,b.y,B_PINK,5)+lbl(c,b.x,b.y,'b','#e84393',6,-4);
+    svg.innerHTML = s;
+    readout.innerHTML = info;
+    el.querySelector('[data-scalar]').style.display = mode==='scalar'?'flex':'none';
+  }
+  el.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',e=>{if(e.target.checked){mode=e.target.dataset.m;draw();}}));
+  el.querySelector('input[type=range]').addEventListener('input',e=>{k=parseFloat(e.target.value);el.querySelector('[data-v="k"]').textContent=fmt(k);draw();});
+  makeDraggable(el, svg, c, W, H, [a,b], draw);
+  draw();
+}
+
+// ============================================================
+// ЪГЛИ В ОКРЪЖНОСТ — централен, периферен, вътрешен, външен
+// ============================================================
+function initCircleAngleWidget(el, p) {
+  const W = 300, H = 290, xmin=-6, xmax=6, ymin=-6, ymax=6;
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
+  const R = 4.2;
+  let mode = p.mode ?? 'inscribed'; // central | inscribed | inside | outside
+  const onC = (ang) => ({ x: R*Math.cos(ang), y: R*Math.sin(ang), constrain:(x,y)=>{const a=Math.atan2(y,x);return {x:R*Math.cos(a),y:R*Math.sin(a)};} });
+  const A = onC(Math.PI*0.85), B = onC(Math.PI*0.15);
+  const P = onC(-Math.PI*0.5);
+  const modes=[['central','централен'],['inscribed','периферен'],['inside','връх вътре'],['outside','връх вън']];
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><div class="iw-controls-2col" style="grid-template-columns:1fr 1fr;">
+      ${modes.map(([m,t])=>`<label style="flex-direction:row;gap:5px;align-items:center;font-size:12.5px;"><input type="radio" data-m="${m}" ${mode===m?'checked':''} style="width:auto;">${t}</label>`).join('')}
+    </div></div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'), readout=el.querySelector('.iw-readout');
+  function arcDeg(P1,P2){let a1=Math.atan2(P1.y,P1.x),a2=Math.atan2(P2.y,P2.x);let d=(a2-a1)*180/Math.PI;return ((d%360)+360)%360;}
+  function angleAt(V,P1,P2){const v1x=P1.x-V.x,v1y=P1.y-V.y,v2x=P2.x-V.x,v2y=P2.y-V.y;let d=(v1x*v2x+v1y*v2y)/(Math.hypot(v1x,v1y)*Math.hypot(v2x,v2y));d=Math.max(-1,Math.min(1,d));return Math.acos(d)*180/Math.PI;}
+  function draw() {
+    const O={x:0,y:0};
+    let s = `<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${(c.sx(R)-c.sx(0)).toFixed(1)}" fill="none" stroke="#4f6ef7" stroke-width="2"/>`;
+    s += axesSVG(c,W,H,xmin,xmax,ymin,ymax).replace(/<line[^>]*stroke="var[^>]*>/g,''); // леки оси
+    let info='';
+    const arcAB = arcDeg(B,A);
+    if (mode==='central') {
+      s += seg(c,0,0,A.x,A.y,'#8b5cf6',2)+seg(c,0,0,B.x,B.y,'#8b5cf6',2);
+      const central = angleAt(O,A,B);
+      info = `Централен ∠AOB = <b>${fmt(central)}°</b> = дъгата AB`;
+      s += dot(c,0,0,'#8b5cf6',4)+lbl(c,0,0,'O','#8b5cf6',6,-4);
+    } else if (mode==='inscribed') {
+      s += seg(c,P.x,P.y,A.x,A.y,'#e84393',2)+seg(c,P.x,P.y,B.x,B.y,'#e84393',2);
+      s += seg(c,0,0,A.x,A.y,'#8b5cf6',1.2)+seg(c,0,0,B.x,B.y,'#8b5cf6',1.2);
+      const insc = angleAt(P,A,B), central = angleAt(O,A,B);
+      info = `Периферен ∠APB = <b>${fmt(insc)}°</b> = ½ от централния (${fmt(central)}°). Влачи P — стойността не се мени!`;
+      s += dot(c,P.x,P.y,'#e84393',5)+lbl(c,P.x,P.y,'P','#e84393',0,16);
+    } else if (mode==='inside') {
+      const C2=onC(Math.PI*1.25), D2=onC(Math.PI*1.75);
+      const I={x:0.6,y:-0.3};
+      s += seg(c,A.x,A.y,D2.x,D2.y,'#e84393',2)+seg(c,B.x,B.y,C2.x,C2.y,'#e84393',2);
+      const ang = angleAt(I,A,B);
+      info = `Ъгъл с връх <b>вътре</b> = полусбор на двете дъги: ½(дъга AB + дъга CD)`;
+      s += dot(c,C2.x,C2.y,'#1a1f2e',3)+dot(c,D2.x,D2.y,'#1a1f2e',3)+lbl(c,C2.x,C2.y,'C','#1a1f2e',-12,4)+lbl(c,D2.x,D2.y,'D','#1a1f2e',6,4);
+    } else {
+      const Vx=6.5,Vy=0; const V={x:Vx,y:Vy};
+      const C2=onC(Math.PI*0.55), D2=onC(-Math.PI*0.55);
+      s += seg(c,V.x,V.y,A.x,A.y,'#e84393',2)+seg(c,V.x,V.y,B.x,B.y,'#e84393',2);
+      info = `Ъгъл с връх <b>вън</b> = полуразлика на двете дъги: ½(голяма − малка дъга)`;
+      s += dot(c,V.x,V.y,'#e84393',5)+lbl(c,V.x,V.y,'V','#e84393',6,-4);
+    }
+    s += seg(c,A.x,A.y,B.x,B.y,'#94a3b8',1.2);
+    s += dot(c,A.x,A.y,'#1a1f2e',4)+dot(c,B.x,B.y,'#1a1f2e',4)+lbl(c,A.x,A.y,'A','#1a1f2e',-12,0)+lbl(c,B.x,B.y,'B','#1a1f2e',7,0);
+    svg.innerHTML=s;
+    readout.innerHTML=info;
+  }
+  el.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',e=>{if(e.target.checked){mode=e.target.dataset.m;draw();}}));
+  makeDraggable(el, svg, c, W, H, [{...A,fixed:false},{...B,fixed:false},P], draw);
+  // презареждаме A,B,P като подвижни (с constrain)
+  const dragPts=[A,B,P];
+  makeDraggable(el, svg, c, W, H, dragPts, draw);
+  draw();
+}
+
+// ============================================================
+// ГРАФИЧНО РЕШАВАНЕ НА СИСТЕМА — две прави
+// ============================================================
+function initLinearSystemWidget(el, p) {
+  const W = 320, H = 280, xmin=-6, xmax=6, ymin=-6, ymax=6;
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
+  let k1=p.k1??1, m1=p.m1??1, k2=p.k2??-0.5, m2=p.m2??-2;
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls iw-controls-2col">
+      <label>k₁=<span class="iw-val" data-v="k1">${k1}</span><input type="range" min="-3" max="3" step="0.25" value="${k1}" data-k="k1"></label>
+      <label>m₁=<span class="iw-val" data-v="m1">${m1}</span><input type="range" min="-5" max="5" step="0.5" value="${m1}" data-k="m1"></label>
+      <label>k₂=<span class="iw-val" data-v="k2">${k2}</span><input type="range" min="-3" max="3" step="0.25" value="${k2}" data-k="k2"></label>
+      <label>m₂=<span class="iw-val" data-v="m2">${m2}</span><input type="range" min="-5" max="5" step="0.5" value="${m2}" data-k="m2"></label>
+    </div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'), readout=el.querySelector('.iw-readout');
+  function line(k,m,color){return seg(c,xmin,k*xmin+m,xmax,k*xmax+m,color,2.5);}
+  function draw(){
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax)+line(k1,m1,'#4f6ef7')+line(k2,m2,'#e84393');
+    let info;
+    if(Math.abs(k1-k2)<1e-9){
+      info = Math.abs(m1-m2)<1e-9 ? '<b>Безброй решения</b> — правите съвпадат (k₁=k₂, m₁=m₂).' : '<b>Няма решение</b> — правите са успоредни (k₁=k₂, m₁≠m₂).';
+    } else {
+      const xs=(m2-m1)/(k1-k2), ys=k1*xs+m1;
+      if(xs>=xmin&&xs<=xmax&&ys>=ymin&&ys<=ymax) s+=dot(c,xs,ys,'#10b981',6)+lbl(c,xs,ys,`(${fmt(xs)}; ${fmt(ys)})`,'#10b981',8,-6);
+      info=`<b>Едно решение</b>: пресечната точка (${fmt(xs)}; ${fmt(ys)}).`;
+    }
+    svg.innerHTML=s; readout.innerHTML=`y=${fmt(k1)}x+${fmt(m1)} (синя), y=${fmt(k2)}x+${fmt(m2)} (розова)<br>${info}`;
+    ['k1','m1','k2','m2'].forEach(kk=>el.querySelector(`[data-v="${kk}"]`).textContent=fmt(eval(kk)));
+  }
+  el.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',e=>{const v=parseFloat(e.target.value);const kk=e.target.dataset.k;if(kk==='k1')k1=v;else if(kk==='m1')m1=v;else if(kk==='k2')k2=v;else m2=v;draw();}));
+  draw();
+}
+
+// ============================================================
+// МЕТОД НА ИНТЕРВАЛИТЕ / КВАДРАТНО НЕРАВЕНСТВО — числова ос със знаци
+// ============================================================
+function initIntervalWidget(el, p) {
+  const W = 340, H = 150, xmin=-6, xmax=6;
+  const roots0 = p.roots ?? [-2, 3];
+  let roots = roots0.slice();
+  // y = (x-r1)(x-r2)... с водещ коеф +1
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls iw-controls-2col">
+      ${roots.map((r,i)=>`<label>корен x${i+1}=<span class="iw-val" data-v="r${i}">${r}</span><input type="range" min="-5" max="5" step="0.5" value="${r}" data-k="${i}"></label>`).join('')}
+    </div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'), readout=el.querySelector('.iw-readout');
+  const yLine=70;
+  function poly(x){let v=1;roots.forEach(r=>v*=(x-r));return v;}
+  function draw(){
+    const sorted=[...roots].sort((a,b)=>a-b);
+    const sx=x=>20+(x-xmin)/(xmax-xmin)*(W-40);
+    let s=`<line x1="20" y1="${yLine}" x2="${W-20}" y2="${yLine}" stroke="var(--axis,#64748b)" stroke-width="1.5"/>`;
+    s+=`<polygon points="${W-20},${yLine} ${W-28},${yLine-4} ${W-28},${yLine+4}" fill="var(--axis,#64748b)"/>`;
+    // знаци по интервалите
+    const pts=[xmin,...sorted,xmax];
+    for(let i=0;i<pts.length-1;i++){
+      const mid=(pts[i]+pts[i+1])/2; const sign=poly(mid)>=0?'+':'−';
+      const col=sign==='+'?'#10b981':'#e84393';
+      s+=`<text x="${sx(mid)}" y="${yLine-12}" font-size="16" font-weight="800" fill="${col}" text-anchor="middle">${sign}</text>`;
+      // защриховка на интервала за >0
+      s+=`<rect x="${sx(pts[i])}" y="${yLine+2}" width="${sx(pts[i+1])-sx(pts[i])}" height="6" fill="${col}" opacity="0.35"/>`;
+    }
+    // корени
+    sorted.forEach(r=>{s+=`<circle cx="${sx(r)}" cy="${yLine}" r="5" fill="#fff" stroke="#4f6ef7" stroke-width="2"/>`;s+=`<text x="${sx(r)}" y="${yLine+24}" font-size="11" fill="#4f6ef7" text-anchor="middle">${fmt(r)}</text>`;});
+    svg.innerHTML=s;
+    const posInt=[]; for(let i=0;i<pts.length-1;i++){const mid=(pts[i]+pts[i+1])/2;if(poly(mid)>0){const lo=i===0?'−∞':fmt(pts[i]);const hi=i===pts.length-2?'+∞':fmt(pts[i+1]);posInt.push(`(${lo}; ${hi})`);}}
+    readout.innerHTML=`Знакът се сменя при всеки корен.<br>Решение на <b>f(x) > 0</b>: ${posInt.join(' ∪ ')||'∅'}`;
+    roots.forEach((r,i)=>el.querySelector(`[data-v="r${i}"]`).textContent=fmt(r));
+  }
+  el.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',e=>{roots[+e.target.dataset.k]=parseFloat(e.target.value);draw();}));
+  draw();
+}
+
+// ============================================================
+// ПОДОБНИ ТРИЪГЪЛНИЦИ — коефициент на подобие k
+// ============================================================
+function initSimilarWidget(el, p) {
+  const W = 330, H = 240, xmin=-1, xmax=11, ymin=-1, ymax=7;
+  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  let k=p.k??1.6;
+  const T=[{x:0.5,y:0.5},{x:3,y:0.5},{x:1,y:3}]; // базов триъгълник
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><label>коеф. k = <span class="iw-val" data-v="k">${k}</span>
+      <input type="range" min="0.5" max="2.5" step="0.1" value="${k}" data-k="k"></label></div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function tri(pts,color,fill){return `<polygon points="${pts.map(p=>c.sx(p.x)+','+c.sy(p.y)).join(' ')}" fill="${fill}" stroke="${color}" stroke-width="2"/>`;}
+  function draw(){
+    const off=5.5;
+    const T2=T.map(p=>({x:p.x*k+off,y:p.y*k}));
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax)+tri(T,'#4f6ef7','#4f6ef722')+tri(T2,'#e84393','#e8439322');
+    s+=lbl(c,1.5,0.5,'ABC','#4f6ef7',0,16)+lbl(c,off+1.5*k,0.5,"A'B'C'",'#e84393',0,16);
+    svg.innerHTML=s;
+    const side=Math.hypot(T[1].x-T[0].x,T[1].y-T[0].y);
+    readout.innerHTML=`Подобни с коеф. k=${fmt(k)}:<br>страни в отношение <b>k=${fmt(k)}</b>, периметри <b>k</b>, лица <b>k²=${fmt(k*k)}</b>`;
+    el.querySelector('[data-v="k"]').textContent=fmt(k);
+  }
+  el.querySelector('input').addEventListener('input',e=>{k=parseFloat(e.target.value);draw();});
+  draw();
+}
+
+// ============================================================
+// ТРАПЕЦ — със средна отсечка; равнобедрен превключвател
+// ============================================================
+function initTrapezoidWidget(el, p) {
+  const W=320,H=240,xmin=-1,xmax=9,ymin=-1,ymax=6;
+  const c=makeCoord(W,H,xmin,xmax,ymin,ymax);
+  let aBig=p.a??7, bSmall=p.b??3, h=p.h??3.5, iso=p.iso??true;
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls iw-controls-2col">
+      <label>основа a=<span class="iw-val" data-v="a">${aBig}</span><input type="range" min="4" max="8" step="0.5" value="${aBig}" data-k="a"></label>
+      <label>основа b=<span class="iw-val" data-v="b">${bSmall}</span><input type="range" min="1" max="6" step="0.5" value="${bSmall}" data-k="b"></label>
+      <label>височина h=<span class="iw-val" data-v="h">${h}</span><input type="range" min="1.5" max="5" step="0.5" value="${h}" data-k="h"></label>
+      <label style="flex-direction:row;gap:6px;align-items:center;"><input type="checkbox" data-k="iso" ${iso?'checked':''} style="width:auto;">равнобедрен</label>
+    </div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    const x0=1;
+    const A={x:x0,y:0.5}, B={x:x0+aBig,y:0.5};
+    const off=iso?(aBig-bSmall)/2:0.8;
+    const D={x:x0+off,y:0.5+h}, Cc={x:x0+off+bSmall,y:0.5+h};
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=`<polygon points="${[A,B,Cc,D].map(p=>c.sx(p.x)+','+c.sy(p.y)).join(' ')}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
+    // средна отсечка
+    const M={x:(A.x+D.x)/2,y:(A.y+D.y)/2}, N={x:(B.x+Cc.x)/2,y:(B.y+Cc.y)/2};
+    s+=seg(c,M.x,M.y,N.x,N.y,'#e84393',2.5);
+    s+=lbl(c,(A.x+B.x)/2,A.y,'a='+fmt(aBig),'#4f6ef7',-10,16);
+    s+=lbl(c,(D.x+Cc.x)/2,D.y,'b='+fmt(bSmall),'#4f6ef7',-10,-6);
+    s+=lbl(c,(M.x+N.x)/2,M.y,'m='+fmt((aBig+bSmall)/2),'#e84393',-14,-4);
+    svg.innerHTML=s;
+    readout.innerHTML=`Средна отсечка m = (a+b)/2 = <b>${fmt((aBig+bSmall)/2)}</b><br>Лице S = (a+b)/2·h = <b>${fmt((aBig+bSmall)/2*h)}</b>`;
+    ['a','b','h'].forEach(kk=>{const v={a:aBig,b:bSmall,h:h}[kk];el.querySelector(`[data-v="${kk}"]`).textContent=fmt(v);});
+  }
+  el.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',e=>{const kk=e.target.dataset.k;if(kk==='iso'){iso=e.target.checked;}else{const v=parseFloat(e.target.value);if(kk==='a')aBig=v;else if(kk==='b')bSmall=v;else h=v;}draw();}));
+  draw();
+}
+
+// ============================================================
+// ПРОГРЕСИЯ — аритметична / геометрична, членове като стълбове
+// ============================================================
+function initProgressionWidget(el, p) {
+  const W=330,H=230;
+  let type=p.type??'arith'; let a1=p.a1??2; let d=p.d??1.5; let n=p.n??6;
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls">
+      <div class="iw-controls-2col" style="grid-template-columns:1fr 1fr;">
+        <label style="flex-direction:row;gap:5px;align-items:center;"><input type="radio" data-m="arith" ${type==='arith'?'checked':''} style="width:auto;">аритметична</label>
+        <label style="flex-direction:row;gap:5px;align-items:center;"><input type="radio" data-m="geom" ${type==='geom'?'checked':''} style="width:auto;">геометрична</label>
+      </div>
+      <div class="iw-controls-2col">
+        <label>a₁=<span class="iw-val" data-v="a1">${a1}</span><input type="range" min="1" max="5" step="0.5" value="${a1}" data-k="a1"></label>
+        <label><span data-dlabel>${type==='arith'?'разлика d':'частно q'}</span>=<span class="iw-val" data-v="d">${d}</span><input type="range" min="${type==='arith'?-2:0.3}" max="${type==='arith'?3:2}" step="0.1" value="${d}" data-k="d"></label>
+      </div></div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function term(i){return type==='arith'?a1+(i)*d:a1*Math.pow(d,i);}
+  function draw(){
+    const vals=[];for(let i=0;i<n;i++)vals.push(term(i));
+    const maxV=Math.max(...vals.map(Math.abs),1);
+    const bw=(W-40)/n, base=H-30;
+    let s=`<line x1="20" y1="${base}" x2="${W-20}" y2="${base}" stroke="var(--axis,#64748b)" stroke-width="1.2"/>`;
+    vals.forEach((v,i)=>{
+      const hh=Math.abs(v)/maxV*(base-20);
+      const x=24+i*bw;
+      s+=`<rect x="${x}" y="${v>=0?base-hh:base}" width="${bw-8}" height="${hh}" fill="${v>=0?'#4f6ef7':'#e84393'}" opacity="0.8" rx="2"/>`;
+      s+=`<text x="${x+(bw-8)/2}" y="${v>=0?base-hh-4:base+hh+12}" font-size="10" font-weight="700" fill="#334155" text-anchor="middle">${fmt(v)}</text>`;
+      s+=`<text x="${x+(bw-8)/2}" y="${base+14}" font-size="9" fill="#94a3b8" text-anchor="middle">a${i+1}</text>`;
+    });
+    svg.innerHTML=s;
+    const sum=vals.reduce((p,c)=>p+c,0);
+    const formula=type==='arith'?`aₙ = a₁+(n−1)d, Sₙ=(a₁+aₙ)/2·n`:`aₙ = a₁·qⁿ⁻¹, Sₙ=a₁(qⁿ−1)/(q−1)`;
+    readout.innerHTML=`${formula}<br>Първите ${n}: сбор S = <b>${fmt(sum)}</b>`;
+    el.querySelector('[data-v="a1"]').textContent=fmt(a1);
+    el.querySelector('[data-v="d"]').textContent=fmt(d);
+    el.querySelector('[data-dlabel]').textContent=type==='arith'?'разлика d':'частно q';
+  }
+  el.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',e=>{if(e.target.checked){type=e.target.dataset.m;const ds=el.querySelector('input[data-k="d"]');if(type==='geom'){ds.min=0.3;ds.max=2;if(d<0.3)d=1.5;ds.value=d;}else{ds.min=-2;ds.max=3;}draw();}}));
+  el.querySelectorAll('input[type=range]').forEach(inp=>inp.addEventListener('input',e=>{const v=parseFloat(e.target.value);if(e.target.dataset.k==='a1')a1=v;else d=v;draw();}));
+  draw();
+}
+
+// ============================================================
+// СТАТИСТИКА — стълбове с мода/медиана/средна
+// ============================================================
+function initStatsWidget(el, p) {
+  const W=330,H=240;
+  let data=(p.data?p.data.slice():[4,7,5,8,6,7,3,7]);
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><label style="font-size:12px;">Стойности (тапни стълб, за да го увеличиш; дълго — нулиране):</label></div>
+    <div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    const n=data.length, maxV=Math.max(...data,1);
+    const bw=(W-40)/n, base=H-25;
+    const mean=data.reduce((a,b)=>a+b,0)/n;
+    const sorted=[...data].sort((a,b)=>a-b);
+    const median=n%2?sorted[(n-1)/2]:(sorted[n/2-1]+sorted[n/2])/2;
+    const freq={};data.forEach(v=>freq[v]=(freq[v]||0)+1);
+    let mode=data[0],mc=0;Object.entries(freq).forEach(([v,cnt])=>{if(cnt>mc){mc=cnt;mode=+v;}});
+    let s='';
+    data.forEach((v,i)=>{const hh=v/maxV*(base-15);const x=24+i*bw;
+      s+=`<rect x="${x}" y="${base-hh}" width="${bw-6}" height="${hh}" fill="#4f6ef7" opacity="0.8" rx="2" data-i="${i}" style="cursor:pointer"/>`;
+      s+=`<text x="${x+(bw-6)/2}" y="${base-hh-4}" font-size="10" font-weight="700" fill="#334155" text-anchor="middle">${v}</text>`;});
+    s+=`<line x1="20" y1="${base}" x2="${W-20}" y2="${base}" stroke="var(--axis,#64748b)" stroke-width="1.2"/>`;
+    // линия на средната
+    const my=base-mean/maxV*(base-15);
+    s+=`<line x1="20" y1="${my}" x2="${W-20}" y2="${my}" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5 3"/>`;
+    s+=`<text x="${W-22}" y="${my-3}" font-size="9.5" font-weight="700" fill="#10b981" text-anchor="end">средна ${fmt(mean)}</text>`;
+    svg.innerHTML=s;
+    readout.innerHTML=`Средна аритметична = <b style="color:#10b981">${fmt(mean)}</b> &nbsp; Медиана = <b>${fmt(median)}</b> &nbsp; Мода = <b>${mode}</b>`;
+    svg.querySelectorAll('rect[data-i]').forEach(r=>{
+      let t0;
+      r.addEventListener('pointerdown',()=>{t0=Date.now();});
+      r.addEventListener('pointerup',()=>{const i=+r.dataset.i;if(Date.now()-t0>500){data[i]=4;}else{data[i]=Math.min(10,data[i]+1);if(data[i]>=10)data[i]=1;}draw();});
+    });
+  }
+  draw();
+}
+
+// ============================================================
+// МЕТРИЧНИ ЗАВИСИМОСТИ — правоъгълен триъгълник с височина към хипотенузата
+// ============================================================
+function initRightMetricWidget(el, p) {
+  const W=320,H=250,xmin=-1,xmax=8,ymin=-1,ymax=6;
+  const c=makeCoord(W,H,xmin,xmax,ymin,ymax);
+  let foot=p.foot??2.6;
+  const totalBase=6;
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><label>проекция на катета (AH) = <span class="iw-val" data-v="f">${foot}</span>
+      <input type="range" min="1" max="5" step="0.25" value="${foot}" data-k="f"></label></div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    const A={x:0.5,y:0.5},B={x:0.5+totalBase,y:0.5};
+    const p_=foot, q=totalBase-foot;
+    const hgt=Math.sqrt(p_*q);
+    const Hh={x:A.x+p_,y:0.5};
+    const Cc={x:Hh.x,y:0.5+hgt};
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=`<polygon points="${c.sx(A.x)},${c.sy(A.y)} ${c.sx(B.x)},${c.sy(B.y)} ${c.sx(Cc.x)},${c.sy(Cc.y)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
+    s+=seg(c,Cc.x,Cc.y,Hh.x,Hh.y,'#e84393',2);
+    s+=dot(c,A.x,A.y,'#1a1f2e',4)+dot(c,B.x,B.y,'#1a1f2e',4)+dot(c,Cc.x,Cc.y,'#1a1f2e',4)+dot(c,Hh.x,Hh.y,'#10b981',4);
+    s+=lbl(c,A.x,A.y,'A','#1a1f2e',-12,0)+lbl(c,B.x,B.y,'B','#1a1f2e',6,0)+lbl(c,Cc.x,Cc.y,'C','#1a1f2e',-4,-8)+lbl(c,Hh.x,Hh.y,'H','#10b981',-4,16);
+    s+=lbl(c,(A.x+Hh.x)/2,0.5,'p='+fmt(p_),'#4f6ef7',-10,16);
+    s+=lbl(c,(Hh.x+B.x)/2,0.5,'q='+fmt(q),'#4f6ef7',-10,16);
+    s+=lbl(c,Hh.x,(0.5+hgt/2),'h='+fmt(hgt),'#e84393',6,0);
+    svg.innerHTML=s;
+    readout.innerHTML=`Височинна теорема: h² = p·q → h = √(${fmt(p_)}·${fmt(q)}) = <b>${fmt(hgt)}</b><br>Катетова: AC² = p·c = <b>${fmt(p_*totalBase)}</b>, BC² = q·c = <b>${fmt(q*totalBase)}</b>`;
+    el.querySelector('[data-v="f"]').textContent=fmt(foot);
+  }
+  el.querySelector('input').addEventListener('input',e=>{foot=parseFloat(e.target.value);draw();});
+  draw();
+}
+
+// ============================================================
+// ДВЕ ОКРЪЖНОСТИ — взаимно положение според разстоянието d
+// ============================================================
+function initTwoCirclesWidget(el, p) {
+  const W=320,H=250,xmin=-1,xmax=11,ymin=-3.5,ymax=3.5;
+  const c=makeCoord(W,H,xmin,xmax,ymin,ymax);
+  const R1=2, R2=1.3; let d=p.d??4;
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><label>разстояние между центровете d = <span class="iw-val" data-v="d">${d}</span>
+      <input type="range" min="0" max="7" step="0.25" value="${d}" data-k="d"></label></div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    const O1={x:2,y:0},O2={x:2+d,y:0};
+    const pr=x=>c.sx(x)-c.sx(0);
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=`<circle cx="${c.sx(O1.x)}" cy="${c.sy(0)}" r="${pr(R1)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
+    s+=`<circle cx="${c.sx(O2.x)}" cy="${c.sy(0)}" r="${pr(R2)}" fill="#e8439322" stroke="#e84393" stroke-width="2"/>`;
+    s+=dot(c,O1.x,0,'#4f6ef7',3)+dot(c,O2.x,0,'#e84393',3);
+    s+=seg(c,O1.x,0,O2.x,0,'#10b981',1.5);
+    svg.innerHTML=s;
+    let rel;
+    if(d>R1+R2) rel='Външни (нямат общи точки), d > R+r';
+    else if(Math.abs(d-(R1+R2))<0.12) rel='Външно допиращи се, d = R+r';
+    else if(d>Math.abs(R1-R2)) rel='Пресичащи се (2 общи точки), |R−r| < d < R+r';
+    else if(Math.abs(d-Math.abs(R1-R2))<0.12) rel='Вътрешно допиращи се, d = |R−r|';
+    else rel='Едната вътре в другата, d < |R−r|';
+    readout.innerHTML=`R=${R1}, r=${R2}, d=${fmt(d)}<br><b>${rel}</b>`;
+    el.querySelector('[data-v="d"]').textContent=fmt(d);
+  }
+  el.querySelector('input').addEventListener('input',e=>{d=parseFloat(e.target.value);draw();});
+  draw();
+}
+
+// ============================================================
+// ДОПИРАТЕЛНА КЪМ ОКРЪЖНОСТ — от външна точка
+// ============================================================
+function initTangentWidget(el, p) {
+  const W=300,H=260,xmin=-5,xmax=5,ymin=-4.5,ymax=4.5;
+  const c=makeSquareCoord(W,H,xmin,xmax,ymin,ymax);
+  const R=2.3;
+  const Pp={x:p.px??3.8,y:p.py??1.5,constrain:(x,y)=>{const r=Math.hypot(x,y);return r<R+0.4?{x:x/r*(R+0.4),y:y/r*(R+0.4)}:{x,y};}};
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    const pr=c.sx(R)-c.sx(0);
+    const dist=Math.hypot(Pp.x,Pp.y);
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
+    s+=dot(c,0,0,'#4f6ef7',3)+lbl(c,0,0,'O','#4f6ef7',-12,-4);
+    if(dist>R){
+      const tl=Math.sqrt(dist*dist-R*R);
+      const aOff=Math.acos(R/dist);
+      const base=Math.atan2(Pp.y,Pp.x);
+      [base+aOff,base-aOff].forEach(ang=>{
+        const T={x:R*Math.cos(ang),y:R*Math.sin(ang)};
+        s+=seg(c,Pp.x,Pp.y,T.x,T.y,'#e84393',2);
+        s+=seg(c,0,0,T.x,T.y,'#8b5cf6',1.2);
+        s+=dot(c,T.x,T.y,'#10b981',4);
+      });
+      readout.innerHTML=`Двете допирателни от P са равни: дължина = √(d²−R²) = <b>${fmt(tl)}</b><br>Радиусът към допирната точка е ⊥ на допирателната.`;
+    } else readout.innerHTML='Точката P е вътре в окръжността — няма допирателна. Влачи я навън.';
+    s+=dot(c,Pp.x,Pp.y,'#e84393',5)+lbl(c,Pp.x,Pp.y,'P','#e84393',6,-4);
+    svg.innerHTML=s;
+  }
+  makeDraggable(el,svg,c,W,H,[Pp],draw);
+  draw();
+}
+
+// ============================================================
+// ТРИГОНОМЕТРИЧНО УРАВНЕНИЕ sin x = a / cos x = a — всички решения
+// ============================================================
+function initTrigEqWidget(el, p) {
+  const W=320,H=300,xmin=-1.6,xmax=1.6,ymin=-1.6,ymax=1.6;
+  const c=makeSquareCoord(W,H,xmin,xmax,ymin,ymax);
+  let fnType=p.fn??'sin'; let a=p.a??0.5;
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls">
+      <div class="iw-controls-2col" style="grid-template-columns:1fr 1fr;">
+        <label style="flex-direction:row;gap:5px;align-items:center;"><input type="radio" data-m="sin" ${fnType==='sin'?'checked':''} style="width:auto;">sin x = a</label>
+        <label style="flex-direction:row;gap:5px;align-items:center;"><input type="radio" data-m="cos" ${fnType==='cos'?'checked':''} style="width:auto;">cos x = a</label>
+      </div>
+      <label>a = <span class="iw-val" data-v="a">${a}</span><input type="range" min="-1" max="1" step="0.05" value="${a}" data-k="a"></label>
+    </div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    const R=c.scale,ox=c.sx(0),oy=c.sy(0);
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=`<circle cx="${ox}" cy="${oy}" r="${R}" fill="none" stroke="#64748b" stroke-width="1.4"/>`;
+    let sols=[];
+    if(fnType==='sin'){
+      s+=`<line x1="${c.sx(xmin)}" y1="${c.sy(a)}" x2="${c.sx(xmax)}" y2="${c.sy(a)}" stroke="#e84393" stroke-width="1.5" stroke-dasharray="5 3"/>`;
+      if(Math.abs(a)<=1){const b=Math.asin(a);sols=[b,Math.PI-b];}
+    } else {
+      s+=`<line x1="${c.sx(a)}" y1="${c.sy(ymin)}" x2="${c.sx(a)}" y2="${c.sy(ymax)}" stroke="#4f6ef7" stroke-width="1.5" stroke-dasharray="5 3"/>`;
+      if(Math.abs(a)<=1){const b=Math.acos(a);sols=[b,-b];}
+    }
+    sols.forEach(ang=>{const x=Math.cos(ang),y=Math.sin(ang);s+=seg(c,0,0,x,y,'#10b981',2)+dot(c,x,y,'#10b981',5);});
+    svg.innerHTML=s;
+    const degs=sols.map(r=>{let d=r*180/Math.PI;return Math.round(((d%360)+360)%360);});
+    let gen='';
+    if(fnType==='sin'&&sols.length) gen=`x = (−1)ᵏ·arcsin(a) + kπ`;
+    else if(sols.length) gen=`x = ±arccos(a) + 2kπ`;
+    readout.innerHTML=Math.abs(a)<=1
+      ? `Решения в [0;360°): <b>${[...new Set(degs)].join('° и ')}°</b><br>Общо решение: ${gen}, k∈ℤ`
+      : '|a| > 1 → <b>няма решение</b> (sin и cos са в [−1;1]).';
+    el.querySelector('[data-v="a"]').textContent=fmt(a);
+  }
+  el.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',e=>{if(e.target.checked){fnType=e.target.dataset.m;draw();}}));
+  el.querySelector('input[type=range]').addEventListener('input',e=>{a=parseFloat(e.target.value);draw();});
+  draw();
+}
+
+// ============================================================
+// ПРАВИЛЕН МНОГОЪГЪЛНИК — n страни, вписана и описана окръжност
+// ============================================================
+function initPolygonWidget(el, p) {
+  const W=300,H=290,xmin=-1.5,xmax=1.5,ymin=-1.5,ymax=1.5;
+  const c=makeSquareCoord(W,H,xmin,xmax,ymin,ymax);
+  let n=p.n??6;
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><label>брой страни n = <span class="iw-val" data-v="n">${n}</span>
+      <input type="range" min="3" max="12" step="1" value="${n}" data-k="n"></label></div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    const R=1.15,pr=c.sx(R)-c.sx(0);
+    const r=R*Math.cos(Math.PI/n);
+    const pr2=c.sx(r)-c.sx(0);
+    const pts=[];for(let i=0;i<n;i++){const ang=-Math.PI/2+i*2*Math.PI/n;pts.push({x:R*Math.cos(ang),y:R*Math.sin(ang)});}
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="none" stroke="#e84393" stroke-width="1.3" stroke-dasharray="4 3"/>`;
+    s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr2}" fill="none" stroke="#10b981" stroke-width="1.3" stroke-dasharray="4 3"/>`;
+    s+=`<polygon points="${pts.map(p=>c.sx(p.x)+','+c.sy(p.y)).join(' ')}" fill="#4f6ef733" stroke="#4f6ef7" stroke-width="2"/>`;
+    s+=seg(c,0,0,pts[0].x,pts[0].y,'#e84393',1.5);
+    s+=dot(c,0,0,'#4f6ef7',3);
+    svg.innerHTML=s;
+    const interior=(n-2)*180/n, central=360/n;
+    readout.innerHTML=`Вътрешен ъгъл = (n−2)·180°/n = <b>${fmt(interior)}°</b> &nbsp; Централен = 360°/n = <b>${fmt(central)}°</b><br>Описана R=${fmt(R)} (розова), вписана r=${fmt(r)} (зелена)`;
+    el.querySelector('[data-v="n"]').textContent=n;
+  }
+  el.querySelector('input').addEventListener('input',e=>{n=parseInt(e.target.value);draw();});
+  draw();
+}
+
+// ============================================================
+// РАЗСТОЯНИЕ МЕЖДУ ДВЕ ТОЧКИ в координатна система
+// ============================================================
+function initDistanceWidget(el, p) {
+  const W=300,H=280,xmin=-6,xmax=6,ymin=-6,ymax=6;
+  const c=makeSquareCoord(W,H,xmin,xmax,ymin,ymax);
+  const A={x:-2,y:-1,color:'#4f6ef7'},B={x:3,y:3,color:'#e84393'};
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=seg(c,A.x,A.y,B.x,A.y,'#10b981',1.5)+seg(c,B.x,A.y,B.x,B.y,'#10b981',1.5);
+    s+=seg(c,A.x,A.y,B.x,B.y,'#8b5cf6',2.5);
+    s+=lbl(c,(A.x+B.x)/2,A.y,'Δx='+fmt(Math.abs(B.x-A.x)),'#10b981',-12,16);
+    s+=lbl(c,B.x,(A.y+B.y)/2,'Δy='+fmt(Math.abs(B.y-A.y)),'#10b981',6,0);
+    s+=dot(c,A.x,A.y,A.color,5)+dot(c,B.x,B.y,B.color,5);
+    s+=lbl(c,A.x,A.y,`A(${fmt(A.x)};${fmt(A.y)})`,'#4f6ef7',-10,-8)+lbl(c,B.x,B.y,`B(${fmt(B.x)};${fmt(B.y)})`,'#e84393',6,-6);
+    svg.innerHTML=s;
+    const dx=B.x-A.x,dy=B.y-A.y,dist=Math.hypot(dx,dy);
+    const mid={x:(A.x+B.x)/2,y:(A.y+B.y)/2};
+    readout.innerHTML=`Влачи A и B.<br>AB = √(Δx²+Δy²) = √(${fmt(dx*dx)}+${fmt(dy*dy)}) = <b>${fmt(dist)}</b><br>Среда M = (${fmt(mid.x)}; ${fmt(mid.y)})`;
+  }
+  makeDraggable(el,svg,c,W,H,[A,B],draw);
+  draw();
+}
+
 // 1) ПАРАБОЛА: y = ax² + bx + c с плъзгачи
 // ============================================================
 function initParabolaWidget(el, p) {
