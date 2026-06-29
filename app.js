@@ -7693,6 +7693,18 @@ const state = {
   searchQuery: ''
 };
 
+// ID на последната подтема в справочника (последен клас → последна тема → последна подтема).
+// Изчислява се от данните, за да остане вярно и при бъдещи промени.
+const LAST_PAGE_ID = (() => {
+  try {
+    const grades = Object.keys(HANDBOOK);
+    const lastGrade = HANDBOOK[grades[grades.length - 1]];
+    const lastTopic = lastGrade.topics[lastGrade.topics.length - 1];
+    const subs = lastTopic.subtopics;
+    return subs[subs.length - 1].id;
+  } catch (e) { return null; }
+})();
+
 // ============================================================
 // 6. РЕНДИРАНЕ НА ИНТЕРФЕЙСА
 // ============================================================
@@ -7706,9 +7718,22 @@ function renderApp() {
     searchArea.style.display = (state.view === 'home') ? 'block' : 'none';
   }
 
-  // Воден знак — скрит на началната страница, дискретен на всички останали
-  const wm = document.getElementById('app-watermark');
-  if (wm) wm.classList.toggle('is-home', state.view === 'home');
+  // Долна лента: на всяка страница само малкото лого; авторският текст — само на ПОСЛЕДНАТА страница
+  const credits = document.getElementById('app-credits');
+  if (credits) {
+    const onLastPage = (state.view === 'subtopic' && state.subtopicId === LAST_PAGE_ID);
+    if (onLastPage) {
+      credits.innerHTML =
+        `<img class="credits-logo" src="./icons/logo-mark.png" alt="">` +
+        `<div class="credits-text"><span class="copyright">© Валя Витковска, 2026</span><br>` +
+        `Авторска идея, педагогически дизайн, редакция и проверка: Валя Витковска.<br>` +
+        `Създадено с помощта на AI инструменти.</div>`;
+      credits.classList.add('is-last');
+    } else {
+      credits.innerHTML = `<img class="credits-logo" src="./icons/logo-mark.png" alt="Интерактивна математика">`;
+      credits.classList.remove('is-last');
+    }
+  }
 
   const main = document.getElementById('main-content');
   if (!main) return;

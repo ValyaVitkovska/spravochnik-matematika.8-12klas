@@ -1159,37 +1159,27 @@ body {
   padding: 14px 10px;
 }
 
-/* Дискретен воден знак долу вдясно — на всички страници освен началната */
-#app-watermark {
-  position: fixed;
-  right: 14px;
-  bottom: 14px;
-  width: 54px;
-  height: 54px;
-  background-image: url('./icons/logo-mark.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.12;
-  pointer-events: none;
-  z-index: 5;
-  transition: opacity .25s ease;
-}
-[data-theme="dark"] #app-watermark { opacity: 0.16; }
-#app-watermark.is-home { display: none; }
 
-@media (max-width: 600px) {
-  #app-watermark { width: 42px; height: 42px; right: 10px; bottom: 10px; opacity: 0.10; }
-}
-
-/* Footer с авторско право (последното на всяка страница) */
+/* Footer — на всяка страница само малкото лого; авторски текст само на последната */
 .app-credits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   text-align: center;
-  padding: 22px 18px 30px;
+  padding: 20px 18px 28px;
   font-size: 11.5px;
   line-height: 1.6;
   color: var(--text-muted);
   border-top: 1px solid var(--border);
   margin-top: 32px;
 }
+.app-credits .credits-logo {
+  width: 38px;
+  height: 38px;
+  opacity: 0.55;
+}
+[data-theme="dark"] .app-credits .credits-logo { opacity: 0.7; }
+.app-credits.is-last .credits-logo { width: 48px; height: 48px; opacity: 0.9; }
+.app-credits .credits-text { max-width: 460px; }
 .app-credits .copyright { font-weight: 700; color: var(--text-secondary); }
