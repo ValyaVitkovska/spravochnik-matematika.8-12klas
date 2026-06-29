@@ -6096,6 +6096,11 @@ const CONTENT = {
       'За ъгъл между 90° и 180° използвай връзките с допълващия до 180°.',
       'sin остава положителен; cos сменя знака за тъпи ъгли.'
     ],
+    drawing: {
+      interactive: 'unit-circle',
+      params: { deg: 120 },
+      caption: 'Завърти точката в тъпия диапазон (90°–180°): синята проекция (cos) става отрицателна, а розовата (sin) остава положителна.'
+    },
     example: {
       problem: 'Намери <katex>\\cos 120°</katex>.',
       solution: '<katex>\\cos 120° = \\cos(180° - 60°) = -\\cos 60° = -\\dfrac{1}{2}</katex>.'
@@ -7167,6 +7172,11 @@ const CONTENT = {
       'Установи знаците по правилото за квадрантите.',
       'Сведи до остър ъгъл (отправен ъгъл) за стойността.'
     ],
+    drawing: {
+      interactive: 'unit-circle',
+      params: { deg: 225 },
+      caption: 'Движи плъзгача или влачи точката P. Синята отсечка е cos α, розовата е sin α. Виж как знаците се сменят по квадрантите.'
+    },
     example: {
       problem: 'Какъв е знакът на <katex>\\cos 150°</katex>?',
       solution: '150° е във II квадрант, където косинусът е ОТРИЦАТЕЛЕН. <katex>\\cos 150° = -\\dfrac{\\sqrt{3}}{2}</katex>.'
@@ -9041,6 +9051,7 @@ function initInteractiveWidgets() {
     else if (type === 'inscribed-circle') initInscribedCircleWidget(el, params);
     else if (type === 'thales') initThalesWidget(el, params);
     else if (type === 'pythagoras') initPythagorasWidget(el, params);
+    else if (type === 'unit-circle') initUnitCircleWidget(el, params);
   });
 }
 
@@ -9088,6 +9099,93 @@ function lbl(c, x, y, text, color, dx, dy) {
 }
 function seg(c, x1, y1, x2, y2, color, w) {
   return `<line x1="${c.sx(x1).toFixed(1)}" y1="${c.sy(y1).toFixed(1)}" x2="${c.sx(x2).toFixed(1)}" y2="${c.sy(y2).toFixed(1)}" stroke="${color}" stroke-width="${w||2}"/>`;
+}
+
+// ============================================================
+// 0) ЕДИНИЧНА ОКРЪЖНОСТ: sin, cos, tg на обобщен ъгъл
+// ============================================================
+function initUnitCircleWidget(el, p) {
+  const W = 320, H = 320, xmin = -1.6, xmax = 1.6, ymin = -1.6, ymax = 1.6;
+  const c = makeSquareCoord(W, H, xmin, xmax, ymin, ymax);
+  let deg = p.deg ?? 45;                 // текущ ъгъл в градуси
+  const snap = p.snap ?? 0;              // стъпка за плъзгача (0 = плавно, 15 = по 15°)
+  const COS = '#4f6ef7', SIN = '#e84393', RAD = '#10b981', ANG = '#f59e0b';
+
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><label>α = <span class="iw-val" data-v="ang"></span>
+      <input type="range" min="0" max="360" step="${snap || 1}" value="${deg}" data-k="ang"></label></div>
+    <div class="iw-readout"></div>`;
+  const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
+
+  // точка P върху окръжността — може да се влачи
+  const P = {
+    x: Math.cos(deg * Math.PI / 180),
+    y: Math.sin(deg * Math.PI / 180),
+    constrain: (x, y) => {            // дръж точката върху единичната окръжност
+      const r = Math.hypot(x, y) || 1;
+      return { x: x / r, y: y / r };
+    }
+  };
+
+  function quadrant(d) {
+    d = ((d % 360) + 360) % 360;
+    if (d < 90) return 'I квадрант (sin +, cos +, tg +)';
+    if (d < 180) return 'II квадрант (sin +, cos −, tg −)';
+    if (d < 270) return 'III квадрант (sin −, cos −, tg +)';
+    return 'IV квадрант (sin −, cos +, tg −)';
+  }
+
+  function draw() {
+    const a = deg * Math.PI / 180;
+    const cosv = Math.cos(a), sinv = Math.sin(a);
+    P.x = cosv; P.y = sinv;
+    const ox = c.sx(0), oy = c.sy(0), R = c.scale; // радиус в пиксели
+
+    let s = axesSVG(c, W, H, xmin, xmax, ymin, ymax);
+    // окръжността
+    s += `<circle cx="${ox}" cy="${oy}" r="${R}" fill="none" stroke="var(--axis,#64748b)" stroke-width="1.4"/>`;
+    // дъга на ъгъла от 0 до α
+    const N = Math.max(2, Math.round(Math.abs(deg) / 4));
+    let arc = `M ${c.sx(0.34)} ${c.sy(0)}`;
+    for (let i = 1; i <= N; i++) {
+      const t = a * i / N;
+      arc += ` L ${c.sx(0.34 * Math.cos(t))} ${c.sy(0.34 * Math.sin(t))}`;
+    }
+    s += `<path d="${arc}" fill="none" stroke="${ANG}" stroke-width="2"/>`;
+    // радиус към P
+    s += seg(c, 0, 0, cosv, sinv, RAD, 2.5);
+    // проекции: cos (хоризонтал) и sin (вертикал)
+    s += seg(c, 0, 0, cosv, 0, COS, 3);                 // cos по оста x
+    s += seg(c, cosv, 0, cosv, sinv, SIN, 3);           // sin вертикално
+    s += `<line x1="${c.sx(cosv)}" y1="${c.sy(0)}" x2="${c.sx(cosv)}" y2="${c.sy(sinv)}" stroke="${SIN}" stroke-width="3" stroke-dasharray="1 0"/>`;
+    // точка P
+    s += dot(c, cosv, sinv, RAD, 6);
+    s += lbl(c, cosv, sinv, 'P', RAD, cosv >= 0 ? 9 : -16, sinv >= 0 ? -9 : 16);
+    // надписи cos/sin
+    s += `<text x="${c.sx(cosv / 2)}" y="${c.sy(0) + (sinv >= 0 ? 15 : -7)}" font-size="11" font-weight="700" fill="${COS}" text-anchor="middle">cos</text>`;
+    s += `<text x="${c.sx(cosv) + (cosv >= 0 ? 8 : -8)}" y="${c.sy(sinv / 2)}" font-size="11" font-weight="700" fill="${SIN}" text-anchor="${cosv >= 0 ? 'start' : 'end'}">sin</text>`;
+    svg.innerHTML = s;
+
+    const tg = Math.abs(cosv) < 1e-9 ? '—' : fmt(sinv / cosv);
+    readout.innerHTML =
+      `<b style="color:${SIN}">sin α = ${fmt(sinv)}</b> &nbsp; ` +
+      `<b style="color:${COS}">cos α = ${fmt(cosv)}</b> &nbsp; ` +
+      `<b>tg α = ${tg}</b><br>${quadrant(deg)}`;
+    el.querySelector('[data-v="ang"]').textContent = Math.round(deg) + '°';
+    const inp = el.querySelector('input');
+    if (Math.round(+inp.value) !== Math.round(((deg % 360) + 360) % 360)) {
+      inp.value = ((deg % 360) + 360) % 360;
+    }
+  }
+
+  el.querySelector('input').addEventListener('input', e => { deg = parseFloat(e.target.value); draw(); });
+  // влачене на точката → обновяване на ъгъла
+  makeDraggable(el, svg, c, W, H, [P], () => {
+    let d = Math.atan2(P.y, P.x) * 180 / Math.PI;
+    deg = ((d % 360) + 360) % 360;
+    draw();
+  });
+  draw();
 }
 
 // ============================================================
