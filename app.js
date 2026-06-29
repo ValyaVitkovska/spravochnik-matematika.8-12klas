@@ -528,6 +528,7 @@ const CONTENT = {
       { label: 'Факториел', tex: 'n! = 1 \\cdot 2 \\cdot 3 \\cdots n' },
       { label: 'Примери', tex: '3! = 6, \\quad 4! = 24, \\quad 5! = 120' }
     ],
+    drawing: { interactive: 'combinatorics', params: { mode:'P', n:4 }, caption: 'Пермутации Pₙ = n! — броят наредби на n различни обекта.' },
     algorithm: [
       'Установи, че всички елементи участват в наредбата.',
       'Установи, че редът е важен.',
@@ -569,6 +570,7 @@ const CONTENT = {
       { label: 'Брой вариации без повторение', tex: 'V_n^k = \\dfrac{n!}{(n-k)!}' },
       { label: 'Разгърнат вид', tex: 'V_n^k = n(n-1)(n-2)\\cdots(n-k+1)' }
     ],
+    drawing: { interactive: 'combinatorics', params: { mode:'A', n:5, k:2 }, caption: 'Вариации Aₙᵏ — избор на k от n, при който редът има значение.' },
     algorithm: [
       'Установи, че се избира част от елементите (k от n).',
       'Установи, че редът е важен.',
@@ -605,6 +607,7 @@ const CONTENT = {
       { label: 'Връзка с вариации', tex: 'C_n^k = \\dfrac{V_n^k}{k!}' },
       { label: 'Свойство на симетрия', tex: 'C_n^k = C_n^{n-k}' }
     ],
+    drawing: { interactive: 'combinatorics', params: { mode:'C', n:5, k:2 }, caption: 'Комбинации Cₙᵏ — избор на k от n без значение на реда.' },
     algorithm: [
       'Установи, че се избира част от елементите (k от n).',
       'Установи, че редът НЕ е важен.',
@@ -648,6 +651,7 @@ const CONTENT = {
       { label: 'Вариации', tex: 'V_n^k = \\dfrac{n!}{(n-k)!}' },
       { label: 'Комбинации', tex: 'C_n^k = \\dfrac{n!}{k!(n-k)!}' }
     ],
+    drawing: { interactive: 'combinatorics', params: { mode:'C', n:5, k:3 }, caption: 'Превключи P, A, C при същите n и k и сравни стойностите и значението на реда.' },
     algorithm: [
       'Запитай се: важен ли е редът?',
       'Ако ДА и използваме всички елементи → пермутации.',
@@ -824,17 +828,7 @@ const CONTENT = {
     formulas: [
       { label: 'Условие за равенство', tex: '\\vec{a} = \\vec{b} \\Leftrightarrow \\text{еднаква посока и дължина}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <defs>
-    <marker id="eq-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
-  </defs>
-  <line x1="30" y1="50" x2="130" y2="50" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#eq-blue)"/>
-  <line x1="160" y1="130" x2="260" y2="130" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#eq-blue)"/>
-  <text x="70" y="40" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
-  <text x="200" y="120" font-size="14" fill="#4f6ef7" font-weight="600">b</text>
-  <text x="60" y="100" font-size="12" fill="#64748b">еднаква посока</text>
-  <text x="170" y="160" font-size="12" fill="#64748b">и дължина</text>
-</svg>`, caption: 'Равни вектори: еднаква посока и дължина, но на различни (успоредни) прави.' },
+    drawing: { interactive: 'vector-relations', params: { mode:'equal' }, caption: 'Равни вектори — еднаква посока и дължина.' },
     algorithm: [
       'Сравни посоките — трябва да съвпадат.',
       'Сравни дължините — трябва да са равни.',
@@ -869,16 +863,7 @@ const CONTENT = {
       { label: 'Сбор с противоположния', tex: '\\vec{a} + (-\\vec{a}) = \\vec{0}' },
       { label: 'Връзка', tex: '\\vec{BA} = -\\vec{AB}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <defs>
-    <marker id="op-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
-    <marker id="op-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e84393"/></marker>
-  </defs>
-  <line x1="40" y1="45" x2="160" y2="45" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#op-blue)"/>
-  <line x1="260" y1="85" x2="140" y2="85" stroke="#e84393" stroke-width="2.5" marker-end="url(#op-pink)"/>
-  <text x="95" y="36" font-size="14" fill="#4f6ef7" font-weight="600">a</text>
-  <text x="195" y="76" font-size="14" fill="#e84393" font-weight="600">−a</text>
-</svg>`, caption: 'Противоположни вектори: еднаква дължина, обратна посока, на успоредни прави.' },
+    drawing: { interactive: 'vector-relations', params: { mode:'opposite' }, caption: 'Противоположни вектори — еднаква дължина, обратна посока.' },
     algorithm: [
       'Запази дължината.',
       'Обърни посоката на 180°.',
@@ -915,23 +900,7 @@ const CONTENT = {
       { label: 'Еднопосочни', tex: '\\vec{a} \\uparrow\\uparrow \\vec{b}' },
       { label: 'Противопосочни', tex: '\\vec{a} \\uparrow\\downarrow \\vec{b}' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg" style="max-width:340px;">
-  <defs>
-    <marker id="cd1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4f6ef7"/></marker>
-    <marker id="cd2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
-  </defs>
-  <text x="170" y="20" font-size="12" fill="#1a1f2e" text-anchor="middle" font-weight="600">Еднопосочни (съпосочни)</text>
-  <line x1="40" y1="45" x2="150" y2="45" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#cd1)"/>
-  <line x1="190" y1="70" x2="300" y2="70" stroke="#10b981" stroke-width="2.5" marker-end="url(#cd2)"/>
-  <text x="90" y="38" font-size="13" fill="#4f6ef7" font-weight="600">a</text>
-  <text x="240" y="63" font-size="13" fill="#10b981" font-weight="600">b</text>
-  <line x1="30" y1="110" x2="310" y2="110" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="170" y="140" font-size="12" fill="#1a1f2e" text-anchor="middle" font-weight="600">Противопосочни</text>
-  <line x1="40" y1="165" x2="150" y2="165" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#cd1)"/>
-  <line x1="300" y1="190" x2="190" y2="190" stroke="#10b981" stroke-width="2.5" marker-end="url(#cd2)"/>
-  <text x="90" y="158" font-size="13" fill="#4f6ef7" font-weight="600">a</text>
-  <text x="240" y="183" font-size="13" fill="#10b981" font-weight="600">c</text>
-</svg>`, caption: 'Колинеарни вектори: еднопосочни (горе) и противопосочни (долу).' },
+    drawing: { interactive: 'vector-relations', params: { mode:'collinear' }, caption: 'Колинеарни вектори — лежат на успоредни прави; единият е кратно на другия.' },
     algorithm: [
       'Провери дали векторите лежат на една или успоредни прави.',
       'Ако да — те са колинеарни.',
@@ -1304,21 +1273,6 @@ const CONTENT = {
 
   // --- Свойства на медицентъра ---
   g8t3s5: {
-    drawing: { svg: `<svg viewBox="0 0 320 250" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <polygon points="60,210 260,210 150,60" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="150" y1="60" x2="160" y2="210" stroke="#10b981" stroke-width="2"/>
-  <circle cx="157" cy="160" r="4.5" fill="#e84393"/>
-  <circle cx="160" cy="210" r="3.5" fill="#1a1f2e"/>
-  <circle cx="150" cy="60" r="3" fill="#1a1f2e"/>
-  <circle cx="60" cy="210" r="3" fill="#1a1f2e"/>
-  <circle cx="260" cy="210" r="3" fill="#1a1f2e"/>
-  <text x="146" y="54" font-size="13" fill="#64748b">A</text>
-  <text x="48" y="226" font-size="13" fill="#64748b">B</text>
-  <text x="262" y="226" font-size="13" fill="#64748b">C</text>
-  <text x="166" y="158" font-size="13" fill="#e84393" font-weight="700">G</text>
-  <text x="164" y="226" font-size="12" fill="#10b981">M</text>
-  <text x="100" y="120" font-size="11" fill="#64748b">AG : GM = 2 : 1</text>
-</svg>`, caption: 'Медицентърът G дели медианата в отношение 2:1 от върха.' },
     shortIntro: 'Медицентърът дели всяка медиана в отношение 2:1, считано от върха. Това е едно от най-използваните свойства в геометрията.',
     definitions: [
       { term: 'Свойство 2:1', def: 'Медицентърът дели всяка медиана в отношение 2:1, като по-голямата част е към върха.' }
@@ -1327,6 +1281,7 @@ const CONTENT = {
       { label: 'Делене на медианата', tex: 'AG:GA_1 = 2:1' },
       { label: 'Части от медианата', tex: 'AG = \\dfrac{2}{3} AA_1, \\quad GA_1 = \\dfrac{1}{3} AA_1' }
     ],
+    drawing: { interactive: 'notable-points', params: { mode:'centroid' }, caption: 'Медицентърът дели всяка медиана в отношение 2:1, считано от върха.' },
     algorithm: [
       'Намери дължината на медианата.',
       'Частта от върха до G е 2/3 от медианата.',
@@ -1503,6 +1458,7 @@ const CONTENT = {
       { label: 'Реални числа', tex: '\\mathbb{R} = \\mathbb{Q} \\cup \\mathbb{I}' },
       { label: 'Примери ирационални', tex: '\\sqrt{2} \\approx 1{,}414\\ldots, \\quad \\pi \\approx 3{,}14159\\ldots' }
     ],
+    drawing: { interactive: 'sqrt-numberline', params: { val:2 }, caption: 'Ирационалните числа (като √2) не са точни дробни — попадат между целите числа.' },
     algorithm: [
       'Провери дали числото може да се запише като дроб.',
       'Ако десетичният запис е краен или периодичен → рационално.',
@@ -1536,6 +1492,7 @@ const CONTENT = {
       { label: 'Определение', tex: '(\\sqrt{a})^2 = a, \\quad a \\geq 0' },
       { label: 'Примери', tex: '\\sqrt{16} = 4, \\quad \\sqrt{0} = 0' }
     ],
+    drawing: { interactive: 'sqrt-numberline', params: { val:9 }, caption: 'Квадратен корен от a — числото, чийто квадрат е a. При точен квадрат коренът е рационален.' },
     algorithm: [
       'Питай се: кое число на квадрат дава даденото?',
       'За точни квадрати — намери директно.',
@@ -1749,6 +1706,7 @@ const CONTENT = {
       { label: 'Основно правило', tex: '\\text{ако } a > b \\geq 0, \\text{ то } \\sqrt{a} > \\sqrt{b}' },
       { label: 'Чрез внасяне', tex: '2\\sqrt{3} = \\sqrt{12}, \\quad 3\\sqrt{2} = \\sqrt{18}' }
     ],
+    drawing: { interactive: 'sqrt-numberline', params: { val:5 }, caption: 'Сравняване: √a се намира между две съседни цели числа според квадратите им.' },
     algorithm: [
       'Внеси всички множители под корена.',
       'Сравни подкоренните изрази.',
@@ -1858,17 +1816,7 @@ const CONTENT = {
       { label: 'Дължина на окръжност', tex: 'C = 2\\pi r' },
       { label: 'Лице на кръг', tex: 'S = \\pi r^2' }
     ],
-    drawing: { svg: `<svg viewBox="0 0 340 270" xmlns="http://www.w3.org/2000/svg" style="max-width:340px;">
-  <circle cx="160" cy="135" r="95" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="65" y1="135" x2="255" y2="135" stroke="#10b981" stroke-width="2"/>
-  <line x1="160" y1="135" x2="242" y2="87" stroke="#e84393" stroke-width="2"/>
-  <line x1="95" y1="55" x2="235" y2="80" stroke="#f59e0b" stroke-width="2"/>
-  <circle cx="160" cy="135" r="3" fill="#1a1f2e"/>
-  <text x="150" y="155" font-size="13" fill="#64748b">O</text>
-  <text x="185" y="105" font-size="12" fill="#e84393" font-weight="600">r</text>
-  <text x="90" y="128" font-size="11" fill="#10b981" font-weight="600">диаметър</text>
-  <text x="150" y="48" font-size="11" fill="#f59e0b" font-weight="600">хорда</text>
-</svg>`, caption: 'Радиус r, диаметър и хорда в окръжност с център O.' },
+    drawing: { interactive: 'circle-basics', params: {}, caption: 'Радиус, диаметър и хорда. Влачи точките A и B и виж, че най-дългата хорда е диаметърът.' },
     algorithm: [
       'Определи центъра и радиуса.',
       'Диаметърът е два радиуса: d = 2r.',
@@ -2629,32 +2577,6 @@ const CONTENT = {
   },
 
   g8t8s3: {
-    drawing: [
-      { svg: `<svg viewBox="0 0 300 270" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <polygon points="50,210 250,210 160,70" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="160" y1="70" x2="160" y2="210" stroke="#10b981" stroke-width="1.5"/>
-  <line x1="50" y1="210" x2="192" y2="119" stroke="#10b981" stroke-width="1.5"/>
-  <line x1="250" y1="210" x2="126" y2="113" stroke="#10b981" stroke-width="1.5"/>
-  <circle cx="160" cy="139" r="4.5" fill="#e84393"/>
-  <text x="168" y="143" font-size="12" fill="#e84393" font-weight="700">H</text>
-  <text x="150" y="255" font-size="11" fill="#64748b" text-anchor="middle">остроъгълен → H вътре</text>
-</svg>`, caption: 'Остроъгълен: ортоцентърът H е вътре.' },
-      { svg: `<svg viewBox="0 0 300 270" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;">
-  <polygon points="60,210 220,70 60,70" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <rect x="60" y="70" width="16" height="16" fill="none" stroke="#64748b" stroke-width="1.2"/>
-  <circle cx="60" cy="70" r="5" fill="#e84393"/>
-  <text x="34" y="66" font-size="12" fill="#e84393" font-weight="700">H=C</text>
-  <text x="150" y="255" font-size="11" fill="#64748b" text-anchor="middle">правоъгълен → H е върхът при правия ъгъл</text>
-</svg>`, caption: 'Правоъгълен: H съвпада с върха при правия ъгъл.' },
-      { svg: `<svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <polygon points="60,190 260,190 105,140" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="105" y1="140" x2="105" y2="190" stroke="#10b981" stroke-width="1.2" stroke-dasharray="3 2"/>
-  <line x1="105" y1="51" x2="105" y2="140" stroke="#10b981" stroke-width="1.2"/>
-  <circle cx="105" cy="51" r="4.5" fill="#e84393"/>
-  <text x="113" y="55" font-size="12" fill="#e84393" font-weight="700">H</text>
-  <text x="160" y="225" font-size="11" fill="#64748b" text-anchor="middle">тъпоъгълен → H е ВЪН от триъгълника</text>
-</svg>`, caption: 'Тъпоъгълен: H е извън триъгълника.' }
-    ],
     shortIntro: 'Ортоцентърът е пресечната точка на трите височини на триъгълника. Положението му зависи от вида на триъгълника.',
     definitions: [
       { term: 'Височина', def: 'Перпендикуляр от връх към срещуположната страна (или продължението ѝ).' },
@@ -2672,6 +2594,7 @@ const CONTENT = {
         ['Тъпоъгълен', 'извън триъгълника']
       ]
     },
+    drawing: { interactive: 'notable-points', params: { mode:'ortho' }, caption: 'Ортоцентърът е пресечната точка на трите височини. Влачи върховете.' },
     algorithm: [
       'Построй височините от два върха.',
       'Пресечната им точка е ортоцентърът H.',
@@ -2702,20 +2625,6 @@ const CONTENT = {
   },
 
   g8t8s4: {
-    drawing: { svg: `<svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <polygon points="50,210 260,210 150,70" fill="#eef1fe" stroke="#4f6ef7" stroke-width="2"/>
-  <line x1="150" y1="125" x2="156" y2="185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <circle cx="150" cy="131" r="4.5" fill="#e84393"/>
-  <circle cx="153" cy="163" r="4.5" fill="#f59e0b"/>
-  <circle cx="155" cy="179" r="4.5" fill="#10b981"/>
-  <text x="158" y="128" font-size="12" fill="#e84393" font-weight="700">H</text>
-  <text x="161" y="162" font-size="12" fill="#f59e0b" font-weight="700">G</text>
-  <text x="162" y="186" font-size="12" fill="#10b981" font-weight="700">O</text>
-  <text x="50" y="240" font-size="10" fill="#e84393">H — ортоцентър (височини)</text>
-  <text x="50" y="256" font-size="10" fill="#f59e0b">G — медицентър (медиани)</text>
-  <text x="50" y="272" font-size="10" fill="#10b981">O — център на описаната (симетрали)</text>
-  <text x="198" y="150" font-size="9" fill="#94a3b8">права на Ойлер</text>
-</svg>`, caption: 'O, G и H лежат на една права — правата на Ойлер.' },
     shortIntro: 'Триъгълникът има четири забележителни точки. Всяка се получава от различен вид чевиани (медиани, височини, симетрали, ъглополовящи).',
     definitions: [
       { term: 'Четирите точки', def: 'Медицентър (медиани), ортоцентър (височини), център на описана (симетрали), център на вписана (ъглополовящи).' }
@@ -2733,6 +2642,7 @@ const CONTENT = {
     formulas: [
       { label: 'Права на Ойлер', tex: 'O, G, H \\text{ лежат на една права}' }
     ],
+    drawing: { interactive: 'notable-points', params: { mode:'centroid' }, caption: 'Превключи между четирите забележителни точки и виж как се изместват.' },
     algorithm: [
       'Определи кои чевиани се разглеждат.',
       'Медиани → G; височини → H; симетрали → O; ъглополовящи → I.',
@@ -2758,41 +2668,6 @@ const CONTENT = {
 
   // --- Вписан четириъгълник ---
   g8t8s5: {
-    drawing: [
-      { svg: `<svg viewBox="0 0 320 290" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <circle cx="160" cy="140" r="100" fill="none" stroke="#4f6ef7" stroke-width="1.8"/>
-  <polygon points="66,174 224,217 237,76 96,63" fill="#eef1fe" stroke="#e84393" stroke-width="2"/>
-  <circle cx="66" cy="174" r="3" fill="#1a1f2e"/>
-  <circle cx="224" cy="217" r="3" fill="#1a1f2e"/>
-  <circle cx="237" cy="76" r="3" fill="#1a1f2e"/>
-  <circle cx="96" cy="63" r="3" fill="#1a1f2e"/>
-  <text x="50" y="180" font-size="13" fill="#64748b">A</text>
-  <text x="230" y="232" font-size="13" fill="#64748b">B</text>
-  <text x="242" y="72" font-size="13" fill="#64748b">C</text>
-  <text x="80" y="58" font-size="13" fill="#64748b">D</text>
-  <text x="160" y="284" font-size="10" fill="#64748b" text-anchor="middle">∠A + ∠C = 180°,  ∠B + ∠D = 180°</text>
-</svg>`, caption: 'Вписан четириъгълник: всичките върхове са на окръжността.' },
-      { svg: `<svg viewBox="0 0 320 290" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;">
-  <circle cx="160" cy="140" r="100" fill="none" stroke="#4f6ef7" stroke-width="1.6"/>
-  <polygon points="66,174 224,217 237,76 96,63" fill="#eef1fe" stroke="#cbd5e1" stroke-width="1.5"/>
-  <line x1="66" y1="174" x2="224" y2="217" stroke="#f59e0b" stroke-width="3"/>
-  <line x1="237" y1="76" x2="66" y2="174" stroke="#e84393" stroke-width="1.6"/>
-  <line x1="237" y1="76" x2="224" y2="217" stroke="#e84393" stroke-width="1.6"/>
-  <line x1="96" y1="63" x2="66" y2="174" stroke="#10b981" stroke-width="1.6"/>
-  <line x1="96" y1="63" x2="224" y2="217" stroke="#10b981" stroke-width="1.6"/>
-  <circle cx="66" cy="174" r="3" fill="#1a1f2e"/>
-  <circle cx="224" cy="217" r="3" fill="#1a1f2e"/>
-  <circle cx="237" cy="76" r="3" fill="#1a1f2e"/>
-  <circle cx="96" cy="63" r="3" fill="#1a1f2e"/>
-  <text x="50" y="180" font-size="13" fill="#64748b">A</text>
-  <text x="228" y="232" font-size="13" fill="#64748b">B</text>
-  <text x="242" y="72" font-size="13" fill="#e84393" font-weight="600">C</text>
-  <text x="80" y="58" font-size="13" fill="#10b981" font-weight="600">D</text>
-  <text x="222" y="100" font-size="12" fill="#e84393" font-weight="600">α</text>
-  <text x="104" y="86" font-size="12" fill="#10b981" font-weight="600">α</text>
-  <text x="160" y="284" font-size="10" fill="#64748b" text-anchor="middle">страната AB се вижда от C и D под равни ъгли</text>
-</svg>`, caption: 'Признак: страна, видяна от другите два върха под равни ъгли.' }
-    ],
     shortIntro: 'Четириъгълник е вписан, когато всичките му върхове лежат на една окръжност. За да установим това, използваме признаците (достатъчните условия) по-долу.',
     definitions: [
       { term: 'Вписан четириъгълник', def: 'Четириъгълник, чиито четири върха лежат на една окръжност.' },
@@ -2811,6 +2686,7 @@ const CONTENT = {
         ['3', 'симетралите на три от страните се пресичат в една точка']
       ]
     },
+    drawing: { interactive: 'quad-circle', params: { mode:'inscribed' }, caption: 'Вписан четириъгълник: срещуположните ъгли се допълват до 180°.' },
     algorithm: [
       'Провери някой от трите признака.',
       'Най-често: срещуположните ъгли се допълват до 180°.',
@@ -2842,21 +2718,6 @@ const CONTENT = {
   },
 
   g8t8s6: {
-    drawing: { svg: `<svg viewBox="0 0 340 290" xmlns="http://www.w3.org/2000/svg" style="max-width:340px;">
-  <polygon points="134,34 73,142 175,244 256,104" fill="#eef1fe" stroke="#e84393" stroke-width="2"/>
-  <circle cx="160" cy="130" r="70" fill="none" stroke="#4f6ef7" stroke-width="1.8"/>
-  <circle cx="160" cy="130" r="3.5" fill="#10b981"/>
-  <circle cx="134" cy="34" r="3" fill="#1a1f2e"/>
-  <circle cx="73" cy="142" r="3" fill="#1a1f2e"/>
-  <circle cx="175" cy="244" r="3" fill="#1a1f2e"/>
-  <circle cx="256" cy="104" r="3" fill="#1a1f2e"/>
-  <text x="128" y="28" font-size="13" fill="#64748b">A</text>
-  <text x="54" y="146" font-size="13" fill="#64748b">B</text>
-  <text x="170" y="262" font-size="13" fill="#64748b">C</text>
-  <text x="262" y="104" font-size="13" fill="#64748b">D</text>
-  <text x="166" y="134" font-size="11" fill="#10b981">I</text>
-  <text x="170" y="284" font-size="10" fill="#64748b" text-anchor="middle">AB + CD = BC + AD</text>
-</svg>`, caption: 'Описан четириъгълник: вписаната окръжност докосва всичките четири страни.' },
     shortIntro: 'Четириъгълник е описан, когато всичките му страни докосват една вписана окръжност. За да установим това, използваме признаците (достатъчните условия) по-долу.',
     definitions: [
       { term: 'Описан четириъгълник', def: 'Четириъгълник, чиито четири страни докосват една окръжност (вписана в него).' },
@@ -2873,6 +2734,7 @@ const CONTENT = {
         ['2', 'ъглополовящите на три от ъглите се пресичат в една точка']
       ]
     },
+    drawing: { interactive: 'quad-circle', params: { mode:'circumscribed' }, caption: 'Описан четириъгълник: сборовете на срещуположните страни са равни.' },
     algorithm: [
       'Провери дали сборовете на срещуположните страни са равни.',
       'Ако AB + CD = BC + AD → четириъгълникът е описан.',
@@ -2918,6 +2780,7 @@ const CONTENT = {
     formulas: [
       { label: 'Общ вид', tex: 'ax^2 + bx + c = 0, \\quad a \\neq 0' }
     ],
+    drawing: { interactive: 'parabola', params: {}, caption: 'Квадратното уравнение ax²+bx+c=0 има за решения нулите на параболата.' },
     algorithm: [
       'Провери, че има член с <katex>x^2</katex> (a ≠ 0).',
       'Приведи в стандартен вид (всичко от едната страна).',
@@ -3023,6 +2886,7 @@ const CONTENT = {
     formulas: [
       { label: 'Дискриминанта', tex: 'D = b^2 - 4ac' }
     ],
+    drawing: { interactive: 'parabola', params: {}, caption: 'Движи a, b, c: броят пресечни точки с оста Ox показва знака на дискриминантата.' },
     algorithm: [
       'Определи a, b, c.',
       'Замести в <katex>D = b^2 - 4ac</katex>.',
@@ -3058,6 +2922,7 @@ const CONTENT = {
       { label: 'D < 0', tex: '\\text{няма реални корени}' }
     ],
     discriminantTable: true,
+    drawing: { interactive: 'parabola', params: {}, caption: 'D>0 → две пресечни точки (2 корена); D=0 → допиране (1 корен); D<0 → няма пресичане.' },
     algorithm: [
       'Пресметни дискриминантата D.',
       'D > 0 → два различни реални корена.',
@@ -7553,6 +7418,7 @@ const CONTENT = {
       { label: 'Дискриминанта', tex: 'D = b^2 - 4ac' }
     ],
     discriminantTable: true,
+    drawing: { interactive: 'parabola', params: {}, caption: 'Корените от формулата са точно абсцисите на пресечните точки с Ox.' },
     algorithm: [
       'Запиши уравнението в стандартен вид: <katex>ax^2 + bx + c = 0</katex>.',
       'Определи коефициентите <katex>a</katex>, <katex>b</katex>, <katex>c</katex>.',
@@ -7840,6 +7706,10 @@ function renderApp() {
     searchArea.style.display = (state.view === 'home') ? 'block' : 'none';
   }
 
+  // Воден знак — скрит на началната страница, дискретен на всички останали
+  const wm = document.getElementById('app-watermark');
+  if (wm) wm.classList.toggle('is-home', state.view === 'home');
+
   const main = document.getElementById('main-content');
   if (!main) return;
   main.innerHTML = '';
@@ -7867,6 +7737,7 @@ function renderHome(main) {
   ];
 
   let html = `
+    <img class="home-logo" src="./icons/logo-full.png" alt="Интерактивна математика — Валя Витковска">
     <div class="home-hero">
       <h1>Математически справочник<br>8.–12. клас</h1>
       <p>Формули, теореми, чертежи, графики и типови задачи</p>
@@ -8610,6 +8481,12 @@ function initInteractiveWidgets() {
     else if (type === 'trig-equation') initTrigEqWidget(el, params);
     else if (type === 'regular-polygon') initPolygonWidget(el, params);
     else if (type === 'distance-coord') initDistanceWidget(el, params);
+    else if (type === 'combinatorics') initCombinatoricsWidget(el, params);
+    else if (type === 'sqrt-numberline') initSqrtNumberLineWidget(el, params);
+    else if (type === 'vector-relations') initVectorRelWidget(el, params);
+    else if (type === 'circle-basics') initCircleBasicsWidget(el, params);
+    else if (type === 'notable-points') initNotablePointsWidget(el, params);
+    else if (type === 'quad-circle') initQuadCircleWidget(el, params);
     else if (type === 'prism-3d') initPrism3DWidget(el, params);
     else if (type === 'pyramid-3d') initPyramid3DWidget(el, params);
     else if (type === 'cylinder-3d') initCylinder3DWidget(el, params);
@@ -9553,6 +9430,249 @@ function initDistanceWidget(el, p) {
     readout.innerHTML=`Влачи A и B.<br>AB = √(Δx²+Δy²) = √(${fmt(dx*dx)}+${fmt(dy*dy)}) = <b>${fmt(dist)}</b><br>Среда M = (${fmt(mid.x)}; ${fmt(mid.y)})`;
   }
   makeDraggable(el,svg,c,W,H,[A,B],draw);
+  draw();
+}
+
+// ============================================================
+// КОМБИНАТОРИКА — пермутации, вариации, комбинации за n, k
+// ============================================================
+function initCombinatoricsWidget(el, p) {
+  let n = p.n ?? 4, k = p.k ?? 2;
+  let mode = p.mode ?? 'C'; // P | A | C
+  el.innerHTML = `<div class="iw-controls">
+      <div class="iw-controls-2col" style="grid-template-columns:1fr 1fr 1fr;">
+        <label style="flex-direction:row;gap:5px;align-items:center;"><input type="radio" data-m="P" ${mode==='P'?'checked':''} style="width:auto;">Пₙ</label>
+        <label style="flex-direction:row;gap:5px;align-items:center;"><input type="radio" data-m="A" ${mode==='A'?'checked':''} style="width:auto;">Aₙᵏ</label>
+        <label style="flex-direction:row;gap:5px;align-items:center;"><input type="radio" data-m="C" ${mode==='C'?'checked':''} style="width:auto;">Cₙᵏ</label>
+      </div>
+      <div class="iw-controls-2col">
+        <label>n = <span class="iw-val" data-v="n">${n}</span><input type="range" min="1" max="8" step="1" value="${n}" data-k="n"></label>
+        <label data-kc>k = <span class="iw-val" data-v="k">${k}</span><input type="range" min="0" max="8" step="1" value="${k}" data-k="k"></label>
+      </div></div>
+    <svg viewBox="0 0 320 120" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-readout"></div>`;
+  const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
+  function fact(m){let r=1;for(let i=2;i<=m;i++)r*=i;return r;}
+  function draw(){
+    if(k>n)k=n;
+    el.querySelector('input[data-k="k"]').value=k;
+    // визуализация: n цветни топчета, избрани k
+    let s='';
+    const colors=['#4f6ef7','#e84393','#10b981','#f59e0b','#8b5cf6','#0ea5e9','#ef4444','#14b8a6'];
+    for(let i=0;i<n;i++){
+      const x=24+i*36, sel=(mode!=='P'&&i<k);
+      s+=`<circle cx="${x}" cy="50" r="14" fill="${colors[i%8]}" opacity="${sel?1:0.35}" stroke="${sel?'#1a1f2e':'none'}" stroke-width="2"/>`;
+      s+=`<text x="${x}" y="55" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">${i+1}</text>`;
+    }
+    svg.innerHTML=s;
+    let val, formula;
+    if(mode==='P'){ val=fact(n); formula=`Pₙ = n! = ${n}! = <b>${val}</b>`; }
+    else if(mode==='A'){ val=fact(n)/fact(n-k); formula=`Aₙᵏ = n!/(n−k)! = ${n}!/${n-k}! = <b>${val}</b> (наредени, без повторение)`; }
+    else { val=fact(n)/(fact(k)*fact(n-k)); formula=`Cₙᵏ = n!/(k!(n−k)!) = <b>${val}</b> (без значение на реда)`; }
+    readout.innerHTML=formula;
+    el.querySelector('[data-v="n"]').textContent=n;
+    el.querySelector('[data-v="k"]').textContent=k;
+    el.querySelector('[data-kc]').style.display=mode==='P'?'none':'flex';
+  }
+  el.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',e=>{if(e.target.checked){mode=e.target.dataset.m;draw();}}));
+  el.querySelectorAll('input[type=range]').forEach(inp=>inp.addEventListener('input',e=>{if(e.target.dataset.k==='n')n=parseInt(e.target.value);else k=parseInt(e.target.value);draw();}));
+  draw();
+}
+
+// ============================================================
+// КВАДРАТЕН КОРЕН — числова ос с ирационални числа
+// ============================================================
+function initSqrtNumberLineWidget(el, p) {
+  const W=340,H=130,xmin=0,xmax=6;
+  let val=p.val??2; // показваме √val
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><label>подкоренно число = <span class="iw-val" data-v="v">${val}</span>
+      <input type="range" min="0" max="36" step="1" value="${val}" data-k="v"></label></div>
+    <div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  const sx=x=>20+(x-xmin)/(xmax-xmin)*(W-40);
+  function draw(){
+    const r=Math.sqrt(val);
+    let s=`<line x1="20" y1="70" x2="${W-20}" y2="70" stroke="var(--axis,#64748b)" stroke-width="1.5"/>`;
+    for(let i=xmin;i<=xmax;i++){s+=`<line x1="${sx(i)}" y1="66" x2="${sx(i)}" y2="74" stroke="var(--axis,#64748b)" stroke-width="1"/><text x="${sx(i)}" y="90" font-size="11" fill="#94a3b8" text-anchor="middle">${i}</text>`;}
+    // геометрично построяване: квадрат със страна... показваме точката √val
+    if(r<=xmax){
+      s+=`<circle cx="${sx(r)}" cy="70" r="6" fill="#e84393" stroke="#fff" stroke-width="2"/>`;
+      s+=`<text x="${sx(r)}" y="54" font-size="13" font-weight="700" fill="#e84393" text-anchor="middle">√${val}</text>`;
+      // между кои цели числа
+      const lo=Math.floor(r), hi=Math.ceil(r);
+      if(lo!==hi){s+=`<text x="${sx(r)}" y="110" font-size="10" fill="#4f6ef7" text-anchor="middle">${lo} &lt; √${val} &lt; ${hi}</text>`;}
+    }
+    svg.innerHTML=s;
+    const perfect=Number.isInteger(r);
+    readout.innerHTML=`√${val} = <b>${perfect?r:fmt(r)+'…'}</b> ${perfect?'(точен корен — рационално число)':'(ирационално число — безкраен непериодичен дроб)'}`;
+    el.querySelector('[data-v="v"]').textContent=val;
+  }
+  el.querySelector('input').addEventListener('input',e=>{val=parseInt(e.target.value);draw();});
+  draw();
+}
+
+// ============================================================
+// ОТНОШЕНИЯ МЕЖДУ ВЕКТОРИ — равни, противоположни, колинеарни
+// ============================================================
+function initVectorRelWidget(el, p) {
+  const W=320,H=260,xmin=-5,xmax=5,ymin=-4,ymax=4;
+  const c=makeCoord(W,H,xmin,xmax,ymin,ymax);
+  let mode=p.mode??'equal'; // equal | opposite | collinear
+  const a={x:3,y:1.5,color:'#4f6ef7'};
+  function arrow(x1,y1,x2,y2,color,w){const ang=Math.atan2(c.sy(y2)-c.sy(y1),c.sx(x2)-c.sx(x1));const ah=10,a1=ang+Math.PI*0.85,a2=ang-Math.PI*0.85;return seg(c,x1,y1,x2,y2,color,w||2.5)+`<polygon points="${c.sx(x2)},${c.sy(y2)} ${(c.sx(x2)+ah*Math.cos(a1)).toFixed(1)},${(c.sy(y2)+ah*Math.sin(a1)).toFixed(1)} ${(c.sx(x2)+ah*Math.cos(a2)).toFixed(1)},${(c.sy(y2)+ah*Math.sin(a2)).toFixed(1)}" fill="${color}"/>`;}
+  const modes=[['equal','равни'],['opposite','противоположни'],['collinear','колинеарни']];
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><div class="iw-controls-2col" style="grid-template-columns:1fr 1fr 1fr;">
+      ${modes.map(([m,t])=>`<label style="flex-direction:row;gap:4px;align-items:center;font-size:12px;"><input type="radio" data-m="${m}" ${mode===m?'checked':''} style="width:auto;">${t}</label>`).join('')}
+    </div></div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=arrow(-1,-2,-1+a.x,-2+a.y,'#4f6ef7',2.5); // a
+    let bx,by,bsx,bsy,info;
+    if(mode==='equal'){bsx=1;bsy=1;bx=a.x;by=a.y;info='Равни вектори: еднаква посока И дължина (но различни начала). a = b';}
+    else if(mode==='opposite'){bsx=1;bsy=1;bx=-a.x;by=-a.y;info='Противоположни: еднаква дължина, обратна посока. b = −a';}
+    else {bsx=1;bsy=-1.5;bx=a.x*1.5;by=a.y*1.5;info='Колинеарни: успоредни (по една права или успоредни прави). b = k·a';}
+    s+=arrow(bsx,bsy,bsx+bx,bsy+by,'#e84393',2.5);
+    s+=lbl(c,-1+a.x/2,-2+a.y/2,'a','#4f6ef7',0,-6);
+    s+=lbl(c,bsx+bx/2,bsy+by/2,'b','#e84393',0,-6);
+    svg.innerHTML=s;
+    readout.innerHTML=info;
+  }
+  el.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',e=>{if(e.target.checked){mode=e.target.dataset.m;draw();}}));
+  draw();
+}
+
+// ============================================================
+// ОКРЪЖНОСТ — основни понятия: радиус, диаметър, хорда, дъга
+// ============================================================
+function initCircleBasicsWidget(el, p) {
+  const W=300,H=290,xmin=-6,xmax=6,ymin=-6,ymax=6;
+  const c=makeSquareCoord(W,H,xmin,xmax,ymin,ymax);
+  const R=4.2;
+  // подвижни точки върху окръжността за хордата
+  const A={x:R*Math.cos(2.3),y:R*Math.sin(2.3),constrain:(x,y)=>{const a=Math.atan2(y,x);return{x:R*Math.cos(a),y:R*Math.sin(a)};}};
+  const B={x:R*Math.cos(-0.6),y:R*Math.sin(-0.6),constrain:(x,y)=>{const a=Math.atan2(y,x);return{x:R*Math.cos(a),y:R*Math.sin(a)};}};
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    const pr=c.sx(R)-c.sx(0);
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="#4f6ef711" stroke="#4f6ef7" stroke-width="2"/>`;
+    // диаметър (хоризонтален)
+    s+=seg(c,-R,0,R,0,'#10b981',2);
+    s+=lbl(c,R/2,0,'диаметър','#10b981',-20,-4);
+    // радиус
+    s+=seg(c,0,0,0,R,'#8b5cf6',2);
+    s+=lbl(c,0,R/2,'r','#8b5cf6',6,0);
+    // хорда AB
+    s+=seg(c,A.x,A.y,B.x,B.y,'#e84393',2);
+    s+=lbl(c,(A.x+B.x)/2,(A.y+B.y)/2,'хорда','#e84393',4,-4);
+    s+=dot(c,0,0,'#4f6ef7',4)+lbl(c,0,0,'O','#4f6ef7',-12,-4);
+    s+=dot(c,A.x,A.y,'#e84393',5)+dot(c,B.x,B.y,'#e84393',5);
+    svg.innerHTML=s;
+    readout.innerHTML=`Влачи точките A и B по окръжността.<br>Радиус r=${fmt(R)}, диаметър d=2r=${fmt(2*R)}. Хордата AB = <b>${fmt(Math.hypot(A.x-B.x,A.y-B.y))}</b> (най-дългата хорда е диаметърът).`;
+  }
+  makeDraggable(el,svg,c,W,H,[A,B],draw);
+  draw();
+}
+
+// ============================================================
+// ЗАБЕЛЕЖИТЕЛНИ ТОЧКИ в триъгълника
+// ============================================================
+function initNotablePointsWidget(el, p) {
+  const W=320,H=290,xmin=-1,xmax=7,ymin=-1,ymax=6;
+  const c=makeCoord(W,H,xmin,xmax,ymin,ymax);
+  let mode=p.mode??'centroid'; // centroid | ortho | circum | incenter
+  const A={x:0.6,y:0.6,color:'#4f6ef7'},B={x:6,y:1,color:'#4f6ef7'},Cc={x:2.2,y:4.6,color:'#4f6ef7'};
+  const modes=[['centroid','медицентър'],['ortho','ортоцентър'],['circum','околоцентър'],['incenter','инцентър']];
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><div class="iw-controls-2col">
+      ${modes.map(([m,t])=>`<label style="flex-direction:row;gap:5px;align-items:center;font-size:12px;"><input type="radio" data-m="${m}" ${mode===m?'checked':''} style="width:auto;">${t}</label>`).join('')}
+    </div></div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function draw(){
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=`<polygon points="${c.sx(A.x)},${c.sy(A.y)} ${c.sx(B.x)},${c.sy(B.y)} ${c.sx(Cc.x)},${c.sy(Cc.y)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
+    let P,info,extra='';
+    const mid=(U,V)=>({x:(U.x+V.x)/2,y:(U.y+V.y)/2});
+    if(mode==='centroid'){
+      P={x:(A.x+B.x+Cc.x)/3,y:(A.y+B.y+Cc.y)/3};
+      extra=seg(c,A.x,A.y,mid(B,Cc).x,mid(B,Cc).y,'#e84393',1)+seg(c,B.x,B.y,mid(A,Cc).x,mid(A,Cc).y,'#e84393',1)+seg(c,Cc.x,Cc.y,mid(A,B).x,mid(A,B).y,'#e84393',1);
+      info='Медицентър — пресечна точка на медианите. Дели всяка медиана 2:1.';
+    } else if(mode==='ortho'){
+      // ортоцентър: пресичане на височините
+      const foot=(P0,Q,R0)=>{const dx=R0.x-Q.x,dy=R0.y-Q.y;const t=((P0.x-Q.x)*dx+(P0.y-Q.y)*dy)/(dx*dx+dy*dy);return{x:Q.x+t*dx,y:Q.y+t*dy};};
+      const hA=foot(A,B,Cc),hB=foot(B,A,Cc);
+      // пресичане на правите A-hA и B-hB
+      P=lineIntersect(A,hA,B,hB);
+      extra=seg(c,A.x,A.y,hA.x,hA.y,'#e84393',1)+seg(c,B.x,B.y,hB.x,hB.y,'#e84393',1);
+      info='Ортоцентър — пресечна точка на височините.';
+    } else if(mode==='circum'){
+      P=circumcenter(A,B,Cc);
+      const R=Math.hypot(P.x-A.x,P.y-A.y);
+      extra=`<circle cx="${c.sx(P.x)}" cy="${c.sy(P.y)}" r="${(c.sx(R)-c.sx(0)).toFixed(1)}" fill="none" stroke="#10b981" stroke-width="1.3" stroke-dasharray="4 3"/>`;
+      info='Околоцентър — център на описаната окръжност (пресичане на симетралите). Еднакво отдалечен от върховете.';
+    } else {
+      // инцентър: претеглена сума с дължините на срещулежащите страни
+      const a=Math.hypot(B.x-Cc.x,B.y-Cc.y),b=Math.hypot(A.x-Cc.x,A.y-Cc.y),cc=Math.hypot(A.x-B.x,A.y-B.y);
+      const sum=a+b+cc;
+      P={x:(a*A.x+b*B.x+cc*Cc.x)/sum,y:(a*A.y+b*B.y+cc*Cc.y)/sum};
+      // радиус на вписаната = площ/полупериметър
+      const area=Math.abs((B.x-A.x)*(Cc.y-A.y)-(Cc.x-A.x)*(B.y-A.y))/2;
+      const r=area/(sum/2);
+      extra=`<circle cx="${c.sx(P.x)}" cy="${c.sy(P.y)}" r="${(c.sx(r)-c.sx(0)).toFixed(1)}" fill="none" stroke="#10b981" stroke-width="1.3" stroke-dasharray="4 3"/>`;
+      info='Инцентър — център на вписаната окръжност (пресичане на ъглополовящите).';
+    }
+    s+=extra;
+    s+=dot(c,A.x,A.y,'#4f6ef7',5)+dot(c,B.x,B.y,'#4f6ef7',5)+dot(c,Cc.x,Cc.y,'#4f6ef7',5);
+    s+=lbl(c,A.x,A.y,'A','#1a1f2e',-12,0)+lbl(c,B.x,B.y,'B','#1a1f2e',6,0)+lbl(c,Cc.x,Cc.y,'C','#1a1f2e',-4,-8);
+    if(P)s+=dot(c,P.x,P.y,'#f59e0b',6);
+    svg.innerHTML=s;
+    readout.innerHTML='Влачи върховете. <b>'+info+'</b>';
+  }
+  function lineIntersect(p1,p2,p3,p4){const a1=p2.y-p1.y,b1=p1.x-p2.x,c1=a1*p1.x+b1*p1.y;const a2=p4.y-p3.y,b2=p3.x-p4.x,c2=a2*p3.x+b2*p3.y;const d=a1*b2-a2*b1;if(Math.abs(d)<1e-9)return null;return{x:(b2*c1-b1*c2)/d,y:(a1*c2-a2*c1)/d};}
+  function circumcenter(A,B,C){const d=2*(A.x*(B.y-C.y)+B.x*(C.y-A.y)+C.x*(A.y-B.y));const ux=((A.x*A.x+A.y*A.y)*(B.y-C.y)+(B.x*B.x+B.y*B.y)*(C.y-A.y)+(C.x*C.x+C.y*C.y)*(A.y-B.y))/d;const uy=((A.x*A.x+A.y*A.y)*(C.x-B.x)+(B.x*B.x+B.y*B.y)*(A.x-C.x)+(C.x*C.x+C.y*C.y)*(B.x-A.x))/d;return{x:ux,y:uy};}
+  el.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',e=>{if(e.target.checked){mode=e.target.dataset.m;draw();}}));
+  makeDraggable(el,svg,c,W,H,[A,B,Cc],draw);
+  draw();
+}
+
+// ============================================================
+// ВПИСАН / ОПИСАН ЧЕТИРИЪГЪЛНИК
+// ============================================================
+function initQuadCircleWidget(el, p) {
+  const W=300,H=290,xmin=-6,xmax=6,ymin=-6,ymax=6;
+  const c=makeSquareCoord(W,H,xmin,xmax,ymin,ymax);
+  const R=4.2;
+  let mode=p.mode??'inscribed'; // inscribed (в окръжност) | circumscribed (описан около)
+  const onC=ang=>({x:R*Math.cos(ang),y:R*Math.sin(ang),constrain:(x,y)=>{const a=Math.atan2(y,x);return{x:R*Math.cos(a),y:R*Math.sin(a)};}});
+  const pts=[onC(2.4),onC(1.0),onC(-0.5),onC(-2.0)];
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls"><div class="iw-controls-2col" style="grid-template-columns:1fr 1fr;">
+      <label style="flex-direction:row;gap:5px;align-items:center;font-size:12px;"><input type="radio" data-m="inscribed" ${mode==='inscribed'?'checked':''} style="width:auto;">вписан</label>
+      <label style="flex-direction:row;gap:5px;align-items:center;font-size:12px;"><input type="radio" data-m="circumscribed" ${mode==='circumscribed'?'checked':''} style="width:auto;">описан</label>
+    </div></div><div class="iw-readout"></div>`;
+  const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
+  function angleAt(V,P1,P2){const v1x=P1.x-V.x,v1y=P1.y-V.y,v2x=P2.x-V.x,v2y=P2.y-V.y;let d=(v1x*v2x+v1y*v2y)/(Math.hypot(v1x,v1y)*Math.hypot(v2x,v2y));d=Math.max(-1,Math.min(1,d));return Math.acos(d)*180/Math.PI;}
+  function draw(){
+    const pr=c.sx(R)-c.sx(0);
+    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="none" stroke="#4f6ef7" stroke-width="1.6" stroke-dasharray="${mode==='circumscribed'?'4 3':'0'}"/>`;
+    s+=`<polygon points="${pts.map(p=>c.sx(p.x)+','+c.sy(p.y)).join(' ')}" fill="#e8439322" stroke="#e84393" stroke-width="2"/>`;
+    pts.forEach((p,i)=>{s+=dot(c,p.x,p.y,'#e84393',5);});
+    s+=dot(c,0,0,'#4f6ef7',3);
+    svg.innerHTML=s;
+    if(mode==='inscribed'){
+      const a1=angleAt(pts[0],pts[3],pts[1]),a3=angleAt(pts[2],pts[1],pts[3]);
+      readout.innerHTML=`Влачи върховете по окръжността.<br><b>Вписан четириъгълник</b>: срещуположните ъгли се допълват до 180°.<br>∠A+∠C = ${fmt(a1+a3)}° ≈ 180°`;
+    } else {
+      readout.innerHTML=`<b>Описан четириъгълник</b> (окръжността е вписана в него): сборовете на срещуположните страни са равни: a+c = b+d.`;
+    }
+  }
+  el.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',e=>{if(e.target.checked){mode=e.target.dataset.m;draw();}}));
+  makeDraggable(el,svg,c,W,H,pts,draw);
   draw();
 }
 
