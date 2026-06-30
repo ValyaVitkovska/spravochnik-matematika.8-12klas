@@ -7728,7 +7728,7 @@ function renderApp() {
       credits.innerHTML =
         `<img class="credits-logo" src="./icons/logo-mark.png" alt="">` +
         `<div class="credits-text"><span class="copyright">© Валя Витковска, 2026</span><br>` +
-        `Авторска идея, педагогически дизайн, редакция и проверка: Валя Витковска.<br>` +
+        `Авторска идея, методическа разработка, редакция и проверка: Валя Витковска.<br>` +
         `Създадено с помощта на AI инструменти.</div>`;
       credits.classList.add('is-last');
     } else {
