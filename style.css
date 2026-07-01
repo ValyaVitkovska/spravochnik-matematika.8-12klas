@@ -1152,6 +1152,19 @@ body {
   width: 72%;
   margin: 36px auto 8px;
 }
+
+/* Изображение най-горе на началната страница */
+.home-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-xl, 20px);
+  margin-bottom: 18px;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+}
+[data-theme="dark"] .home-cover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
 [data-theme="dark"] .home-logo {
   /* логото е на бял фон — слагаме лека светла подложка, за да изпъква */
   background: #ffffff;

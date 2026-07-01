@@ -7784,6 +7784,7 @@ function renderHome(main) {
   ];
 
   let html = `
+    <img class="home-cover" src="./icons/home-hero.jpg" alt="Интерактивна математика — справочник" loading="eager">
     <div class="home-hero">
       <h1>Математически справочник<br>8.–12. клас</h1>
       <p>Формули, теореми, чертежи, графики и типови задачи</p>
