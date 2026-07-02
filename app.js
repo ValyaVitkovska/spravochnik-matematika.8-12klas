@@ -520,9 +520,10 @@ const CONTENT = {
 
   // --- Пермутации ---
   g8t1s3: {
-    shortIntro: 'Пермутациите броят на колко начина може да се <b>подредят</b> всички елементи на едно множество. Редът е важен и се използват всички елементи.',
+    shortIntro: 'Пермутация без повторение от <katex>n</katex> елемента е всяко <b>подреждане на всичките <katex>n</katex> елемента</b> в редица. Броят на всички пермутации показва по колко начина може да се разместят n елемента върху n места.',
     definitions: [
-      { term: 'Пермутация', def: 'Всяка наредба на <katex>n</katex> различни елемента. Броят им се означава с <katex>P_n</katex>.' },
+      { term: 'Пермутация без повторение', def: 'Всяко <b>подреждане на всичките <katex>n</katex> елемента</b> на дадено крайно множество в редица. Броят на всички пермутации от <katex>n</katex> елемента се означава с <katex>P_n</katex>.' },
+      { term: '„Без повторение"', def: 'Ако даден елемент е поставен на някакво място, той не може да заема и друго място в същата пермутация (всеки елемент участва точно веднъж).' },
       { term: 'Факториел', def: '<katex>n! = 1 \\cdot 2 \\cdot 3 \\cdots n</katex> — произведение на всички естествени числа от 1 до n. По дефиниция <katex>0! = 1</katex>.' }
     ],
     formulas: [
@@ -564,9 +565,10 @@ const CONTENT = {
 
   // --- Вариации ---
   g8t1s4: {
-    shortIntro: 'Вариациите броят на колко начина може да се изберат и <b>подредят</b> k елемента от общо n елемента. Редът е важен, но не се използват всички елементи.',
+    shortIntro: 'Вариация без повторение <katex>k</katex>-ти клас е всяка <b>наредена извадка</b> на <katex>k</katex> елемента от дадени <katex>n</katex> (<katex>k \\leq n</katex>). Използва се само <b>част</b> от елементите и <b>редът е важен</b>.',
     definitions: [
-      { term: 'Вариация', def: 'Наредена k-елементна част на множество от <katex>n</katex> елемента (<katex>k \\leq n</katex>). Броят се означава с <katex>V_n^k</katex>.' }
+      { term: 'Вариация без повторение <katex>k</katex>-ти клас', def: 'Нека <katex>n</katex> и <katex>k</katex> са естествени числа, <katex>k \\leq n</katex>. Ако от дадени <katex>n</katex> елемента се изберат <katex>k</katex> и се подредят в редица, всяка такава <b>наредена извадка</b> е вариация без повторение от <katex>n</katex> елемента <katex>k</katex>-ти клас. Броят им се означава с <katex>V_n^k</katex>.' },
+      { term: '„Без повторение"', def: 'Ако даден елемент е поставен на някакво място, той не може да заема и друго място в същата вариация.' }
     ],
     formulas: [
       { label: 'Брой вариации без повторение', tex: 'V_n^k = \\dfrac{n!}{(n-k)!}' },
@@ -600,9 +602,10 @@ const CONTENT = {
 
   // --- Комбинации ---
   g8t1s5: {
-    shortIntro: 'Комбинациите броят на колко начина може да се изберат k елемента от n, <b>без</b> значение на реда. Това е изборът на подмножество.',
+    shortIntro: 'Комбинация без повторение <katex>k</katex>-ти клас е всяка <b>ненаредена извадка</b> на <katex>k</katex> елемента от дадени <katex>n</katex> (<katex>k \\leq n</katex>). Използва се само <b>част</b> от елементите и <b>редът НЕ е важен</b>.',
     definitions: [
-      { term: 'Комбинация', def: 'Неподредена k-елементна част на множество от <katex>n</katex> елемента. Броят се означава с <katex>C_n^k</katex>.' }
+      { term: 'Комбинация без повторение <katex>k</katex>-ти клас', def: 'Нека <katex>n</katex> и <katex>k</katex> са естествени числа, <katex>k \\leq n</katex>. Комбинация без повторение от <katex>n</katex> елемента <katex>k</katex>-ти клас е всеки <b>избор на <katex>k</katex> елемента</b> от <katex>n</katex> дадени — тоест всяка <b>ненаредена извадка</b>. Броят им се означава с <katex>C_n^k</katex>.' },
+      { term: 'Разлика с вариацията', def: 'При комбинацията избраните елементи <b>не са наредени</b> — редът им няма значение. Затова <katex>C_n^k = \\dfrac{V_n^k}{k!}</katex>.' }
     ],
     formulas: [
       { label: 'Брой комбинации', tex: 'C_n^k = \\dfrac{n!}{k!\\,(n-k)!}' },
@@ -643,9 +646,12 @@ const CONTENT = {
 
   // --- Разлика между пермутация, вариация и комбинация ---
   g8t1s6: {
-    shortIntro: 'Ключовият въпрос при всяка комбинаторна задача е: важен ли е редът и използват ли се всички елементи? Отговорът определя коя формула да изберем.',
+    shortIntro: 'Пермутация, вариация и комбинация без повторение се наричат общо <b>съединения без повторение</b>. Различават се по два въпроса: използват ли се <b>всички</b> елементи или само <b>част</b> (извадка), и <b>наредени</b> ли са.',
     definitions: [
-      { term: 'Сравнение', def: 'Пермутации, вариации и комбинации се различават по два критерия: дали редът е важен и дали се използват всички елементи.' }
+      { term: 'Съединение без повторение', def: 'Общо название за пермутация, вариация или комбинация без повторение.' },
+      { term: 'Всички или част', def: '<b>Пермутацията</b> подрежда <b>всички</b> елементи; <b>вариацията и комбинацията</b> вземат само <b>част</b> — извадка от множеството.' },
+      { term: 'Наредени или не', def: '<b>Пермутацията и вариацията</b> са <b>наредени</b> извадки; <b>комбинацията</b> е <b>ненаредена</b> извадка.' },
+      { term: 'Практическо правило', def: 'При колебание вариация или комбинация се запитай: „Променя ли се резултатът, ако разменя местата на два елемента в извадката?" — <b>ДА → вариация</b>, <b>НЕ → комбинация</b>.' }
     ],
     comparisonTable: true,
     formulas: [
@@ -655,10 +661,10 @@ const CONTENT = {
     ],
     drawing: { interactive: 'combinatorics', params: { mode:'C', n:4, k:2 }, caption: 'Превключи P, V, C при същите n, k и сравни подрежданията: при C няма стрелки, защото редът е без значение.' },
     algorithm: [
-      'Запитай се: важен ли е редът?',
-      'Ако ДА и използваме всички елементи → пермутации.',
-      'Ако ДА, но използваме само k → вариации.',
-      'Ако НЕ е важен редът → комбинации.'
+      'Запитай се: използват ли се ВСИЧКИ елементи, или само част (извадка)?',
+      'Ако всички се подреждат → пермутации P.',
+      'Ако е извадка, приложи правилото: разменяш ли два елемента, променя ли се резултатът?',
+      'ДА (редът важи) → вариации V. НЕ (редът не важи) → комбинации C.'
     ],
     example: {
       problem: 'От 5 ученици трябва: (а) да се подредят в редица; (б) да се изберат 2 за дежурство; (в) да се изберат капитан и заместник. Коя формула?',
@@ -763,7 +769,6 @@ const CONTENT = {
     formulas: [
       { label: 'Означение', tex: '\\vec{AB} \\quad \\text{или} \\quad \\vec{a}' }
     ],
-    drawing: { interactive: 'vector-ops', params: { mode: 'add-tri' }, caption: 'Векторът има посока и дължина. Влачи краищата му.' },
     algorithm: [
       'Определи началната точка (откъдето тръгва векторът).',
       'Определи крайната точка (където сочи).',
@@ -1078,6 +1083,7 @@ const CONTENT = {
       { label: 'Дистрибутивност', tex: 'k(\\vec{a} + \\vec{b}) = k\\vec{a} + k\\vec{b}' },
       { label: 'Нулев вектор', tex: '\\vec{a} + \\vec{0} = \\vec{a}' }
     ],
+    drawing: { interactive: 'vector-ops', params: { mode: 'add-tri' }, caption: 'Действия с вектори: превключи събиране (триъгълник/успоредник), изваждане и умножение с число.' },
     algorithm: [
       'При сложни изрази използвай свойствата, за да опростиш.',
       'Групирай подобни вектори.',
@@ -8479,6 +8485,21 @@ function axesSVG(c, W, H, xmin, xmax, ymin, ymax) {
   return g;
 }
 
+// Фон за ГЕОМЕТРИЧНИ чертежи — само лека мрежа, БЕЗ оси, стрелки и надписи x/y.
+// Използва се навсякъде, където не се строят графики на функции или трион. окръжност.
+function plainGrid(c, W, H, xmin, xmax, ymin, ymax) {
+  let g = '';
+  for (let x = Math.ceil(xmin); x <= Math.floor(xmax); x++) {
+    const px = c.sx(x);
+    g += `<line x1="${px}" y1="${c.sy(ymax)}" x2="${px}" y2="${c.sy(ymin)}" stroke="var(--grid,#eef2f7)" stroke-width="1"/>`;
+  }
+  for (let y = Math.ceil(ymin); y <= Math.floor(ymax); y++) {
+    const py = c.sy(y);
+    g += `<line x1="${c.sx(xmin)}" y1="${py}" x2="${c.sx(xmax)}" y2="${py}" stroke="var(--grid,#eef2f7)" stroke-width="1"/>`;
+  }
+  return g;
+}
+
 // Координатна система с РАВЕН мащаб по двете оси (за геометрия — окръжностите остават кръгли)
 function makeSquareCoord(W, H, xmin, xmax, ymin, ymax) {
   const pad = 10;
@@ -8933,7 +8954,7 @@ function initTriangleSolverWidget(el, p) {
     const b = Math.hypot(A.x-Cc.x, A.y-Cc.y); // срещу B
     const cc = Math.hypot(A.x-B.x, A.y-B.y);  // срещу C
     const angA = angle(A,B,Cc), angB = angle(B,A,Cc), angC = angle(Cc,A,B);
-    let s = axesSVG(c, W, H, xmin, xmax, ymin, ymax);
+    let s = plainGrid(c, W, H, xmin, xmax, ymin, ymax);
     s += `<polygon points="${c.sx(A.x)},${c.sy(A.y)} ${c.sx(B.x)},${c.sy(B.y)} ${c.sx(Cc.x)},${c.sy(Cc.y)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     // етикети на страни (по средата на всяка)
     s += lbl(c,(B.x+Cc.x)/2,(B.y+Cc.y)/2,'a='+fmt(a),'#e84393',4,0);
@@ -8982,7 +9003,7 @@ function initVectorOpsWidget(el, p) {
     <div class="iw-readout"></div>`;
   const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
   function draw() {
-    let s = axesSVG(c, W, H, xmin, xmax, ymin, ymax);
+    let s = plainGrid(c, W, H, xmin, xmax, ymin, ymax);
     let info='';
     if (mode === 'add-tri') {
       s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(a.x,a.y,a.x+b.x,a.y+b.y,B_PINK) + arrow(0,0,a.x+b.x,a.y+b.y,RES,3);
@@ -9032,7 +9053,7 @@ function initCircleAngleWidget(el, p) {
   function draw() {
     const O={x:0,y:0};
     let s = `<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${(c.sx(R)-c.sx(0)).toFixed(1)}" fill="none" stroke="#4f6ef7" stroke-width="2"/>`;
-    s += axesSVG(c,W,H,xmin,xmax,ymin,ymax).replace(/<line[^>]*stroke="var[^>]*>/g,''); // леки оси
+    s += plainGrid(c,W,H,xmin,xmax,ymin,ymax).replace(/<line[^>]*stroke="var[^>]*>/g,''); // леки оси
     let info='';
     const arcAB = arcDeg(B,A);
     if (mode==='central') {
@@ -9162,7 +9183,7 @@ function initSimilarWidget(el, p) {
   function draw(){
     const off=5.5;
     const T2=T.map(p=>({x:p.x*k+off,y:p.y*k}));
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax)+tri(T,'#4f6ef7','#4f6ef722')+tri(T2,'#e84393','#e8439322');
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax)+tri(T,'#4f6ef7','#4f6ef722')+tri(T2,'#e84393','#e8439322');
     s+=lbl(c,1.5,0.5,'ABC','#4f6ef7',0,16)+lbl(c,off+1.5*k,0.5,"A'B'C'",'#e84393',0,16);
     svg.innerHTML=s;
     const side=Math.hypot(T[1].x-T[0].x,T[1].y-T[0].y);
@@ -9193,7 +9214,7 @@ function initTrapezoidWidget(el, p) {
     const A={x:x0,y:0.5}, B={x:x0+aBig,y:0.5};
     const off=iso?(aBig-bSmall)/2:0.8;
     const D={x:x0+off,y:0.5+h}, Cc={x:x0+off+bSmall,y:0.5+h};
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<polygon points="${[A,B,Cc,D].map(p=>c.sx(p.x)+','+c.sy(p.y)).join(' ')}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     // средна отсечка
     const M={x:(A.x+D.x)/2,y:(A.y+D.y)/2}, N={x:(B.x+Cc.x)/2,y:(B.y+Cc.y)/2};
@@ -9308,7 +9329,7 @@ function initRightMetricWidget(el, p) {
     const hgt=Math.sqrt(p_*q);
     const Hh={x:A.x+p_,y:0.5};
     const Cc={x:Hh.x,y:0.5+hgt};
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<polygon points="${c.sx(A.x)},${c.sy(A.y)} ${c.sx(B.x)},${c.sy(B.y)} ${c.sx(Cc.x)},${c.sy(Cc.y)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     s+=seg(c,Cc.x,Cc.y,Hh.x,Hh.y,'#e84393',2);
     s+=dot(c,A.x,A.y,'#1a1f2e',4)+dot(c,B.x,B.y,'#1a1f2e',4)+dot(c,Cc.x,Cc.y,'#1a1f2e',4)+dot(c,Hh.x,Hh.y,'#10b981',4);
@@ -9338,7 +9359,7 @@ function initTwoCirclesWidget(el, p) {
   function draw(){
     const O1={x:2,y:0},O2={x:2+d,y:0};
     const pr=x=>c.sx(x)-c.sx(0);
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<circle cx="${c.sx(O1.x)}" cy="${c.sy(0)}" r="${pr(R1)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     s+=`<circle cx="${c.sx(O2.x)}" cy="${c.sy(0)}" r="${pr(R2)}" fill="#e8439322" stroke="#e84393" stroke-width="2"/>`;
     s+=dot(c,O1.x,0,'#4f6ef7',3)+dot(c,O2.x,0,'#e84393',3);
@@ -9370,7 +9391,7 @@ function initTangentWidget(el, p) {
   function draw(){
     const pr=c.sx(R)-c.sx(0);
     const dist=Math.hypot(Pp.x,Pp.y);
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     s+=dot(c,0,0,'#4f6ef7',3)+lbl(c,0,0,'O','#4f6ef7',-12,-4);
     if(dist>R){
@@ -9452,7 +9473,7 @@ function initPolygonWidget(el, p) {
     const r=R*Math.cos(Math.PI/n);
     const pr2=c.sx(r)-c.sx(0);
     const pts=[];for(let i=0;i<n;i++){const ang=-Math.PI/2+i*2*Math.PI/n;pts.push({x:R*Math.cos(ang),y:R*Math.sin(ang)});}
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="none" stroke="#e84393" stroke-width="1.3" stroke-dasharray="4 3"/>`;
     s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr2}" fill="none" stroke="#10b981" stroke-width="1.3" stroke-dasharray="4 3"/>`;
     s+=`<polygon points="${pts.map(p=>c.sx(p.x)+','+c.sy(p.y)).join(' ')}" fill="#4f6ef733" stroke="#4f6ef7" stroke-width="2"/>`;
@@ -9700,7 +9721,7 @@ function initVectorRelWidget(el, p) {
     </div></div><div class="iw-readout"></div>`;
   const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
   function draw(){
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=arrow(-1,-2,-1+a.x,-2+a.y,'#4f6ef7',2.5); // a
     let bx,by,bsx,bsy,info;
     if(mode==='equal'){bsx=1;bsy=1;bx=a.x;by=a.y;info='Равни вектори: еднаква посока И дължина (но различни начала). a = b';}
@@ -9730,7 +9751,7 @@ function initCircleBasicsWidget(el, p) {
   const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
   function draw(){
     const pr=c.sx(R)-c.sx(0);
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="#4f6ef711" stroke="#4f6ef7" stroke-width="2"/>`;
     // диаметър (хоризонтален)
     s+=seg(c,-R,0,R,0,'#10b981',2);
@@ -9765,7 +9786,7 @@ function initNotablePointsWidget(el, p) {
     </div></div><div class="iw-readout"></div>`;
   const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
   function draw(){
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<polygon points="${c.sx(A.x)},${c.sy(A.y)} ${c.sx(B.x)},${c.sy(B.y)} ${c.sx(Cc.x)},${c.sy(Cc.y)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     let P,info,extra='';
     const mid=(U,V)=>({x:(U.x+V.x)/2,y:(U.y+V.y)/2});
@@ -9830,7 +9851,7 @@ function initQuadCircleWidget(el, p) {
   function angleAt(V,P1,P2){const v1x=P1.x-V.x,v1y=P1.y-V.y,v2x=P2.x-V.x,v2y=P2.y-V.y;let d=(v1x*v2x+v1y*v2y)/(Math.hypot(v1x,v1y)*Math.hypot(v2x,v2y));d=Math.max(-1,Math.min(1,d));return Math.acos(d)*180/Math.PI;}
   function draw(){
     const pr=c.sx(R)-c.sx(0);
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="none" stroke="#4f6ef7" stroke-width="1.6" stroke-dasharray="${mode==='circumscribed'?'4 3':'0'}"/>`;
     s+=`<polygon points="${pts.map(p=>c.sx(p.x)+','+c.sy(p.y)).join(' ')}" fill="#e8439322" stroke="#e84393" stroke-width="2"/>`;
     pts.forEach((p,i)=>{s+=dot(c,p.x,p.y,'#e84393',5);});
