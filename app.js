@@ -942,7 +942,8 @@ const CONTENT = {
   g8t2s6: {
     shortIntro: 'Правилото на триъгълника е основният начин за събиране на два вектора: краят на първия съвпада с началото на втория.',
     definitions: [
-      { term: 'Правило на триъгълника', def: 'Поставяме началото на <katex>\\vec{b}</katex> в края на <katex>\\vec{a}</katex>. Сборът <katex>\\vec{a} + \\vec{b}</katex> е векторът от началото на <katex>\\vec{a}</katex> до края на <katex>\\vec{b}</katex>.' }
+      { term: 'Правило на триъгълника', def: 'За да съберем <katex>\\vec{a}</katex> и <katex>\\vec{b}</katex>: 1) от произволна точка A построяваме <katex>\\vec{AB} = \\vec{a}</katex>; 2) от края на първия построяваме <katex>\\vec{BC} = \\vec{b}</katex> (<b>краят на първия вектор е начало на втория</b>); 3) сборът <katex>\\vec{a}+\\vec{b}</katex> е векторът с начало A и край C.' },
+      { term: 'Практическо правило', def: 'Ако при сбор от двете страни на „+" има <b>една и съща буква</b>, махаме я: <katex>\\vec{AX} + \\vec{XB} = \\vec{AB}</katex>.' }
     ],
     formulas: [
       { label: 'Правило на триъгълника', tex: '\\vec{AB} + \\vec{BC} = \\vec{AC}' }
@@ -975,7 +976,8 @@ const CONTENT = {
   g8t2s7: {
     shortIntro: 'Правилото на успоредника събира два вектора с общо начало: сборът е диагоналът на успоредника, изграден върху тях.',
     definitions: [
-      { term: 'Правило на успоредника', def: 'Поставяме <katex>\\vec{a}</katex> и <katex>\\vec{b}</katex> с общо начало. Сборът е диагоналът на успоредника, изграден върху двата вектора.' }
+      { term: 'Правило на успоредника', def: 'Избираме произволна точка O за <b>общо начало</b> на <katex>\\vec{a}</katex> и <katex>\\vec{b}</katex> и построяваме успоредник с връх O и страни тези вектори. Векторът с начало O и край срещуположния връх е сборът: <katex>\\vec{OC} = \\vec{OA} + \\vec{OB}</katex>.' },
+      { term: 'Разместително свойство', def: 'От чертежа се вижда, че редът на събиране няма значение: <katex>\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}</katex>.' }
     ],
     formulas: [
       { label: 'Правило на успоредника', tex: '\\vec{OP} + \\vec{OQ} = \\vec{OR}' }
@@ -1008,7 +1010,8 @@ const CONTENT = {
   g8t2s8: {
     shortIntro: 'Изваждането на вектори е събиране с противоположния: вместо да изваждаме, прибавяме обратния вектор.',
     definitions: [
-      { term: 'Разлика на вектори', def: '<katex>\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})</katex>. Ако двата вектора имат общо начало, разликата свързва върха на <katex>\\vec{b}</katex> с върха на <katex>\\vec{a}</katex>.' }
+      { term: 'Разлика на вектори', def: 'Векторът, равен на сбора на <katex>\\vec{a}</katex> и противоположния на <katex>\\vec{b}</katex>, се нарича разлика: <katex>\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})</katex>.' },
+      { term: 'Практическо правило', def: 'При разлика на два вектора с <b>общо начало</b> X махаме буквата X и разменяме другите две: <katex>\\vec{XB} - \\vec{XA} = \\vec{AB}</katex>.' }
     ],
     formulas: [
       { label: 'Изваждане', tex: '\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})' },
@@ -1042,7 +1045,8 @@ const CONTENT = {
   g8t2s9: {
     shortIntro: 'Умножаването на вектор с число променя дължината му и евентуално посоката, но запазва направлението (остава колинеарен на изходния).',
     definitions: [
-      { term: 'Умножение с число', def: 'Векторът <katex>k\\vec{a}</katex> е колинеарен на <katex>\\vec{a}</katex>. Дължината му е <katex>|k|</katex> пъти по-голяма. При <katex>k > 0</katex> е еднопосочен с <katex>\\vec{a}</katex>, при <katex>k < 0</katex> — противопосочен.' }
+      { term: 'Произведение на вектор с число', def: 'Произведение на <katex>\\vec{a}</katex> с числото <katex>\\lambda</katex> е вектор <katex>\\vec{b} = \\lambda\\vec{a}</katex> с дължина <katex>|\\vec{b}| = |\\lambda|\\cdot|\\vec{a}|</katex>, който е <b>еднопосочен</b> на <katex>\\vec{a}</katex> при <katex>\\lambda > 0</katex> и <b>противопосочен</b> при <katex>\\lambda < 0</katex>. При <katex>\\lambda = 0</katex> или <katex>\\vec{a} = \\vec{0}</katex> се получава нулевият вектор.' },
+      { term: 'Полезни частни случаи', def: 'Всеки вектор е <katex>\\vec{a} = 1\\cdot\\vec{a}</katex>, а противоположният му е <katex>-\\vec{a} = (-1)\\cdot\\vec{a}</katex>.' }
     ],
     formulas: [
       { label: 'Дължина', tex: '|k\\vec{a}| = |k| \\cdot |\\vec{a}|' },
@@ -9015,20 +9019,20 @@ function initVectorOpsWidget(el, p) {
     if (mode === 'add-tri') {
       s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(a.x,a.y,a.x+b.x,a.y+b.y,B_PINK) + arrow(0,0,a.x+b.x,a.y+b.y,RES,3);
       bBaseX=a.x; bBaseY=a.y; bTipX=a.x+b.x; bTipY=a.y+b.y;
-      info = `Правило на триъгълника: подреждаш b след a. a+b = (${fmt(a.x+b.x)}; ${fmt(a.y+b.y)})`;
+      info = 'Правило на триъгълника: краят на a е начало на b. Сборът a+b свързва началото на a с върха на b.';
     } else if (mode === 'add-par') {
       s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(0,0,b.x,b.y,B_PINK) + arrow(0,0,a.x+b.x,a.y+b.y,RES,3);
       s += seg(c,a.x,a.y,a.x+b.x,a.y+b.y,B_PINK,1)+seg(c,b.x,b.y,a.x+b.x,a.y+b.y,A_BLUE,1);
       bTipX=b.x; bTipY=b.y;
-      info = `Правило на успоредника: a и b от обща начална точка. a+b = (${fmt(a.x+b.x)}; ${fmt(a.y+b.y)})`;
+      info = 'Правило на успоредника: a и b с общо начало; сборът a+b е диагоналът. Важи a+b = b+a.';
     } else if (mode === 'sub') {
       s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(0,0,b.x,b.y,B_PINK) + arrow(b.x,b.y,a.x,a.y,RES,3);
       bTipX=b.x; bTipY=b.y;
-      info = `a−b сочи от края на b към края на a. a−b = (${fmt(a.x-b.x)}; ${fmt(a.y-b.y)})`;
+      info = 'Разликата a−b = a + (−b) сочи от края на b към края на a.';
     } else {
       s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(0,0,k*a.x,k*a.y,RES,3);
       showB=false;
-      info = `k·a ${k<0?'обръща посоката и ':''}мащабира a по |k|=${fmt(Math.abs(k))}. k·a = (${fmt(k*a.x)}; ${fmt(k*a.y)})`;
+      info = `k·a има дължина |k|·|a| (|k|=${fmt(Math.abs(k))}); ${k<0?'при k<0 е противопосочен на a':'при k>0 е еднопосочен на a'}.`;
     }
     // етикет на a — по средата на вектора
     s += lbl(c, a.x/2, a.y/2, 'a', A_BLUE, (a.y>=0?8:-8), (a.x>=0?-6:10));
