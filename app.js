@@ -9065,7 +9065,8 @@ function initVectorOpsWidget(el, p) {
 function initSingleVectorWidget(el, p) {
   const W = 320, H = 280, xmin = -5, xmax = 5, ymin = -4, ymax = 4;
   const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
-  const v = { x: p.x ?? 3, y: p.y ?? 2, color:'#4f6ef7' };
+  const A = { x: p.ax ?? -1.5, y: p.ay ?? -1, color:'#1a1f2e' };   // начало (подвижно)
+  const B = { x: p.x ?? 2.5,  y: p.y ?? 1.5, color:'#4f6ef7' };    // край (подвижен)
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
     <div class="iw-readout"></div>`;
   const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
@@ -9077,20 +9078,16 @@ function initSingleVectorWidget(el, p) {
   }
   function draw() {
     let s = plainGrid(c, W, H, xmin, xmax, ymin, ymax);
-    s += arrow(0,0,v.x,v.y,v.color,3);
-    s += dot(c,0,0,'#1a1f2e',3);                // начало A
-    s += lbl(c,0,0,'A','#1a1f2e',-12,12);
-    s += dot(c,v.x,v.y,v.color,6);              // край B (влачи се)
-    s += lbl(c,v.x,v.y,'B','#4f6ef7',8,-4);
-    s += lbl(c,v.x/2,v.y/2,'a',v.color,(v.y>=0?10:-10),(v.x>=0?-8:12));
+    s += arrow(A.x,A.y,B.x,B.y,B.color,3);
+    s += dot(c,A.x,A.y,'#1a1f2e',6);            // начало A (влачи се)
+    s += lbl(c,A.x,A.y,'A','#1a1f2e',-14,10);
+    s += dot(c,B.x,B.y,B.color,6);              // край B (влачи се)
+    s += lbl(c,B.x,B.y,'B',B.color,8,-4);
+    s += lbl(c,(A.x+B.x)/2,(A.y+B.y)/2,'a',B.color,((B.y-A.y)>=0?10:-10),((B.x-A.x)>=0?-8:12));
     svg.innerHTML = s;
-    const len = Math.hypot(v.x,v.y);
-    const ang = (Math.atan2(v.y,v.x)*180/Math.PI+360)%360;
-    readout.innerHTML = `Влачи връх <b>B</b>, за да смениш <b>посоката</b> и <b>дължината</b>.<br>` +
-      `Координати: <katex>\\vec{a}</katex> = (${fmt(v.x)}; ${fmt(v.y)}) &nbsp;|&nbsp; дължина |<katex>\\vec{a}</katex>| = ${fmt(len)} &nbsp;|&nbsp; ъгъл ≈ ${Math.round(ang)}°`;
-    if (typeof renderKaTeX === 'function') renderKaTeX();
+    readout.innerHTML = 'Векторът има <b>начало</b> A и <b>край</b> B. Влачи всяка от двете точки, за да смениш <b>посоката</b> и <b>дължината</b> му.';
   }
-  makeDraggable(el, svg, c, W, H, [v], draw);
+  makeDraggable(el, svg, c, W, H, [A, B], draw);
   draw();
 }
 
