@@ -1024,10 +1024,10 @@ const CONTENT = {
     ],
     miniCheck: [
       {
-        q: 'На какво е равно OA − OB?',
-        options: ['BA', 'AB', 'AO'],
+        q: 'На какво е равно <katex>\\vec{OA} - \\vec{OB}</katex>?',
+        options: ['<katex>\\vec{BA}</katex>', '<katex>\\vec{AB}</katex>', '<katex>\\vec{AO}</katex>'],
         correct: 0,
-        feedback: 'OA − OB = BA (вектор от B към A).'
+        feedback: 'Разликата на два вектора с общо начало O сочи от B към A.'
       }
     ],
     remember: 'Изваждане = събиране с противоположния: <katex>\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})</katex>.'
@@ -1058,7 +1058,7 @@ const CONTENT = {
     ],
     miniCheck: [
       {
-        q: 'Векторът −3a спрямо a има:',
+        q: 'Векторът <katex>-3\\vec{a}</katex> спрямо <katex>\\vec{a}</katex> има:',
         options: ['Същата посока, 3× дължина', 'Обратна посока, 3× дължина', 'Обратна посока, същата дължина'],
         correct: 1,
         feedback: '|−3| = 3 → 3× дължина; знакът минус → обратна посока.'
@@ -1094,10 +1094,10 @@ const CONTENT = {
     ],
     miniCheck: [
       {
-        q: 'На какво е равно 3(a + b) − 3b?',
-        options: ['3a', '3a + 6b', '6b'],
+        q: 'На какво е равно <katex>3(\\vec{a} + \\vec{b}) - 3\\vec{b}</katex>?',
+        options: ['<katex>3\\vec{a}</katex>', '<katex>3\\vec{a} + 6\\vec{b}</katex>', '<katex>6\\vec{b}</katex>'],
         correct: 0,
-        feedback: '3a + 3b − 3b = 3a.'
+        feedback: 'Разкриваме скобата: 3a + 3b − 3b = 3a.'
       }
     ],
     remember: 'Събирането е комутативно и асоциативно. Умножението с число е дистрибутивно: <katex>k(\\vec{a}+\\vec{b}) = k\\vec{a} + k\\vec{b}</katex>.'
@@ -1128,10 +1128,10 @@ const CONTENT = {
     ],
     miniCheck: [
       {
-        q: 'Ако CD = 3·AB, какви са правите AB и CD?',
+        q: 'Ако <katex>\\vec{CD} = 3\\vec{AB}</katex>, какви са правите AB и CD?',
         options: ['Перпендикулярни', 'Успоредни', 'Пресичащи се'],
         correct: 1,
-        feedback: 'CD = k·AB означава колинеарност → правите са успоредни (или съвпадат).'
+        feedback: 'Векторното равенство означава колинеарност → правите са успоредни (или съвпадат).'
       }
     ],
     remember: 'Векторен метод: среда на отсечка → <katex>\\vec{OM} = \\dfrac{1}{2}(\\vec{OA}+\\vec{OB})</katex>; <katex>\\vec{CD}=k\\vec{AB}</katex> → успоредност.'
@@ -1179,7 +1179,8 @@ const CONTENT = {
   g8t3s2: {
     shortIntro: 'Средната отсечка свързва средите на две страни на триъгълника. Тя е успоредна на третата страна и два пъти по-къса.',
     definitions: [
-      { term: 'Средна отсечка', def: 'Отсечка, свързваща средите на две страни на триъгълник.' }
+      { term: 'Средна отсечка', def: 'Отсечка, свързваща средите на две страни на триъгълник.' },
+      { term: 'Теорема (обратна)', def: 'Ако права минава през средата на една страна на триъгълник и е успоредна на друга страна, то тя <b>минава през средата</b> на третата страна.' }
     ],
     formulas: [
       { label: 'Свойство на средната отсечка', tex: 'MN \\parallel BC, \\quad MN = \\dfrac{1}{2} BC' }
@@ -1202,7 +1203,7 @@ const CONTENT = {
         q: 'Ако третата страна е 10 cm, средната отсечка е:',
         options: ['5 cm', '10 cm', '20 cm'],
         correct: 0,
-        feedback: 'MN = 10/2 = 5 cm.'
+        feedback: '<katex>MN = \\dfrac{10}{2} = 5</katex> cm.'
       }
     ],
     remember: 'Средна отсечка в триъгълник: <katex>MN \\parallel BC</katex> и <katex>MN = \\dfrac{1}{2}BC</katex>.'
@@ -1238,7 +1239,7 @@ const CONTENT = {
         feedback: 'На 4 еднакви триъгълника.'
       }
     ],
-    remember: 'Средната отсечка е ∥ и = 1/2 от третата страна. Средният триъгълник има 1/2 периметър и 1/4 лице.'
+    remember: 'Средната отсечка е успоредна и равна на <katex>\\dfrac{1}{2}</katex> от третата страна. Средният триъгълник има <katex>\\dfrac{1}{2}</katex> периметър и <katex>\\dfrac{1}{4}</katex> лице.'
   },
 
   // --- Медицентър на триъгълник ---
@@ -1288,8 +1289,8 @@ const CONTENT = {
     drawing: { interactive: 'notable-points', params: { mode:'centroid' }, caption: 'Медицентърът дели всяка медиана в отношение 2:1, считано от върха.' },
     algorithm: [
       'Намери дължината на медианата.',
-      'Частта от върха до G е 2/3 от медианата.',
-      'Частта от G до средата на страната е 1/3.'
+      'Частта от върха до G е <katex>\\dfrac{2}{3}</katex> от медианата.',
+      'Частта от G до средата на страната е <katex>\\dfrac{1}{3}</katex>.'
     ],
     example: {
       problem: 'Медиана AA₁ = 12 cm. Намери AG и GA₁.',
@@ -1303,7 +1304,7 @@ const CONTENT = {
         q: 'Медиана е 15 cm. Колко е частта от върха до медицентъра?',
         options: ['5 cm', '7.5 cm', '10 cm'],
         correct: 2,
-        feedback: '2/3 · 15 = 10 cm.'
+        feedback: '<katex>\\dfrac{2}{3}\\cdot 15 = 10</katex> cm.'
       }
     ],
     remember: 'Медицентърът дели медианата 2:1 от върха: <katex>AG = \\dfrac{2}{3}AA_1</katex>.'
@@ -1338,7 +1339,7 @@ const CONTENT = {
         q: 'Лице на трапец с основи 6 и 10 и височина 4?',
         options: ['32', '40', '24'],
         correct: 0,
-        feedback: 'S = (6+10)/2 · 4 = 8 · 4 = 32.'
+        feedback: '<katex>S = \\dfrac{6+10}{2}\\cdot 4 = 8\\cdot 4 = 32</katex>.'
       }
     ],
     remember: 'Лице на трапец: <katex>S = \\dfrac{a+b}{2} \\cdot h</katex> — средно на основите по височината.'
@@ -1352,7 +1353,9 @@ const CONTENT = {
     ],
     formulas: [
       { label: 'Равни ъгли при основа', tex: '\\angle A = \\angle B, \\quad \\angle C = \\angle D' },
-      { label: 'Равни диагонали', tex: 'AC = BD' }
+      { label: 'Равни диагонали', tex: 'AC = BD' },
+      { label: 'Отсечки след височина', tex: '\\text{голямата основа } = \\dfrac{a-b}{2} + b + \\dfrac{a-b}{2}' },
+      { label: 'Проекция на бедрото', tex: 'AH = \\dfrac{a-b}{2}' }
     ],
     drawing: { interactive: 'trapezoid', params: { iso:true }, caption: 'Равнобедрен трапец: бедрата са равни, диагоналите също.' },
     algorithm: [
@@ -1360,10 +1363,16 @@ const CONTENT = {
       'Използвай равенството на ъглите при основа.',
       'Използвай равенството на диагоналите при нужда.'
     ],
-    example: {
-      problem: 'В равнобедрен трапец ъгълът при по-голямата основа е 70°. Колко е ъгълът при по-малката основа?',
-      solution: 'Ъглите при едно бедро се допълват до 180°: <katex>\\angle D = 180° - 70° = 110°</katex>.'
-    },
+    example: [
+      {
+        problem: 'В равнобедрен трапец ъгълът при по-голямата основа е 70°. Колко е ъгълът при по-малката основа?',
+        solution: 'Ъглите при едно бедро се допълват до 180°: <katex>\\angle D = 180° - 70° = 110°</katex>.'
+      },
+      {
+        problem: 'В равнобедрен трапец основите са <katex>a = 14</katex> и <katex>b = 6</katex>. От върховете на по-малката основа спускаме височини към по-голямата. На колко части я делят и колко са те?',
+        solution: 'Двете височини CH и DK делят по-голямата основа на три части. Средната е равна на по-малката основа: <katex>HK = b = 6</katex>. Заради симетрията крайните две са равни: <katex>AH = KB = \\dfrac{a-b}{2} = \\dfrac{14-6}{2} = 4</katex>. Проверка: <katex>4 + 6 + 4 = 14 = a</katex>.'
+      }
+    ],
     mistakes: [
       { label: 'Всички ъгли равни', text: 'В равнобедрения трапец са равни ъглите при ЕДНА основа, не всичките четири.' }
     ],
@@ -1382,7 +1391,8 @@ const CONTENT = {
   g8t3s8: {
     shortIntro: 'Средната отсечка на трапеца свързва средите на бедрата. Тя е успоредна на основите и равна на средноаритметичното им.',
     definitions: [
-      { term: 'Средна отсечка на трапец', def: 'Отсечка, свързваща средите на двете бедра.' }
+      { term: 'Средна отсечка на трапец', def: 'Отсечка, свързваща средите на двете бедра.' },
+      { term: 'Теорема (аналогична)', def: 'Ако права минава през средата на едното бедро и е успоредна на основите, то тя <b>минава през средата</b> на другото бедро — тоест съвпада със средната отсечка.' }
     ],
     formulas: [
       { label: 'Дължина на средната отсечка', tex: 'm = \\dfrac{a + b}{2}' },
@@ -1406,7 +1416,7 @@ const CONTENT = {
         q: 'Средна отсечка на трапец с основи 5 и 9?',
         options: ['7', '14', '4'],
         correct: 0,
-        feedback: 'm = (5+9)/2 = 7.'
+        feedback: '<katex>m = \\dfrac{5+9}{2} = 7</katex>.'
       }
     ],
     remember: 'Средна отсечка на трапец: <katex>m = \\dfrac{a+b}{2}</katex> — средно на основите.'
@@ -1441,7 +1451,7 @@ const CONTENT = {
         q: 'Средна отсечка 8, едната основа 5. Другата основа е:',
         options: ['11', '3', '16'],
         correct: 0,
-        feedback: '8 = (5+b)/2 → b = 11.'
+        feedback: '<katex>8 = \\dfrac{5+b}{2}</katex> → b = 11.'
       }
     ],
     remember: 'Винаги прави чертеж. Разпознай средни отсечки и медиани, после приложи свойствата им.'
@@ -8014,12 +8024,12 @@ function renderSubtopic(main) {
           <div class="minicheck-q">${q.q}</div>
           <div class="minicheck-options">
             ${q.options.map((opt, oi) => `
-              <button class="minicheck-option" onclick="checkAnswer(this, ${qi}, ${oi}, ${q.correct}, '${escapeSingleQuotes(q.feedback)}')">
+              <button class="minicheck-option" onclick="checkAnswer(this, ${qi}, ${oi}, ${q.correct})">
                 ${opt}
               </button>
             `).join('')}
           </div>
-          <div class="minicheck-feedback" id="mc-fb-${qi}"></div>
+          <div class="minicheck-feedback" id="mc-fb-${qi}" data-feedback="${(q.feedback || '').replace(/"/g, '&quot;')}"></div>
         </div>
       `;
     });
@@ -8354,21 +8364,23 @@ function toggleSolution(btn) {
   btn.textContent = showing ? '🙈 Скрий решение' : '👁 Покажи решение';
 }
 
-function checkAnswer(btn, qi, oi, correct, feedback) {
+function checkAnswer(btn, qi, oi, correct) {
   const qWrap = btn.closest('.minicheck-question');
   const opts = qWrap.querySelectorAll('.minicheck-option');
   const fb = document.getElementById('mc-fb-' + qi);
+  const feedback = fb ? (fb.getAttribute('data-feedback') || '') : '';
 
   opts.forEach(o => { o.classList.remove('correct', 'wrong'); });
 
   if (oi === correct) {
     btn.classList.add('correct');
-    if (fb) { fb.className = 'minicheck-feedback show ok'; fb.textContent = '✓ Правилно! ' + feedback; }
+    if (fb) { fb.className = 'minicheck-feedback show ok'; fb.innerHTML = '✓ Правилно! ' + feedback; }
   } else {
     btn.classList.add('wrong');
     opts[correct].classList.add('correct');
-    if (fb) { fb.className = 'minicheck-feedback show err'; fb.textContent = '✗ Грешно. ' + feedback; }
+    if (fb) { fb.className = 'minicheck-feedback show err'; fb.innerHTML = '✗ Грешно. ' + feedback; }
   }
+  if (fb && typeof renderKaTeX === 'function') renderKaTeX();
 }
 
 function copyFormula(btn, tex) {
