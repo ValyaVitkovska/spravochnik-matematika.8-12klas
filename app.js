@@ -520,10 +520,10 @@ const CONTENT = {
 
   // --- Пермутации ---
   g8t1s3: {
-    shortIntro: 'Пермутациите броят на колко начина може да се <b>подредят</b> всички елементи на едно множество. Редът е важен и се използват всички елементи.',
+    shortIntro: 'Пермутация е подреждане на <b>всички</b> елементи на едно множество в редица. Различните пермутации се различават само по реда на елементите.',
     definitions: [
-      { term: 'Пермутация', def: 'Всяка наредба на <katex>n</katex> различни елемента. Броят им се означава с <katex>P_n</katex>.' },
-      { term: 'Факториел', def: '<katex>n! = 1 \\cdot 2 \\cdot 3 \\cdots n</katex> — произведение на всички естествени числа от 1 до n. По дефиниция <katex>0! = 1</katex>.' }
+      { term: 'Пермутация без повторение', def: 'Всяко подреждане на <b>всичките <katex>n</katex> елемента</b> в редица (всеки елемент участва точно веднъж). Броят им се означава с <katex>P_n</katex>.' },
+      { term: 'Факториел', def: '<katex>n! = 1 \\cdot 2 \\cdot 3 \\cdots n</katex>. По дефиниция <katex>0! = 1</katex>.' }
     ],
     formulas: [
       { label: 'Брой пермутации', tex: 'P_n = n!' },
@@ -564,9 +564,9 @@ const CONTENT = {
 
   // --- Вариации ---
   g8t1s4: {
-    shortIntro: 'Вариациите броят на колко начина може да се изберат и <b>подредят</b> k елемента от общо n елемента. Редът е важен, но не се използват всички елементи.',
+    shortIntro: 'Вариация е избор на <b>част</b> от елементите, при който <b>редът е важен</b> — различните подреждания на едни и същи елементи са различни вариации.',
     definitions: [
-      { term: 'Вариация', def: 'Наредена k-елементна част на множество от <katex>n</katex> елемента (<katex>k \\leq n</katex>). Броят се означава с <katex>V_n^k</katex>.' }
+      { term: 'Вариация без повторение', def: '<b>Наредена извадка</b> на <katex>k</katex> елемента от <katex>n</katex> (<katex>k \\leq n</katex>) — избор на <katex>k</katex> различни елемента, подредени в редица. Броят им се означава с <katex>V_n^k</katex>.' }
     ],
     formulas: [
       { label: 'Брой вариации без повторение', tex: 'V_n^k = \\dfrac{n!}{(n-k)!}' },
@@ -600,9 +600,9 @@ const CONTENT = {
 
   // --- Комбинации ---
   g8t1s5: {
-    shortIntro: 'Комбинациите броят на колко начина може да се изберат k елемента от n, <b>без</b> значение на реда. Това е изборът на подмножество.',
+    shortIntro: 'Комбинация е избор на <b>част</b> от елементите, при който <b>редът НЕ е важен</b> — важно е само кои елементи са избрани, не и подредбата им.',
     definitions: [
-      { term: 'Комбинация', def: 'Неподредена k-елементна част на множество от <katex>n</katex> елемента. Броят се означава с <katex>C_n^k</katex>.' }
+      { term: 'Комбинация без повторение', def: '<b>Ненаредена извадка</b> на <katex>k</katex> елемента от <katex>n</katex> (<katex>k \\leq n</katex>) — избор на <katex>k</katex> различни елемента без значение на реда. Броят им се означава с <katex>C_n^k</katex>, като <katex>C_n^k = \\dfrac{V_n^k}{k!}</katex>.' }
     ],
     formulas: [
       { label: 'Брой комбинации', tex: 'C_n^k = \\dfrac{n!}{k!\\,(n-k)!}' },
@@ -643,9 +643,10 @@ const CONTENT = {
 
   // --- Разлика между пермутация, вариация и комбинация ---
   g8t1s6: {
-    shortIntro: 'Ключовият въпрос при всяка комбинаторна задача е: важен ли е редът и използват ли се всички елементи? Отговорът определя коя формула да изберем.',
+    shortIntro: 'Пермутация, вариация и комбинация без повторение се наричат общо <b>съединения без повторение</b>. Различават се по два въпроса: използват ли се <b>всички</b> елементи или само <b>част</b> (извадка), и <b>наредени</b> ли са.',
     definitions: [
-      { term: 'Сравнение', def: 'Пермутации, вариации и комбинации се различават по два критерия: дали редът е важен и дали се използват всички елементи.' }
+      { term: 'Два въпроса за избор на формула', def: 'Използват ли се <b>всички</b> елементи, или само <b>част</b> (извадка)? И <b>важен ли е редът</b>? Пермутацията подрежда всички; вариацията е наредена извадка; комбинацията — ненаредена извадка.' },
+      { term: 'Бърза проверка за реда', def: 'Разменѝ мислено два елемента: ако се получава друг резултат → редът е важен (вариация); ако е същият → редът не е важен (комбинация).' }
     ],
     comparisonTable: true,
     formulas: [
@@ -655,10 +656,10 @@ const CONTENT = {
     ],
     drawing: { interactive: 'combinatorics', params: { mode:'C', n:4, k:2 }, caption: 'Превключи P, V, C при същите n, k и сравни подрежданията: при C няма стрелки, защото редът е без значение.' },
     algorithm: [
-      'Запитай се: важен ли е редът?',
-      'Ако ДА и използваме всички елементи → пермутации.',
-      'Ако ДА, но използваме само k → вариации.',
-      'Ако НЕ е важен редът → комбинации.'
+      'Запитай се: използват ли се ВСИЧКИ елементи, или само част (извадка)?',
+      'Ако всички се подреждат → пермутации P.',
+      'Ако е извадка, приложи правилото: разменяш ли два елемента, променя ли се резултатът?',
+      'ДА (редът важи) → вариации V. НЕ (редът не важи) → комбинации C.'
     ],
     example: {
       problem: 'От 5 ученици трябва: (а) да се подредят в редица; (б) да се изберат 2 за дежурство; (в) да се изберат капитан и заместник. Коя формула?',
@@ -763,7 +764,7 @@ const CONTENT = {
     formulas: [
       { label: 'Означение', tex: '\\vec{AB} \\quad \\text{или} \\quad \\vec{a}' }
     ],
-    drawing: { interactive: 'vector-ops', params: { mode: 'add-tri' }, caption: 'Векторът има посока и дължина. Влачи краищата му.' },
+    drawing: { interactive: 'single-vector', params: { x: 3, y: 2 }, caption: 'Векторът има начало A и край B. Влачи върха B, за да смениш посоката и дължината му.' },
     algorithm: [
       'Определи началната точка (откъдето тръгва векторът).',
       'Определи крайната точка (където сочи).',
@@ -936,12 +937,12 @@ const CONTENT = {
   g8t2s6: {
     shortIntro: 'Правилото на триъгълника е основният начин за събиране на два вектора: краят на първия съвпада с началото на втория.',
     definitions: [
-      { term: 'Правило на триъгълника', def: 'Поставяме началото на <katex>\\vec{b}</katex> в края на <katex>\\vec{a}</katex>. Сборът <katex>\\vec{a} + \\vec{b}</katex> е векторът от началото на <katex>\\vec{a}</katex> до края на <katex>\\vec{b}</katex>.' }
+      { term: 'Правило на триъгълника', def: 'Началото на <katex>\\vec{b}</katex> се поставя в края на <katex>\\vec{a}</katex>. Сборът <katex>\\vec{a}+\\vec{b}</katex> е векторът от началото на <katex>\\vec{a}</katex> до края на <katex>\\vec{b}</katex>.' }
     ],
     formulas: [
       { label: 'Правило на триъгълника', tex: '\\vec{AB} + \\vec{BC} = \\vec{AC}' }
     ],
-    drawing: { interactive: 'vector-ops', params: { mode: 'add-tri' }, caption: 'Правило на триъгълника: подреждаш втория вектор след първия. Влачи a и b.' },
+    drawing: { interactive: 'vector-ops', params: { mode: 'add-tri', single: true }, caption: 'Правило на триъгълника: подреди b след a; сборът a+b свързва началото на a с върха на b. Влачи върховете.' },
     algorithm: [
       'Постави началото на <katex>\\vec{b}</katex> в края на <katex>\\vec{a}</katex>.',
       'Свържи началото на <katex>\\vec{a}</katex> с края на <katex>\\vec{b}</katex>.',
@@ -956,10 +957,10 @@ const CONTENT = {
     ],
     miniCheck: [
       {
-        q: 'На какво е равно AB + BC?',
-        options: ['AC', 'CA', 'BA'],
+        q: 'На какво е равно <katex>\\vec{AB} + \\vec{BC}</katex>?',
+        options: ['<katex>\\vec{AC}</katex>', '<katex>\\vec{CA}</katex>', '<katex>\\vec{BA}</katex>'],
         correct: 0,
-        feedback: 'Правило на триъгълника: AB + BC = AC.'
+        feedback: 'Правило на триъгълника: краят на AB съвпада с началото на BC, затова сборът е вектор AC.'
       }
     ],
     remember: 'Правило на триъгълника: <katex>\\vec{AB} + \\vec{BC} = \\vec{AC}</katex>.'
@@ -969,12 +970,12 @@ const CONTENT = {
   g8t2s7: {
     shortIntro: 'Правилото на успоредника събира два вектора с общо начало: сборът е диагоналът на успоредника, изграден върху тях.',
     definitions: [
-      { term: 'Правило на успоредника', def: 'Поставяме <katex>\\vec{a}</katex> и <katex>\\vec{b}</katex> с общо начало. Сборът е диагоналът на успоредника, изграден върху двата вектора.' }
+      { term: 'Правило на успоредника', def: 'Двата вектора се поставят с общо начало. Сборът <katex>\\vec{a}+\\vec{b}</katex> е диагоналът на успоредника, построен върху тях. Редът няма значение: <katex>\\vec{a}+\\vec{b} = \\vec{b}+\\vec{a}</katex>.' }
     ],
     formulas: [
       { label: 'Правило на успоредника', tex: '\\vec{OP} + \\vec{OQ} = \\vec{OR}' }
     ],
-    drawing: { interactive: 'vector-ops', params: { mode: 'add-par' }, caption: 'Правило на успоредника: двата вектора от обща точка, сборът е диагоналът.' },
+    drawing: { interactive: 'vector-ops', params: { mode: 'add-par', single: true }, caption: 'Правило на успоредника: a и b от обща начална точка; сборът е диагоналът. Влачи върховете.' },
     algorithm: [
       'Постави двата вектора с общо начало O.',
       'Построй успоредник с тях като страни.',
@@ -1002,13 +1003,13 @@ const CONTENT = {
   g8t2s8: {
     shortIntro: 'Изваждането на вектори е събиране с противоположния: вместо да изваждаме, прибавяме обратния вектор.',
     definitions: [
-      { term: 'Разлика на вектори', def: '<katex>\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})</katex>. Ако двата вектора имат общо начало, разликата свързва върха на <katex>\\vec{b}</katex> с върха на <katex>\\vec{a}</katex>.' }
+      { term: 'Разлика на вектори', def: 'Изваждането е събиране с противоположния вектор: <katex>\\vec{a}-\\vec{b} = \\vec{a}+(-\\vec{b})</katex>. При общо начало разликата <katex>\\vec{a}-\\vec{b}</katex> сочи от края на <katex>\\vec{b}</katex> към края на <katex>\\vec{a}</katex>.' }
     ],
     formulas: [
       { label: 'Изваждане', tex: '\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})' },
       { label: 'Чрез точки', tex: '\\vec{OA} - \\vec{OB} = \\vec{BA}' }
     ],
-    drawing: { interactive: 'vector-ops', params: { mode: 'sub' }, caption: 'Разликата a−b сочи от края на b към края на a.' },
+    drawing: { interactive: 'vector-ops', params: { mode: 'sub', single: true }, caption: 'Разликата a−b сочи от края на b към края на a. Влачи върховете.' },
     algorithm: [
       'Намери противоположния вектор <katex>-\\vec{b}</katex>.',
       'Събери <katex>\\vec{a} + (-\\vec{b})</katex> по правилото на триъгълника.',
@@ -1036,13 +1037,13 @@ const CONTENT = {
   g8t2s9: {
     shortIntro: 'Умножаването на вектор с число променя дължината му и евентуално посоката, но запазва направлението (остава колинеарен на изходния).',
     definitions: [
-      { term: 'Умножение с число', def: 'Векторът <katex>k\\vec{a}</katex> е колинеарен на <katex>\\vec{a}</katex>. Дължината му е <katex>|k|</katex> пъти по-голяма. При <katex>k > 0</katex> е еднопосочен с <katex>\\vec{a}</katex>, при <katex>k < 0</katex> — противопосочен.' }
+      { term: 'Умножение с число', def: 'Векторът <katex>k\\vec{a}</katex> е колинеарен на <katex>\\vec{a}</katex> с дължина <katex>|k|\\cdot|\\vec{a}|</katex>. При <katex>k>0</katex> е еднопосочен с <katex>\\vec{a}</katex>, при <katex>k<0</katex> — противопосочен, а при <katex>k=0</katex> се получава нулевият вектор.' }
     ],
     formulas: [
       { label: 'Дължина', tex: '|k\\vec{a}| = |k| \\cdot |\\vec{a}|' },
       { label: 'Посока', tex: 'k > 0 \\Rightarrow \\text{еднопосочен}; \\quad k < 0 \\Rightarrow \\text{противопосочен}' }
     ],
-    drawing: { interactive: 'vector-ops', params: { mode: 'scalar', k: 1.5 }, caption: 'Умножение с число: |k| мащабира дължината, отрицателно k обръща посоката.' },
+    drawing: { interactive: 'vector-ops', params: { mode: 'scalar', k: 1.5, single: true }, caption: 'Умножение с число k: |k| мащабира дължината, а k<0 обръща посоката.' },
     algorithm: [
       'Умножи дължината на вектора с <katex>|k|</katex>.',
       'Ако <katex>k > 0</katex> — посоката се запазва (еднопосочен).',
@@ -1078,6 +1079,7 @@ const CONTENT = {
       { label: 'Дистрибутивност', tex: 'k(\\vec{a} + \\vec{b}) = k\\vec{a} + k\\vec{b}' },
       { label: 'Нулев вектор', tex: '\\vec{a} + \\vec{0} = \\vec{a}' }
     ],
+    drawing: { interactive: 'vector-ops', params: { mode: 'add-tri' }, caption: 'Действия с вектори: превключи събиране (триъгълник/успоредник), изваждане и умножение с число.' },
     algorithm: [
       'При сложни изрази използвай свойствата, за да опростиш.',
       'Групирай подобни вектори.',
@@ -7902,7 +7904,7 @@ function renderSubtopic(main) {
 
   // Накратко
   if (content.shortIntro) {
-    html += makeSection('💡', 'Накратко', `<p>${content.shortIntro}</p>`);
+    html += makeSection('💡', 'Накратко', `<p>${content.shortIntro}</p>`, false, 'intro');
   }
 
   // Основни понятия
@@ -7910,7 +7912,7 @@ function renderSubtopic(main) {
     let defs = content.definitions.map(d =>
       `<div class="definition-box"><strong>${d.term}:</strong> ${d.def}</div>`
     ).join('');
-    html += makeSection('📚', 'Основни понятия', defs);
+    html += makeSection('📚', 'Основни понятия', defs, false, 'concepts');
   }
 
   // Формули
@@ -7924,29 +7926,29 @@ function renderSubtopic(main) {
         </div>
       </div>
     `).join('');
-    html += makeSection('📐', 'Формули, свойства и теореми', fms);
+    html += makeSection('📐', 'Формули, свойства и теореми', fms, false, 'formulas');
   }
 
   // Таблица дискриминанта
   if (content.discriminantTable) {
-    html += makeSection('📊', 'Дискриминанта и брой корени', makeDiscriminantTable());
+    html += makeSection('📊', 'Дискриминанта и брой корени', makeDiscriminantTable(), false, 'table');
   }
 
   // Таблица за тригонометрия
   if (content.trigTable) {
-    html += makeSection('📊', 'Таблица на тригонометричните стойности', makeTrigTable());
+    html += makeSection('📊', 'Таблица на тригонометричните стойности', makeTrigTable(), false, 'table');
   }
 
   // Таблица за сравнение P / V / C
   if (content.comparisonTable) {
-    html += makeSection('📊', 'Сравнение: пермутации, вариации, комбинации', makeComparisonTable());
+    html += makeSection('📊', 'Сравнение: пермутации, вариации, комбинации', makeComparisonTable(), false, 'table');
   }
 
   // Универсална таблица (от данните) — поддържа една или няколко таблици
   if (content.table) {
     const tables = Array.isArray(content.table) ? content.table : [content.table];
     tables.forEach(t => {
-      html += makeSection('📊', t.title || 'Таблица', makeCustomTable(t));
+      html += makeSection('📊', t.title || 'Таблица', makeCustomTable(t), false, 'table');
     });
   }
 
@@ -7968,7 +7970,7 @@ function renderSubtopic(main) {
                  `</div>`;
       }
     });
-    html += makeSection('📐', 'Чертеж', dhtml);
+    html += makeSection('📐', 'Чертеж', dhtml, false, 'drawing');
   }
 
   // Алгоритъм
@@ -7976,7 +7978,7 @@ function renderSubtopic(main) {
     let steps = '<ol class="algorithm-steps">' +
       content.algorithm.map(s => `<li><span class="step-text">${s}</span></li>`).join('') +
       '</ol>';
-    html += makeSection('🔢', 'Алгоритъм', steps);
+    html += makeSection('🔢', 'Алгоритъм', steps, false, 'algorithm');
   }
 
   // Типова задача (една или няколко)
@@ -7989,7 +7991,7 @@ function renderSubtopic(main) {
         <div class="solution-body">${ex.solution}</div>
       </div>
     `).join('');
-    html += makeSection('✏️', examples.length > 1 ? 'Примерни задачи' : 'Типова задача', body);
+    html += makeSection('✏️', examples.length > 1 ? 'Примерни задачи' : 'Типова задача', body, false, 'example');
   }
 
   // Чести грешки
@@ -8000,7 +8002,7 @@ function renderSubtopic(main) {
         <div>${m.text}</div>
       </div>
     `).join('');
-    html += makeSection('❌', 'Чести грешки', mistakes);
+    html += makeSection('❌', 'Чести грешки', mistakes, false, 'mistakes');
   }
 
   // Мини проверка
@@ -8022,7 +8024,7 @@ function renderSubtopic(main) {
       `;
     });
     qhtml += '</div>';
-    html += makeSection('✅', 'Мини проверка', qhtml);
+    html += makeSection('✅', 'Мини проверка', qhtml, false, 'minicheck');
   }
 
   // Запомнете
@@ -8074,9 +8076,9 @@ function renderFavorites(main) {
 // 7. ПОМОЩНИ ФУНКЦИИ ЗА РЕНДИРАНЕ
 // ============================================================
 
-function makeSection(icon, title, bodyHtml, collapsed = false) {
+function makeSection(icon, title, bodyHtml, collapsed = false, variant = '') {
   return `
-    <div class="content-section ${collapsed ? 'collapsed' : ''}">
+    <div class="content-section ${variant ? 'sec-' + variant : ''} ${collapsed ? 'collapsed' : ''}">
       <div class="content-section-header" onclick="toggleSection(this.parentElement)">
         <span class="sec-icon">${icon}</span>
         <span class="sec-title">${title}</span>
@@ -8479,6 +8481,21 @@ function axesSVG(c, W, H, xmin, xmax, ymin, ymax) {
   return g;
 }
 
+// Фон за ГЕОМЕТРИЧНИ чертежи — само лека мрежа, БЕЗ оси, стрелки и надписи x/y.
+// Използва се навсякъде, където не се строят графики на функции или трион. окръжност.
+function plainGrid(c, W, H, xmin, xmax, ymin, ymax) {
+  let g = '';
+  for (let x = Math.ceil(xmin); x <= Math.floor(xmax); x++) {
+    const px = c.sx(x);
+    g += `<line x1="${px}" y1="${c.sy(ymax)}" x2="${px}" y2="${c.sy(ymin)}" stroke="var(--grid,#eef2f7)" stroke-width="1"/>`;
+  }
+  for (let y = Math.ceil(ymin); y <= Math.floor(ymax); y++) {
+    const py = c.sy(y);
+    g += `<line x1="${c.sx(xmin)}" y1="${py}" x2="${c.sx(xmax)}" y2="${py}" stroke="var(--grid,#eef2f7)" stroke-width="1"/>`;
+  }
+  return g;
+}
+
 // Координатна система с РАВЕН мащаб по двете оси (за геометрия — окръжностите остават кръгли)
 function makeSquareCoord(W, H, xmin, xmax, ymin, ymax) {
   const pad = 10;
@@ -8526,6 +8543,7 @@ function initInteractiveWidgets() {
     else if (type === 'exp-log') initExpLogWidget(el, params);
     else if (type === 'triangle-solver') initTriangleSolverWidget(el, params);
     else if (type === 'vector-ops') initVectorOpsWidget(el, params);
+    else if (type === 'single-vector') initSingleVectorWidget(el, params);
     else if (type === 'circle-angle') initCircleAngleWidget(el, params);
     else if (type === 'linear-system') initLinearSystemWidget(el, params);
     else if (type === 'interval-method') initIntervalWidget(el, params);
@@ -8933,7 +8951,7 @@ function initTriangleSolverWidget(el, p) {
     const b = Math.hypot(A.x-Cc.x, A.y-Cc.y); // срещу B
     const cc = Math.hypot(A.x-B.x, A.y-B.y);  // срещу C
     const angA = angle(A,B,Cc), angB = angle(B,A,Cc), angC = angle(Cc,A,B);
-    let s = axesSVG(c, W, H, xmin, xmax, ymin, ymax);
+    let s = plainGrid(c, W, H, xmin, xmax, ymin, ymax);
     s += `<polygon points="${c.sx(A.x)},${c.sy(A.y)} ${c.sx(B.x)},${c.sy(B.y)} ${c.sx(Cc.x)},${c.sy(Cc.y)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     // етикети на страни (по средата на всяка)
     s += lbl(c,(B.x+Cc.x)/2,(B.y+Cc.y)/2,'a='+fmt(a),'#e84393',4,0);
@@ -8962,9 +8980,10 @@ function initVectorOpsWidget(el, p) {
   const W = 320, H = 280, xmin = -5, xmax = 5, ymin = -4, ymax = 4;
   const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
   let mode = p.mode ?? 'add-tri'; // add-tri | add-par | sub | scalar
+  const single = p.single ?? false; // ако е true → само този режим, без превключвател
   let k = p.k ?? 1.5;
   const a = { x: 3, y: 1, color:'#4f6ef7' };
-  const b = { x: 1, y: 2.5, color:'#e84393' };
+  const b = { x: -1, y: 2.5, color:'#e84393' };
   const A_BLUE='#4f6ef7', B_PINK='#e84393', RES='#10b981';
   function arrow(x1,y1,x2,y2,color,w){
     const ang=Math.atan2(c.sy(y2)-c.sy(y1), c.sx(x2)-c.sx(x1));
@@ -8973,40 +8992,97 @@ function initVectorOpsWidget(el, p) {
       `<polygon points="${c.sx(x2)},${c.sy(y2)} ${(c.sx(x2)+ah*Math.cos(a1)).toFixed(1)},${(c.sy(y2)+ah*Math.sin(a1)).toFixed(1)} ${(c.sx(x2)+ah*Math.cos(a2)).toFixed(1)},${(c.sy(y2)+ah*Math.sin(a2)).toFixed(1)}" fill="${color}"/>`;
   }
   const modes = [['add-tri','a+b △'],['add-par','a+b ▱'],['sub','a−b'],['scalar','k·a']];
-  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
-    <div class="iw-controls"><div class="iw-controls-2col" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+  const selector = single ? '' :
+    `<div class="iw-controls-2col" style="grid-template-columns:1fr 1fr 1fr 1fr;">
       ${modes.map(([m,t])=>`<label style="flex-direction:row;gap:4px;align-items:center;font-size:12px;"><input type="radio" data-m="${m}" ${mode===m?'checked':''} style="width:auto;">${t}</label>`).join('')}
-    </div>
+    </div>`;
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-controls">${selector}
     <label data-scalar style="display:${mode==='scalar'?'flex':'none'}">k = <span class="iw-val" data-v="k">${k}</span>
       <input type="range" min="-2" max="2.5" step="0.1" value="${k}" data-k="k"></label></div>
     <div class="iw-readout"></div>`;
   const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
   function draw() {
-    let s = axesSVG(c, W, H, xmin, xmax, ymin, ymax);
+    let s = plainGrid(c, W, H, xmin, xmax, ymin, ymax);
     let info='';
+    // bTip = къде е ВРЪХЪТ на вектор b така, както е нарисуван в този режим
+    let bTipX=b.x, bTipY=b.y, bBaseX=0, bBaseY=0, showB=true;
     if (mode === 'add-tri') {
       s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(a.x,a.y,a.x+b.x,a.y+b.y,B_PINK) + arrow(0,0,a.x+b.x,a.y+b.y,RES,3);
-      info = `Правило на триъгълника: подреждаш b след a. a+b = (${fmt(a.x+b.x)}; ${fmt(a.y+b.y)})`;
+      bBaseX=a.x; bBaseY=a.y; bTipX=a.x+b.x; bTipY=a.y+b.y;
+      info = 'Правило на триъгълника: краят на a е начало на b. Сборът a+b свързва началото на a с върха на b.';
     } else if (mode === 'add-par') {
       s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(0,0,b.x,b.y,B_PINK) + arrow(0,0,a.x+b.x,a.y+b.y,RES,3);
       s += seg(c,a.x,a.y,a.x+b.x,a.y+b.y,B_PINK,1)+seg(c,b.x,b.y,a.x+b.x,a.y+b.y,A_BLUE,1);
-      info = `Правило на успоредника: a и b от обща начална точка. a+b = (${fmt(a.x+b.x)}; ${fmt(a.y+b.y)})`;
+      bTipX=b.x; bTipY=b.y;
+      info = 'Правило на успоредника: a и b с общо начало; сборът a+b е диагоналът. Важи a+b = b+a.';
     } else if (mode === 'sub') {
       s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(0,0,b.x,b.y,B_PINK) + arrow(b.x,b.y,a.x,a.y,RES,3);
-      info = `a−b сочи от края на b към края на a. a−b = (${fmt(a.x-b.x)}; ${fmt(a.y-b.y)})`;
+      bTipX=b.x; bTipY=b.y;
+      info = 'Разликата a−b = a + (−b) сочи от края на b към края на a.';
     } else {
       s += arrow(0,0,a.x,a.y,A_BLUE) + arrow(0,0,k*a.x,k*a.y,RES,3);
-      info = `k·a ${k<0?'обръща посоката и ':''}мащабира a по |k|=${fmt(Math.abs(k))}. k·a = (${fmt(k*a.x)}; ${fmt(k*a.y)})`;
+      showB=false;
+      info = `k·a има дължина |k|·|a| (|k|=${fmt(Math.abs(k))}); ${k<0?'при k<0 е противопосочен на a':'при k>0 е еднопосочен на a'}.`;
     }
-    s += dot(c,a.x,a.y,A_BLUE,5)+lbl(c,a.x,a.y,'a','#4f6ef7',6,-4);
-    if (mode!=='scalar') s += dot(c,b.x,b.y,B_PINK,5)+lbl(c,b.x,b.y,'b','#e84393',6,-4);
+    // етикет на a — по средата на вектора
+    s += lbl(c, a.x/2, a.y/2, 'a', A_BLUE, (a.y>=0?8:-8), (a.x>=0?-6:10));
+    // хващач за a на върха му
+    s += dot(c,a.x,a.y,A_BLUE,5);
+    if (showB) {
+      // етикет на b по средата на нарисувания вектор
+      s += lbl(c,(bBaseX+bTipX)/2,(bBaseY+bTipY)/2,'b',B_PINK,8,-4);
+      s += dot(c,bTipX,bTipY,B_PINK,5);   // хващачът е на върха, върху нарисувания b
+    }
     svg.innerHTML = s;
     readout.innerHTML = info;
-    el.querySelector('[data-scalar]').style.display = mode==='scalar'?'flex':'none';
+    const sc=el.querySelector('[data-scalar]'); if(sc) sc.style.display = mode==='scalar'?'flex':'none';
   }
+  // За да остане влаченето интуитивно: точката b държи вектора b (спрямо неговото начало).
+  // Дефинираме прокси-точки за влачене според режима.
+  const bHandle = {
+    get x(){ return (mode==='add-tri') ? a.x+b.x : b.x; },
+    get y(){ return (mode==='add-tri') ? a.y+b.y : b.y; },
+    set x(v){ b.x = (mode==='add-tri') ? v-a.x : v; },
+    set y(v){ b.y = (mode==='add-tri') ? v-a.y : v; },
+    color:B_PINK
+  };
   el.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',e=>{if(e.target.checked){mode=e.target.dataset.m;draw();}}));
-  el.querySelector('input[type=range]').addEventListener('input',e=>{k=parseFloat(e.target.value);el.querySelector('[data-v="k"]').textContent=fmt(k);draw();});
-  makeDraggable(el, svg, c, W, H, [a,b], draw);
+  const rng=el.querySelector('input[type=range]');
+  if(rng) rng.addEventListener('input',e=>{k=parseFloat(e.target.value);el.querySelector('[data-v="k"]').textContent=fmt(k);draw();});
+  makeDraggable(el, svg, c, W, H, [a, bHandle], draw);
+  draw();
+}
+
+// ============================================================
+// ЕДИН ВЕКТОР — променлива посока и дължина (за „Понятие за вектор")
+// ============================================================
+function initSingleVectorWidget(el, p) {
+  const W = 320, H = 280, xmin = -5, xmax = 5, ymin = -4, ymax = 4;
+  const c = makeCoord(W, H, xmin, xmax, ymin, ymax);
+  const A = { x: p.ax ?? -1.5, y: p.ay ?? -1, color:'#1a1f2e' };   // начало (подвижно)
+  const B = { x: p.x ?? 2.5,  y: p.y ?? 1.5, color:'#4f6ef7' };    // край (подвижен)
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="iw-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="iw-readout"></div>`;
+  const svg = el.querySelector('svg'), readout = el.querySelector('.iw-readout');
+  function arrow(x1,y1,x2,y2,color,w){
+    const ang=Math.atan2(c.sy(y2)-c.sy(y1), c.sx(x2)-c.sx(x1));
+    const ah=12, a1=ang+Math.PI*0.85, a2=ang-Math.PI*0.85;
+    return seg(c,x1,y1,x2,y2,color,w||3)+
+      `<polygon points="${c.sx(x2)},${c.sy(y2)} ${(c.sx(x2)+ah*Math.cos(a1)).toFixed(1)},${(c.sy(y2)+ah*Math.sin(a1)).toFixed(1)} ${(c.sx(x2)+ah*Math.cos(a2)).toFixed(1)},${(c.sy(y2)+ah*Math.sin(a2)).toFixed(1)}" fill="${color}"/>`;
+  }
+  function draw() {
+    let s = plainGrid(c, W, H, xmin, xmax, ymin, ymax);
+    s += arrow(A.x,A.y,B.x,B.y,B.color,3);
+    s += dot(c,A.x,A.y,'#1a1f2e',6);            // начало A (влачи се)
+    s += lbl(c,A.x,A.y,'A','#1a1f2e',-14,10);
+    s += dot(c,B.x,B.y,B.color,6);              // край B (влачи се)
+    s += lbl(c,B.x,B.y,'B',B.color,8,-4);
+    s += lbl(c,(A.x+B.x)/2,(A.y+B.y)/2,'a',B.color,((B.y-A.y)>=0?10:-10),((B.x-A.x)>=0?-8:12));
+    svg.innerHTML = s;
+    readout.innerHTML = 'Векторът има <b>начало</b> A и <b>край</b> B. Влачи всяка от двете точки, за да смениш <b>посоката</b> и <b>дължината</b> му.';
+  }
+  makeDraggable(el, svg, c, W, H, [A, B], draw);
   draw();
 }
 
@@ -9032,7 +9108,7 @@ function initCircleAngleWidget(el, p) {
   function draw() {
     const O={x:0,y:0};
     let s = `<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${(c.sx(R)-c.sx(0)).toFixed(1)}" fill="none" stroke="#4f6ef7" stroke-width="2"/>`;
-    s += axesSVG(c,W,H,xmin,xmax,ymin,ymax).replace(/<line[^>]*stroke="var[^>]*>/g,''); // леки оси
+    s += plainGrid(c,W,H,xmin,xmax,ymin,ymax).replace(/<line[^>]*stroke="var[^>]*>/g,''); // леки оси
     let info='';
     const arcAB = arcDeg(B,A);
     if (mode==='central') {
@@ -9162,7 +9238,7 @@ function initSimilarWidget(el, p) {
   function draw(){
     const off=5.5;
     const T2=T.map(p=>({x:p.x*k+off,y:p.y*k}));
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax)+tri(T,'#4f6ef7','#4f6ef722')+tri(T2,'#e84393','#e8439322');
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax)+tri(T,'#4f6ef7','#4f6ef722')+tri(T2,'#e84393','#e8439322');
     s+=lbl(c,1.5,0.5,'ABC','#4f6ef7',0,16)+lbl(c,off+1.5*k,0.5,"A'B'C'",'#e84393',0,16);
     svg.innerHTML=s;
     const side=Math.hypot(T[1].x-T[0].x,T[1].y-T[0].y);
@@ -9193,7 +9269,7 @@ function initTrapezoidWidget(el, p) {
     const A={x:x0,y:0.5}, B={x:x0+aBig,y:0.5};
     const off=iso?(aBig-bSmall)/2:0.8;
     const D={x:x0+off,y:0.5+h}, Cc={x:x0+off+bSmall,y:0.5+h};
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<polygon points="${[A,B,Cc,D].map(p=>c.sx(p.x)+','+c.sy(p.y)).join(' ')}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     // средна отсечка
     const M={x:(A.x+D.x)/2,y:(A.y+D.y)/2}, N={x:(B.x+Cc.x)/2,y:(B.y+Cc.y)/2};
@@ -9308,7 +9384,7 @@ function initRightMetricWidget(el, p) {
     const hgt=Math.sqrt(p_*q);
     const Hh={x:A.x+p_,y:0.5};
     const Cc={x:Hh.x,y:0.5+hgt};
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<polygon points="${c.sx(A.x)},${c.sy(A.y)} ${c.sx(B.x)},${c.sy(B.y)} ${c.sx(Cc.x)},${c.sy(Cc.y)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     s+=seg(c,Cc.x,Cc.y,Hh.x,Hh.y,'#e84393',2);
     s+=dot(c,A.x,A.y,'#1a1f2e',4)+dot(c,B.x,B.y,'#1a1f2e',4)+dot(c,Cc.x,Cc.y,'#1a1f2e',4)+dot(c,Hh.x,Hh.y,'#10b981',4);
@@ -9338,7 +9414,7 @@ function initTwoCirclesWidget(el, p) {
   function draw(){
     const O1={x:2,y:0},O2={x:2+d,y:0};
     const pr=x=>c.sx(x)-c.sx(0);
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<circle cx="${c.sx(O1.x)}" cy="${c.sy(0)}" r="${pr(R1)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     s+=`<circle cx="${c.sx(O2.x)}" cy="${c.sy(0)}" r="${pr(R2)}" fill="#e8439322" stroke="#e84393" stroke-width="2"/>`;
     s+=dot(c,O1.x,0,'#4f6ef7',3)+dot(c,O2.x,0,'#e84393',3);
@@ -9370,7 +9446,7 @@ function initTangentWidget(el, p) {
   function draw(){
     const pr=c.sx(R)-c.sx(0);
     const dist=Math.hypot(Pp.x,Pp.y);
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     s+=dot(c,0,0,'#4f6ef7',3)+lbl(c,0,0,'O','#4f6ef7',-12,-4);
     if(dist>R){
@@ -9452,7 +9528,7 @@ function initPolygonWidget(el, p) {
     const r=R*Math.cos(Math.PI/n);
     const pr2=c.sx(r)-c.sx(0);
     const pts=[];for(let i=0;i<n;i++){const ang=-Math.PI/2+i*2*Math.PI/n;pts.push({x:R*Math.cos(ang),y:R*Math.sin(ang)});}
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="none" stroke="#e84393" stroke-width="1.3" stroke-dasharray="4 3"/>`;
     s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr2}" fill="none" stroke="#10b981" stroke-width="1.3" stroke-dasharray="4 3"/>`;
     s+=`<polygon points="${pts.map(p=>c.sx(p.x)+','+c.sy(p.y)).join(' ')}" fill="#4f6ef733" stroke="#4f6ef7" stroke-width="2"/>`;
@@ -9700,7 +9776,7 @@ function initVectorRelWidget(el, p) {
     </div></div><div class="iw-readout"></div>`;
   const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
   function draw(){
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=arrow(-1,-2,-1+a.x,-2+a.y,'#4f6ef7',2.5); // a
     let bx,by,bsx,bsy,info;
     if(mode==='equal'){bsx=1;bsy=1;bx=a.x;by=a.y;info='Равни вектори: еднаква посока И дължина (но различни начала). a = b';}
@@ -9730,7 +9806,7 @@ function initCircleBasicsWidget(el, p) {
   const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
   function draw(){
     const pr=c.sx(R)-c.sx(0);
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="#4f6ef711" stroke="#4f6ef7" stroke-width="2"/>`;
     // диаметър (хоризонтален)
     s+=seg(c,-R,0,R,0,'#10b981',2);
@@ -9765,7 +9841,7 @@ function initNotablePointsWidget(el, p) {
     </div></div><div class="iw-readout"></div>`;
   const svg=el.querySelector('svg'),readout=el.querySelector('.iw-readout');
   function draw(){
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<polygon points="${c.sx(A.x)},${c.sy(A.y)} ${c.sx(B.x)},${c.sy(B.y)} ${c.sx(Cc.x)},${c.sy(Cc.y)}" fill="#4f6ef722" stroke="#4f6ef7" stroke-width="2"/>`;
     let P,info,extra='';
     const mid=(U,V)=>({x:(U.x+V.x)/2,y:(U.y+V.y)/2});
@@ -9830,7 +9906,7 @@ function initQuadCircleWidget(el, p) {
   function angleAt(V,P1,P2){const v1x=P1.x-V.x,v1y=P1.y-V.y,v2x=P2.x-V.x,v2y=P2.y-V.y;let d=(v1x*v2x+v1y*v2y)/(Math.hypot(v1x,v1y)*Math.hypot(v2x,v2y));d=Math.max(-1,Math.min(1,d));return Math.acos(d)*180/Math.PI;}
   function draw(){
     const pr=c.sx(R)-c.sx(0);
-    let s=axesSVG(c,W,H,xmin,xmax,ymin,ymax);
+    let s=plainGrid(c,W,H,xmin,xmax,ymin,ymax);
     s+=`<circle cx="${c.sx(0)}" cy="${c.sy(0)}" r="${pr}" fill="none" stroke="#4f6ef7" stroke-width="1.6" stroke-dasharray="${mode==='circumscribed'?'4 3':'0'}"/>`;
     s+=`<polygon points="${pts.map(p=>c.sx(p.x)+','+c.sy(p.y)).join(' ')}" fill="#e8439322" stroke="#e84393" stroke-width="2"/>`;
     pts.forEach((p,i)=>{s+=dot(c,p.x,p.y,'#e84393',5);});

@@ -1253,3 +1253,72 @@ body {
 .app-credits.is-last .credits-logo { width: 48px; height: 48px; opacity: 0.9; }
 .app-credits .credits-text { max-width: 460px; }
 .app-credits .copyright { font-weight: 700; color: var(--text-secondary); }
+
+/* ============================================================
+   ЦВЕТНО КОДИРАНЕ НА СЕКЦИИТЕ — по-жив и подреден вид
+   ============================================================ */
+/* Всяка секция получава свой акцент: цветна лента отляво,
+   тониран хедър и цветно заглавие. Работи в светъл и тъмен режим. */
+
+.content-section { border-left: 4px solid var(--sec-color, var(--accent)); }
+.content-section .content-section-header {
+  background: var(--sec-tint, var(--bg-secondary));
+  border-bottom-color: color-mix(in srgb, var(--sec-color, var(--accent)) 22%, transparent);
+}
+.content-section .sec-title { color: var(--sec-color, var(--text-primary)); }
+
+/* Дефиниции на цветовете по тип */
+.sec-intro     { --sec-color:#f59e0b; --sec-tint:#fff7e6; }  /* Накратко — кехлибар */
+.sec-concepts  { --sec-color:#8b5cf6; --sec-tint:#f3effe; }  /* Понятия — лилаво */
+.sec-formulas  { --sec-color:#4f6ef7; --sec-tint:#eef1fe; }  /* Формули — синьо */
+.sec-table     { --sec-color:#0ea5e9; --sec-tint:#e0f5fe; }  /* Таблици — циан */
+.sec-drawing   { --sec-color:#ec4899; --sec-tint:#fce8f3; }  /* Чертеж — розово */
+.sec-algorithm { --sec-color:#10b981; --sec-tint:#e6faf4; }  /* Алгоритъм — зелено */
+.sec-example   { --sec-color:#6366f1; --sec-tint:#eaebfe; }  /* Задача — индиго */
+.sec-mistakes  { --sec-color:#ef4444; --sec-tint:#fdecec; }  /* Грешки — червено */
+.sec-minicheck { --sec-color:#14b8a6; --sec-tint:#e2f8f4; }  /* Проверка — тюркоаз */
+
+/* Тъмен режим — по-наситени цветове, тъмни тонирани хедъри */
+[data-theme="dark"] .sec-intro     { --sec-color:#fbbf24; --sec-tint:#2a2210; }
+[data-theme="dark"] .sec-concepts  { --sec-color:#a78bfa; --sec-tint:#221a3a; }
+[data-theme="dark"] .sec-formulas  { --sec-color:#7c93ff; --sec-tint:#161d3d; }
+[data-theme="dark"] .sec-table     { --sec-color:#38bdf8; --sec-tint:#0a2536; }
+[data-theme="dark"] .sec-drawing   { --sec-color:#f472b6; --sec-tint:#2d1523; }
+[data-theme="dark"] .sec-algorithm { --sec-color:#34d399; --sec-tint:#0a2a1e; }
+[data-theme="dark"] .sec-example   { --sec-color:#818cf8; --sec-tint:#191b3a; }
+[data-theme="dark"] .sec-mistakes  { --sec-color:#f87171; --sec-tint:#2d1414; }
+[data-theme="dark"] .sec-minicheck { --sec-color:#2dd4bf; --sec-tint:#0a2a26; }
+
+/* Алгоритъмът: номерата в цвета на секцията */
+.sec-algorithm .algorithm-steps li::before { background: var(--sec-color); }
+.sec-algorithm .algorithm-steps li { background: var(--sec-tint); }
+
+/* Дефиниционните карти в цвета на „Понятия" */
+.sec-concepts .definition-box { border-left-color: var(--sec-color); }
+
+/* ============================================================
+   ПОВЕЧЕ ЦВЯТ — карти с теми в цвета на класа
+   ============================================================ */
+.topic-list.grade-8  .topic-card { border-left: 4px solid var(--grade8); }
+.topic-list.grade-9  .topic-card { border-left: 4px solid var(--grade9); }
+.topic-list.grade-10 .topic-card { border-left: 4px solid var(--grade10); }
+.topic-list.grade-11 .topic-card { border-left: 4px solid var(--grade11); }
+.topic-list.grade-12 .topic-card { border-left: 4px solid var(--grade12); }
+
+.topic-list.grade-8  .topic-card:hover { border-color: var(--grade8);  }
+.topic-list.grade-9  .topic-card:hover { border-color: var(--grade9);  }
+.topic-list.grade-10 .topic-card:hover { border-color: var(--grade10); }
+.topic-list.grade-11 .topic-card:hover { border-color: var(--grade11); }
+.topic-list.grade-12 .topic-card:hover { border-color: var(--grade12); }
+
+/* Цветно заглавие на секцията „Теми" според класа */
+.section-title.grade-8  { color: var(--grade8); }
+.section-title.grade-9  { color: var(--grade9); }
+.section-title.grade-10 { color: var(--grade10); }
+.section-title.grade-11 { color: var(--grade11); }
+.section-title.grade-12 { color: var(--grade12); }
+
+/* Fallback за браузъри без color-mix: обикновена граница на хедъра */
+@supports not (border-bottom-color: color-mix(in srgb, red 22%, transparent)) {
+  .content-section .content-section-header { border-bottom-color: var(--border); }
+}
