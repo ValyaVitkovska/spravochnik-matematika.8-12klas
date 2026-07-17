@@ -159,7 +159,10 @@ linear:{ build(root){
     g.dot(0,b,cssVar('--plot-line3'),5); g.label(0,b,'(0; '+fmt(b)+')',cssVar('--plot-line3'),8,-8);
     if(Math.abs(a)>1e-6){ const x0=-b/a; g.dot(x0,0,cssVar('--cW'),5); g.label(x0,0,'('+fmt(x0)+'; 0)',cssVar('--cW'),6,18); }
     const beh=a>0?'<b>расте</b>':(a<0?'<b>намалява</b>':'е <b>постоянна</b>');
-    out.innerHTML='y = <b>'+fmt(a)+'</b>·x + <b>'+fmt(b)+'</b> · наклонът a определя посоката — функцията '+beh+'. Пресича Oy в (0; '+fmt(b)+')'+(Math.abs(a)>1e-6?', а Ox в x₀ = '+fmt(-b/a):'')+'.';
+    const zeroInfo=Math.abs(a)>1e-6
+      ? ', а Ox в x₀ = '+fmt(-b/a)
+      : (Math.abs(b)<1e-9 ? '; графиката съвпада с Ox и всяко реално x е нула' : '; няма нули');
+    out.innerHTML='y = <b>'+fmt(a)+'</b>·x + <b>'+fmt(b)+'</b> · наклонът a определя посоката — функцията '+beh+'. Пресича Oy в (0; '+fmt(b)+')'+zeroInfo+'.';
   }
   draw(); liveRedraws.push(draw);
   animateSlider(anim, A, draw, 0.06);
@@ -1329,7 +1332,7 @@ similar:{ build(root){
     g.handle(C1[0],C1[1],cssVar('--accent'));
     const c1=Math.hypot(B1[0]-A1[0],B1[1]-A1[1]), S1=Math.abs((B1[0]-A1[0])*(C1[1]-A1[1])-(C1[0]-A1[0])*(B1[1]-A1[1]))/2;
     out.innerHTML='Съответните ъгли са <b>равни</b>: α = '+fmt(al,0)+'°, β = '+fmt(be,0)+'°, γ = '+fmt(ga,0)+'° (α+β+γ = 180°).'+
-      '<br>Страните са пропорционални: '+frac("A′B′","AB")+' = <b>'+fmt(k,2)+'</b> = k. Лицата се отнасят като k²: '+frac("S′","S")+' = <b>'+fmt(k*k,2)+'</b>.';
+      '<br>Страните са пропорционални: '+frac("A^{\\prime}B^{\\prime}","AB")+' = <b>'+fmt(k,2)+'</b> = k. Лицата се отнасят като k²: '+frac("S^{\\prime}","S")+' = <b>'+fmt(k*k,2)+'</b>.';
     renderMath(out);
   }
   draw(); liveRedraws.push(draw);
