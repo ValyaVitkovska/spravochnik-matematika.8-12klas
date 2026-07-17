@@ -245,14 +245,34 @@ footer{ display:flex; align-items:center; gap:1rem; flex-wrap:wrap; justify-cont
 .credits-main{ margin:0; color:var(--ink); font-size:.95rem; }
 .credits-sub{ margin:.3rem 0 0; color:var(--muted); font-size:.82rem; }
 
-/* плаваш бутон „начало“ (долен ъгъл, при скролиране) */
-.home-fab{ position:fixed; right:16px; bottom:16px; z-index:50; width:56px; height:56px; border-radius:50%;
+/* лично лого — постоянен бутон „начало“ в долния десен ъгъл */
+.home-fab{ position:fixed; right:16px; bottom:16px; z-index:50; width:236px; height:72px; border-radius:18px;
   background:var(--card); border:1px solid var(--line); box-shadow:0 6px 20px rgba(0,0,0,.25);
-  cursor:pointer; display:grid; place-items:center; padding:0;
+  cursor:pointer; display:grid; place-items:center; padding:6px 10px;
   opacity:0; transform:translateY(20px) scale(.8); pointer-events:none; transition:opacity .3s, transform .3s; }
-.home-fab.show{ opacity:1; transform:none; pointer-events:auto; }
-.home-fab:hover{ border-color:var(--teal); }
-.home-fab img{ width:34px; height:34px; }
+body.view-app .home-fab{ opacity:1; transform:none; pointer-events:auto; }
+.home-fab:hover{ border-color:var(--teal); transform:translateY(-2px); }
+.home-fab:focus-visible{ outline:3px solid var(--accent); outline-offset:3px; }
+.home-fab-full{ width:100%; height:100%; object-fit:contain; }
+.home-fab-mark{ display:none; width:38px; height:38px; }
+
+/* статични учебни чертежи */
+.math-diagram{ max-width:520px; margin:.7rem auto 0; padding:.55rem; border:1px solid var(--line);
+  border-radius:12px; background:var(--card); }
+.math-diagram.compact{ max-width:380px; }
+.math-diagram svg{ display:block; width:100%; height:auto; overflow:visible; }
+.d-shape,.d-accent,.d-warn,.d-teal,.d-guide,.d-axis,.d-right{ fill:none; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+.d-shape{ stroke:var(--ink); stroke-width:2; }
+.d-accent{ stroke:var(--accent); stroke-width:2.5; }
+.d-warn{ stroke:#d97706; stroke-width:2; }
+.d-teal{ stroke:var(--teal); stroke-width:2.5; }
+.d-guide{ stroke:var(--muted); stroke-width:1.25; stroke-dasharray:5 5; }
+.d-axis{ stroke:var(--ink); stroke-width:1.25; }
+.d-right{ stroke:var(--ink); stroke-width:1.4; }
+.d-fill{ fill:rgba(43,108,176,.10); }
+.d-dot{ fill:var(--accent); stroke:var(--card); stroke-width:1.5; }
+.d-label{ fill:var(--ink); font:600 14px system-ui,sans-serif; }
+.diagram-note{ margin:.3rem 0 0!important; text-align:center; color:var(--muted); font-size:.84rem; }
 
 @keyframes fadeUp{ from{ opacity:0; transform:translateY(16px) } to{ opacity:1; transform:none } }
 @keyframes slideIn{ from{ opacity:0; transform:translateX(-14px) } to{ opacity:1; transform:none } }
@@ -351,6 +371,11 @@ img, canvas{ max-width:100%; }
   .home-actions .cta, .home-actions .cta-ghost{ width:100%; }
   .mout, .model .mnote{ font-size:.95rem; }
   h1, .brand-txt h1{ font-size:1.05rem; }
+  .home-fab{ right:12px; bottom:12px; width:58px; height:58px; padding:8px; border-radius:50%; }
+  .home-fab-full{ display:none; }
+  .home-fab-mark{ display:block; }
+  #appview{ padding-bottom:72px; }
+  .math-diagram{ padding:.35rem; }
 }
 
 /* ============ Поправка на хоризонтално преливане (телефон) ============ */

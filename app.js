@@ -1646,14 +1646,6 @@ else window.addEventListener('DOMContentLoaded',()=>{ let tries=0; (function wai
     e.addEventListener('keydown',ev=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); showHome(); } });
   });
 
-  // плаваш бутон „начало“ — появява се при скролиране в справочника
-  const fab=document.getElementById('homeFab');
-  window.addEventListener('scroll',()=>{
-    if(!fab) return;
-    if(body.classList.contains('view-app') && window.scrollY>380) fab.classList.add('show');
-    else fab.classList.remove('show');
-  },{passive:true});
-
   // ---------- Сгъваеми филтри на телефон ----------
   const filtersToggle=document.getElementById('filtersToggle');
   const asideEl=document.querySelector('.wrap aside');
