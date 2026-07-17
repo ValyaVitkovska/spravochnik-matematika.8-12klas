@@ -1,9 +1,9 @@
 /* Service worker — мрежа-първо за приложните файлове (за да се виждат обновленията веднага),
    кеш-първо за изображения и KaTeX (офлайн работа). Смени версията при промяна на CORE. */
-const CACHE = 'spravochnik-v26';
+const CACHE = 'spravochnik-v28';
 const CORE = [
   './', './index.html', './style.css', './data.js', './app.js', './manifest.json',
-  './home-hero.jpg', './logo-full.png', './logo-mark.png',
+  './home-hero.jpg', './logo-full.png', './logo-mark.png', './author-logo.png',
   './icon-192.png', './icon-512.png', './apple-touch-icon.png', './favicon-64.png',
   'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js',

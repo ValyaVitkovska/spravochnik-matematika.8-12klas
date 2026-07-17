@@ -201,6 +201,121 @@ quad:{ build(root){
 }},
 quadroots:{ build(root){ MODELS.quad.build(root); }},
 
+/* ---------- Основни линии в триъгълник: динамична конструкция ---------- */
+trilines:{ build(root){
+  const hint=el('div','mnote','Влачи сините точки A, B и C. Конструкциите следват върховете като в динамична геометрична среда.'); root.append(hint);
+  const cv=mkCanvas(root,720,480), out=mkOut(root), g=new Graph(cv,-6,6,-4,4);
+  let A=[-1.4,3], B=[-5,-2.7], C=[4.8,-2.4];
+  const dist=(P,Q)=>Math.hypot(P[0]-Q[0],P[1]-Q[1]);
+  function construction(){
+    const M=[(B[0]+C[0])/2,(B[1]+C[1])/2];
+    const vx=C[0]-B[0], vy=C[1]-B[1], den=vx*vx+vy*vy;
+    const t=den>1e-8?((A[0]-B[0])*vx+(A[1]-B[1])*vy)/den:0;
+    const H=[B[0]+t*vx,B[1]+t*vy];
+    const AB=dist(A,B), AC=dist(A,C), sum=AB+AC || 1;
+    const L=[(AC*B[0]+AB*C[0])/sum,(AC*B[1]+AB*C[1])/sum];
+    return {M,H,L,AB,AC};
+  }
+  function draw(){
+    const {M,H,L,AB,AC}=construction(); g.clear(); g.grid(1);
+    g.poly([A,B,C],'rgba(43,108,176,.10)',cssVar('--plot-line'),2.5);
+    g.seg(A[0],A[1],M[0],M[1],cssVar('--plot-line'),2.5);
+    g.seg(A[0],A[1],H[0],H[1],cssVar('--plot-line3'),2.5,[7,4]);
+    g.seg(A[0],A[1],L[0],L[1],cssVar('--cW'),2.5);
+    const vx=C[0]-B[0],vy=C[1]-B[1],len=Math.hypot(vx,vy)||1, ux=vx/len,uy=vy/len;
+    let nx=-uy,ny=ux; if((A[0]-H[0])*nx+(A[1]-H[1])*ny<0){nx=-nx;ny=-ny;}
+    const s=.28, P1=[H[0]+ux*s,H[1]+uy*s], P2=[P1[0]+nx*s,P1[1]+ny*s], P3=[H[0]+nx*s,H[1]+ny*s];
+    g.seg(H[0],H[1],P1[0],P1[1],cssVar('--muted'),1.4); g.seg(P1[0],P1[1],P2[0],P2[1],cssVar('--muted'),1.4); g.seg(P2[0],P2[1],P3[0],P3[1],cssVar('--muted'),1.4);
+    [[M,'M'],[H,'H'],[L,'L']].forEach(([p,n])=>{g.dot(p[0],p[1],cssVar('--muted'),3.7);g.label(p[0],p[1],n,cssVar('--ink'),7,16);});
+    [[A,'A'],[B,'B'],[C,'C']].forEach(([p,n])=>{g.handle(p[0],p[1],cssVar('--accent'));g.label(p[0],p[1],n,cssVar('--ink'),9,-10,'bold 14px system-ui');});
+    out.innerHTML='<b>AM</b> — медиана; <b>AH</b> — височина; <b>AL</b> — ъглополовяща. &nbsp; Проверка: BL/LC = '+fmt(AB/AC,3)+' = AB/AC.';
+  }
+  draggable(cv,g,()=>[
+    {x:A[0],y:A[1],set:(x,y)=>{A=[clamp(x,-5.6,5.6),clamp(y,-3.6,3.6)];}},
+    {x:B[0],y:B[1],set:(x,y)=>{B=[clamp(x,-5.6,5.6),clamp(y,-3.6,3.6)];}},
+    {x:C[0],y:C[1],set:(x,y)=>{C=[clamp(x,-5.6,5.6),clamp(y,-3.6,3.6)];}}
+  ],draw);
+  draw(); liveRedraws.push(draw);
+}},
+
+/* ---------- Кръг и сектор: радиус, ъгъл, дъга и лица ---------- */
+circsector:{ build(root){
+  const ctls=el('div','ctls'); root.append(ctls);
+  const R=slider(ctls,'радиус R = %v',1,3.5,.1,2.5,draw), Adeg=slider(ctls,'централен ъгъл α = %v°',10,350,1,75,draw);
+  const cv=mkCanvas(root,720,480), out=mkOut(root), g=new Graph(cv,-6,6,-4,4);
+  function draw(){
+    const r=R(), ang=Adeg()*Math.PI/180, c=g.c, cx=g.X(0),cy=g.Y(0),rp=Math.abs(g.X(r)-g.X(0));
+    g.clear(); g.grid(1);
+    c.save(); c.fillStyle='rgba(43,108,176,.18)'; c.beginPath(); c.moveTo(cx,cy); c.lineTo(cx+rp,cy); c.arc(cx,cy,rp,0,-ang,true); c.closePath(); c.fill(); c.restore();
+    g.circle(0,0,r,cssVar('--plot-line'),2.7); g.seg(0,0,r,0,cssVar('--plot-line'),2.4); g.seg(0,0,r*Math.cos(ang),r*Math.sin(ang),cssVar('--plot-line'),2.4);
+    c.strokeStyle=cssVar('--plot-line3'); c.lineWidth=2; c.beginPath(); c.arc(cx,cy,Math.min(48,rp*.35),0,-ang,true); c.stroke();
+    g.dot(0,0,cssVar('--muted'),3.5); g.label(0,0,'O',cssVar('--ink'),8,17); g.label(r*.55,0,'R',cssVar('--ink'),0,-9); g.label(.72*Math.cos(ang/2),.72*Math.sin(ang/2),'α',cssVar('--plot-line3'),0,0,'bold 15px system-ui');
+    const P=[r*Math.cos(ang),r*Math.sin(ang)]; g.handle(P[0],P[1],cssVar('--accent'));
+    const circ=2*Math.PI*r, area=Math.PI*r*r, arc=Adeg()/360*circ, sector=Adeg()/360*area;
+    out.innerHTML='C = <b>'+fmt(circ,3)+'</b>, &nbsp; S = <b>'+fmt(area,3)+'</b>, &nbsp; дъга = <b>'+fmt(arc,3)+'</b>, &nbsp; сектор = <b>'+fmt(sector,3)+'</b>.';
+  }
+  draggable(cv,g,()=>{const a=Adeg()*Math.PI/180,r=R();return [{x:r*Math.cos(a),y:r*Math.sin(a),set:(x,y)=>{let d=Math.atan2(y,x)*180/Math.PI;if(d<0)d+=360;Adeg.set(clamp(d,10,350));}}];},draw);
+  draw(); liveRedraws.push(draw);
+}},
+
+/* ---------- Произволен триъгълник и точно построена описана окръжност ---------- */
+circumtriangle:{ build(root){
+  const hint=el('div','mnote','Влачи върховете. Центърът O и радиусът R се изчисляват от текущите координати на A, B и C.'); root.append(hint);
+  const cv=mkCanvas(root,720,480), out=mkOut(root), g=new Graph(cv,-6,6,-4,4);
+  let A=[-4.5,-1.7],B=[4.2,-2.1],C=[1.1,3.1];
+  const len=(P,Q)=>Math.hypot(P[0]-Q[0],P[1]-Q[1]);
+  function geom(){
+    const [ax,ay]=A,[bx,by]=B,[cx,cy]=C;
+    const D=2*(ax*(by-cy)+bx*(cy-ay)+cx*(ay-by));
+    if(Math.abs(D)<1e-5)return null;
+    const aa=ax*ax+ay*ay,bb=bx*bx+by*by,cc=cx*cx+cy*cy;
+    const O=[(aa*(by-cy)+bb*(cy-ay)+cc*(ay-by))/D,(aa*(cx-bx)+bb*(ax-cx)+cc*(bx-ax))/D];
+    const R=len(O,A),vx=B[0]-A[0],vy=B[1]-A[1],den=vx*vx+vy*vy;
+    const t=den>1e-8?((C[0]-A[0])*vx+(C[1]-A[1])*vy)/den:0;
+    return {O,R,H:[A[0]+t*vx,A[1]+t*vy]};
+  }
+  function draw(){
+    const z=geom(); g.clear(); g.grid(1);
+    if(z && z.R<40)g.circle(z.O[0],z.O[1],z.R,cssVar('--plot-line2'),2.2);
+    g.poly([A,B,C],'rgba(43,108,176,.10)',cssVar('--plot-line'),2.7);
+    if(z){
+      g.seg(C[0],C[1],z.H[0],z.H[1],cssVar('--plot-line3'),2.2); g.dot(z.H[0],z.H[1],cssVar('--plot-line3'),3.5); g.label(z.H[0],z.H[1],'H',cssVar('--ink'),7,16);
+      const vx=B[0]-A[0],vy=B[1]-A[1],vl=Math.hypot(vx,vy)||1,ux=vx/vl,uy=vy/vl;
+      let nx=-uy,ny=ux;if((C[0]-z.H[0])*nx+(C[1]-z.H[1])*ny<0){nx=-nx;ny=-ny;}
+      const s=.25,P1=[z.H[0]+ux*s,z.H[1]+uy*s],P2=[P1[0]+nx*s,P1[1]+ny*s],P3=[z.H[0]+nx*s,z.H[1]+ny*s];
+      g.seg(z.H[0],z.H[1],P1[0],P1[1],cssVar('--muted'),1.4);g.seg(P1[0],P1[1],P2[0],P2[1],cssVar('--muted'),1.4);g.seg(P2[0],P2[1],P3[0],P3[1],cssVar('--muted'),1.4);
+      g.dot(z.O[0],z.O[1],cssVar('--muted'),4); g.label(z.O[0],z.O[1],'O',cssVar('--ink'),8,-8,'bold 13px system-ui');
+    }
+    const mids=[[(B[0]+C[0])/2,(B[1]+C[1])/2,'a'],[(A[0]+C[0])/2,(A[1]+C[1])/2,'b'],[(A[0]+B[0])/2,(A[1]+B[1])/2,'c']];
+    mids.forEach(p=>g.label(p[0],p[1],p[2],cssVar('--ink'),6,-7,'bold 14px system-ui'));
+    [[A,'A'],[B,'B'],[C,'C']].forEach(([p,n])=>{g.handle(p[0],p[1],cssVar('--accent'));g.label(p[0],p[1],n,cssVar('--ink'),9,-10,'bold 14px system-ui');});
+    if(!z) out.innerHTML='<b>Точките са почти колинеарни.</b> Премести връх, за да се определи описана окръжност.';
+    else out.innerHTML='a = '+fmt(len(B,C))+', b = '+fmt(len(A,C))+', c = '+fmt(len(A,B))+', &nbsp; O('+fmt(z.O[0])+'; '+fmt(z.O[1])+'), R = <b>'+fmt(z.R,3)+'</b>.<br><span class="mnote">Проверка: OA = '+fmt(len(z.O,A),3)+', OB = '+fmt(len(z.O,B),3)+', OC = '+fmt(len(z.O,C),3)+'.</span>';
+  }
+  draggable(cv,g,()=>[
+    {x:A[0],y:A[1],set:(x,y)=>{A=[clamp(x,-5.6,5.6),clamp(y,-3.6,3.6)];}},
+    {x:B[0],y:B[1],set:(x,y)=>{B=[clamp(x,-5.6,5.6),clamp(y,-3.6,3.6)];}},
+    {x:C[0],y:C[1],set:(x,y)=>{C=[clamp(x,-5.6,5.6),clamp(y,-3.6,3.6)];}}
+  ],draw);
+  draw(); liveRedraws.push(draw);
+}},
+
+/* ---------- Производна и допирателна: динамична точка ---------- */
+derivtangent:{ build(root){
+  const ctls=el('div','ctls'); root.append(ctls);
+  const X0=slider(ctls,'абсциса x₀ = %v',-3.2,3.2,.05,1.2,draw);
+  const cv=mkCanvas(root,720,480), out=mkOut(root), g=new Graph(cv,-6,6,-4,4);
+  const f=x=>.08*x*x*x-.7*x, df=x=>.24*x*x-.7;
+  function draw(){
+    const x0=X0(),y0=f(x0),m=df(x0); g.clear(); g.grid(1); g.axes(1);
+    g.fn(f,cssVar('--plot-line'),3); g.fn(x=>y0+m*(x-x0),cssVar('--plot-line3'),2.5);
+    g.seg(x0,0,x0,y0,cssVar('--muted'),1.3,[6,5]); g.handle(x0,y0,cssVar('--accent')); g.label(x0,y0,'P',cssVar('--ink'),9,-10,'bold 14px system-ui');
+    out.innerHTML='f(x) = 0,08x³ − 0,7x; &nbsp; P('+fmt(x0)+'; '+fmt(y0)+'); &nbsp; f′(x₀) = <b>'+fmt(m,3)+'</b>.<br>Допирателна: y − ('+fmt(y0)+') = '+fmt(m,3)+'·(x − '+fmt(x0)+').';
+  }
+  draggable(cv,g,()=>[{x:X0(),y:f(X0()),axis:'x',set:x=>X0.set(clamp(x,-3.2,3.2))}],draw);
+  draw(); liveRedraws.push(draw);
+}},
+
 /* ---------- Система линейни уравнения: по две точки на всяка права ---------- */
 system:{ build(root){
   const ctls=el('div','ctls'); root.append(ctls);
