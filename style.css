@@ -193,8 +193,25 @@ html[data-theme="dark"] .quote-text{ background:linear-gradient(100deg,#9FC0F0,v
   opacity:0; animation:fadeUp .7s .25s ease both; }
 html[data-theme="dark"] .home-h2{ color:var(--teal-2); }
 
+/* Гео — водач на началната страница */
+.howto-wrap{ display:flex; gap:1.6rem; align-items:flex-start; justify-content:center;
+  max-width:900px; margin:0 auto; }
+.howto-mascot{ flex:0 0 200px; display:flex; flex-direction:column; align-items:center;
+  gap:.7rem; position:sticky; top:90px; opacity:0; animation:fadeUp .7s .2s ease both; }
+.geo-img{ width:100%; max-width:200px; height:auto;
+  filter:drop-shadow(0 8px 18px rgba(20,58,107,.22)); }
+.geo-bubble{ position:relative; background:var(--card); border:1.5px solid var(--line);
+  border-radius:14px; padding:.6rem .8rem; font-size:.86rem; line-height:1.4; color:var(--ink);
+  box-shadow:var(--shadow); text-align:center; }
+.geo-bubble::before{ content:""; position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+  border:8px solid transparent; border-bottom-color:var(--line); }
+.geo-bubble::after{ content:""; position:absolute; top:-6.5px; left:50%; transform:translateX(-50%);
+  border:7px solid transparent; border-bottom-color:var(--card); }
+.geo-bubble b{ color:var(--teal); }
+html[data-theme="dark"] .geo-bubble b{ color:var(--teal-2); }
+
 /* стъпки „как да работиш“ — поява със стъпаловидно закъснение */
-.howto{ list-style:none; counter-reset:step; padding:0; margin:0 auto; max-width:760px;
+.howto{ list-style:none; counter-reset:step; padding:0; margin:0; max-width:560px; flex:1 1 auto;
   display:grid; gap:.7rem; }
 .howto li{ counter-increment:step; display:flex; gap:.85rem; align-items:flex-start;
   background:var(--card); border:1px solid var(--line); border-left:4px solid var(--teal);
@@ -268,6 +285,14 @@ body.view-app .home-fab{ opacity:1; transform:none; pointer-events:auto; }
 @media (max-width:640px){
   .hero{ max-height:52vh; }
   footer{ justify-content:flex-start; }
+}
+
+@media (max-width:720px){
+  .howto-wrap{ flex-direction:column; align-items:center; }
+  .howto-mascot{ position:static; flex-direction:row; max-width:100%; }
+  .geo-img{ max-width:110px; flex:0 0 auto; }
+  .geo-bubble{ text-align:left; }
+  .geo-bubble::before,.geo-bubble::after{ top:50%; left:-8px; transform:translateY(-50%) rotate(-90deg); }
 }
 
 /* ---------- Стъпкови броячи (заместват плъзгачите) ---------- */
